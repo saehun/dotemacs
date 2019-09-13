@@ -28,6 +28,8 @@
 (global-set-key (kbd "s-b") 'ibuffer)            ;; list buffer
 (global-set-key (kbd "s-t")  'new-empty-buffer)
 (global-set-key (kbd "C-c \`")  'window-swap-states)
+(global-set-key (kbd "<C-tab>") 'previous-buffer)
+(global-set-key (kbd "<C-S-tab>") 'quit-window)
 
 
 ;;----------------------------------------------------------------------------
@@ -59,6 +61,7 @@
 ;; Misc
 ;;----------------------------------------------------------------------------
 (global-set-key (kbd "s-r") 'shell-command)          ;; run command
+(global-set-key (kbd "C-SPC") 'company-complete)
 
 
 ;;----------------------------------------------------------------------------
@@ -74,7 +77,6 @@
 ;; (global-set-key (kbd "C-x o") 'open-file-at-cursor)        ;; open file under the cursor
 ;; (global-set-key (kbd "C-c l") 'goto-last-change)
 ;; (global-set-key (kbd "C-c p") 'yas/expand)
-;; (global-set-key (kbd "C-SPC") 'company-complete)
 ;; (global-set-key (kbd "s-2") 'jump-to-cursor)
 ;; (global-set-key (kbd "C-c r") 'tide-references)
 ;; (global-set-key (kbd "C-c d") 'tide-jump-to-definition)
