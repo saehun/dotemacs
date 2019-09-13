@@ -11,7 +11,7 @@
     (--each
         (--map
          (concat "*/" it)
-         '("coverage" "build" "next" "elpa*" "auto-save-list" "emacs-backup" "dist"))
+         '("coverage" "build" "next" "elpa*" "auto-save-list" "emacs-backup" "dist" ".terraform"))
       (add-to-list 'ffip-prune-patterns it))))
 
 (provide 'init-ffip)

@@ -24,12 +24,15 @@
 (require 'init-evil)
 (require 'custom-macro)
 (require 'init-company)
+(require 'init-flycheck)
 (require 'init-ffip)
 
 
 ;;----------------------------------------------------------------------------
 ;; Programming
 ;;----------------------------------------------------------------------------
+(require 'init-terraform)
+(require 'init-typescript)
 
 
 ;;----------------------------------------------------------------------------
@@ -37,6 +40,3 @@
 ;;----------------------------------------------------------------------------
 (require 'init-misc)
 (require 'init-bindings)
-
-
-

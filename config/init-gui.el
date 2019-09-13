@@ -1,10 +1,10 @@
 ;;----------------------------------------------------------------------------
 ;; Tabbar - disabled
 ;;----------------------------------------------------------------------------
-;; (when (maybe-require-package 'tabbar)
-;;   (tabbar-mode 1)
-;;   (set-face-attribute 'tabbar-unselected nil :foreground "gray50")
-;;   (setq tabbar-separator (quote (0.5))))
+(when (maybe-require-package 'tabbar)
+  (tabbar-mode 1)
+  (set-face-attribute 'tabbar-unselected nil :foreground "gray50")
+  (setq tabbar-separator (quote (0.5))))
 
 
 (when (maybe-require-package 'beacon)
@@ -60,7 +60,7 @@
 (when (maybe-require-package 'doom-themes)
   ;; (doom-themes-visual-bell-config) Disable visual bell
   (doom-themes-org-config)
-  (setq doom-themes-enable-bold t  
+  (setq doom-themes-enable-bold t
         doom-themes-enable-italic t)
   (require 'doom-subliminal))
 

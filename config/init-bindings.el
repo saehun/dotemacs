@@ -1,19 +1,12 @@
 
 
-;;----------------------------------------------------------------------------
-;; tabbar
-;;----------------------------------------------------------------------------
-(define-key global-map (kbd "s-{") 'tabbar-backward-tab)
-(define-key global-map (kbd "s-}") 'tabbar-forward-tab)
-(global-set-key (kbd "<C-tab>") 'tabbar-forward-group)      
-(global-set-key (kbd "<C-S-tab>") 'tabbar-backward-group)   
 
 ;;----------------------------------------------------------------------------
 ;; counsel
 ;;----------------------------------------------------------------------------
 (global-set-key (kbd "C-e") 'counsel-M-x)
 (global-set-key (kbd "s-F") 'counsel-rg)
-(global-set-key (kbd "C-b") 'counsel-ibuffer) 
+(global-set-key (kbd "C-b") 'counsel-ibuffer)
 (global-set-key (kbd "C-n") 'find-file)
 (global-set-key (kbd "s-f") 'swiper)
 
@@ -28,8 +21,10 @@
 (global-set-key (kbd "s-b") 'ibuffer)            ;; list buffer
 (global-set-key (kbd "s-t")  'new-empty-buffer)
 (global-set-key (kbd "C-c \`")  'window-swap-states)
-(global-set-key (kbd "<C-tab>") 'previous-buffer)
-(global-set-key (kbd "<C-S-tab>") 'quit-window)
+(global-set-key (kbd "<C-S-tab>") 'previous-buffer)
+(global-set-key (kbd "<C-tab>") 'quit-window)
+(global-set-key (kbd "s-{") 'previous-buffer)
+(global-set-key (kbd "s-}") 'quit-window)
 
 
 ;;----------------------------------------------------------------------------
@@ -56,6 +51,7 @@
 ;; Edit
 ;;----------------------------------------------------------------------------
 (global-set-key (kbd "S-SPC") 'toggle-input-method)
+(global-set-key (kbd "s-/") 'comment-line)
 
 ;;----------------------------------------------------------------------------
 ;; Misc
@@ -70,18 +66,34 @@
 (global-unset-key "\C-z")
 
 
+;;----------------------------------------------------------------------------
+;; Typescript
+;;----------------------------------------------------------------------------
+(define-key tide-mode-map (kbd "C-c r") 'tide-references)
+(define-key tide-mode-map (kbd "C-c d") 'tide-jump-to-definition)
+
+;;----------------------------------------------------------------------------
+;; Web-mode
+;;----------------------------------------------------------------------------
+(define-key web-mode-map (kbd "C-c C-a") 'web-mode-attribute-select)
+(define-key web-mode-map (kbd "C-c C-c") 'web-mode-element-content-select)
+(define-key web-mode-map (kbd "C-c C-t") 'web-mode-tag-select)
+(define-key web-mode-map (kbd "C-c C-e") 'web-mode-element-select)
+(define-key web-mode-map (kbd "C-c C-w") 'web-mode-tag-end)
+(define-key web-mode-map (kbd "C-c C-r") 'web-mode-element-rename)
+(define-key web-mode-map (kbd "C-c C-d") 'web-mode-attribute-kill)
+(define-key web-mode-map (kbd "C-c f") 'fold-active-region)
+
+
+
 ;; (global-set-key (kbd "M-r") 'query-replace)          ;; replace
 ;; (global-set-key (kbd "s-[") 'er/contract-region)        ;; expand region plugin
 ;; (global-set-key (kbd "s-]") 'er/expand-region)        ;; expand region plugin
-;; (global-set-key (kbd "s-/") 'comment-line)        ;; comment
 ;; (global-set-key (kbd "C-x o") 'open-file-at-cursor)        ;; open file under the cursor
 ;; (global-set-key (kbd "C-c l") 'goto-last-change)
 ;; (global-set-key (kbd "C-c p") 'yas/expand)
 ;; (global-set-key (kbd "s-2") 'jump-to-cursor)
-;; (global-set-key (kbd "C-c r") 'tide-references)
-;; (global-set-key (kbd "C-c d") 'tide-jump-to-definition)
 ;; (global-set-key (kbd "s-<left>") 'move-beginning-of-line)
 ;; (global-set-key (kbd "s-<right>") 'move-end-of-line)
 
 (provide 'init-bindings)
-
