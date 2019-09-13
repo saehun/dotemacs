@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name : Image
+# key: <i
+# --
+<Image src="$0" />

@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name : div
+# key: <
+# --
+<${1:div}>$0</$1>

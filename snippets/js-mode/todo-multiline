@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+#name : todo-multiline-comment
+#key: todo*
+# --
+/**
+ *  TODO $0
+ */

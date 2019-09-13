@@ -1,5 +1,4 @@
 ;;; init.el --- Load the full configuration -*- lexical-binding: t -*-
-
 (add-to-list 'load-path (expand-file-name "config" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
@@ -38,5 +37,6 @@
 ;;----------------------------------------------------------------------------
 ;; Keyboard binding
 ;;----------------------------------------------------------------------------
+(require 'init-yasnippet)
 (require 'init-misc)
 (require 'init-bindings)

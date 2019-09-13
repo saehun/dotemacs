@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: return
+# key: r
+# group: es6
+# --
+return $0

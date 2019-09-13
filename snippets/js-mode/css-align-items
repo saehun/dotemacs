@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name : align-items
+# key: ai
+# --
+alignItems="${1:center}"$0

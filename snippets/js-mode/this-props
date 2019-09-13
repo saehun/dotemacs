@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name : this-props
+# key: tp
+# --
+this.props.$0

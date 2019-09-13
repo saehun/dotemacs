@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: interface
+# key: it
+# group: es6
+# --
+interface $0 {
+}

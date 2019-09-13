@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name : styled-components
+# key: rs
+# --
+const StyledComponent$0 = styled.div<any>\`
+\`;

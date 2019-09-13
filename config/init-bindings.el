@@ -15,7 +15,7 @@
 ;; Buffer and windows
 ;;----------------------------------------------------------------------------
 (global-set-key (kbd "C-s") 'save-buffer)            ;; save
-(global-set-key (kbd "s-w") 'kill-current-buffer)       ;; close의 의미
+(global-set-key (kbd "s-w") 'kill-this-buffer)       ;; close의 의미
 (global-set-key (kbd "C-`") 'other-window)       ;; Switch window
 (global-set-key (kbd "C-~") 'copy-buffers-in-windows) ;; copy-buffers-in-windows
 (global-set-key (kbd "s-b") 'ibuffer)            ;; list buffer
@@ -69,12 +69,14 @@
 ;;----------------------------------------------------------------------------
 ;; Typescript
 ;;----------------------------------------------------------------------------
+(require 'tide)
 (define-key tide-mode-map (kbd "C-c r") 'tide-references)
 (define-key tide-mode-map (kbd "C-c d") 'tide-jump-to-definition)
 
 ;;----------------------------------------------------------------------------
 ;; Web-mode
 ;;----------------------------------------------------------------------------
+(require 'web-mode)
 (define-key web-mode-map (kbd "C-c C-a") 'web-mode-attribute-select)
 (define-key web-mode-map (kbd "C-c C-c") 'web-mode-element-content-select)
 (define-key web-mode-map (kbd "C-c C-t") 'web-mode-tag-select)

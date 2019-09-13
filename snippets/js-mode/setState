@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: setState
+# key: ss
+# group: es6
+# --
+this.setState({${1:key} : ${2:value}});

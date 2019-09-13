@@ -17,8 +17,9 @@
     ;; aligns annotation to the right hand side
 
     ;; formats the buffer before saving
-    (add-hook 'before-save-hook 'tide-format-before-save)
+    (require 'flycheck)
     (add-hook 'typescript-mode-hook #'setup-tide-mode)
+    (add-hook 'before-save-hook 'tide-format-before-save)
     (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
     (add-to-list 'auto-mode-alist '("\\.ts\\'" . web-mode))
     (add-hook 'web-mode-hook

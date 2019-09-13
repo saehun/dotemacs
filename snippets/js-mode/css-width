@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name : css-width
+# key: cw
+# --
+width="${1:}px"$0

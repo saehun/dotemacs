@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name : Text
+# key: <t
+# --
+<Text>$0</Text>

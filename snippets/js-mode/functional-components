@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name : styled-components
+# key: rf
+# --
+const FunctionalComponent$0 = (props: any) => {
+  return (
+  );
+}

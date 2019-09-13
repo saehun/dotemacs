@@ -115,10 +115,10 @@
 (defun kill-buffer-and-return-previous ()
   "Kill buffer and return previous buffer"
   (interactive)
-  (progn
+  (require 'dash)
+  (let (prev) (-copy (previous-buffer))
     (kill-buffer)
-    (previous-buffer)))
-
+    (set-window-buffer prev)))
 
 ;;----------------------------------------------------------------------------
 ;; open iterm tab with current location

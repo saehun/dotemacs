@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: setStatePrev
+# key: sss
+# group: es6
+# --
+this.setState(prev => ({${1:key} : prev.${2:value}}));

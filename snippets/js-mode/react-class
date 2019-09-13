@@ -1,0 +1,13 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: react class
+# key: rc
+# group: es6
+# --
+class ${1:Class} extends React.Component {
+
+  render(){
+    return (
+      <div>$0</div>
+    );
+  }
+}

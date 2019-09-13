@@ -18,6 +18,10 @@
 (when (maybe-require-package 'editorconfig)
   (add-hook 'prog-mode-hook 'editorconfig-mode))
 
+(when (maybe-require-package 'drag-stuff)
+  (drag-stuff-global-mode 1)
+  (drag-stuff-define-keys))
+
 (when (maybe-require-package 'dired-ranger)
   (define-key dired-mode-map (kbd "y") 'dired-ranger-copy)
   (define-key dired-mode-map (kbd "p") 'dired-ranger-paste))

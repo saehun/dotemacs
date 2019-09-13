@@ -1,0 +1,6 @@
+
+# -*- mode: snippet -*-
+# name : justify-content
+# key: jc
+# --
+justifyContent="${1:center}"$0
