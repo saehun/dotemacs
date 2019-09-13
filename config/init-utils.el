@@ -64,6 +64,7 @@
       (set-visited-file-name new-name)
       (rename-buffer new-name))))
 
+
 ;;----------------------------------------------------------------------------
 ;; Browse current HTML file
 ;;----------------------------------------------------------------------------
@@ -75,6 +76,62 @@
              (tramp-tramp-file-p file-name))
         (error "Cannot open tramp file")
       (browse-url (concat "file://" file-name)))))
+
+
+;;----------------------------------------------------------------------------
+;; open iterm tab with current location
+;;----------------------------------------------------------------------------
+(defun iterm ()
+  "Open the current directory in iterm with new tab"
+  (interactive)
+  (call-process-shell-command "~/dev/bin/tab" nil nil nil (file-name-directory (buffer-file-name))))
+
+
+(defun swap-buffers-in-windows ()
+  "Put the buffer from the selected window in next window, and vice versa"
+  (interactive)
+  (let* ((this (selected-window))
+     (other (next-window))
+     (this-buffer (window-buffer this))
+     (other-buffer (window-buffer other)))
+    (set-window-buffer other this-buffer)
+    (set-window-buffer this other-buffer)
+    ))
+
+
+(defun copy-buffers-in-windows ()
+  "Put the buffer from the selected window in next window, and vice versa"
+  (interactive)
+  (let* ((this (selected-window))
+     (other (next-window))
+     (this-buffer (window-buffer this)))
+    (set-window-buffer other this-buffer)
+    ))
+
+
+;;----------------------------------------------------------------------------
+;; Close buffer
+;;----------------------------------------------------------------------------
+(defun kill-buffer-and-return-previous ()
+  "Kill buffer and return previous buffer"
+  (interactive)
+  (progn
+    (kill-buffer)
+    (previous-buffer)))
+
+
+;;----------------------------------------------------------------------------
+;; open iterm tab with current location
+;;----------------------------------------------------------------------------
+(defun new-empty-buffer ()
+  "Open a new empty buffer.
+   URL `http://ergoemacs.org/emacs/emacs_new_empty_buffer.html'
+   Version 2016-08-11"
+  (interactive)
+  (let ((-buf (generate-new-buffer "untitled")))
+    (switch-to-buffer -buf)
+    (funcall initial-major-mode)
+    (setq buffer-offer-save t)))
 
 
 (provide 'init-utils)
