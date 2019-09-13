@@ -15,4 +15,8 @@
 ;;----------------------------------------------------------------------------
 ;; Bootstrap config
 ;;----------------------------------------------------------------------------
-(require 'config-init)
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(require 'init-utils)
+(require 'init-site-lisp)
+(require 'init-elpa)
+(require 'init-exec-path)
