@@ -21,6 +21,7 @@
 ;; Control
 ;;----------------------------------------------------------------------------
 (require 'init-ivy)
+(require 'init-evil)
 (require 'init-bindings)
 (require 'custom-macro)
 
