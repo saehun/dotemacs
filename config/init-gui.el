@@ -15,7 +15,7 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (set-frame-font "Monaco:pixelsize=14")
-(setq-default line-spacing 0.2)
+(setq-default line-spacing 0.12)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
 (setq indent-line-function 'insert-tab)
