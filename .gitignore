@@ -1,0 +1,8 @@
+.cache
+elpa
+auto-save-list
+eshell
+el-get
+custom.el
+node_modules
+*.elc
