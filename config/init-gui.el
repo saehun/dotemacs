@@ -16,24 +16,10 @@
 (setq indent-line-function 'insert-tab)
 
 ;;----------------------------------------------------------------------------
-;; http://ivanmalison.github.io/dotfiles/
+;; linum
 ;;----------------------------------------------------------------------------
-(use-package nlinum
-  :disabled t
-  :demand t
-  :config
-  (progn
-    (add-hook 'prog-mode-hook (lambda () (nlinum-mode t)))
-    (defun imalison-nlinum-mode-hook ()
-      (when nlinum-mode
-        (setq-local nlinum-format
-                    (concat "%" (number-to-string
-                                 ;; Guesstimate number of buffer lines.
-                                 (ceiling (log (max 1 (/ (buffer-size) 80)) 10)))
-                            "d"))))))
 (global-linum-mode 1)
 (global-hl-line-mode 1)
-
 
 ;;----------------------------------------------------------------------------
 ;; title bar
@@ -51,13 +37,24 @@
 ;;----------------------------------------------------------------------------
 (setq use-dialog-box nil)
 
-
 ;;----------------------------------------------------------------------------
 ;; Time in modeline @ivanmalison.github.io
 ;;----------------------------------------------------------------------------
-;; (setq display-time-default-load-average nil)
-;; (setq display-time-interval 1)
-;; (setq display-time-format "%a|%m-%d|%r")
-;; (display-time-mode +1)
+(setq display-time-default-load-average nil)
+(setq display-time-interval 1)
+(setq display-time-format "%a|%m-%d|%r")
+(display-time-mode +1)
+
+;;----------------------------------------------------------------------------
+;; Theme
+;;----------------------------------------------------------------------------
+(when (maybe-require-package 'doom-modeline)
+  (doom-modeline-init))
+(when (maybe-require-package 'doom-themes)
+  ;; (doom-themes-visual-bell-config) Disable visual bell
+  (doom-themes-org-config)
+  (setq doom-themes-enable-bold t  
+        doom-themes-enable-italic t)
+  (require 'doom-subliminal))
 
 (provide 'init-gui)
