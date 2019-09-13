@@ -20,3 +20,4 @@
 site-lisp/package/
 /swank
 /var
+/emacs-backup
