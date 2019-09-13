@@ -22,6 +22,7 @@
 ;;----------------------------------------------------------------------------
 (require 'init-ivy)
 (require 'init-bindings)
+(require 'custom-macro)
 
 
 
