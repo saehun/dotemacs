@@ -8,8 +8,10 @@
     (setq-local ffip-find-options "-not -size +64k -not -iwholename '*/dist/*'")
     ;; for this project, I'm only interested certain types of files
     (setq-local ffip-ignore-filenames '("*.bmp" "*.jpg" "package-lock.json" "yarn.lock"))
-      (let (s) (-each
-      (--map (concat "*/") '("coverage" "build" "next" "elpa*" "auto-save-list" "emacs-backup" "dist"))
-                 (add-to-list 'ffip-prune-patterns s)))))
+    (--each
+        (--map
+         (concat "*/" it)
+         '("coverage" "build" "next" "elpa*" "auto-save-list" "emacs-backup" "dist"))
+      (add-to-list 'ffip-prune-patterns it))))
 
 (provide 'init-ffip)
