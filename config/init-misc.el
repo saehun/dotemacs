@@ -12,4 +12,8 @@
 (when (maybe-require-package 'editorconfig)
   (add-hook 'prog-mode-hook 'editorconfig-mode))
 
+(when (maybe-require-package 'dired-ranger)
+  (define-key dired-mode-map (kbd "y") 'dired-ranger-copy)
+  (define-key dired-mode-map (kbd "p") 'dired-ranger-paste))
+
 (provide 'init-misc)

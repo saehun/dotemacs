@@ -80,8 +80,6 @@
 ;; (global-set-key (kbd "s-2") 'jump-to-cursor)
 ;; (global-set-key (kbd "C-c r") 'tide-references)
 ;; (global-set-key (kbd "C-c d") 'tide-jump-to-definition)
-;; (define-key dired-mode-map (kbd "y") 'dired-ranger-copy)
-;; (define-key dired-mode-map (kbd "p") 'dired-ranger-paste)
 ;; (global-set-key (kbd "s-<left>") 'move-beginning-of-line)
 ;; (global-set-key (kbd "s-<right>") 'move-end-of-line)
 
