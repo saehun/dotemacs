@@ -24,7 +24,7 @@
 ;; String utilities missing from core emacs
 ;;----------------------------------------------------------------------------
 (defun sanityinc/string-all-matches (regex str &optional group)
-  "Find all matches for `REGEX' within `STR', returning the full match string or group `GROUP'."
+  "Find all matche for `REGEX' within `STR', returning the full match string or group `GROUP'."
   (let ((result nil)
         (pos 0)
         (group (or group 0)))
@@ -82,7 +82,7 @@
 ;; open iterm tab with current location
 ;;----------------------------------------------------------------------------
 (defun iterm ()
-  "Open the current directory in iterm with new tab"
+  "Open the current directory in iterm with new tab."
   (interactive)
   (call-process-shell-command "~/dev/bin/tab" nil nil nil (file-name-directory (buffer-file-name))))
 
@@ -154,6 +154,17 @@
    (set-frame-parameter (selected-frame) 'alpha value))
 
 
+;;----------------------------------------------------------------------------
+;; Ivy command history
+;;----------------------------------------------------------------------------
+(defun counsel-shell-command ()
+  "Forward to `shell-command'."
+  (interactive)
+  (ivy-read "Shell Command: "
+                        shell-command-history
+            :action (lambda (x)
+                      (shell-command x))
+            :caller 'counsel-shell-command))
 
 
 (provide 'init-utils)
