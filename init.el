@@ -1,4 +1,5 @@
 ;;; init.el --- Load the full configuration -*- lexical-binding: t -*-
+
 (add-to-list 'load-path (expand-file-name "config" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
@@ -25,6 +26,7 @@
 (require 'init-company)
 (require 'init-flycheck)
 (require 'init-ffip)
+(require 'init-hydra)
 
 
 ;;----------------------------------------------------------------------------
