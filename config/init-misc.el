@@ -26,4 +26,7 @@
   (define-key dired-mode-map (kbd "y") 'dired-ranger-copy)
   (define-key dired-mode-map (kbd "p") 'dired-ranger-paste))
 
+
+(maybe-require-package 'golden-ratio)
+
 (provide 'init-misc)
