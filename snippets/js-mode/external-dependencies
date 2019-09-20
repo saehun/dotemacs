@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+#name : external dependencies
+#key: *e
+# --
+/**
+ * External dependencies
+ */

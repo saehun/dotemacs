@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+#name : internal dependencies
+#key: *i
+# --
+/**
+ * Internal dependencies
+ */
