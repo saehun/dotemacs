@@ -1,4 +1,6 @@
-;;----------------------------
+;;; init-yasnippet.el --- Elisp helper functions and commands -*- lexical-binding: t -*-
+;;; Commentary:
+;;; Code:
 
 (when (maybe-require-package 'yasnippet)
   (yas-global-mode 1)
@@ -6,3 +8,4 @@
         '("~/.emacs.d/snippets")))
 
 (provide 'init-yasnippet)
+;;; init-yasnippet.el ends here

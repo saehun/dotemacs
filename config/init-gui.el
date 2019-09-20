@@ -1,9 +1,14 @@
+;;; init-gui.el --- Elisp helper functions and commands -*- lexical-binding: t -*-
+;;; Commentary:
+;;; Code:
+
+
 ;;----------------------------------------------------------------------------
 ;; Tabbar - disabled
 ;;----------------------------------------------------------------------------
 (when (maybe-require-package 'tabbar)
   (tabbar-mode 1)
-  (set-face-attribute 'tabbar-unselected nil :foreground "gray50")
+  (set-face-attribute 'tabbar-unselected nil :foreground "gray70")
   (setq tabbar-separator (quote (0.5))))
 
 
