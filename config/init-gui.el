@@ -52,10 +52,10 @@
 ;;----------------------------------------------------------------------------
 ;; Time in modeline @ivanmalison.github.io
 ;;----------------------------------------------------------------------------
-(setq display-time-default-load-average nil)
-(setq display-time-interval 1)
-(setq display-time-format "%a|%m-%d|%r")
-(display-time-mode +1)
+;; (setq display-time-default-load-average nil)
+;; (setq display-time-interval 1)
+;; (setq display-time-format "%a|%m-%d|%r")
+;; (display-time-mode +1)
 
 ;;----------------------------------------------------------------------------
 ;; Theme
