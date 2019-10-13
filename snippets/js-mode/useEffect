@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name : useEffect
+# key: ure
+# --
+React.useEffect(() => {
+  $0
+}, []);

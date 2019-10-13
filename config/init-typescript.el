@@ -1,6 +1,7 @@
 ;; typescript init
 
 (when (maybe-require-package 'web-mode)
+  (setq web-mode-enable-auto-quoting nil)
   (when (maybe-require-package 'tide)
     (defun setup-tide-mode ()
       (interactive)

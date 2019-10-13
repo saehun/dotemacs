@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name : useSelector
+# key: usl
+# --
+const $0 = useSelector((state: ReduxState) => );

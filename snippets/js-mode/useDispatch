@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name : useDispatch
+# key: udp
+# --
+const dispatch = useDispatch();

@@ -34,6 +34,7 @@
 ;;----------------------------------------------------------------------------
 (require 'init-terraform)
 (require 'init-typescript)
+(require 'init-markdown)
 
 
 ;;----------------------------------------------------------------------------
@@ -42,3 +43,4 @@
 (require 'init-yasnippet)
 (require 'init-misc)
 (require 'init-bindings)
+(require 'init-go)
