@@ -39,11 +39,9 @@
        (set (make-local-variable 'company-backends) '(company-go))
                               (company-mode)))
 
-  ;; key bindings
+  (require 'go-mode)
   (define-key go-mode-map (kbd "C-c d") 'godef-jump)
   (define-key go-mode-map (kbd "C-c r") 'go-guru-referrers))
-
-
 
 (provide 'init-go)
 ;;; init-go.el ends here

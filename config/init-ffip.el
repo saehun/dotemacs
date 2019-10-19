@@ -7,7 +7,7 @@
     ;; well, I'm not interested in concatenated BIG js file or file in dist/
     (setq-local ffip-find-options "-not -size +64k -not -iwholename '*/dist/*'")
     ;; for this project, I'm only interested certain types of files
-    (setq-local ffip-ignore-filenames '("*.bmp" "*.jpg" "package-lock.json" "yarn.lock"))
+    (setq-local ffip-ignore-filenames '("*.bmp" "*.jpg" "*.png" "package-lock.json" "yarn.lock"))
     (--each
         (--map
          (concat "*/" it)

@@ -27,6 +27,7 @@
 (require 'init-flycheck)
 (require 'init-ffip)
 (require 'init-hydra)
+(require 'init-magit)
 
 
 ;;----------------------------------------------------------------------------
