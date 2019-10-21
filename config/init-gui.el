@@ -27,11 +27,11 @@
 (show-paren-mode 1)
 
 ;;----------------------------------------------------------------------------
-;; linum
+;; linum  disable --- for performance issue
 ;;----------------------------------------------------------------------------
-(global-linum-mode 1)
-(global-hl-line-mode 1)
-(setq linum-format "%d ")
+;; (global-linum-mode 1)
+;; (global-hl-line-mode 1)
+;; (setq linum-format "%d ")
 
 ;;----------------------------------------------------------------------------
 ;; title bar
