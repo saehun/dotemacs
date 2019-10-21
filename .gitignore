@@ -24,3 +24,4 @@ site-lisp/package/
 /smex-items
 recentf
 tmp
+transient
