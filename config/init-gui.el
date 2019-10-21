@@ -4,16 +4,18 @@
 
 
 ;;----------------------------------------------------------------------------
-;; Tabbar - disabled
+;; Tabbar  
 ;;----------------------------------------------------------------------------
 (when (maybe-require-package 'tabbar)
   (tabbar-mode 1)
   (set-face-attribute 'tabbar-unselected nil :foreground "gray70")
   (setq tabbar-separator (quote (0.5))))
 
-
-(when (maybe-require-package 'beacon)
-  (add-hook 'after-init-hook 'beacon-mode))
+;;----------------------------------------------------------------------------
+;; Beacon - disabled - performance issue
+;;----------------------------------------------------------------------------
+;;  (when (maybe-require-package 'beacon)
+;;    (add-hook 'after-init-hook 'beacon-mode))
 
 (setq-default cursor-type 'bar)
 (tool-bar-mode -1)
