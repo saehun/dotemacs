@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+#name : constant definitions
+#key: *c
+# --
+/**
+ * Constant definitions
+ */

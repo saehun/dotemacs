@@ -16,8 +16,8 @@
 ;;----------------------------------------------------------------------------
 (global-set-key (kbd "C-s") 'save-buffer)            ;; save
 (global-set-key (kbd "s-w") 'kill-this-buffer)       ;; close의 의미
-(global-set-key (kbd "C-`") 'other-window)       ;; Switch window
-(global-set-key (kbd "C-~") 'copy-buffers-in-windows) ;; copy-buffers-in-windows
+(global-set-key (kbd "C-\\") 'other-window)       ;; Switch window
+(global-set-key (kbd "C-|") 'copy-buffers-in-windows) ;; copy-buffers-in-windows
 (global-set-key (kbd "s-b") 'ibuffer)            ;; list buffer
 (global-set-key (kbd "s-t")  'new-empty-buffer)
 (global-set-key (kbd "C-c \`")  'window-swap-states)

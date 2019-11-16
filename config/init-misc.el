@@ -18,6 +18,8 @@
 (when (maybe-require-package 'editorconfig)
   (add-hook 'prog-mode-hook 'editorconfig-mode))
 
+(maybe-require-package 'yaml-mode)
+
 (when (maybe-require-package 'drag-stuff)
   (drag-stuff-global-mode 1)
   (drag-stuff-define-keys))

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+#name : type interface definitions
+#key: *t
+# --
+/**
+ * Type & Interface definitions
+ */
