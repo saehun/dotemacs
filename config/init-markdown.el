@@ -18,7 +18,7 @@
 (when (maybe-require-package 'markdown-mode)
   (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
   (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
-  (add-hook 'markdown-mode-hook 'markdown-config)
+  ;; (add-hook 'markdown-mode-hook 'markdown-config)
   )
 
 (provide 'init-markdown)

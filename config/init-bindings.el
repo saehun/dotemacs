@@ -4,10 +4,20 @@
 ;;----------------------------------------------------------------------------
 ;; counsel
 ;;----------------------------------------------------------------------------
-(global-set-key (kbd "C-e") 'counsel-M-x)
-(global-set-key (kbd "s-F") 'counsel-rg)
-(global-set-key (kbd "C-b") 'counsel-ibuffer)
-(global-set-key (kbd "C-n") 'find-file)
+
+;;; Code:
+(defun with-safe (command)
+  "Check whether minibuffer opened, running COMMAND, close seamlessly."
+  `(lambda (&rest args)
+     (interactive)
+     (if (minibuffer-window-active-p (active-minibuffer-window))
+       (minibuffer-keyboard-quit)
+       (apply #',command args))))
+
+(global-set-key (kbd "C-e") (with-safe 'counsel-M-x))
+(global-set-key (kbd "s-F") (with-safe 'counsel-rg))
+(global-set-key (kbd "C-b") (with-safe 'counsel-ibuffer))
+(global-set-key (kbd "C-n") (with-safe 'counsel-find-file))
 (global-set-key (kbd "s-f") 'swiper)
 
 
@@ -16,8 +26,8 @@
 ;;----------------------------------------------------------------------------
 (global-set-key (kbd "C-s") 'save-buffer)            ;; save
 (global-set-key (kbd "s-w") 'kill-this-buffer)       ;; close의 의미
-(global-set-key (kbd "C-\\") 'other-window)       ;; Switch window
-(global-set-key (kbd "C-|") 'copy-buffers-in-windows) ;; copy-buffers-in-windows
+(global-set-key (kbd "C-`") 'other-window)       ;; Switch window
+(global-set-key (kbd "C-~") 'copy-buffers-in-windows) ;; copy-buffers-in-windows
 (global-set-key (kbd "s-b") 'ibuffer)            ;; list buffer
 (global-set-key (kbd "s-t")  'new-empty-buffer)
 (global-set-key (kbd "C-c \`")  'window-swap-states)
@@ -30,8 +40,11 @@
 ;;----------------------------------------------------------------------------
 ;; Evil
 ;;----------------------------------------------------------------------------
+(require 'evil)
 (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
+(define-key evil-motion-state-map (kbd "C-u") 'evil-scroll-up)
 (define-key evil-normal-state-map (kbd "SPC") 'ace-jump-word-mode)
+(define-key evil-normal-state-map (kbd "C-!") 'flycheck-next-error)
 (define-key evil-inner-text-objects-map "b" 'evil-textobj-anyblock-inner-block)
 (define-key evil-outer-text-objects-map "b" 'evil-textobj-anyblock-a-block)
 (define-key evil-normal-state-map "\C-n" nil)
