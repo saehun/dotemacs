@@ -1,7 +1,6 @@
 (require 'dash)
 
 (when (maybe-require-package 'find-file-in-project)
-  (global-set-key (kbd "s-p") 'find-file-in-project)
   (defun ffip-setup ()
   (interactive)
     ;; well, I'm not interested in concatenated BIG js file or file in dist/
