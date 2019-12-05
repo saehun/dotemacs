@@ -6,7 +6,6 @@
 ;; http://tleyden.github.io/blog/2014/05/22/configure-emacs-as-a-go-editor-from-scratch/
 
 ;; System dependencies
-;; go get -u github.com/nsf/gocode # to install gocode
 ;; go get golang.org/x/tools/cmd/goimports #
 ;; go get -u github.com/kisielk/errcheck
 ;; godef
@@ -19,27 +18,41 @@
   (setenv "PATH" (concat "/usr/local/go/bin" ":" (getenv "PATH")))
   (setenv "PATH" (concat "/Users/minidonut/go/bin" ":" (getenv "PATH")))
 
-
   (add-hook 'go-mode-hook
     (lambda ()
-      (setq gofmt-command "goimports")
-      (add-hook 'before-save-hook 'gofmt-before-save)
       (setq truncate-lines t)
       (setq indent-tabs-mode t)
-      (setq tab-width 4)))
-
-  (when (maybe-require-package 'go-eldoc)
-    (add-hook 'go-mode-hook 'go-eldoc-setup))
+      (setq tab-width 4)
+      (setq lsp-prefer-flymake nil)
+      (setq lsp-eldoc-render-all t)))
 
   (when (maybe-require-package 'go-guru)
     (add-hook 'go-mode-hook 'go-guru-hl-identifier-mode))
 
-  (when (maybe-require-package 'company-go))
-    (add-hook 'go-mode-hook (lambda ()
-       (set (make-local-variable 'company-backends) '(company-go))
-                              (company-mode)))
+  (use-package lsp-mode
+    :ensure t
+    :commands (lsp lsp-deferred)
+    :hook (go-mode . lsp-deferred))
+
+  ;; Set up before-save hooks to format buffer and add/delete imports.
+  ;; Make sure you don't have other gofmt/goimports hooks enabled.
+  (defun lsp-go-install-save-hooks ()
+    (add-hook 'before-save-hook #'lsp-format-buffer t t)
+    (add-hook 'before-save-hook #'lsp-organize-imports t t))
+  (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+
+  ;; company-lsp integrates company mode completion with lsp-mode.
+  ;; completion-at-point also works out of the box but doesn't support snippets.
+  (use-package company-lsp
+    :ensure t
+    :commands company-lsp)
 
   (require 'go-mode)
+
+  (let ((govet (flycheck-checker-get 'go-vet 'command)))
+    (when (equal (cadr govet) "tool")
+      (setf (cdr govet) (cddr govet))))
+
   (define-key go-mode-map (kbd "C-c d") 'godef-jump)
   (define-key go-mode-map (kbd "C-c r") 'go-guru-referrers))
 
