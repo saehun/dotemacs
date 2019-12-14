@@ -27,6 +27,8 @@
 (setq-default tab-width 2)
 (setq indent-line-function 'insert-tab)
 (show-paren-mode 1)
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+(add-to-list 'default-frame-alist '(fullscreen . fullheight))
 
 ;;----------------------------------------------------------------------------
 ;; linum  disable --- for performance issue
