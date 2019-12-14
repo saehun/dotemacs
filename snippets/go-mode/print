@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: print line
+# key: lg=
+# group: go
+# --
+fmt.Println($0)
