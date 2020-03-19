@@ -21,6 +21,7 @@
     (require 'flycheck)
     (add-hook 'typescript-mode-hook #'setup-tide-mode)
     (add-hook 'before-save-hook 'tide-format-before-save)
+
     (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
     (add-to-list 'auto-mode-alist '("\\.ts\\'" . web-mode))
     (add-hook 'web-mode-hook
@@ -32,7 +33,14 @@
                 (when (string-equal "ts" (file-name-extension buffer-file-name))
                   (setup-tide-mode))))
 
+    (add-hook 'rjsx-mode-hook #'setup-tide-mode)
+
     ;; enable typescript-tslint checker
-    (flycheck-add-mode 'typescript-tslint 'web-mode)))
+    (flycheck-add-mode 'typescript-tslint 'web-mode)
+    ;; at .emacs.d/elpa/tide/tide.el
+    ;; (add-to-list 'flycheck-checkers 'tsx-tide)
+    ;; (flycheck-add-next-checker 'tsx-tide '(warning . javascript-eslint) 'append)  ;; switch here to use eslint over tslint
+    ;; (flycheck-add-next-checker 'tsx-tide '(warning . typescript-tslint) 'append)
+    ))
 
 (provide 'init-typescript)

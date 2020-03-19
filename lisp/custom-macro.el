@@ -1,5 +1,8 @@
-;; Global macro
+;;; package --- custom-macro
+;;; Commentary:
+;;; Code:
 (defun semicolon-macro ()
+  "Put semicolon at the end of the line."
   (interactive)
   (end-of-line)
   (insert ";"))
@@ -12,3 +15,4 @@
 
 
 (provide 'custom-macro)
+;;; custom-macro ends here

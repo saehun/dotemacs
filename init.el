@@ -17,6 +17,7 @@
 ;; GUI config
 ;;----------------------------------------------------------------------------
 (require 'init-gui)
+(require 'init-eldoc)
 
 ;;----------------------------------------------------------------------------
 ;; Control
@@ -36,7 +37,10 @@
 ;;----------------------------------------------------------------------------
 (require 'init-terraform)
 (require 'init-typescript)
+(require 'init-javascript)
 (require 'init-markdown)
+(require 'init-go)
+(require 'init-haskell)
 
 
 ;;----------------------------------------------------------------------------
@@ -45,4 +49,3 @@
 (require 'init-yasnippet)
 (require 'init-misc)
 (require 'init-bindings)
-(require 'init-go)

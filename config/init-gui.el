@@ -72,5 +72,6 @@
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t)
   (require 'doom-subliminal))
+(maybe-require-package 'gruber-darker-theme)
 
 (provide 'init-gui)

@@ -1,0 +1,13 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name : React functional component
+# key: rfc
+# --
+interface $1Props {
+}
+  
+const ${1:Comp}: React.FC<$1Props> = (props) => {
+  const {} = props;
+
+  return <div></div>;
+};
+  
