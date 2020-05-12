@@ -1,6 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: function declaration
-# key: f=
+# key: fn;
 # group: go
 # --
 func $0() {

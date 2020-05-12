@@ -1,6 +1,7 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: print line
-# key: lg;
+# name: struct  
+# key: st;
 # group: go
 # --
-fmt.Println($0)
+type $0 struct {
+}

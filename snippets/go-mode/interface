@@ -1,6 +1,7 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: print line
-# key: lg;
+# name: interface  
+# key: it;
 # group: go
 # --
-fmt.Println($0)
+type $0 interface {
+}
