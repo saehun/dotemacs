@@ -8,6 +8,7 @@
       (tide-setup)
       (flycheck-mode +1)
       (setq flycheck-check-syntax-automatically '(save mode-enabled))
+      ;; (setq tide-tsserver-executable "node_modules/typescript/bin/tsserver")
       (eldoc-mode +1)
       (tide-hl-identifier-mode +1)
       (setq tide-completion-detailed t)
@@ -36,11 +37,15 @@
     (add-hook 'rjsx-mode-hook #'setup-tide-mode)
 
     ;; enable typescript-tslint checker
-    (flycheck-add-mode 'typescript-tslint 'web-mode)
     ;; at .emacs.d/elpa/tide/tide.el
-    ;; (add-to-list 'flycheck-checkers 'tsx-tide)
-    ;; (flycheck-add-next-checker 'tsx-tide '(warning . javascript-eslint) 'append)  ;; switch here to use eslint over tslint
-    ;; (flycheck-add-next-checker 'tsx-tide '(warning . typescript-tslint) 'append)
-    ))
+   (require 'tide)
+   (flycheck-add-mode 'javascript-eslint 'web-mode)
+   (flycheck-add-mode 'typescript-tide 'web-mode)
+   (flycheck-add-mode 'javascript-tide 'web-mode)
+   (flycheck-add-next-checker 'jsx-tide '(warning . javascript-eslint) 'append)
+   (flycheck-add-next-checker 'javascript-tide '(warning . javascript-eslint) 'append)
+   (flycheck-add-next-checker 'tsx-tide '(warning . javascript-eslint) 'append)
+   (flycheck-add-next-checker 'typescript-tide '(warning . javascript-eslint) 'append)
+))
 
 (provide 'init-typescript)

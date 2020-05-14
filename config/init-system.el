@@ -18,6 +18,7 @@
 (setq auto-save-default nil)
 (setq backup-inhibited t)
 (setq make-backup-files nil)
+(setq ring-bell-function 'ignore)
 (global-auto-revert-mode t)
 
 ;;----------------------------------------------------------------------------
