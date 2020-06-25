@@ -6,11 +6,12 @@
 
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
 (setq exec-path (append exec-path '("/usr/local/bin")))
-(setenv "PATH" (concat (getenv "PATH") ":/Users/minidonut/bin"))
-(setq exec-path (append exec-path '("/Users/minidonut/bin")))
-(setenv "PATH" (concat (getenv "PATH") ":/Users/minidonut/.local/bin"))
-(setq exec-path (append exec-path '("/Users/minidonut/.local/bin")))
-
+(setenv "PATH" (concat (getenv "PATH") ":/Users/root1/bin"))
+(setq exec-path (append exec-path '("/Users/root1/bin")))
+(setenv "PATH" (concat (getenv "PATH") ":/Users/root1/.local/bin"))
+(setq exec-path (append exec-path '("/Users/root1/.local/bin")))
+;; (exec-path-from-shell-copy-env "GOPATH")
+(setenv "GOPATH" "/Users/root1/go")
 
 (provide 'init-exec-path)
 ;;; init-exec-path.el ends here

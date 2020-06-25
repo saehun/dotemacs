@@ -49,3 +49,5 @@
 (require 'init-yasnippet)
 (require 'init-misc)
 (require 'init-bindings)
+
+(require 'init-clojure)

@@ -10,14 +10,14 @@
 (when (maybe-require-package 'company)
   (add-hook 'after-init-hook 'global-company-mode)
   (after-load 'company
-    (dolist (backend '(company-eclim company-semantic))
-      (delq backend company-backends))
+    ;; (dolist (backend '(company-eclim company-semantic))
+      ;; (delq backend company-backends))
     (setq company-idle-delay 0)
-    (setq company-minimum-prefix-length 1)
+    (setq company-minimum-prefix-length 2)
     (setq company-selection-wrap-around t)
     ; Use tab key to cycle through suggestions.
     ; ('tng' means 'tab and go')
-    (company-tng-configure-default)
+    ;; (company-tng-configure-default)
     (setq-default company-dabbrev-other-buffers 'all
                   company-tooltip-align-annotations t))
   (when (maybe-require-package 'company-quickhelp)

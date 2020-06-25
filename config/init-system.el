@@ -21,6 +21,9 @@
 (setq ring-bell-function 'ignore)
 (global-auto-revert-mode t)
 
+;; turn on lexical binding
+(setq lexical-binding t)
+
 ;;----------------------------------------------------------------------------
 ;; Auto refresh dired, but be quiet about it
 ;;----------------------------------------------------------------------------

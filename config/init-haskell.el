@@ -3,6 +3,27 @@
 ;;; Code:
 
 (when (maybe-require-package 'haskell-mode)
+  (with-eval-after-load "haskell-mode"
+    ;; This changes the evil "O" and "o" keys for haskell-mode to make sure that
+    ;; indentation is done correctly. See
+    ;; https://github.com/haskell/haskell-mode/issues/1265#issuecomment-252492026.
+    (defun haskell-evil-open-above ()
+      (interactive)
+      (evil-digit-argument-or-evil-beginning-of-line)
+      (haskell-indentation-newline-and-indent)
+      (evil-previous-line)
+      (haskell-indentation-indent-line)
+      (evil-append-line nil))
+  
+    (defun haskell-evil-open-below ()
+      (interactive)
+      (evil-append-line nil)
+      (haskell-indentation-newline-and-indent))
+  
+    (evil-define-key 'normal haskell-mode-map
+      "o" 'haskell-evil-open-below
+      "O" 'haskell-evil-open-above)
+  )
 
   (use-package dante
     :ensure t
