@@ -4,14 +4,6 @@
 
 
 ;;----------------------------------------------------------------------------
-;; Tabbar  
-;;----------------------------------------------------------------------------
-(when (maybe-require-package 'tabbar)
-  (tabbar-mode 1)
-  (set-face-attribute 'tabbar-unselected nil :foreground "gray70")
-  (setq tabbar-separator (quote (0.5))))
-
-;;----------------------------------------------------------------------------
 ;; Beacon - disabled - performance issue
 ;;----------------------------------------------------------------------------
 ;;  (when (maybe-require-package 'beacon)
@@ -70,8 +62,52 @@
   ;; (doom-themes-visual-bell-config) Disable visual bell
   (doom-themes-org-config)
   (setq doom-themes-enable-bold t
-        doom-themes-enable-italic t)
-  (require 'doom-subliminal))
+    doom-themes-enable-italic t)
+  ;; (require 'doom-subliminal)
+  (load-theme 'doom-dark+ t)
+  )
 (maybe-require-package 'gruber-darker-theme)
+
+
+;;----------------------------------------------------------------------------
+;; Tabbar  
+;;----------------------------------------------------------------------------
+(when (maybe-require-package 'tabbar)
+
+  (tabbar-mode 1)
+  (let ((custom-tabbar-bg (face-attribute 'default :background)))
+    
+
+    (customize-set-variable 'tabbar-separator '(0.7))
+    (customize-set-variable 'tabbar-background-color custom-tabbar-bg)
+    (customize-set-variable 'tabbar-use-images nil)
+
+    ;; Colors
+    (set-face-attribute 'tabbar-default nil
+      :background custom-tabbar-bg 
+      :foreground "gray60" 
+      :box nil)
+    (set-face-attribute 'tabbar-unselected nil
+      :background custom-tabbar-bg 
+      :foreground "gray60"  ;; hmmm
+      ;; :box '(:line-width 10 :color custom-tabbar-bg))
+      :box nil)
+    (set-face-attribute 'tabbar-selected nil
+      :background custom-tabbar-bg 
+      :foreground "GoldenRod2" 
+      :box nil)
+    (set-face-attribute 'tabbar-modified nil
+      :foreground "#f56476" :box nil
+      :inherit 'tabbar-unselected)
+    (set-face-attribute 'tabbar-selected-modified nil
+      :inherit 'tabbar-selected 
+      :foreground "GoldenRod2" 
+      :box nil)
+    (set-face-attribute 'tabbar-button nil :box nil)
+
+
+;; (setq tabbar-separator (quote (0.5)))
+    ))
+
 
 (provide 'init-gui)
