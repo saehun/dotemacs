@@ -34,6 +34,8 @@
 (global-set-key (kbd "s-}") 'tabbar-forward-tab)
 (global-set-key (kbd "C-s-{") 'tabbar-backward-group)
 (global-set-key (kbd "C-s-}") 'tabbar-forward-group)
+(global-set-key (kbd "s-[") 'tabbar-move-current-tab-one-place-left)
+(global-set-key (kbd "s-]") 'tabbar-move-current-tab-one-place-right)
 
 ;;----------------------------------------------------------------------------
 ;; Evil
