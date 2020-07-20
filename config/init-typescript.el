@@ -11,7 +11,7 @@
       ;; (setq tide-tsserver-executable "node_modules/typescript/bin/tsserver")
       (eldoc-mode +1)
       (tide-hl-identifier-mode +1)
-      (setq tide-completion-detailed t)
+      ;; (setq tide-completion-detailed t)
       ;; company is an optional dependency. You have to
       ;; install it separately via package-install
       ;; `M-x package-install [ret] company`
@@ -21,7 +21,9 @@
     ;; formats the buffer before saving
     (require 'flycheck)
     (add-hook 'typescript-mode-hook #'setup-tide-mode)
-    (add-hook 'before-save-hook 'tide-format-before-save)
+    
+    ;; 대신 prettier를 사용
+    ;; (add-hook 'before-save-hook 'tide-format-before-save)
 
     (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
     (add-to-list 'auto-mode-alist '("\\.ts\\'" . web-mode))
@@ -38,6 +40,7 @@
 
     ;; enable typescript-tslint checker
     ;; at .emacs.d/elpa/tide/tide.el
+
    (require 'tide)
    (flycheck-add-mode 'javascript-eslint 'web-mode)
    (flycheck-add-mode 'typescript-tide 'web-mode)
@@ -45,7 +48,11 @@
    (flycheck-add-next-checker 'jsx-tide '(warning . javascript-eslint) 'append)
    (flycheck-add-next-checker 'javascript-tide '(warning . javascript-eslint) 'append)
    (flycheck-add-next-checker 'tsx-tide '(warning . javascript-eslint) 'append)
-   (flycheck-add-next-checker 'typescript-tide '(warning . javascript-eslint) 'append)
-))
+   (flycheck-add-next-checker 'typescript-tide '(warning . javascript-eslint) 'append))
+
+  ;; enable prettier modee
+  (when (maybe-require-package 'prettier)
+    (add-hook 'after-init-hook #'global-prettier-mode))
+)
 
 (provide 'init-typescript)

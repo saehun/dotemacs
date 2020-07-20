@@ -18,8 +18,7 @@
     ; Use tab key to cycle through suggestions.
     ; ('tng' means 'tab and go')
     ;; (company-tng-configure-default)
-    (setq-default company-dabbrev-other-buffers 'all
-                  company-tooltip-align-annotations t))
+    (setq-default company-dabbrev-other-buffers 'all company-tooltip-align-annotations t))
   (when (maybe-require-package 'company-quickhelp)
     (add-hook 'after-init-hook 'company-quickhelp-mode)))
 
