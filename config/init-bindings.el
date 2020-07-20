@@ -30,8 +30,12 @@
 (global-set-key (kbd "C-c \`")  'window-swap-states)
 (global-set-key (kbd "<C-S-tab>") 'previous-buffer)
 (global-set-key (kbd "<C-tab>") 'quit-window)
-(global-set-key (kbd "s-{") 'previous-buffer)
-(global-set-key (kbd "s-}") 'quit-window)
+(global-set-key (kbd "s-{") 'tabbar-backward-tab)
+(global-set-key (kbd "s-}") 'tabbar-forward-tab)
+(global-set-key (kbd "C-s-{") 'tabbar-backward-group)
+(global-set-key (kbd "C-s-}") 'tabbar-forward-group)
+(global-set-key (kbd "s-[") 'tabbar-move-current-tab-one-place-left)
+(global-set-key (kbd "s-]") 'tabbar-move-current-tab-one-place-right)
 
 ;;----------------------------------------------------------------------------
 ;; Evil

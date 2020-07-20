@@ -42,6 +42,7 @@
   (define-key dired-mode-map (kbd "p") 'dired-ranger-paste))
 
 
-(maybe-require-package 'golden-ratio)
+(when (maybe-require-package 'golden-ratio)
+  (golden-ratio-mode 1))
 
 (provide 'init-misc)
