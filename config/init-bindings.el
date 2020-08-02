@@ -105,6 +105,12 @@
 ;; (global-set-key (kbd "s-[") 'tabbar-move-current-tab-one-place-left)
 ;; (global-set-key (kbd "s-]") 'tabbar-move-current-tab-one-place-right)
 
+(require 'magit)
+(define-key magit-mode-map (kbd "C-d") 'evil-scroll-down)
+(define-key magit-mode-map (kbd "C-u") 'evil-scroll-up)
+(define-key magit-mode-map (kbd "<down>") 'magit-section-forward)
+(define-key magit-mode-map (kbd "<up>") 'magit-section-backward)
+
 
 
 ;; (global-set-key (kbd "M-r") 'query-replace)          ;; replace
