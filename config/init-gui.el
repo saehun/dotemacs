@@ -112,7 +112,7 @@
     dired buffers), and the rest.  This works at least with Emacs v24.2 using
     tabbar.el v1.7."
       (list (cond ((string-equal "*" (substring (buffer-name) 0 1)) "emacs")
-              ((string-equal "magit" (substring (buffer-name) 0 1)) "magit")
+              ((string-equal "magit" (substring (buffer-name) 0 5)) "magit")
                   ((eq major-mode 'dired-mode) "dired")
                   (t "user"))))
     (setq tabbar-buffer-groups-function 'my-tabbar-buffer-groups)

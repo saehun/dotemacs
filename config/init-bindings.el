@@ -110,8 +110,7 @@
 (define-key magit-mode-map (kbd "C-u") 'evil-scroll-up)
 (define-key magit-mode-map (kbd "<down>") 'magit-section-forward)
 (define-key magit-mode-map (kbd "<up>") 'magit-section-backward)
-
-
+(define-key magit-mode-map (kbd "<C-tab>") 'quit-window)
 
 ;; (global-set-key (kbd "M-r") 'query-replace)          ;; replace
 ;; (global-set-key (kbd "C-x o") 'open-file-at-cursor)        ;; open file under the cursor
