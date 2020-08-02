@@ -34,8 +34,6 @@
 (global-set-key (kbd "s-}") 'tabbar-forward-tab)
 (global-set-key (kbd "C-s-{") 'tabbar-backward-group)
 (global-set-key (kbd "C-s-}") 'tabbar-forward-group)
-(global-set-key (kbd "s-[") 'tabbar-move-current-tab-one-place-left)
-(global-set-key (kbd "s-]") 'tabbar-move-current-tab-one-place-right)
 
 ;;----------------------------------------------------------------------------
 ;; Evil
@@ -100,16 +98,20 @@
 (define-key web-mode-map (kbd "C-c C-d") 'web-mode-attribute-kill)
 (define-key web-mode-map (kbd "C-c f") 'fold-active-region)
 
+(global-set-key (kbd "s-[") 'er/contract-region)        ;; expand region plugin
+(global-set-key (kbd "s-]") 'er/expand-region)        ;; expand region plugin
+
+;; (global-set-key (kbd "s-[") 'tabbar-move-current-tab-one-place-left)
+;; (global-set-key (kbd "s-]") 'tabbar-move-current-tab-one-place-right)
+
 
 
 ;; (global-set-key (kbd "M-r") 'query-replace)          ;; replace
-;; (global-set-key (kbd "s-[") 'er/contract-region)        ;; expand region plugin
-;; (global-set-key (kbd "s-]") 'er/expand-region)        ;; expand region plugin
 ;; (global-set-key (kbd "C-x o") 'open-file-at-cursor)        ;; open file under the cursor
 ;; (global-set-key (kbd "C-c l") 'goto-last-change)
 ;; (global-set-key (kbd "C-c p") 'yas/expand)
 ;; (global-set-key (kbd "s-2") 'jump-to-cursor)
-;; (global-set-key (kbd "s-<left>") 'move-beginning-of-line)
-;; (global-set-key (kbd "s-<right>") 'move-end-of-line)
+(global-set-key (kbd "s-<left>") 'move-beginning-of-line)
+(global-set-key (kbd "s-<right>") 'move-end-of-line)
 
 (provide 'init-bindings)
