@@ -52,7 +52,7 @@
 
   ;; enable prettier modee
   (when (maybe-require-package 'prettier)
-    (add-hook 'after-init-hook #'global-prettier-mode))
+    (add-hook 'tide-mode-hook #'prettier-mode))
 )
 
 (provide 'init-typescript)
