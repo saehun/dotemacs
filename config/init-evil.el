@@ -2,7 +2,11 @@
   (add-hook 'after-init-hook 'evil-mode)
 
   (when (maybe-require-package 'evil-surround)
-    (global-evil-surround-mode 1))
+    (global-evil-surround-mode 1)
+    (add-hook 'tide-mode-hook (lambda ()
+                                (push '(?L . ("console.log(" . ")")) evil-surround-pairs-alist)))
+    (add-hook 'rjsx-mode-hook (lambda ()
+                                (push '(?L . ("console.log(" . ")")) evil-surround-pairs-alist))))
 
   (when (maybe-require-package 'ace-jump-mode)
     '(ace-jump-mode-enable-mark-sync))

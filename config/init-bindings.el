@@ -34,10 +34,6 @@
 (global-set-key (kbd "s-}") 'tabbar-forward-tab)
 (global-set-key (kbd "C-s-{") 'tabbar-backward-group)
 (global-set-key (kbd "C-s-}") 'tabbar-forward-group)
-(global-set-key (kbd "s-[") 'tabbar-move-current-tab-one-place-left)
-(global-set-key (kbd "s-]") 'tabbar-move-current-tab-one-place-right)
-(global-set-key (kbd "s-=") 'text-scale-increase)
-(global-set-key (kbd "s--") 'text-scale-decrease)
 
 ;;----------------------------------------------------------------------------
 ;; Evil
@@ -46,6 +42,7 @@
 (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
 (define-key evil-motion-state-map (kbd "C-u") 'evil-scroll-up)
 (define-key evil-normal-state-map (kbd "SPC") 'ace-jump-word-mode)
+(define-key evil-normal-state-map (kbd "g s") 'magit-status)
 (define-key evil-normal-state-map (kbd "C-!") 'flycheck-next-error)
 (define-key evil-inner-text-objects-map "b" 'evil-textobj-anyblock-inner-block)
 (define-key evil-outer-text-objects-map "b" 'evil-textobj-anyblock-a-block)
@@ -102,15 +99,25 @@
 (define-key web-mode-map (kbd "C-c C-d") 'web-mode-attribute-kill)
 (define-key web-mode-map (kbd "C-c f") 'fold-active-region)
 
+(global-set-key (kbd "s-[") 'er/contract-region)        ;; expand region plugin
+(global-set-key (kbd "s-]") 'er/expand-region)        ;; expand region plugin
+
+;; (global-set-key (kbd "s-[") 'tabbar-move-current-tab-one-place-left)
+;; (global-set-key (kbd "s-]") 'tabbar-move-current-tab-one-place-right)
+
+(require 'magit)
+(define-key magit-mode-map (kbd "C-d") 'evil-scroll-down)
+(define-key magit-mode-map (kbd "C-u") 'evil-scroll-up)
+(define-key magit-mode-map (kbd "<down>") 'magit-section-forward)
+(define-key magit-mode-map (kbd "<up>") 'magit-section-backward)
+(define-key magit-mode-map (kbd "<C-tab>") 'quit-window)
 
 ;; (global-set-key (kbd "M-r") 'query-replace)          ;; replace
-;; (global-set-key (kbd "s-[") 'er/contract-region)        ;; expand region plugin
-;; (global-set-key (kbd "s-]") 'er/expand-region)        ;; expand region plugin
 ;; (global-set-key (kbd "C-x o") 'open-file-at-cursor)        ;; open file under the cursor
 ;; (global-set-key (kbd "C-c l") 'goto-last-change)
 ;; (global-set-key (kbd "C-c p") 'yas/expand)
 ;; (global-set-key (kbd "s-2") 'jump-to-cursor)
-;; (global-set-key (kbd "s-<left>") 'move-beginning-of-line)
-;; (global-set-key (kbd "s-<right>") 'move-end-of-line)
+(global-set-key (kbd "s-<left>") 'move-beginning-of-line)
+(global-set-key (kbd "s-<right>") 'move-end-of-line)
 
 (provide 'init-bindings)

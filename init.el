@@ -28,7 +28,7 @@
 (require 'init-company)
 (require 'init-flycheck)
 (require 'init-ffip)
-(require 'init-hydra)
+;; (require 'init-hydra)
 (require 'init-magit)
 
 

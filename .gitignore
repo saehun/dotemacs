@@ -28,3 +28,4 @@ transient
 trash
 /tutorial
 .lsp-session-v1
+*.sqlite
