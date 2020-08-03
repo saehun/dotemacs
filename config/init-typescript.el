@@ -50,9 +50,9 @@
    (flycheck-add-next-checker 'tsx-tide '(warning . javascript-eslint) 'append)
    (flycheck-add-next-checker 'typescript-tide '(warning . javascript-eslint) 'append))
 
-  ;; enable prettier modee
+  ;; enable prettier mode
   (when (maybe-require-package 'prettier)
-    (add-hook 'after-init-hook #'global-prettier-mode))
+    (add-hook 'tide-mode-hook #'prettier-mode))
 )
 
 (provide 'init-typescript)

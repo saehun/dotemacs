@@ -36,6 +36,8 @@
 (global-set-key (kbd "C-s-}") 'tabbar-forward-group)
 (global-set-key (kbd "s-[") 'tabbar-move-current-tab-one-place-left)
 (global-set-key (kbd "s-]") 'tabbar-move-current-tab-one-place-right)
+(global-set-key (kbd "s-=") 'text-scale-increase)
+(global-set-key (kbd "s--") 'text-scale-decrease)
 
 ;;----------------------------------------------------------------------------
 ;; Evil
@@ -99,7 +101,6 @@
 (define-key web-mode-map (kbd "C-c C-r") 'web-mode-element-rename)
 (define-key web-mode-map (kbd "C-c C-d") 'web-mode-attribute-kill)
 (define-key web-mode-map (kbd "C-c f") 'fold-active-region)
-
 
 
 ;; (global-set-key (kbd "M-r") 'query-replace)          ;; replace

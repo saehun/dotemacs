@@ -5,12 +5,18 @@
 (setq recentf-max-menu-items 1000)
 (global-set-key "\C-x\ \C-r" 'counsel-recentf)
 
-
 ;;----------------------------------------------------------------------------
 ;; Miscellaneous
 ;;----------------------------------------------------------------------------
 (electric-pair-mode 1)
+(defmacro custom/add-mode-pairs (hook pairs)
+  `(add-hook ,hook
+             (lambda ()
+               (setq-local electric-pair-pairs (append electric-pair-pairs ,pairs))
+               (setq-local electric-pair-text-pairs electric-pair-pairs))))
 
+(custom/add-mode-pairs 'web-mode-hook '((?` . ?`)))
+(custom/add-mode-pairs 'web-mode-hook '((?' . ?')))
 ;; Changes all yes/no questions to y/n type
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -44,5 +50,11 @@
 
 (when (maybe-require-package 'golden-ratio)
   (golden-ratio-mode 1))
+
+;;----------------------------------------------------------------------------
+;; yaml lint
+;;----------------------------------------------------------------------------
+(when (maybe-require-package 'flycheck-yamllint)
+  (add-hook 'flycheck-mode-hook 'flycheck-yamllint-setup))
 
 (provide 'init-misc)
