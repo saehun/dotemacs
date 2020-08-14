@@ -42,17 +42,19 @@
     ;; at .emacs.d/elpa/tide/tide.el
 
    (require 'tide)
-   (flycheck-add-mode 'javascript-eslint 'web-mode)
    (flycheck-add-mode 'typescript-tide 'web-mode)
    (flycheck-add-mode 'javascript-tide 'web-mode)
-   (flycheck-add-next-checker 'jsx-tide '(warning . javascript-eslint) 'append)
-   (flycheck-add-next-checker 'javascript-tide '(warning . javascript-eslint) 'append)
+
+   (flycheck-add-mode 'javascript-eslint 'web-mode)
+   ;; (flycheck-add-next-checker 'jsx-tide '(warning . javascript-eslint) 'append)
+   ;; (flycheck-add-next-checker 'javascript-tide '(warning . javascript-eslint) 'append)
    (flycheck-add-next-checker 'tsx-tide '(warning . javascript-eslint) 'append)
-   (flycheck-add-next-checker 'typescript-tide '(warning . javascript-eslint) 'append))
+   (flycheck-add-next-checker 'typescript-tide '(warning . javascript-eslint) 'append)
+   )
 
   ;; enable prettier mode
   (when (maybe-require-package 'prettier)
-    (add-hook 'tide-mode-hook #'prettier-mode))
+    (add-hook 'web-mode-hook #'prettier-mode))
 )
 
 (provide 'init-typescript)

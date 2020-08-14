@@ -6,12 +6,13 @@
 
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
 (setq exec-path (append exec-path '("/usr/local/bin")))
-(setenv "PATH" (concat (getenv "PATH") ":/Users/root1/bin"))
-(setq exec-path (append exec-path '("/Users/root1/bin")))
-(setenv "PATH" (concat (getenv "PATH") ":/Users/root1/.local/bin"))
-(setq exec-path (append exec-path '("/Users/root1/.local/bin")))
+(setenv "PATH" (concat (getenv "PATH") (substitute-in-file-name ":$HOME/bin")))
+(setq exec-path (append exec-path '(substitute-in-file-name "$HOME/bin")))
+(setenv "PATH" (concat (getenv "PATH") (substitute-in-file-name ":$HOME/.local/bin")))
+(setq exec-path (append exec-path '(substitute-in-file-name "$HOME/.local/bin")))
 ;; (exec-path-from-shell-copy-env "GOPATH")
-(setenv "GOPATH" "/Users/root1/go")
+(setenv "GOPATH" (substitute-in-file-name "$HOME/go"))
+(setenv "PROXY_REPO"  (substitute-in-file-name "$HOME/null/.proxy-repo"))
 
 (provide 'init-exec-path)
 ;;; init-exec-path.el ends here

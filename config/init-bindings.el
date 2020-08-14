@@ -98,6 +98,7 @@
 (define-key web-mode-map (kbd "C-c C-r") 'web-mode-element-rename)
 (define-key web-mode-map (kbd "C-c C-d") 'web-mode-attribute-kill)
 (define-key web-mode-map (kbd "C-c f") 'fold-active-region)
+(define-key tide-references-mode-map (kbd "<return>") 'tide-goto-reference)
 
 (global-set-key (kbd "s-[") 'er/contract-region)        ;; expand region plugin
 (global-set-key (kbd "s-]") 'er/expand-region)        ;; expand region plugin
