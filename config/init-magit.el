@@ -5,7 +5,7 @@
 ;;; Magit
 
 (when (maybe-require-package 'magit)
-  (setq 'magit-display-buffer-function
+  (setq magit-display-buffer-function
     (lambda (buffer)
       (display-buffer buffer '(display-buffer-same-window))))
 
