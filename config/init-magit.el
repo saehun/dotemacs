@@ -15,6 +15,7 @@
       (magit-stage-file (buffer-file-name))
       (magit-commit-create)))
 
+  (setq magit-blame-echo-style "lines")
   (setq magit-git-global-arguments '("--no-pager" "-c" "core.preloadindex=true" "-c" "log.showSignature=false" "-c" "color.ui=false" "-c" "color.diff=false")))
 
 
