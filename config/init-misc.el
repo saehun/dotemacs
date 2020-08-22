@@ -37,6 +37,13 @@
 (when (maybe-require-package 'editorconfig)
   (add-hook 'prog-mode-hook 'editorconfig-mode))
 
+(when (maybe-require-package 'ibuffer-projectile)
+  (add-hook 'ibuffer-hook
+      (lambda ()
+        (ibuffer-projectile-set-filter-groups)
+        (unless (eq ibuffer-sorting-mode 'alphabetic)
+          (ibuffer-do-sort-by-alphabetic)))))
+
 (maybe-require-package 'yaml-mode)
 
 (when (maybe-require-package 'drag-stuff)
