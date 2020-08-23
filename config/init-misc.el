@@ -64,4 +64,10 @@
 (when (maybe-require-package 'flycheck-yamllint)
   (add-hook 'flycheck-mode-hook 'flycheck-yamllint-setup))
 
+;; enable color emoji
+(set-fontset-font t 'symbol "Apple Color Emoji")
+(set-fontset-font t 'symbol "Noto Color Emoji" nil 'append)
+(set-fontset-font t 'symbol "Segoe UI Emoji" nil 'append)
+(set-fontset-font t 'symbol "Symbola" nil 'append)
+
 (provide 'init-misc)
