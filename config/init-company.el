@@ -22,6 +22,12 @@
   (when (maybe-require-package 'company-quickhelp)
     (add-hook 'after-init-hook 'company-quickhelp-mode)))
 
+
+;; add emoji backends😃
+(when (maybe-require-package 'company-emoji))
+(require 'company-emoji)
+(add-to-list 'company-backends 'company-emoji)
+
 ;; Suspend page-break-lines-mode while company menu is active
 ;; (see https://github.com/company-mode/company-mode/issues/416)
 (after-load 'company
