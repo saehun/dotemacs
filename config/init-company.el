@@ -24,9 +24,9 @@
 
 
 ;; add emoji backends😃
-(when (maybe-require-package 'company-emoji))
-(require 'company-emoji)
-(add-to-list 'company-backends 'company-emoji)
+;; (when (maybe-require-package 'company-emoji))
+;; (require 'company-emoji)
+;; (add-to-list 'company-backends 'company-emoji)
 
 ;; Suspend page-break-lines-mode while company menu is active
 ;; (see https://github.com/company-mode/company-mode/issues/416)
