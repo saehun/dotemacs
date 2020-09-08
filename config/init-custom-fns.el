@@ -8,5 +8,13 @@
   (interactive)
   (message (vc-root-dir)))
 
+
+(defun go-up-general ()
+  "Goto upper level. go to dired buffer when buffer is file"
+  (interactive)
+    (if (eq major-mode 'dired-mode)
+      (dired-up-directory)
+      (dired (file-name-directory buffer-file-name))))
+
 (provide 'init-custom-fns)
 ;;; init-custom-fns.el ends here
