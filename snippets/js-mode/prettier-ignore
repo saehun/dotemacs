@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: prettier-ignore
+# key: pri
+# group: es6
+# --
+// prettier-ignore

@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: eslint-disable-next-line
+# key: eldn
+# group: es6
+# --
+// eslint-disable-next-line
