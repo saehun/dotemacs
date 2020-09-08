@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name : jsdoc
-# key: *
+# key: *0
 # --
 /**
  * $0
