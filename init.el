@@ -48,6 +48,7 @@
 ;;----------------------------------------------------------------------------
 (require 'init-yasnippet)
 (require 'init-misc)
+(require 'init-custom-fns)
 (require 'init-bindings)
 
 (require 'init-clojure)
