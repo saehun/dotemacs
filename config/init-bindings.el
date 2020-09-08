@@ -43,6 +43,7 @@
 (define-key evil-motion-state-map (kbd "C-u") 'evil-scroll-up)
 (define-key evil-normal-state-map (kbd "SPC") 'ace-jump-word-mode)
 (define-key evil-normal-state-map (kbd "g s") 'magit-status)
+(define-key evil-normal-state-map (kbd "g a") 'magit-stage-file)
 (define-key evil-normal-state-map (kbd "g c") 'magit-commit-current-file)
 (define-key evil-normal-state-map (kbd "g b") 'magit-blame-echo)
 (define-key evil-normal-state-map (kbd "C-!") 'flycheck-next-error)
@@ -120,7 +121,6 @@
 ;; (global-set-key (kbd "C-c l") 'goto-last-change)
 ;; (global-set-key (kbd "C-c p") 'yas/expand)
 ;; (global-set-key (kbd "s-2") 'jump-to-cursor)
-(global-set-key (kbd "s-<left>") 'move-beginning-of-line)
-(global-set-key (kbd "s-<right>") 'move-end-of-line)
+(global-set-key (kbd "<s-backspace>") 'go-up-general)
 
 (provide 'init-bindings)
