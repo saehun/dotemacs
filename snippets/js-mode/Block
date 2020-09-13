@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name : Block
-# key: <b
-# --
-<Block>$0</Block>
