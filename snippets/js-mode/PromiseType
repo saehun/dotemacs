@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: Promise generic
+# key: P
+# group: es6
+# --
+Promise<$0>

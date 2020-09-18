@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: await keyword
+# key: aw
+# group: es6
+# --
+await $0

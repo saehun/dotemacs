@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: undefiend
+# key: u
+# group: es6
+# --
+undefined
