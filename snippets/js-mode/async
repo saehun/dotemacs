@@ -1,6 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: async keyword
-# key: a
+# key: as
 # group: es6
 # --
 async $0
