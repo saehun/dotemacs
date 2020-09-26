@@ -16,6 +16,7 @@
 (global-set-key (kbd "C-n") (with-safe 'counsel-find-file))
 (global-set-key (kbd "s-p") (with-safe 'find-file-in-project))
 (global-set-key (kbd "s-f") 'swiper)
+(global-set-key (kbd "C-s-m") 'counsel-evil-goto-global-marker)
 
 
 ;;----------------------------------------------------------------------------
@@ -46,7 +47,8 @@
 (define-key evil-normal-state-map (kbd "g a") 'magit-stage-file)
 (define-key evil-normal-state-map (kbd "g c") 'magit-commit-current-file)
 (define-key evil-normal-state-map (kbd "g b") 'magit-blame-echo)
-(define-key evil-normal-state-map (kbd "C-!") 'flycheck-next-error)
+(define-key evil-normal-state-map (kbd "C-@") 'flycheck-next-error)
+(define-key evil-normal-state-map (kbd "C-!") 'counsel-flycheck)
 (define-key evil-inner-text-objects-map "b" 'evil-textobj-anyblock-inner-block)
 (define-key evil-outer-text-objects-map "b" 'evil-textobj-anyblock-a-block)
 (define-key evil-normal-state-map "\C-n" nil)
@@ -61,6 +63,8 @@
 (define-key evil-motion-state-map "\C-o" nil)
 (define-key evil-motion-state-map "\C-z" nil)
 
+(define-key evil-normal-state-map (kbd "w") 'forward-word)
+(define-key evil-normal-state-map (kbd "b") 'backward-word)
 
 ;;----------------------------------------------------------------------------
 ;; Edit
