@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: debugger statmenet
+# key: d
+# group: es6
+# --
+debugger;
