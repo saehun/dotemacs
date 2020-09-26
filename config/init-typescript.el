@@ -54,7 +54,8 @@
 
   ;; enable prettier mode
   (when (maybe-require-package 'prettier)
-    (add-hook 'web-mode-hook #'prettier-mode))
+    (add-hook 'web-mode-hook #'prettier-mode)
+    (add-hook 'rjsx-mode-hook #'prettier-mode))
 )
 
 (provide 'init-typescript)
