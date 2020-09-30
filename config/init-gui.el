@@ -13,7 +13,7 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
-(set-frame-font "Monaco:pixelsize=14")
+(set-frame-font "Monaco:pixelsize=13")
 (setq-default line-spacing 0.12)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
@@ -64,9 +64,8 @@
   (setq doom-themes-enable-bold t
     doom-themes-enable-italic t)
   ;; (require 'doom-subliminal)
-  (load-theme 'doom-dark+ t)
-  )
-(maybe-require-package 'gruber-darker-theme)
+  (load-theme 'doom-subliminal t))
+;; (maybe-require-package 'gruber-darker-theme)
 
 
 ;;----------------------------------------------------------------------------
