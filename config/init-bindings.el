@@ -63,8 +63,8 @@
 (define-key evil-motion-state-map "\C-o" nil)
 (define-key evil-motion-state-map "\C-z" nil)
 
-(define-key evil-normal-state-map (kbd "w") 'forward-word)
-(define-key evil-normal-state-map (kbd "b") 'backward-word)
+(global-set-key (kbd "<s-right>") 'forward-word)
+(global-set-key (kbd "<s-left>") 'backward-word)
 
 ;;----------------------------------------------------------------------------
 ;; Edit
