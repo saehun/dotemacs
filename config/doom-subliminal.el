@@ -1,4 +1,4 @@
-;;; doom-subliminal-theme.el --- inspired by Atom One Dark
+;;; doom-subliminal-theme.el  -*- no-byte-compile: t; -*- --- inspired by Atom One Dark
 (require 'doom-themes)
 
 ;;
@@ -33,7 +33,7 @@ determine the exact padding."
   "A dark theme inspired by Atom One Dark"
 
   ;; name        default   256       16
-  ((bg         '("#2B2D36" nil       nil          ))
+  ((bg         '("#1e1e1e" nil       nil          ))
    (bg-alt     '("#161719" nil       nil          ))
    (base0      '("#0d0d0d" "black"   "black"      ))
    (base1      '("#1b1b1b" "#1b1b1b"              ))
@@ -172,6 +172,3 @@ determine the exact padding."
   ;; --- extra variables ---------------------
   ;; ()
   )
-
-(provide 'doom-subliminal)
-;;; doom-subliminal-theme.el ends here
