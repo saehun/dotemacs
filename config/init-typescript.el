@@ -41,6 +41,13 @@
     ;; enable typescript-tslint checker
     ;; at .emacs.d/elpa/tide/tide.el
 
+
+    (defun tide-jump-back-and-kill ()
+      (interactive)
+      (progn
+        (kill-this-buffer)
+        (tide-jump-back)))
+
    (require 'tide)
    (flycheck-add-mode 'typescript-tide 'web-mode)
    (flycheck-add-mode 'javascript-tide 'web-mode)
