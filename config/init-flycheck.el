@@ -5,6 +5,7 @@
 
 (when (maybe-require-package 'flycheck)
   (add-hook 'after-init-hook 'global-flycheck-mode)
+  (setq flycheck-global-modes '(not js-mode javascript-mode))
 
   ;; https://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-eslint-executable
   (defun my/use-eslint-from-node-modules ()
