@@ -91,7 +91,13 @@
 ;;----------------------------------------------------------------------------
 (require 'tide)
 (define-key tide-mode-map (kbd "C-c r") 'tide-references)
+(define-key tide-mode-map (kbd "C-c f") 'tide-refactor)
 (define-key tide-mode-map (kbd "C-c d") 'tide-jump-to-definition)
+(define-key tide-mode-map (kbd "C-c C-r") 'tide-rename-symbol)
+(define-key tide-mode-map (kbd "C-c C-f") 'tide-fix)
+(define-key tide-mode-map (kbd "C-c C-e") 'tide-project-errors)
+(define-key tide-mode-map (kbd "C-c b") 'tide-jump-back-and-kill)
+(define-key tide-references-mode-map (kbd "<return>") 'tide-goto-reference)
 
 ;;----------------------------------------------------------------------------
 ;; Web-mode
@@ -102,11 +108,9 @@
 (define-key web-mode-map (kbd "C-c C-t") 'web-mode-tag-select)
 (define-key web-mode-map (kbd "C-c C-e") 'web-mode-element-select)
 (define-key web-mode-map (kbd "C-c C-w") 'web-mode-tag-end)
-(define-key web-mode-map (kbd "C-c C-r") 'web-mode-element-rename)
+;; (define-key web-mode-map (kbd "C-c C-r") 'web-mode-element-rename)
 (define-key web-mode-map (kbd "C-c C-d") 'web-mode-attribute-kill)
 (define-key web-mode-map (kbd "C-c f") 'fold-active-region)
-(define-key tide-mode-map (kbd "C-c b") 'tide-jump-back-and-kill)
-(define-key tide-references-mode-map (kbd "<return>") 'tide-goto-reference)
 
 (global-set-key (kbd "s-[") 'er/contract-region)        ;; expand region plugin
 (global-set-key (kbd "s-]") 'er/expand-region)        ;; expand region plugin
