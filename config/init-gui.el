@@ -17,6 +17,7 @@
 (setq-default line-spacing 0.12)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
+(setq-default truncate-lines t)
 (setq indent-line-function 'insert-tab)
 (show-paren-mode 1)
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
@@ -54,10 +55,23 @@
 ;; (display-time-mode +1)
 
 ;;----------------------------------------------------------------------------
-;; Theme
+;; Modeline
 ;;----------------------------------------------------------------------------
 (when (maybe-require-package 'doom-modeline)
-  (doom-modeline-init))
+  (doom-modeline-init)
+
+  ;; https://github.com/seagle0128/doom-modeline/issues/164
+  ;; (advice-add #'select-window :after #'doom-modeline-set-selected-window)
+  ;; https://github.com/seagle0128/doom-modeline/issues/306
+  ;; (custom-set-faces `(doom-modeline-icon-inactive ((t (:inherit mode-line-inactive)))))
+  (setq inhibit-compacting-font-caches t)
+  (setq doom-modeline-buffer-encoding nil)
+  (setq doom-modeline-height 20))
+
+
+;;----------------------------------------------------------------------------
+;; Theme
+;;----------------------------------------------------------------------------
 (when (maybe-require-package 'doom-themes)
   ;; (doom-themes-visual-bell-config) Disable visual bell
   (doom-themes-org-config)
@@ -175,6 +189,11 @@
 
 ;; (setq tabbar-separator (quote (0.5)))
     ))
+
+
+(when (maybe-require-package 'dimmer)
+  (dimmer-mode t)
+  (set-variable 'dimmer-fraction 0.3))
 
 
 (provide 'init-gui)

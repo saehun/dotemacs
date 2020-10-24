@@ -55,8 +55,8 @@
   (define-key dired-mode-map (kbd "p") 'dired-ranger-paste))
 
 
-(when (maybe-require-package 'golden-ratio)
-  (golden-ratio-mode 1))
+;; (when (maybe-require-package 'golden-ratio)
+  ;; (golden-ratio-mode 1))
 
 ;;----------------------------------------------------------------------------
 ;; yaml lint
