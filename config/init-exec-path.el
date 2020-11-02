@@ -14,5 +14,13 @@
 (setenv "GOPATH" (substitute-in-file-name "$HOME/go"))
 (setenv "PROXY_REPO"  (substitute-in-file-name "$HOME/null/.proxy-repo"))
 
+(setenv "PATH" (concat (getenv "PATH") ":" (expand-file-name "~/.cargo/bin")))
+(setq exec-path (append exec-path (list (expand-file-name "~/.cargo/bin"))))
+
+;; rust 
+;; (setenv "PATH" (concat (getenv "PATH") ":~/.cargo/bin"))
+;; (setq exec-path (append exec-path '("~/.cargo/bin")))
+
+
 (provide 'init-exec-path)
 ;;; init-exec-path.el ends here

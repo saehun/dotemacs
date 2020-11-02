@@ -5,6 +5,7 @@
 (when (maybe-require-package 'eldoc-box)
   (add-hook 'tide-mode-hook (lambda () (eldoc-box-hover-at-point-mode +1)))
   (add-hook 'go-mode-hook (lambda () (eldoc-box-hover-at-point-mode +1)))
+  (add-hook 'rust-mode-hook (lambda () (eldoc-box-hover-at-point-mode +1)))
   (add-hook 'emacs-lisp-mode-hook (lambda () (eldoc-box-hover-at-point-mode +1))))
 
 (provide 'init-eldoc)

@@ -42,6 +42,7 @@
 (require 'init-go)
 (require 'init-haskell)
 (require 'init-restclient)
+(require 'init-rust)
 
 
 ;;----------------------------------------------------------------------------
