@@ -14,5 +14,11 @@
 (global-set-key (kbd "C-s-r")  'revert-buffer-no-confirm)
 
 
+(defun open-todo ()
+  "Open todo markdown file."
+  (interactive)
+  (find-file (f-join "~" "null" "todo.md")))
+
+
 (provide 'custom-macro)
 ;;; custom-macro ends here

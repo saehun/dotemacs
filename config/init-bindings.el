@@ -35,6 +35,7 @@
 (global-set-key (kbd "s-}") 'tabbar-forward-tab)
 (global-set-key (kbd "C-s-{") 'tabbar-backward-group)
 (global-set-key (kbd "C-s-}") 'tabbar-forward-group)
+(global-set-key (kbd "C-s-n") 'eyebrowse-switch-to-window-config)
 
 ;;----------------------------------------------------------------------------
 ;; Evil
@@ -78,6 +79,7 @@
 (global-set-key (kbd "s-r") 'shell-command)          ;; run command
 (global-set-key (kbd "C-SPC") 'company-complete)
 (global-set-key (kbd "C-x C-e") 'counsel-shell-command)
+(global-set-key (kbd "s-1") 'open-todo)
 
 
 ;;----------------------------------------------------------------------------
