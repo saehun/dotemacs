@@ -10,7 +10,9 @@
 ;; rust
 
 (when (maybe-require-package 'rust-mode)
-
+  
+  
+  (maybe-require-package 'rustic)
   (maybe-require-package 'flycheck-rust)
 
   ;; cargo-mode for all the cargo related operations
@@ -30,6 +32,11 @@
 
   (add-hook 'flycheck-mode-hook 'flycheck-rust-setup)
 
+
+  (setq rustic-racer-rust-src-path
+    (concat (string-trim
+              (shell-command-to-string "rustc --print sysroot"))
+      "/lib/rustlib/src/rust/library"))
   ;; https://github.com/racer-rust/emacs-racer/issues/85
   (setq racer-rust-src-path
     (concat (string-trim

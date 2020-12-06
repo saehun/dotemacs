@@ -12,7 +12,7 @@
 
 (global-set-key (kbd "C-e") (with-safe 'counsel-M-x))
 (global-set-key (kbd "s-F") (with-safe 'counsel-rg))
-(global-set-key (kbd "C-b") (with-safe 'counsel-ibuffer))
+(global-set-key (kbd "C-b") (with-safe 'counsel-switch-buffer))
 (global-set-key (kbd "C-n") (with-safe 'counsel-find-file))
 (global-set-key (kbd "s-p") (with-safe 'find-file-in-project))
 (global-set-key (kbd "s-f") 'swiper)
