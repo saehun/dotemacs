@@ -133,4 +133,10 @@
 ;; (global-set-key (kbd "s-2") 'jump-to-cursor)
 (global-set-key (kbd "<s-backspace>") 'go-up-general)
 
+;;----------------------------------------------------------------------------
+;; rust
+;;----------------------------------------------------------------------------
+(require 'rustic)
+(define-key rustic-mode-map (kbd "C-c d") 'racer-find-definition)
+
 (provide 'init-bindings)
