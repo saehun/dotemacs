@@ -12,9 +12,12 @@
 (defun go-up-general ()
   "Goto upper level. go to dired buffer when buffer is file"
   (interactive)
-    (if (eq major-mode 'dired-mode)
-      (dired-up-directory)
-      (dired (file-name-directory buffer-file-name))))
+  (let ((initial (current-buffer)))
+    (progn
+      (if (eq major-mode 'dired-mode)
+        (dired-up-directory)
+        (dired (file-name-directory buffer-file-name)))
+      (kill-buffer initial))))
 
 (defun copy-file-name-to-clipboard ()
   "Copy the current buffer file name to the clipboard."
