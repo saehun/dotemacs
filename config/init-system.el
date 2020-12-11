@@ -31,4 +31,10 @@
 (setq global-auto-revert-non-file-buffers t)
 (setq auto-revert-verbose nil)
 
+;;----------------------------------------------------------------------------
+;; Improve long-line performance
+;;----------------------------------------------------------------------------
+(setq bidi-inhibit-bpa t)
+(global-so-long-mode 1)
+
 (provide 'init-system)

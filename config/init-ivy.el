@@ -1,9 +1,17 @@
 (when (maybe-require-package 'ivy)
   (add-hook 'after-init-hook 'ivy-mode)
   (setq ivy-height 30)
+
   (when (maybe-require-package 'counsel)
+    ;;---------------------------
+    ;; set google search
+    ;;---------------------------
+    (when (maybe-require-package 'request)
+      (setq counsel-search-engine 'google))
     (counsel-mode t))
+
   (maybe-require-package 'smex)
+
   (after-load 'ivy
     (defun bjm/ivy-yank-whole-word ()
     "Pull next word from buffer into search string."
