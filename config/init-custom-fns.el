@@ -26,5 +26,10 @@
       (kill-new filename)
       (message "Copied buffer file name '%s' to the clipboard." filename))))
 
+(defun counsel-rg-here ()
+    "Like `counsel-rg' but always searches from the cwd, not project root."
+    (interactive)
+    (counsel-rg nil default-directory))
+
 (provide 'init-custom-fns)
 ;;; init-custom-fns.el ends here
