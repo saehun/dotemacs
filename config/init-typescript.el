@@ -61,14 +61,14 @@
 
   ;; enable prettier mode
   ;; https://github.com/prettier/prettier-emacs/issues/29
-  (when (maybe-require-package 'prettier)
+  (when (maybe-require-package 'prettier-js)
     (defun maybe-use-prettier ()
       "Enable prettier-js-mode if an rc file is located."
       (if (locate-dominating-file default-directory ".prettierrc.json")
-          (prettier-mode)))
+          (prettier-js-mode)))
 
-    (add-hook 'web-mode-hook #'prettier-mode)
-    (add-hook 'rjsx-mode-hook #'prettier-mode))
+    (add-hook 'web-mode-hook 'prettier-js-mode)
+    (add-hook 'rjsx-mode-hook 'prettier-js-mode))
 )
 
 (provide 'init-typescript)
