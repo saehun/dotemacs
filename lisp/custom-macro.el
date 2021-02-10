@@ -27,5 +27,19 @@
   (find-file (f-join "~" "null" "todo.md")))
 
 
+(defun jest/copy-command-for-current-file ()
+  "Copy jest command for currnet file."
+  (interactive)
+  (kill-new
+    (string-join
+      (list
+        "npx"
+        "jest"
+        (file-relative-name
+          (f-no-ext (buffer-file-name))
+          (projectile-project-root)))
+      " ")))
+
+
 (provide 'custom-macro)
 ;;; custom-macro ends here
