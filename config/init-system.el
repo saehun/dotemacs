@@ -35,6 +35,6 @@
 ;; Improve long-line performance
 ;;----------------------------------------------------------------------------
 (setq bidi-inhibit-bpa t)
-(global-so-long-mode 1)
+;; (global-so-long-mode 1)
 
 (provide 'init-system)
