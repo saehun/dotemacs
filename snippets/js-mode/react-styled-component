@@ -1,0 +1,17 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name : React functional component
+# key: rsc
+# --
+import * as React from 'react';
+import styled from '@emotion/styled';
+
+const Styled$1 = styled.div\`\`;
+  
+interface $1Props {
+}
+
+export const ${1:Comp} = (props: $1Props) => {
+
+  return <Styled$1></Styled$1>;
+};
+  

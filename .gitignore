@@ -31,3 +31,5 @@ trash
 *.sqlite
 /url/cookies
 bookmarks
+projectile-bookmarks.eld
+

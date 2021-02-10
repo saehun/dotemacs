@@ -8,6 +8,13 @@
   (insert ";"))
 (global-set-key (kbd "s-;") 'semicolon-macro)
 
+(defun comma-macro ()
+  "Put semicolon at the end of the line."
+  (interactive)
+  (end-of-line)
+  (insert ","))
+(global-set-key (kbd "s-,") 'comma-macro)
+
 (defun revert-buffer-no-confirm ()
   "Revert buffer without confirmation."
   (interactive) (revert-buffer t t))

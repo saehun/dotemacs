@@ -12,10 +12,12 @@
       (eldoc-mode +1)
       (tide-hl-identifier-mode +1)
       ;; (setq tide-completion-detailed t)
-      ;; company is an optional dependency. You have to
-      ;; install it separately via package-install
-      ;; `M-x package-install [ret] company`
       (company-mode +1))
+
+    ;; 이거 키면 company 버퍼 열리는게 매우 느려진다
+    ;; (setq tide-completion-detailed t)
+
+    ;; (setq company-tooltip-align-annotations t)
     ;; aligns annotation to the right hand side
 
     ;; formats the buffer before saving
