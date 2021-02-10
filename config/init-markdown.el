@@ -16,6 +16,8 @@
   (buffer-face-mode))
 
 (when (maybe-require-package 'markdown-mode)
+  (custom-set-variables
+    '(markdown-command "/usr/local/bin/pandoc"))
   (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode)))
   ;; (add-hook 'markdown-mode-hook 'markdown-config)
 
