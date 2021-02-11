@@ -69,8 +69,8 @@
       (if (locate-dominating-file default-directory ".prettierrc.json")
           (prettier-js-mode)))
 
-    (add-hook 'web-mode-hook 'prettier-js-mode)
-    (add-hook 'rjsx-mode-hook 'prettier-js-mode))
+    (add-hook 'web-mode-hook 'maybe-use-prettier)
+    (add-hook 'rjsx-mode-hook 'maybe-use-prettier))
 )
 
 (provide 'init-typescript)

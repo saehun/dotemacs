@@ -69,6 +69,7 @@
 (define-key evil-motion-state-map "\C-f" nil)
 (define-key evil-motion-state-map "\C-o" nil)
 (define-key evil-motion-state-map "\C-z" nil)
+(define-key evil-insert-state-map "\C-p" 'ivy-yasnippet)
 
 (global-set-key (kbd "<s-right>") 'forward-word)
 (global-set-key (kbd "<s-left>") 'backward-word)
@@ -103,7 +104,7 @@
 (define-key tide-mode-map (kbd "C-c C-r") 'tide-rename-symbol)
 (define-key tide-mode-map (kbd "C-c C-f") 'tide-fix)
 (define-key tide-mode-map (kbd "C-c C-e") 'tide-project-errors)
-(define-key tide-mode-map (kbd "C-c b") 'tide-jump-back-and-kill)
+(define-key tide-mode-map (kbd "C-c <delete>") 'tide-jump-back-and-kill)
 (define-key tide-references-mode-map (kbd "<return>") 'tide-goto-reference)
 
 ;;----------------------------------------------------------------------------
