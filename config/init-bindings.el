@@ -42,6 +42,8 @@
 (global-set-key (kbd "<C-s-right>") 'windmove-right)
 (global-set-key (kbd "<C-s-up>") 'windmove-up)
 (global-set-key (kbd "<C-s-down>") 'windmove-down)
+(global-set-key (kbd "C-c d") 'xref-find-definitions)
+(global-set-key (kbd "C-c s") 'xref-pop-marker-stack)
 
 ;;----------------------------------------------------------------------------
 ;; Evil
@@ -104,7 +106,7 @@
 (define-key tide-mode-map (kbd "C-c C-r") 'tide-rename-symbol)
 (define-key tide-mode-map (kbd "C-c C-f") 'tide-fix)
 (define-key tide-mode-map (kbd "C-c C-e") 'tide-project-errors)
-(define-key tide-mode-map (kbd "C-c <delete>") 'tide-jump-back-and-kill)
+(define-key tide-mode-map (kbd "C-c s") 'tide-jump-back)
 (define-key tide-references-mode-map (kbd "<return>") 'tide-goto-reference)
 
 ;;----------------------------------------------------------------------------
@@ -144,6 +146,9 @@
 ;; rust
 ;;----------------------------------------------------------------------------
 (require 'rustic)
-(define-key rustic-mode-map (kbd "C-c d") 'racer-find-definition)
+(define-key rustic-mode-map (kbd "C-c d") 'lsp-find-definition)
+(define-key rustic-mode-map (kbd "C-c r") 'lsp-find-references)
+(define-key rustic-mode-map (kbd "C-c h") 'lsp-describe-thing-at-point)
+(define-key rustic-mode-map (kbd "C-c s") 'xref-pop-marker-stack)
 
 (provide 'init-bindings)

@@ -12,6 +12,14 @@
       (eldoc-mode +1)
       (tide-hl-identifier-mode +1)
       ;; (setq tide-completion-detailed t)
+      (setq comment-start       "/*"
+            comment-end         "*/"
+            comment-multi-line  t
+            comment-padding     nil
+            comment-style       'extra-line
+            comment-continue    " * "
+            comment-empty-lines t)
+
       (company-mode +1))
 
     ;; 이거 키면 company 버퍼 열리는게 매우 느려진다
@@ -66,7 +74,9 @@
   (when (maybe-require-package 'prettier-js)
     (defun maybe-use-prettier ()
       "Enable prettier-js-mode if an rc file is located."
-      (if (locate-dominating-file default-directory ".prettierrc.json")
+      (if (or
+            (locate-dominating-file default-directory ".prettierrc.json")
+            (locate-dominating-file default-directory ".prettierrc"))
           (prettier-js-mode)))
 
     (add-hook 'web-mode-hook 'maybe-use-prettier)

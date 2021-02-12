@@ -87,4 +87,11 @@
 ;; https://stackoverflow.com/questions/46513910/emacs-evil-mode-binding-mouse-event
 (with-eval-after-load 'evil-maps (define-key evil-motion-state-map [down-mouse-1] nil))
 
+
+;; Enable C-r to redo
+;; https://github.com/syl20bnr/spacemacs/issues/14036
+(when (maybe-require-package 'undo-tree)
+  (global-undo-tree-mode)
+  (evil-set-undo-system 'undo-tree))
+
 (provide 'init-evil)
