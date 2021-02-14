@@ -40,6 +40,11 @@
           (projectile-project-root)))
       " ")))
 
+(defun prev-window ()
+  "Go to previous window."
+  (interactive)
+  (other-window -1))
+
 
 (provide 'custom-macro)
 ;;; custom-macro ends here

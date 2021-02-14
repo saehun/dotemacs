@@ -108,6 +108,14 @@
     (set-window-buffer other this-buffer)
     ))
 
+(defun copy-buffers-in-prev-windows ()
+  "Put the buffer from the selected window in next window, and vice versa"
+  (interactive)
+  (let* ((this (selected-window))
+     (other (prev-window))
+     (this-buffer (window-buffer this)))
+    (set-window-buffer other this-buffer)
+    ))
 
 ;;----------------------------------------------------------------------------
 ;; Close buffer

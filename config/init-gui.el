@@ -78,7 +78,8 @@
   (setq doom-themes-enable-bold t
     doom-themes-enable-italic t)
   ;; (require 'doom-subliminal)
-  (load-theme 'doom-subliminal t))
+  ;; (load-theme 'doom-subliminal t))
+  (load-theme 'doom-dark+ t))
 ;; (maybe-require-package 'gruber-darker-theme)
 
 

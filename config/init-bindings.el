@@ -27,7 +27,9 @@
 (global-set-key (kbd "C-s") 'save-buffer)            ;; save
 (global-set-key (kbd "s-w") 'kill-this-buffer)       ;; close의 의미
 (global-set-key (kbd "C-`") 'other-window)       ;; Switch window
+(global-set-key (kbd "C-s-`") 'prev-window)       ;; Switch window
 (global-set-key (kbd "C-~") 'copy-buffers-in-windows) ;; copy-buffers-in-windows
+(global-set-key (kbd "C-s-~") 'copy-buffers-in-prev-windows) ;; copy-buffers-in-prev-windows
 (global-set-key (kbd "s-b") 'ibuffer)            ;; list buffer
 (global-set-key (kbd "s-t")  'new-empty-buffer)
 (global-set-key (kbd "C-c \`")  'window-swap-states)
@@ -38,12 +40,9 @@
 (global-set-key (kbd "C-s-{") 'tabbar-backward-group)
 (global-set-key (kbd "C-s-}") 'tabbar-forward-group)
 (global-set-key (kbd "C-s-n") 'eyebrowse-switch-to-window-config)
-(global-set-key (kbd "<C-s-left>") 'windmove-left)
-(global-set-key (kbd "<C-s-right>") 'windmove-right)
-(global-set-key (kbd "<C-s-up>") 'windmove-up)
-(global-set-key (kbd "<C-s-down>") 'windmove-down)
 (global-set-key (kbd "C-c d") 'xref-find-definitions)
 (global-set-key (kbd "C-c s") 'xref-pop-marker-stack)
+(global-set-key (kbd "C-c t") 'treemacs)
 
 ;;----------------------------------------------------------------------------
 ;; Evil
@@ -107,6 +106,7 @@
 (define-key tide-mode-map (kbd "C-c C-f") 'tide-fix)
 (define-key tide-mode-map (kbd "C-c C-e") 'tide-project-errors)
 (define-key tide-mode-map (kbd "C-c s") 'tide-jump-back)
+(define-key tide-mode-map (kbd "C-c h") 'tide-documentation-at-point)
 (define-key tide-references-mode-map (kbd "<return>") 'tide-goto-reference)
 
 ;;----------------------------------------------------------------------------
