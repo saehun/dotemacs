@@ -17,6 +17,7 @@
 (global-set-key (kbd "C-b") (with-safe 'counsel-switch-buffer))
 (global-set-key (kbd "C-n") (with-safe 'counsel-find-file))
 (global-set-key (kbd "s-p") (with-safe 'find-file-in-project))
+(global-set-key (kbd "M-s-p") (with-safe 'find-file-in-current-directory))
 (global-set-key (kbd "s-f") 'swiper)
 (global-set-key (kbd "C-s-m") 'counsel-evil-goto-global-marker)
 

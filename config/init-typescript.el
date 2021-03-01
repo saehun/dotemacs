@@ -76,6 +76,7 @@
       "Enable prettier-js-mode if an rc file is located."
       (if (or
             (locate-dominating-file default-directory ".prettierrc.json")
+            (locate-dominating-file default-directory ".prettierrc.js")
             (locate-dominating-file default-directory ".prettierrc"))
           (prettier-js-mode)))
 

@@ -2,7 +2,8 @@
 ;; recent file mode
 ;;----------------------------------------------------------------------------
 (recentf-mode 1)
-(setq recentf-max-menu-items 1000)
+(setq recentf-max-menu-items 200)
+(setq recentf-max-saved-items 200)
 (global-set-key "\C-x\ \C-r" 'counsel-recentf)
 
 ;;----------------------------------------------------------------------------
