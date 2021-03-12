@@ -44,6 +44,7 @@
 (global-set-key (kbd "C-c d") 'xref-find-definitions)
 (global-set-key (kbd "C-c s") 'xref-pop-marker-stack)
 (global-set-key (kbd "C-c t") 'treemacs)
+(global-set-key (kbd "C-c C-p") 'counsel-open-project)
 
 ;;----------------------------------------------------------------------------
 ;; Evil

@@ -84,7 +84,10 @@
 (defun iterm ()
   "Open the current directory in iterm with new tab."
   (interactive)
-  (call-process-shell-command "iterm" nil nil nil (file-name-directory (buffer-file-name))))
+  (call-process-shell-command
+    "iterm" nil nil nil
+    (let ((dir (projectile-root-bottom-up default-directory)))
+      (if dir dir default-directory))))
 
 
 (defun swap-buffers-in-windows ()
@@ -156,8 +159,9 @@
                     ((numberp (cadr alpha)) (cadr alpha)))
               100)
          '(85 . 50) '(100 . 100)))))
+
 (defun transparency (value)
-   "Sets the transparency of the frame window. 0=transparent/100=opaque"
+   "Set the transparency of the frame window.  0=transparent/100=opaque."
    (interactive "nTransparency Value 0 - 100 opaque:")
    (set-frame-parameter (selected-frame) 'alpha value))
 
@@ -173,6 +177,17 @@
             :action (lambda (x)
                       (shell-command x))
             :caller 'counsel-shell-command))
+
+
+;;----------------------------------------------------------------------------
+;; Open ghq project
+;;----------------------------------------------------------------------------
+(defun counsel-open-project ()
+  "Open and select project in cousel buffer."
+  (interactive)
+  (ivy-read "Shell Command: "
+    (split-string (with-output-to-string (call-process "ghq" nil standard-output nil "list")) "\n" t)
+    :action (lambda (x) (dired (concat "~/wd/" x)))))
 
 
 (provide 'init-utils)
