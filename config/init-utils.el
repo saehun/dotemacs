@@ -185,7 +185,7 @@
 (defun counsel-open-project ()
   "Open and select project in cousel buffer."
   (interactive)
-  (ivy-read "Shell Command: "
+  (ivy-read "Repository: "
     (split-string (with-output-to-string (call-process "ghq" nil standard-output nil "list")) "\n" t)
     :action (lambda (x) (dired (concat "~/wd/" x)))))
 
