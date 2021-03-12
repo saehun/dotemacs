@@ -11,8 +11,9 @@
 (setenv "PATH" (concat (getenv "PATH") (substitute-in-file-name ":$HOME/.local/bin")))
 (setq exec-path (append exec-path '(substitute-in-file-name "$HOME/.local/bin")))
 ;; (exec-path-from-shell-copy-env "GOPATH")
-(setenv "GOPATH" (substitute-in-file-name "$HOME/go"))
-(setenv "PROXY_REPO"  (substitute-in-file-name "$HOME/null/.proxy-repo"))
+(setenv "GOPATH"     (substitute-in-file-name "$HOME/go"))
+(setenv "PROXY_REPO" (substitute-in-file-name "$HOME/null/.proxy-repo"))
+(setenv "GHQ_ROOT"   (substitute-in-file-name "$HOME/wd"))
 
 (setenv "PATH" (concat (getenv "PATH") ":" (expand-file-name "~/.cargo/bin")))
 (setq exec-path (append exec-path (list (expand-file-name "~/.cargo/bin"))))

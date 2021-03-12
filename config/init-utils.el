@@ -84,7 +84,7 @@
 (defun iterm ()
   "Open the current directory in iterm with new tab."
   (interactive)
-  (call-process-shell-command "~/dev/bin/tab" nil nil nil (file-name-directory (buffer-file-name))))
+  (call-process-shell-command "iterm" nil nil nil (file-name-directory (buffer-file-name))))
 
 
 (defun swap-buffers-in-windows ()

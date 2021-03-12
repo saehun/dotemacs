@@ -54,3 +54,5 @@
 (require 'init-bindings)
 
 (require 'init-clojure)
+
+(require 'node-string)

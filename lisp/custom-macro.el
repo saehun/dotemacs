@@ -45,6 +45,14 @@
   (interactive)
   (other-window -1))
 
+(defun open-project ()
+  "Open and select project in cousel buffer"
+  (interactive)
+  (message "%s"
+    (split-string
+      (with-output-to-string (call-process "ghq" nil standard-output nil "list"))
+         "\n" t)))
+
 
 (provide 'custom-macro)
 ;;; custom-macro ends here

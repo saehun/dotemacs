@@ -6,11 +6,13 @@
     (defun setup-tide-mode ()
       (interactive)
       (tide-setup)
+      (tide-setup-yarn2)
       (flycheck-mode +1)
       (setq flycheck-check-syntax-automatically '(save mode-enabled))
       ;; (setq tide-tsserver-executable "node_modules/typescript/bin/tsserver")
       (eldoc-mode +1)
       (tide-hl-identifier-mode +1)
+      ;; 이거 키면 company 버퍼 열리는게 매우 느려진다
       ;; (setq tide-completion-detailed t)
       (setq comment-start       "/*"
             comment-end         "*/"
@@ -20,13 +22,25 @@
             comment-continue    " * "
             comment-empty-lines t)
 
+
       (company-mode +1))
 
-    ;; 이거 키면 company 버퍼 열리는게 매우 느려진다
-    ;; (setq tide-completion-detailed t)
 
-    ;; (setq company-tooltip-align-annotations t)
-    ;; aligns annotation to the right hand side
+    ;; Yarn2 support
+    (require' projectile)
+    (defun tide-setup-yarn2 ()
+      "Yarn2."
+      (let* ((project-root (projectile-project-root)))
+        (if
+          (or
+            (cl-search "toss/toss-frontend-libraries" project-root)
+            (cl-search "toss/frontend-devops" project-root))
+          (progn
+            (setq-local tide-tsserver-executable
+              (concat project-root ".yarn/sdks/typescript/bin/tsserver"))
+            (setq-local flycheck-javascript-eslint-executable
+              (concat project-root ".yarn/sdks/eslint/bin/eslint.js")))
+        )))
 
     ;; formats the buffer before saving
     (require 'flycheck)
@@ -47,9 +61,6 @@
                   (setup-tide-mode))))
 
     (add-hook 'rjsx-mode-hook #'setup-tide-mode)
-
-    ;; enable typescript-tslint checker
-    ;; at .emacs.d/elpa/tide/tide.el
 
 
     (defun tide-jump-back-and-kill ()
