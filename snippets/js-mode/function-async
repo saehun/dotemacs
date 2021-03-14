@@ -1,6 +1,7 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: await keyword
-# key: aw
+# name: asynchronous function
+# key: af
 # group: es6
 # --
-await $0
+async function $0() {
+}

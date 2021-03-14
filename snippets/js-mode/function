@@ -1,6 +1,7 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name:  function
+# name: synchronous function
 # key: f
 # group: es6
 # --
-function $0
+function $0() {
+}

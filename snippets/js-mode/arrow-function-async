@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: asynchronous arrow function
+# key: a>
+# group: es6
+# --
+const $0 = async () => {
+};
