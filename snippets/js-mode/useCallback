@@ -2,6 +2,6 @@
 # name : useCallback
 # key: urc
 # --
-const $0 = React.useCallback(() => {
+const $0 = useCallback(() => {
   $0
 }, []);

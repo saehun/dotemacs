@@ -2,6 +2,6 @@
 # name : useEffect
 # key: ure
 # --
-React.useEffect(() => {
+useEffect(() => {
   $0
 }, []);

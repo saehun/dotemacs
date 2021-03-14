@@ -2,6 +2,6 @@
 # name : useMemo
 # key: urm
 # --
-const $0 = React.useMemo(() => {
+const $0 = useMemo(() => {
   
 }, []);
