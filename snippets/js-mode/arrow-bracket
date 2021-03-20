@@ -1,6 +1,5 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: type promise
-# key: P
-# group: es6
+# name : arrow-bracket
+# key: <
 # --
-Promise<$0>
+<$0>

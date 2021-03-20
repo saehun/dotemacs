@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name : private readonly
+# key: prr
+# --
+private readonly $1: ${1:$(capitalize yas-text)},

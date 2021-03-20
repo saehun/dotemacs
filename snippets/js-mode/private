@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name : private keyword
+# key: pr
+# --
+private $0

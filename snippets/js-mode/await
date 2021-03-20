@@ -1,6 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: type promise
-# key: P
+# name: await
+# key: aw
 # group: es6
 # --
-Promise<$0>
+await $0

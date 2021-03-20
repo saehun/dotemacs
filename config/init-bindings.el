@@ -36,10 +36,17 @@
 (global-set-key (kbd "C-c \`")  'window-swap-states)
 (global-set-key (kbd "<C-S-tab>") 'previous-buffer)
 (global-set-key (kbd "<C-tab>") 'quit-window)
+
+;;(global-set-key (kbd "s-{") 'awesome-tab-backward-tab)
+;;(global-set-key (kbd "s-}") 'awesome-tab-forward-tab)
+;;(global-set-key (kbd "C-s-{") 'awesome-tab-backward-group)
+;;(global-set-key (kbd "C-s-}") 'awesome-tab-forward-group)
+
 (global-set-key (kbd "s-{") 'tabbar-backward-tab)
 (global-set-key (kbd "s-}") 'tabbar-forward-tab)
 (global-set-key (kbd "C-s-{") 'tabbar-backward-group)
 (global-set-key (kbd "C-s-}") 'tabbar-forward-group)
+
 (global-set-key (kbd "C-s-n") 'eyebrowse-switch-to-window-config)
 (global-set-key (kbd "C-c d") 'xref-find-definitions)
 (global-set-key (kbd "C-c s") 'xref-pop-marker-stack)
@@ -153,5 +160,10 @@
 (define-key rustic-mode-map (kbd "C-c r") 'lsp-find-references)
 (define-key rustic-mode-map (kbd "C-c h") 'lsp-describe-thing-at-point)
 (define-key rustic-mode-map (kbd "C-c s") 'xref-pop-marker-stack)
+
+;;----------------------------------------------------------------------------
+;; node-bindings
+;;----------------------------------------------------------------------------
+(global-set-key (kbd "C-c C-o") 'node/counsel-open)
 
 (provide 'init-bindings)

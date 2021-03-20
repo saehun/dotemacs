@@ -189,6 +189,17 @@
     (split-string (with-output-to-string (call-process "ghq" nil standard-output nil "list")) "\n" t)
     :action (lambda (x) (dired (concat "~/wd/" x)))))
 
+;;----------------------------------------------------------------------------
+;; Open current codebase in VSCode
+;;----------------------------------------------------------------------------
+(defun code ()
+  "Open and select project in cousel buffer."
+  (interactive)
+  ((lambda (dir) (call-process-shell-command "code" nil nil nil dir))
+  (or (projectile-locate-dominating-file default-directory "package.json")
+    (or (projectile-root-bottom-up default-directory)
+      default-directory))))
+
 
 (provide 'init-utils)
 ;;; init-utils.el ends here

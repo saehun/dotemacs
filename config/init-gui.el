@@ -12,8 +12,8 @@
 (setq-default cursor-type 'bar)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
-(scroll-bar-mode -1)
-(set-frame-font "Iosevka Term Extralight:pixelsize=13")
+(scroll-bar-mode -1) 
+(set-frame-font "Iosevka Term:pixelsize=13:weight=light:slant=normal:width=normal:spacing=100:scalable=true")
 (setq-default line-spacing 0.12)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
@@ -196,5 +196,12 @@
   (dimmer-mode t)
   (set-variable 'dimmer-fraction 0.3))
 
+;;----------------------------------------------------------------------------
+;; Awesome-tab
+;;----------------------------------------------------------------------------
+;;(use-package awesome-tab
+;;  :load-path "../lisp/awesome-tab.el"
+;;  :config
+;;  (awesome-tab-mode t))
 
 (provide 'init-gui)

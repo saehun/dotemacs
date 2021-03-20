@@ -3,5 +3,5 @@
 # key: a>
 # group: es6
 # --
-const $0 = async () => {
+const $1 = async ($2) => {
 };

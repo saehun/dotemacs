@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
 # name : comment
-# key: **
+# key: *
 # --
-/** $0 */
+* $0
