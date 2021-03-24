@@ -200,6 +200,59 @@
     (or (projectile-root-bottom-up default-directory)
       default-directory))))
 
+;;----------------------------------------------------------------------------
+;; Grep from package root (not a git root)
+;;----------------------------------------------------------------------------
+(defun counsel-rg-package ()
+    "Like `counsel-rg' but always searches from the package root, not git root."
+    (interactive)
+    (counsel-rg nil (projectile-root-bottom-up default-directory '("package.json"))))
+
+
+;;----------------------------------------------------------------------------
+;; ghq-open
+;;----------------------------------------------------------------------------
+(defun ghq-open ()
+  (interactive)
+  (let*
+    ((ghq-root (concat (expand-file-name "~") "/wd"))
+      (is-inside-ghq (s-prefix? ghq-root (expand-file-name default-directory)))
+      (is-directory (not (buffer-file-name))))
+    (if (not is-inside-ghq)
+      (message "You are not inside ghq-tree")
+      (let*
+        ((full-path
+           (expand-file-name
+             (if is-directory default-directory (buffer-file-name))))
+          (seq-path
+            (nthcdr 3
+              (seq-filter
+                (lambda (x) (not (seq-empty-p x)))
+                (split-string full-path "/"))))
+          (git-url (string-join (seq-take seq-path 3) "/"))
+          (git-file-path (string-join (nthcdr 3 seq-path) "/"))
+          (line-number
+            (if is-directory
+              ""
+              (if (region-active-p)
+                (format "#L%dL%d"
+                  (save-excursion
+                    (goto-char (region-beginning))
+                    (line-number-at-pos))
+                  (save-excursion
+                    (goto-char (region-end))
+                    (- (line-number-at-pos) 1)))
+                (format "#L%d" (line-number-at-pos))))))
+        (browse-url
+          (concat
+            "https://"
+            git-url
+            "/tree/"
+            (string-trim (shell-command-to-string "git rev-parse HEAD"))
+            "/"
+            git-file-path
+            line-number))))))
+  
 
 (provide 'init-utils)
 ;;; init-utils.el ends here
