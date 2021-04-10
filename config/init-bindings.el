@@ -35,7 +35,7 @@
 (global-set-key (kbd "s-b") 'ibuffer)            ;; list buffer
 (global-set-key (kbd "s-t")  'new-empty-buffer)
 (global-set-key (kbd "C-c \`")  'window-swap-states)
-(global-set-key (kbd "<C-S-tab>") 'previous-buffer)
+(global-set-key (kbd "<C-S-tab>") 'switch-to-last-buffer)
 (global-set-key (kbd "<C-tab>") 'quit-window)
 
 ;;(global-set-key (kbd "s-{") 'awesome-tab-backward-tab)

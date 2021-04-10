@@ -84,10 +84,14 @@
 (defun iterm ()
   "Open the current directory in iterm with new tab."
   (interactive)
-  (call-process-shell-command
-    "iterm" nil nil nil
-    (let ((dir (projectile-root-bottom-up default-directory)))
-      (if dir dir default-directory))))
+  (let*
+    ((location
+       (or (projectile-locate-dominating-file default-directory "package.json")
+         (or (projectile-locate-dominating-file default-directory ".git") default-directory)))
+      (target-shell-command (format "open -a iTerm %s" location)))
+  (progn
+    (message target-shell-command)
+    (call-process-shell-command target-shell-command nil nil nil))))
 
 
 (defun swap-buffers-in-windows ()
@@ -186,7 +190,7 @@
   "Open and select project in cousel buffer."
   (interactive)
   (ivy-read "Repository: "
-    (split-string (with-output-to-string (call-process "ghq" nil standard-output nil "list")) "\n" t)
+    (split-string (with-output-to-string (call-process "~/bin/ghq-list-append" nil standard-output nil)) "\n" t)
     :action (lambda (x) (dired (concat "~/wd/" x)))))
 
 ;;----------------------------------------------------------------------------
@@ -252,6 +256,15 @@
             "/"
             git-file-path
             line-number))))))
+
+
+;;----------------------------------------------------------------------------
+;; Switch to Last Buffer
+;;----------------------------------------------------------------------------
+(defun switch-to-last-buffer ()
+  "Switch to last buffer which is buried."
+  (interactive)
+  (switch-to-buffer (last-buffer)))
   
 
 (provide 'init-utils)
