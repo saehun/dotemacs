@@ -1,6 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name : React functional component
-# key: rfc
+# group : React  
 # --
 interface $1Props {
 }

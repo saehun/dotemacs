@@ -1,6 +1,8 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: debugger statmenet
-# key: d
+# name: iife
 # group: es6
 # --
-debugger;
+(() => {
+  $0
+})()
+  

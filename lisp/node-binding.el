@@ -73,5 +73,30 @@ to choose a directory starting with `directory-to-start-in'"
   (interactive)
   (post-message-node-with-env "ts-unit-test"))
 
+(defun node/wrap-try-catch ()
+  "Wrap region with try catch block."
+  (interactive)
+  (post-message-node-with-env "wrap-try-catch"))
+
+(defun node/run-current-file ()
+  "Run current typescript file with ts-node."
+  (interactive)
+  (post-message-node-with-env "run-current-file"))
+
+(defun node/debug-current-file ()
+  "Debug current typescript file with ts-node."
+  (interactive)
+  (post-message-node-with-env "debug-current-file"))
+
+(defun node/test-current-file ()
+  "Test current typescript file with jest."
+  (interactive)
+  (post-message-node-with-env "test-current-file"))
+
+(defun node/debug-test-current-file ()
+  "Test and Debug current typescript file with jest inspect-brk."
+  (interactive)
+  (post-message-node-with-env "debug-test-current-file"))
+
 (provide 'node-binding)
 ;;; node-binding.el ends here

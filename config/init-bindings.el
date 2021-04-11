@@ -71,7 +71,6 @@
 (define-key evil-outer-text-objects-map "b" 'evil-textobj-anyblock-a-block)
 (define-key evil-normal-state-map "\C-n" nil)
 (define-key evil-normal-state-map "\C-t" nil)
-(define-key evil-normal-state-map "\C-p" nil)
 (define-key evil-normal-state-map "\C-e" nil)
 (define-key evil-normal-state-map "\C-z" nil)
 (define-key evil-motion-state-map "\C-w" nil)
@@ -80,6 +79,7 @@
 (define-key evil-motion-state-map "\C-f" nil)
 (define-key evil-motion-state-map "\C-o" nil)
 (define-key evil-motion-state-map "\C-z" nil)
+(define-key evil-normal-state-map "\C-p" 'ivy-yasnippet)
 (define-key evil-insert-state-map "\C-p" 'ivy-yasnippet)
 
 (global-set-key (kbd "<s-right>") 'forward-word)

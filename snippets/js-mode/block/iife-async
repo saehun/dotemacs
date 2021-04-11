@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: iife-async
+# group: es6
+# --
+(async () => {
+  $0
+})()
+  
