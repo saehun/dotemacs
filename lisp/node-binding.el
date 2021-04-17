@@ -98,5 +98,25 @@ to choose a directory starting with `directory-to-start-in'"
   (interactive)
   (post-message-node-with-env "debug-test-current-file"))
 
+(defun node/object-to-type ()
+  "Convert js object to type literal."
+  (interactive)
+  (post-message-node-with-env "object-to-type"))
+
+(defun node/object-to-type-with-comment ()
+  "Convert js object to type literal."
+  (interactive)
+  (post-message-node-with-env "object-to-type-with-comment"))
+
+(defun node/object-to-query ()
+  "Convert js object to query string."
+  (interactive)
+  (post-message-node-with-env "object-to-query"))
+
+(defun node/cookie-to-object ()
+  "Convert js cookie strings to object."
+  (interactive)
+  (post-message-node-with-env "cookie-to-object"))
+
 (provide 'node-binding)
 ;;; node-binding.el ends here

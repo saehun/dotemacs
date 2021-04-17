@@ -1,0 +1,12 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: wrapper function promise
+# group: es6
+# --
+function ${1:wrap}<R, A extends any[]>(fn: (...args: A) => Promise<R>) {
+  return async (...args: A): Promise<R> => {
+    /** write logic here */
+    $0
+    return await fn(...args);
+  };
+}
+  

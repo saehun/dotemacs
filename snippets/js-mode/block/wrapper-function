@@ -1,0 +1,12 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: wrapper function
+# group: es6
+# --
+function ${1:wrap}<F extends (...args: any[]) => any>(fn: F) {
+  return (...args: Parameters<F>): ReturnType<F> => {
+    /** write logic here */
+    $0
+    return fn(...args);
+  };
+}
+  

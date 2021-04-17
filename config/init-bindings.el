@@ -111,6 +111,7 @@
 ;;----------------------------------------------------------------------------
 (require 'tide)
 (define-key tide-mode-map (kbd "C-c r") 'tide-references)
+(define-key tide-mode-map (kbd "M-s-r") 'tide-restart-server)
 (define-key tide-mode-map (kbd "C-c f") 'tide-refactor)
 (define-key tide-mode-map (kbd "C-c d") 'tide-jump-to-definition)
 (define-key tide-mode-map (kbd "C-c C-r") 'tide-rename-symbol)

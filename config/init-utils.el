@@ -93,6 +93,19 @@
     (message target-shell-command)
     (call-process-shell-command target-shell-command nil nil nil))))
 
+;;----------------------------------------------------------------------------
+;; open iterm tab with current location
+;;----------------------------------------------------------------------------
+(defun iterm-here ()
+  "Open the current directory in iterm with new tab."
+  (interactive)
+  (let*
+    ((location default-directory)
+      (target-shell-command (format "open -a iTerm %s" location)))
+  (progn
+    (message target-shell-command)
+    (call-process-shell-command target-shell-command nil nil nil))))
+
 
 (defun swap-buffers-in-windows ()
   "Put the buffer from the selected window in next window, and vice versa"
@@ -265,6 +278,20 @@
   "Switch to last buffer which is buried."
   (interactive)
   (switch-to-buffer (last-buffer)))
+
+;;----------------------------------------------------------------------------
+;; Kill all buffers
+;;----------------------------------------------------------------------------
+(defun kill-all-buffers ()
+  (interactive)
+  (mapc 'kill-buffer (buffer-list)))
+
+;;----------------------------------------------------------------------------
+;; Manually call GC
+;;----------------------------------------------------------------------------
+(defun call-gc ()
+  (interactive)
+  (garbage-collect))
   
 
 (provide 'init-utils)
