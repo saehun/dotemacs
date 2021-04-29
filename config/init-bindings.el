@@ -54,6 +54,9 @@
 (global-set-key (kbd "C-c t") 'treemacs)
 (global-set-key (kbd "C-c C-p") 'counsel-open-project)
 
+(require 'json-mode)
+(define-key json-mode-map (kbd "C-c C-p") 'counsel-open-project)
+
 ;;----------------------------------------------------------------------------
 ;; Evil
 ;;----------------------------------------------------------------------------
