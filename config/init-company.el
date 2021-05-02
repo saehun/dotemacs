@@ -13,7 +13,7 @@
     ;; (dolist (backend '(company-eclim company-semantic))
       ;; (delq backend company-backends))
     (setq company-idle-delay 0)
-    (setq company-minimum-prefix-length 3)
+    (setq company-minimum-prefix-length 1)
     (setq company-selection-wrap-around t)
     ; Use tab key to cycle through suggestions.
     ; ('tng' means 'tab and go')

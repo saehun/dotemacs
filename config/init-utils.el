@@ -221,7 +221,7 @@
 ;; Grep from package root (not a git root)
 ;;----------------------------------------------------------------------------
 (defun counsel-rg-package ()
-    "Like `counsel-rg' but always searches from the package root, not git root."
+    "Like `counsel-rg' but always search from the package root, not git root."
     (interactive)
     (counsel-rg nil (projectile-root-bottom-up default-directory '("package.json"))))
 
@@ -292,7 +292,7 @@
 (defun call-gc ()
   (interactive)
   (garbage-collect))
-  
 
 (provide 'init-utils)
 ;;; init-utils.el ends here
+

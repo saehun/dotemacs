@@ -68,7 +68,7 @@
 (define-key evil-normal-state-map (kbd "g a") 'magit-stage-file)
 (define-key evil-normal-state-map (kbd "g c") 'magit-commit-current-file)
 (define-key evil-normal-state-map (kbd "g b") 'magit-blame-echo)
-(define-key evil-normal-state-map (kbd "C-@") 'flycheck-next-error)
+(define-key evil-normal-state-map (kbd "s-2") 'flycheck-next-error)
 (define-key evil-normal-state-map (kbd "C-!") 'counsel-flycheck)
 (define-key evil-inner-text-objects-map "b" 'evil-textobj-anyblock-inner-block)
 (define-key evil-outer-text-objects-map "b" 'evil-textobj-anyblock-a-block)
@@ -84,6 +84,16 @@
 (define-key evil-motion-state-map "\C-z" nil)
 (define-key evil-normal-state-map "\C-p" 'ivy-yasnippet)
 (define-key evil-insert-state-map "\C-p" 'ivy-yasnippet)
+(define-key evil-insert-state-map "\C-p" 'ivy-yasnippet)
+
+
+;;----------------------------------------------------------------------------
+;; Company
+;;----------------------------------------------------------------------------
+(require 'company)
+(define-key company-active-map (kbd "<tab>") 'yas/expand)
+(define-key company-search-map (kbd "<tab>") 'yas/expand)
+(define-key company-active-map (kbd "<escape>") 'company-abort)
 
 (global-set-key (kbd "<s-right>") 'forward-word)
 (global-set-key (kbd "<s-left>") 'backward-word)
