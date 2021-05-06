@@ -61,7 +61,7 @@
                 (when (string-equal "ts" (file-name-extension buffer-file-name))
                   (setup-tide-mode))))
 
-    (add-hook 'rjsx-mode-hook #'setup-tide-mode)
+    (add-hook 'js2-mode-hook #'setup-tide-mode)
 
 
     (defun tide-jump-back-and-kill ()
@@ -163,7 +163,7 @@ temporary and indirect buffers."
           (prettier-js-mode)))
 
     (add-hook 'web-mode-hook 'maybe-use-prettier)
-    (add-hook 'rjsx-mode-hook 'maybe-use-prettier))
+    (add-hook 'js2-mode-hook 'maybe-use-prettier))
 )
 
 (provide 'init-typescript)
