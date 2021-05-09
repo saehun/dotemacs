@@ -69,6 +69,7 @@
 (define-key evil-normal-state-map (kbd "g c") 'magit-commit-current-file)
 (define-key evil-normal-state-map (kbd "g b") 'magit-blame-echo)
 (define-key evil-normal-state-map (kbd "s-2") 'flycheck-next-error)
+(define-key evil-normal-state-map (kbd "s-@") 'flycheck-previous-error)
 (define-key evil-normal-state-map (kbd "C-!") 'counsel-flycheck)
 (define-key evil-inner-text-objects-map "b" 'evil-textobj-anyblock-inner-block)
 (define-key evil-outer-text-objects-map "b" 'evil-textobj-anyblock-a-block)
@@ -82,9 +83,16 @@
 (define-key evil-motion-state-map "\C-f" nil)
 (define-key evil-motion-state-map "\C-o" nil)
 (define-key evil-motion-state-map "\C-z" nil)
+
+
+;;----------------------------------------------------------------------------
+;; Ivy
+;;----------------------------------------------------------------------------
+(require 'ivy)
 (define-key evil-normal-state-map "\C-p" 'ivy-yasnippet)
 (define-key evil-insert-state-map "\C-p" 'ivy-yasnippet)
 (define-key evil-insert-state-map "\C-p" 'ivy-yasnippet)
+(define-key ivy-occur-mode-map (kbd "<return>") 'ivy-occur-press)
 
 
 ;;----------------------------------------------------------------------------

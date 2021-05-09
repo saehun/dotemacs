@@ -51,6 +51,5 @@
 
   (advice-add 'flycheck-next-error :around #'flycheck-next-error-loop-advice))
 
-
 (provide 'init-flycheck)
 ;;; init-flycheck.el ends here
