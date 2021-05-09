@@ -3,5 +3,5 @@
 # key: af
 # group: es6
 # --
-async function $0() {
+async function $1($0) {
 }

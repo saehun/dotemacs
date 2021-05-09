@@ -1,8 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: synchronous arrow function
-# key: >
+# name: Tag
+# key: <>
 # group: es6
 # --
-const $1 = ($0) => {
-};
-  
+<${1:}>$0</$1>
