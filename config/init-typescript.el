@@ -11,7 +11,7 @@
       (setq flycheck-check-syntax-automatically '(save mode-enabled))
       ;; (setq tide-tsserver-executable "node_modules/typescript/bin/tsserver")
       (eldoc-mode +1)
-      (tide-hl-identifier-mode +1)
+      ;; (tide-hl-identifier-mode +1)
       ;; 이거 키면 company 버퍼 열리는게 매우 느려진다
       ;; (setq tide-completion-detailed t)
       (setq comment-start       "/*"

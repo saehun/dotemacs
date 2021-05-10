@@ -71,6 +71,7 @@
 (define-key evil-normal-state-map (kbd "s-2") 'flycheck-next-error)
 (define-key evil-normal-state-map (kbd "s-@") 'flycheck-previous-error)
 (define-key evil-normal-state-map (kbd "C-!") 'counsel-flycheck)
+(define-key evil-normal-state-map (kbd "?") 'tide-hl-identifier) ;; create custom function later
 (define-key evil-inner-text-objects-map "b" 'evil-textobj-anyblock-inner-block)
 (define-key evil-outer-text-objects-map "b" 'evil-textobj-anyblock-a-block)
 (define-key evil-normal-state-map "\C-n" nil)
