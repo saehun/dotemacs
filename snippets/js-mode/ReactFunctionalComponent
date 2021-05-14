@@ -2,12 +2,14 @@
 # name : React functional component
 # group : React  
 # --
-interface $1Props {
+interface Props {
 }
-  
-const ${1:Comp}: React.FC<$1Props> = (props) => {
-  const {} = props;
 
-  return <div></div>;
-};
+function ${1:`(string-inflection-pascal-case-function
+  (file-name-nondirectory (file-name-sans-extension (buffer-file-name)))
+  )`}({}: Props) {
+  return <div></div>;  
+}
+
+export default $1
   

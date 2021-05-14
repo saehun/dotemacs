@@ -1,0 +1,11 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name : function named module
+# group : es6
+# --
+export function ${1:`(string-inflection-camelcase-function
+  (file-name-nondirectory (file-name-sans-extension (buffer-file-name)))
+  )`}() {
+  return;  
+}
+
+  

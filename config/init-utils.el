@@ -218,6 +218,17 @@
       default-directory))))
 
 ;;----------------------------------------------------------------------------
+;; Open current codebase in Webstorm
+;;----------------------------------------------------------------------------
+(defun webstorm ()
+  "Open and select project in cousel buffer."
+  (interactive)
+  ((lambda (dir) (call-process-shell-command "webstorm" nil nil nil dir))
+  (or (projectile-locate-dominating-file default-directory "package.json")
+    (or (projectile-root-bottom-up default-directory)
+      default-directory))))
+
+;;----------------------------------------------------------------------------
 ;; Grep from package root (not a git root)
 ;;----------------------------------------------------------------------------
 (defun counsel-rg-package ()

@@ -16,7 +16,7 @@
 (global-set-key (kbd "M-s-f") (with-safe 'counsel-rg-package))
 (global-set-key (kbd "M-s-F") (with-safe 'counsel-rg-here))
 (global-set-key (kbd "s-G") (with-safe 'counsel-google))
-(global-set-key (kbd "C-b") (with-safe 'counsel-switch-buffer))
+(global-set-key (kbd "C-b") (with-safe 'counsel-bookmark))
 (global-set-key (kbd "C-n") (with-safe 'counsel-find-file))
 (global-set-key (kbd "s-p") (with-safe 'find-file-in-project))
 (global-set-key (kbd "M-s-p") (with-safe 'find-file-in-current-directory))
