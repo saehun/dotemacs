@@ -20,7 +20,8 @@
     ;; (company-tng-configure-default)
     (setq-default company-dabbrev-other-buffers 'all company-tooltip-align-annotations t))
   (when (maybe-require-package 'company-quickhelp)
-    (add-hook 'after-init-hook 'company-quickhelp-mode)))
+    (add-hook 'after-init-hook 'company-quickhelp-mode)
+    (setq company-quickhelp-delay nil)))
 
 
 ;; add emoji backends😃

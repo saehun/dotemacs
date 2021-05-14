@@ -43,6 +43,7 @@
 (require 'init-haskell)
 (require 'init-restclient)
 (require 'init-rust)
+;; (require 'init-cl)
 
 
 ;;----------------------------------------------------------------------------

@@ -101,6 +101,7 @@
 ;;----------------------------------------------------------------------------
 (require 'company)
 (define-key company-active-map (kbd "<tab>") 'yas/expand)
+(define-key company-active-map (kbd "?") #'company-quickhelp-manual-begin)
 (define-key company-search-map (kbd "<tab>") 'yas/expand)
 (define-key company-active-map (kbd "<escape>") 'company-abort)
 
@@ -184,6 +185,15 @@
 (define-key rustic-mode-map (kbd "C-c r") 'lsp-find-references)
 (define-key rustic-mode-map (kbd "C-c h") 'lsp-describe-thing-at-point)
 (define-key rustic-mode-map (kbd "C-c s") 'xref-pop-marker-stack)
+(define-key rustic-mode-map (kbd "C-c C-f") 'lsp-execute-code-action)
+
+
+;;----------------------------------------------------------------------------
+;; slime
+;;----------------------------------------------------------------------------
+(require 'slime)
+(define-key lisp-mode-map (kbd "C-c d") 'slime-edit-definition)
+(define-key lisp-mode-map (kbd "C-c r") 'slime-who-calls)
 
 ;;----------------------------------------------------------------------------
 ;; node-bindings
