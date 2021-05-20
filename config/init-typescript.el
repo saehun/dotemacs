@@ -121,13 +121,13 @@
 current buffer if it matches `file'. This way we can support
 temporary and indirect buffers."
     (let ((file-virtual-resolved
-            (replace-regexp-in-string "\\.yarn/\\$\\$virtual.*/[0-9]+/" "" file))
+            (replace-regexp-in-string "\\.yarn/__virtual.*/[0-9]+/" "" file))
            arc-path-pair)
       (cond
         ((equal file (tide-buffer-file-name)) (current-buffer))
         ((setq arc-path-pair
            (tide--get-arc-path-pair
-             (replace-regexp-in-string "\\$\\$virtual.*cache/" "cache/" file)))
+             (replace-regexp-in-string "__$virtual.*cache/" "cache/" file)))
           (let ((arc-path (car arc-path-pair))
                  (file-path-in-arc (cdr arc-path-pair))
                  arc-buf)

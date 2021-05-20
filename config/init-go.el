@@ -41,12 +41,6 @@
     (add-hook 'before-save-hook #'lsp-organize-imports t t))
   (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
 
-  ;; company-lsp integrates company mode completion with lsp-mode.
-  ;; completion-at-point also works out of the box but doesn't support snippets.
-  (use-package company-lsp
-    :ensure t
-    :commands company-lsp)
-
   (require 'go-mode)
 
   (let ((govet (flycheck-checker-get 'go-vet 'command)))

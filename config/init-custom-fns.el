@@ -34,5 +34,18 @@
     (interactive)
     (counsel-rg nil default-directory))
 
+;; font sizes
+(global-set-key (kbd "s-=")
+                (lambda ()
+                  (interactive)
+                  (let ((old-face-attribute (face-attribute 'default :height)))
+                    (set-face-attribute 'default nil :height (+ old-face-attribute 10)))))
+
+(global-set-key (kbd "s--")
+                (lambda ()
+                  (interactive)
+                  (let ((old-face-attribute (face-attribute 'default :height)))
+                    (set-face-attribute 'default nil :height (- old-face-attribute 10)))))
+
 (provide 'init-custom-fns)
 ;;; init-custom-fns.el ends here
