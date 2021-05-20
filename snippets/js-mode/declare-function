@@ -1,7 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: type keyword
-# key: ty
+# name: synchronous arrow function
+# key: df
 # group: es6
 # --
-type $0 = {
-}
+declare function $1($0): 
