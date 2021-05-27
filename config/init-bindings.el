@@ -104,6 +104,7 @@
 (define-key company-active-map (kbd "?") #'company-quickhelp-manual-begin)
 (define-key company-search-map (kbd "<tab>") 'yas/expand)
 (define-key company-active-map (kbd "<escape>") 'company-abort)
+(define-key company-active-map (kbd "C-o") 'counsel-company)
 
 (global-set-key (kbd "<s-right>") 'forward-word)
 (global-set-key (kbd "<s-left>") 'backward-word)

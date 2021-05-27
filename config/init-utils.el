@@ -304,6 +304,14 @@
   (interactive)
   (garbage-collect))
 
+;;----------------------------------------------------------------------------
+;; Git open
+;;----------------------------------------------------------------------------
+(defun git-open ()
+  (interactive)
+  (call-process (substitute-in-file-name "$HOME/.oh-my-zsh/custom/plugins/git-open/git-open") nil standard-output nil))
+
+
 (provide 'init-utils)
 ;;; init-utils.el ends here
 

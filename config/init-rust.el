@@ -28,7 +28,13 @@
   ;; comment to disable rustfmt on save
   (setq rustic-format-on-save t)
   (setq lsp-ui-doc-mode nil)
-  (add-hook 'rustic-mode-hook 'rk/rustic-mode-hook))
+  (add-hook 'rustic-mode-hook 'rk/rustic-mode-hook)
+
+  (setq lsp-rust-analyzer-server-command '("~/.cargo/bin/rust-analyzer"))
+  (setq rustic-lsp-server 'rust-analyzer)
+
+  (push 'rustic-clippy flycheck-checkers)
+  )
 
 (defun rk/rustic-mode-hook ()
   ;; so that run C-c C-c C-r works without having to confirm

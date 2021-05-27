@@ -4,23 +4,27 @@
 
 (require-package 'exec-path-from-shell)
 
+;; 3rd party binary
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
 (setq exec-path (append exec-path '("/usr/local/bin")))
-(setenv "PATH" (concat (getenv "PATH") (substitute-in-file-name ":$HOME/bin")))
-(setq exec-path (append exec-path '(substitute-in-file-name "$HOME/bin")))
+
+;; 3rd party binary
 (setenv "PATH" (concat (getenv "PATH") (substitute-in-file-name ":$HOME/.local/bin")))
 (setq exec-path (append exec-path '(substitute-in-file-name "$HOME/.local/bin")))
-;; (exec-path-from-shell-copy-env "GOPATH")
+
+;; my-custom binary
+(setenv "PATH" (concat (getenv "PATH") (substitute-in-file-name ":$HOME/bin")))
+(setq exec-path (append exec-path '(substitute-in-file-name "$HOME/bin")))
+
+;; golang
 (setenv "GOPATH"     (substitute-in-file-name "$HOME/go"))
-(setenv "PROXY_REPO" (substitute-in-file-name "$HOME/null/.proxy-repo"))
 (setenv "GHQ_ROOT"   (substitute-in-file-name "$HOME/wd"))
 
+;; rust
 (setenv "PATH" (concat (getenv "PATH") ":" (expand-file-name "~/.cargo/bin")))
 (setq exec-path (append exec-path (list (expand-file-name "~/.cargo/bin"))))
 
-;; rust 
-;; (setenv "PATH" (concat (getenv "PATH") ":~/.cargo/bin"))
-;; (setq exec-path (append exec-path '("~/.cargo/bin")))
+(setenv "PROXY_REPO" (substitute-in-file-name "$HOME/null/.proxy-repo"))
 
 
 (provide 'init-exec-path)
