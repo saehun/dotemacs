@@ -24,8 +24,18 @@
 (setenv "PATH" (concat (getenv "PATH") ":" (expand-file-name "~/.cargo/bin")))
 (setq exec-path (append exec-path (list (expand-file-name "~/.cargo/bin"))))
 
+;; haskell 
+(setenv "PATH" (concat (getenv "PATH") ":" (expand-file-name "~/.ghcup/bin")))
+(setq exec-path (append exec-path (list (expand-file-name "~/.ghcup/bin"))))
+
+;; haskell
+(setenv "PATH" (concat (getenv "PATH") ":" (expand-file-name "~/.cabal/bin")))
+(setq exec-path (append exec-path (list (expand-file-name "~/.cabal/bin"))))
+
 (setenv "PROXY_REPO" (substitute-in-file-name "$HOME/null/.proxy-repo"))
 
 
 (provide 'init-exec-path)
 ;;; init-exec-path.el ends here
+
+

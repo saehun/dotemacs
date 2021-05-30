@@ -28,7 +28,7 @@
 ;;----------------------------------------------------------------------------
 (global-set-key (kbd "C-s") 'save-buffer)            ;; save
 (global-set-key (kbd "s-w") 'kill-this-buffer)       ;; close의 의미
-(global-set-key (kbd "C-`") 'other-window)       ;; Switch window
+(global-set-key (kbd "C-`") 'other-window-treemacs)       ;; Switch window
 (global-set-key (kbd "C-s-`") 'prev-window)       ;; Switch window
 (global-set-key (kbd "C-~") 'copy-buffers-in-windows) ;; copy-buffers-in-windows
 (global-set-key (kbd "C-s-~") 'copy-buffers-in-prev-windows) ;; copy-buffers-in-prev-windows

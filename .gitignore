@@ -33,3 +33,5 @@ trash
 bookmarks
 projectile-bookmarks.eld
 
+rust-playground
+.rust-auto-use-cache

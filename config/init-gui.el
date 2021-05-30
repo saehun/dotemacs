@@ -13,7 +13,16 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1) 
-(set-frame-font "Iosevka Term:pixelsize=13:weight=light:slant=normal:width=normal:spacing=100:scalable=true")
+
+;; font
+;; (set-frame-font "Iosevka Term:pixelsize=13:weight=light:slant=normal:width=normal:spacing=100:scalable=true")
+(set-frame-font "Iosevka Term:pixelsize=14:weight=normal:slant=normal:width=normal:spacing=100:scalable=true")
+;; (set-frame-font "SF Mono:pixelsize=14:weight=light:slant=normal:width=normal:spacing=100:scalable=true")
+;; (set-frame-font "")
+
+
+    ;; -*--light-normal-normal-*-*-*-*-*-m-0-iso10646-1
+
 (setq-default line-spacing 0.12)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)

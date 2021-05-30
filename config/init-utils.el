@@ -311,6 +311,15 @@
   (interactive)
   (call-process (substitute-in-file-name "$HOME/.oh-my-zsh/custom/plugins/git-open/git-open") nil standard-output nil))
 
+;;----------------------------------------------------------------------------
+;; Other window trreemacs 
+;;----------------------------------------------------------------------------
+(defun other-window-treemacs ()
+  (interactive)
+  (progn
+    (other-window 1)
+    (if (eq major-mode 'treemacs-mode) (other-window 1))))
+
 
 (provide 'init-utils)
 ;;; init-utils.el ends here

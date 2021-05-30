@@ -3,6 +3,7 @@
 ;;; Code:
 
 (when (maybe-require-package 'haskell-mode)
+  (maybe-require-package 'lsp-haskell)
   (with-eval-after-load "haskell-mode"
     ;; This changes the evil "O" and "o" keys for haskell-mode to make sure that
     ;; indentation is done correctly. See
@@ -25,19 +26,14 @@
       "O" 'haskell-evil-open-above)
   )
 
-  (use-package dante
-    :ensure t
-    :after haskell-mode
-    :commands 'dante-mode
-    :init
-    (add-hook 'haskell-mode-hook 'dante-mode))
+  ;; (when (maybe-require-package 'flycheck-haskell)
+  ;;   (add-hook 'haskell-mode-hook #'flycheck-haskell-setup))
+  (custom-set-variables
+    '(haskell-stylish-on-save t))
 
-  (when (maybe-require-package 'flycheck-haskell)
-    (add-hook 'haskell-mode-hook #'flycheck-haskell-setup))
+  (add-hook 'haskell-mode-hook #'lsp)
+  (add-hook 'haskell-literate-mode-hook #'lsp)) 
 
-    (require 'dante)
-    (flycheck-add-next-checker 'haskell-dante '(warning . haskell-hlint) 'append)
-  )
 
 (provide 'init-haskell)
 ;;; init-haskell.el ends here
