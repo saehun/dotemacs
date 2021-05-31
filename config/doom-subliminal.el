@@ -172,13 +172,3 @@ determine the exact padding."
   ;; --- extra variables ---------------------
   ;; ()
   )
-
-
-;; at doom-themes-/doom-themes-autoloads.el
-;; ;;;***
-;; 
-;; ;;;### (autoloads nil "doom-subliminal-theme" "doom-subliminal-theme.el"
-;; ;;;;;;  (0 0 0 0))
-;; ;;; Generated autoloads from doom-subliminal-theme.el
-
-;; (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "doom-subliminal-theme" '("doom-subliminal")))
