@@ -11,11 +11,34 @@
   (when (maybe-require-package 'ace-jump-mode)
     '(ace-jump-mode-enable-mark-sync))
 
-  (when (maybe-require-package 'evil-textobj-anyblock)))
+  (when (maybe-require-package 'evil-textobj-anyblock))
+
+  (evil-define-operator wrap-with-parens (beg end)
+    (goto-char beg)
+    (insert "(")
+    (goto-char (1+ end))
+    (insert ")"))
+
+  (evil-define-key 'visual global-map
+    (kbd ")") 'wrap-with-parens)
+
+  (evil-define-operator wrap-with-quote (beg end)
+    (goto-char beg)
+    (insert "'")
+    (goto-char (1+ end))
+    (insert "'")
+    (goto-char end))
+
+  (evil-define-key 'visual global-map
+    (kbd "'") 'wrap-with-quote)
+
+
+  )
 
 ;; http://blog.binchen.org/posts/enhance-emacs-evil-global-markers.html
 (require 'evil)
 (defvar evil-global-markers-history nil)
+(setq evil-kill-on-visual-paste nil)
 (defun my-forward-line (lnum)
   "Forward LNUM lines."
   (setq lnum (string-to-number lnum))
@@ -82,6 +105,7 @@
                                (linenum (match-string-no-properties 2 m)))
                           (find-file file)
                           (my-forward-line linenum))))))
+
 
 ;; disable evil mouse motion for performance issue
 ;; https://stackoverflow.com/questions/46513910/emacs-evil-mode-binding-mouse-event
