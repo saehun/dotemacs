@@ -11,6 +11,7 @@
 (require 'init-utils)
 (require 'init-site-lisp)
 (require 'init-elpa)
+(require 'init-dired)
 (require 'init-exec-path)
 
 ;;----------------------------------------------------------------------------

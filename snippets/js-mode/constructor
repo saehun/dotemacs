@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: constructor
+# key: co
+# group: es6
+# --
+constructor($0) {} 

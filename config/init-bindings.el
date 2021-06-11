@@ -50,7 +50,7 @@
 
 (global-set-key (kbd "C-s-n") 'eyebrowse-switch-to-window-config)
 (global-set-key (kbd "C-c d") 'xref-find-definitions)
-(global-set-key (kbd "C-c s") 'xref-pop-marker-stack)
+(global-set-key (kbd "C-c C-d") 'xref-pop-marker-stack)
 (global-set-key (kbd "C-c t") 'treemacs)
 (global-set-key (kbd "C-c C-p") 'counsel-open-project)
 
@@ -138,6 +138,7 @@
 (define-key tide-mode-map (kbd "M-s-r") 'tide-restart-server)
 (define-key tide-mode-map (kbd "C-c f") 'tide-refactor)
 (define-key tide-mode-map (kbd "C-c d") 'tide-jump-to-definition)
+(define-key tide-mode-map (kbd "C-c C-d") 'xref-pop-marker-stack)
 (define-key tide-mode-map (kbd "C-c C-r") 'tide-rename-symbol)
 (define-key tide-mode-map (kbd "C-c C-f") 'tide-fix)
 (define-key tide-mode-map (kbd "C-c C-e") 'tide-project-errors)
@@ -185,7 +186,6 @@
 (define-key rustic-mode-map (kbd "C-c d") 'lsp-find-definition)
 (define-key rustic-mode-map (kbd "C-c r") 'lsp-find-references)
 (define-key rustic-mode-map (kbd "C-c h") 'lsp-describe-thing-at-point)
-(define-key rustic-mode-map (kbd "C-c s") 'xref-pop-marker-stack)
 (define-key rustic-mode-map (kbd "C-c C-f") 'lsp-execute-code-action)
 
 
