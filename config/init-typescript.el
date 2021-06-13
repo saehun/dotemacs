@@ -10,7 +10,8 @@
       (flycheck-mode +1)
       (setq flycheck-check-syntax-automatically '(save mode-enabled))
       (setq tide-completion-show-source t)
-      (setq tide-completion-ignore-case t)
+      (setq tide-completion-ignore-case nil)
+      (setq tide-node-flags '("--max-old-space-size=8192"))
       ;; (setq tide-tsserver-executable "node_modules/typescript/bin/tsserver")
 
       (eldoc-mode +1)
@@ -25,8 +26,8 @@
             comment-continue    " * "
             comment-empty-lines t)
 
-
       (company-mode +1))
+
 
 
     ;; Yarn2 support
@@ -156,17 +157,17 @@ temporary and indirect buffers."
 
   ;; enable prettier mode
   ;; https://github.com/prettier/prettier-emacs/issues/29
-  (when (maybe-require-package 'prettier-js)
-    (defun maybe-use-prettier ()
-      "Enable prettier-js-mode if an rc file is located."
-      (if (or
-            (locate-dominating-file default-directory ".prettierrc.json")
-            (locate-dominating-file default-directory ".prettierrc.js")
-            (locate-dominating-file default-directory ".prettierrc"))
-          (prettier-js-mode)))
-
-    (add-hook 'web-mode-hook 'maybe-use-prettier)
-    (add-hook 'js2-mode-hook 'maybe-use-prettier))
+;;  (when (maybe-require-package 'prettier-js)
+;;    (defun maybe-use-prettier ()
+;;      "Enable prettier-js-mode if an rc file is located."
+;;      (if (or
+;;            (locate-dominating-file default-directory ".prettierrc.json")
+;;            (locate-dominating-file default-directory ".prettierrc.js")
+;;            (locate-dominating-file default-directory ".prettierrc"))
+;;          (prettier-js-mode)))
+;;
+;;    (add-hook 'web-mode-hook 'maybe-use-prettier)
+;;    (add-hook 'js2-mode-hook 'maybe-use-prettier))
 )
 
 (provide 'init-typescript)

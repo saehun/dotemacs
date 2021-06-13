@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: new promise
+# key: Promise
+# group: es6
+# --
+Promise((resolve, reject) => {
+  $0
+});

@@ -321,6 +321,22 @@
     (if (eq major-mode 'treemacs-mode) (other-window 1))))
 
 
+;;----------------------------------------------------------------------------
+;; Safe-invoke-prettier
+;;----------------------------------------------------------------------------
+(defun safe-invoke-prettier ()
+  "Enable prettier-js-mode if an rc file is located."
+  (interactive)
+  (require 'prettier-js)
+  (if (or
+        (locate-dominating-file default-directory ".prettierrc.json")
+        (locate-dominating-file default-directory ".prettierrc.js")
+        (locate-dominating-file default-directory ".prettierrc"))
+    (progn (prettier-js) (save-buffer))))
+
+
+
+
 (provide 'init-utils)
 ;;; init-utils.el ends here
 

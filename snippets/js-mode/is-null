@@ -1,6 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: const declaration
-# key: c
+# name: is-null
+# key: ==
 # group: es6
 # --
-const $0
+== null

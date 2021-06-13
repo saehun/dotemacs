@@ -1,6 +1,8 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: const declaration
-# key: c
+# name: jest it
+# key: it(
 # group: es6
 # --
-const $0
+it('$0', () => {
+  
+}

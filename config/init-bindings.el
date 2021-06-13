@@ -23,10 +23,11 @@
 (global-set-key (kbd "C-s-m") 'counsel-evil-goto-global-marker)
 
 
+
 ;;----------------------------------------------------------------------------
 ;; Buffer and windows
 ;;----------------------------------------------------------------------------
-(global-set-key (kbd "C-s") 'save-buffer)            ;; save
+;;(global-set-key (kbd "C-s") 'save-buffer)            ;; save
 (global-set-key (kbd "s-w") 'kill-this-buffer)       ;; close의 의미
 (global-set-key (kbd "C-`") 'other-window-treemacs)       ;; Switch window
 (global-set-key (kbd "C-s-`") 'prev-window)       ;; Switch window
@@ -144,6 +145,7 @@
 (define-key tide-mode-map (kbd "C-c C-e") 'tide-project-errors)
 (define-key tide-mode-map (kbd "C-c s") 'tide-jump-back)
 (define-key tide-mode-map (kbd "C-c h") 'tide-documentation-at-point)
+(define-key tide-mode-map (kbd "s-s") 'safe-invoke-prettier)
 (define-key tide-references-mode-map (kbd "<return>") 'tide-goto-reference)
 
 ;;----------------------------------------------------------------------------
