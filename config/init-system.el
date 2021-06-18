@@ -1,9 +1,9 @@
 (defconst *spell-check-support-enabled* nil) ;; Enable with t if you prefer
 
 ;;----------------------------------------------------------------------------
-;; Adjust garbage collection thresholds during startup, and thereafter
+;; Adjust garbage collection thresholds during startup, and thereafter // 8GB
 ;;----------------------------------------------------------------------------
-(setq gc-cons-threshold (* 128 1024 1024))
+(setq gc-cons-threshold (* 8 1024 1024 1024))
 
 ;;----------------------------------------------------------------------------
 ;; Set path

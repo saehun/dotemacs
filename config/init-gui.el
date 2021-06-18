@@ -16,9 +16,10 @@
 
 ;; font
 ;; (set-frame-font "Iosevka Term:pixelsize=13:weight=light:slant=normal:width=normal:spacing=100:scalable=true")
-(set-frame-font "Iosevka Term:pixelsize=14:weight=normal:slant=normal:width=normal:spacing=100:scalable=true")
 ;; (set-frame-font "SF Mono:pixelsize=14:weight=light:slant=normal:width=normal:spacing=100:scalable=true")
 ;; (set-frame-font "")
+(add-to-list 'default-frame-alist
+             '(font . "Iosevka Term:pixelsize=14:weight=normal:slant=normal:width=normal:spacing=100:scalable=true"))
 
 
     ;; -*--light-normal-normal-*-*-*-*-*-m-0-iso10646-1
