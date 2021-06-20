@@ -1,8 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: jest it
-# key: ji
+# name: jest expect
+# key: je
 # group: es6
 # --
-it('$1', () => {
-  $0
-})
+expect($0)

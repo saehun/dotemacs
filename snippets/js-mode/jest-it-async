@@ -1,8 +1,8 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: jest it
-# key: ji
+# name: jest it async
+# key: jia
 # group: es6
 # --
-it('$1', () => {
+it('$1', async () => {
   $0
 })
