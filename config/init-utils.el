@@ -332,7 +332,8 @@
         (locate-dominating-file default-directory ".prettierrc.json")
         (locate-dominating-file default-directory ".prettierrc.js")
         (locate-dominating-file default-directory ".prettierrc"))
-    (progn (prettier-js) (save-buffer))))
+    (progn (prettier-js) (save-buffer))
+    (save-buffer)))
 
 
 
