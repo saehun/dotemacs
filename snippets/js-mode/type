@@ -1,7 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: type keyword
-# key: ty
+# key: t
 # group: es6
 # --
-type $0 = {
-}
+type $1 = $0

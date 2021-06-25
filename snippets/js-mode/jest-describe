@@ -1,8 +1,8 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: jest it
-# key: ji
+# name: jest describe
+# key: jd
 # group: es6
 # --
-it('$1', () => {
+describe('$1', () => {
   $0
 })

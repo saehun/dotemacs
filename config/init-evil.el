@@ -22,6 +22,9 @@
   (evil-define-key 'visual global-map
     (kbd ")") 'wrap-with-parens)
 
+  (evil-define-key 'visual global-map
+    (kbd "0") 'wrap-with-parens)
+
   (evil-define-operator wrap-with-quote (beg end)
     (goto-char beg)
     (insert "'")
