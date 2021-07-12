@@ -19,11 +19,6 @@
     (goto-char (1+ end))
     (insert ")"))
 
-  (evil-define-key 'visual global-map
-    (kbd ")") 'wrap-with-parens)
-
-  (evil-define-key 'visual global-map
-    (kbd "0") 'wrap-with-parens)
 
   (evil-define-operator wrap-with-quote (beg end)
     (goto-char beg)
@@ -32,8 +27,32 @@
     (insert "'")
     (goto-char end))
 
-  (evil-define-key 'visual global-map
-    (kbd "'") 'wrap-with-quote)
+  (evil-define-operator wrap-with-brace (beg end)
+    (goto-char beg)
+    (insert "{")
+    (goto-char (1+ end))
+    (insert "}")
+    (goto-char end))
+
+  (evil-define-operator wrap-with-bracket (beg end)
+    (goto-char beg)
+    (insert "[")
+    (goto-char (1+ end))
+    (insert "]")
+    (goto-char end))
+
+  (evil-define-operator wrap-with-backtick (beg end)
+    (goto-char beg)
+    (insert "`")
+    (goto-char (1+ end))
+    (insert "`")
+    (goto-char end))
+
+  (evil-define-key 'visual global-map (kbd ")") 'wrap-with-parens)
+  (evil-define-key 'visual global-map (kbd "'") 'wrap-with-quote)
+  (evil-define-key 'visual global-map (kbd "}") 'wrap-with-brace)
+  (evil-define-key 'visual global-map (kbd "]") 'wrap-with-bracket)
+  (evil-define-key 'visual global-map (kbd "`") 'wrap-with-backtick)
 
 
   )
