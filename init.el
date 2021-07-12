@@ -38,6 +38,7 @@
 ;;----------------------------------------------------------------------------
 (require 'init-terraform)
 (require 'init-typescript)
+(require 'init-tide-yarn2)
 (require 'init-javascript)
 (require 'init-markdown)
 (require 'init-go)
