@@ -238,10 +238,9 @@
 
 
 ;;----------------------------------------------------------------------------
-;; ghq-open
+;; ghq-util
 ;;----------------------------------------------------------------------------
-(defun ghq-open ()
-  (interactive)
+(defun ghq-util (action revision)
   (let*
     ((ghq-root (concat (expand-file-name "~") "/wd"))
       (is-inside-ghq (s-prefix? ghq-root (expand-file-name default-directory)))
@@ -270,17 +269,38 @@
                   (save-excursion
                     (goto-char (region-end))
                     (- (line-number-at-pos) 1)))
-                (format "#L%d" (line-number-at-pos))))))
-        (browse-url
-          (concat
-            "https://"
-            git-url
-            "/tree/"
-            (string-trim (shell-command-to-string "git rev-parse HEAD"))
-            "/"
-            git-file-path
-            line-number))))))
+                (format "#L%d" (line-number-at-pos)))))
+          (url (concat "https://" git-url "/tree/" revision "/" git-file-path line-number)))
+        (funcall action url)
+        (message url)))))
 
+(defun ghq-open ()
+  (interactive)
+  "Open current line in browser"
+  (ghq-util
+    'browse-url
+    (string-trim (shell-command-to-string "git rev-parse HEAD"))))
+
+(defun ghq-copy ()
+  (interactive)
+  "Copy git url of current line"
+  (ghq-util
+    'kill-new
+    (string-trim (shell-command-to-string "git rev-parse HEAD"))))
+
+(defun ghq-open-master ()
+  (interactive)
+  "Open current line in browser"
+  (ghq-util
+    'browse-url
+    "master"))
+
+(defun ghq-copy-master ()
+  (interactive)
+  "Copy git url of current line"
+  (ghq-util
+    'kill-new
+    "master"))
 
 ;;----------------------------------------------------------------------------
 ;; Switch to Last Buffer
@@ -336,7 +356,26 @@
     (save-buffer)))
 
 
+;;----------------------------------------------------------------------------
+;; tide-hl-identifier-and-eldoc
+;;----------------------------------------------------------------------------
+(defun tide-hl-identifier-and-eldoc ()
+  "Enable prettier-js-mode if an rc file is located."
+  (interactive)
+  (require 'eldoc)
+  (require 'tide)
+  (progn
+    (tide-hl-identifier)
+    (eldoc)))
 
+;;----------------------------------------------------------------------------
+;; copy the current path
+;;----------------------------------------------------------------------------
+(defun path-copy ()
+  "Copy the current directory path"
+  (interactive)
+  (kill-new  default-directory)
+  (message (concat "(copied) " default-directory)))
 
 (provide 'init-utils)
 ;;; init-utils.el ends here
