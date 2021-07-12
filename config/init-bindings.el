@@ -141,11 +141,10 @@
 (define-key tide-mode-map (kbd "M-s-r") 'tide-restart-server)
 (define-key tide-mode-map (kbd "C-c f") 'tide-refactor)
 (define-key tide-mode-map (kbd "C-c d") 'tide-jump-to-definition)
-(define-key tide-mode-map (kbd "C-c C-d") 'xref-pop-marker-stack)
+(define-key tide-mode-map (kbd "C-c s") 'xref-pop-marker-stack)
 (define-key tide-mode-map (kbd "C-c C-r") 'tide-rename-symbol)
 (define-key tide-mode-map (kbd "C-c C-f") 'tide-fix)
 (define-key tide-mode-map (kbd "C-c C-e") 'tide-project-errors)
-(define-key tide-mode-map (kbd "C-c s") 'tide-jump-back)
 (define-key tide-mode-map (kbd "C-c h") 'tide-documentation-at-point)
 (define-key tide-mode-map (kbd "s-s") 'safe-invoke-prettier)
 (define-key tide-references-mode-map (kbd "<return>") 'tide-goto-reference)
@@ -160,11 +159,11 @@
 (define-key web-mode-map (kbd "C-c C-e") 'web-mode-element-select)
 (define-key web-mode-map (kbd "C-c C-w") 'web-mode-tag-end)
 ;; (define-key web-mode-map (kbd "C-c C-r") 'web-mode-element-rename)
-(define-key web-mode-map (kbd "C-c C-d") 'web-mode-attribute-kill)
-(define-key web-mode-map (kbd "C-c f") 'fold-active-region)
+;; (define-key web-mode-map (kbd "C-c C-d") 'web-mode-attribute-kill)
+;; (define-key web-mode-map (kbd "C-c f") 'fold-active-region)
 
-(global-set-key (kbd "s-[") 'er/contract-region)        ;; expand region plugin
-(global-set-key (kbd "s-]") 'er/expand-region)        ;; expand region plugin
+(define-key evil-visual-state-map (kbd "v") 'er/expand-region)        ;; expand region plugin
+;;(global-set-key (kbd "s-]") 'er/expand-region)        ;; expand region plugin
 
 ;; (global-set-key (kbd "s-[") 'tabbar-move-current-tab-one-place-left)
 ;; (global-set-key (kbd "s-]") 'tabbar-move-current-tab-one-place-right)
