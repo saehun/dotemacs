@@ -36,6 +36,7 @@
 (global-set-key (kbd "s-b") 'ibuffer)            ;; list buffer
 (global-set-key (kbd "s-t")  'new-empty-buffer)
 (global-set-key (kbd "M-t")  'treemacs)
+(global-set-key (kbd "M-s-t")  'treemacs-add-project)
 (global-set-key (kbd "C-c \`")  'window-swap-states)
 (global-set-key (kbd "<C-S-tab>") 'switch-to-last-buffer)
 (global-set-key (kbd "<C-tab>") 'quit-window)
@@ -54,7 +55,6 @@
 (global-set-key (kbd "C-s-n") 'eyebrowse-switch-to-window-config)
 (global-set-key (kbd "C-c d") 'xref-find-definitions)
 (global-set-key (kbd "C-c C-d") 'xref-pop-marker-stack)
-(global-set-key (kbd "C-c t") 'treemacs)
 (global-set-key (kbd "C-c C-p") 'counsel-open-project)
 
 (require 'json-mode)

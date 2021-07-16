@@ -7,9 +7,12 @@
 (when (maybe-require-package 'treemacs)
   (maybe-require-package 'treemacs-projectile)
 
+  (setq treemacs-width 50)
+  (setq treemacs--width-is-locked nil)
+
   (treemacs-resize-icons 18))
   
   
 
 (provide 'init-treemacs)
-;;; init-terraform.el ends here
+;;; init-treemacs.el ends here
