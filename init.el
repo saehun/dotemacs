@@ -47,6 +47,7 @@
 (require 'init-restclient)
 (require 'init-rust)
 ;; (require 'init-cl)
+(require 'init-clojure)
 
 
 ;;----------------------------------------------------------------------------
@@ -56,8 +57,8 @@
 (require 'init-misc)
 (require 'init-custom-fns)
 (require 'init-bindings)
+(require 'init-wakatime)
 
-(require 'init-clojure)
 
 (require 'node-string)
 (require 'node-binding)
