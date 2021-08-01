@@ -12,5 +12,10 @@
   
   (setq wakatime-cli-path "/usr/local/bin/wakatime"))
 
+(defun waka ()
+  "Open wakatime-dashboard in browser."
+  (interactive)
+  (browse-url "https://wakatime.com/dashboard"))
+
 (provide 'init-wakatime)
 ;;; init-wakatime.el ends here
