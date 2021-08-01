@@ -206,5 +206,6 @@
 ;;----------------------------------------------------------------------------
 (global-set-key (kbd "C-c C-o") 'node/counsel-open)
 (define-key evil-normal-state-map (kbd "s-i") 'node/import)
+(define-key evil-insert-state-map (kbd "s-i") 'node/import)
 
 (provide 'init-bindings)
