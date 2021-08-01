@@ -54,7 +54,7 @@
 
 (global-set-key (kbd "C-s-n") 'eyebrowse-switch-to-window-config)
 (global-set-key (kbd "C-c d") 'xref-find-definitions)
-(global-set-key (kbd "C-c C-d") 'xref-pop-marker-stack)
+(global-set-key (kbd "C-c s") 'xref-pop-marker-stack)
 (global-set-key (kbd "C-c C-p") 'counsel-open-project)
 
 (require 'json-mode)
@@ -64,9 +64,11 @@
 ;; Evil
 ;;----------------------------------------------------------------------------
 (require 'evil)
+
 (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
 (define-key evil-motion-state-map (kbd "C-u") 'evil-scroll-up)
 (define-key evil-normal-state-map (kbd "SPC") 'ace-jump-word-mode)
+(define-key evil-normal-state-map (kbd "TAB") 'evil-jump-backward)
 (define-key evil-normal-state-map (kbd "g s") 'magit-status)
 (define-key evil-normal-state-map (kbd "g a") 'magit-stage-file)
 (define-key evil-normal-state-map (kbd "g c") 'magit-commit-current-file)
@@ -203,5 +205,6 @@
 ;; node-bindings
 ;;----------------------------------------------------------------------------
 (global-set-key (kbd "C-c C-o") 'node/counsel-open)
+(define-key evil-normal-state-map (kbd "s-i") 'node/import)
 
 (provide 'init-bindings)

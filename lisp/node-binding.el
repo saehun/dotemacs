@@ -123,5 +123,25 @@ to choose a directory starting with `directory-to-start-in'"
   (interactive)
   (post-message-node-with-env "git-open-node-modules"))
 
+(require 'find-file-in-project)
+(defun node/import ()
+  "Import for javascript project."
+  (interactive)
+  (post-message-node-with-env
+    "import-from-project"
+    (format "%s" (ffip-project-search "" nil))))
+
+(require 'evil)
+(defun node-insert-import (path)
+  "Insert import statement."
+  (progn
+    (evil-set-jump)
+    (goto-char 0)
+    (insert (concat "import {  } from '" path "'\n"))
+    (goto-char 10)
+    (evil-insert-state)
+    (company-complete)))
+
+
 (provide 'node-binding)
 ;;; node-binding.el ends here

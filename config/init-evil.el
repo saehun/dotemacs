@@ -19,7 +19,6 @@
     (goto-char (1+ end))
     (insert ")"))
 
-
   (evil-define-operator wrap-with-quote (beg end)
     (goto-char beg)
     (insert "'")
