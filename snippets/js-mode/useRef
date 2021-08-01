@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name : useRef
+# key: urf
+# --
+const $0 = useRef<HTMLInputElement>(null);

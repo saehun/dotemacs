@@ -118,5 +118,10 @@ to choose a directory starting with `directory-to-start-in'"
   (interactive)
   (post-message-node-with-env "cookie-to-object"))
 
+(defun git-open-node-modules ()
+  "Open git page with given package name around the cursor."
+  (interactive)
+  (post-message-node-with-env "git-open-node-modules"))
+
 (provide 'node-binding)
 ;;; node-binding.el ends here
