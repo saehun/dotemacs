@@ -6,7 +6,7 @@
   (global-wakatime-mode)
   (let ((api-key
           (f-read-text
-            (substitute-in-file-name (expand-file-name "~/wd/github.com/minidonut/dotemacs/.credentials/wakatime-api-key"))
+            (substitute-in-file-name (expand-file-name "~/.credentials/wakatime-api-key"))
             'utf-8)))
     (setq wakatime-api-key api-key))
   
