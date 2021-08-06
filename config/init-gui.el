@@ -89,8 +89,15 @@
     doom-themes-enable-italic t)
   ;; (require 'doom-subliminal)
   ;; (load-theme 'doom-subliminal t))
-  (load-theme 'doom-dark+ t))
+  
+    (load-theme
+      (if (string= (invocation-name) "emacs")
+        'doom-oceanic-next
+        'doom-dark+)
+      t))
 ;; (maybe-require-package 'gruber-darker-theme)
+
+(if (string= (invocation-name) "emacs") (server-start))
 
 
 ;;----------------------------------------------------------------------------
