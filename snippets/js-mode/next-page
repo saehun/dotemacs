@@ -1,0 +1,10 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name : nextjs page
+# group : React  
+# --
+function ${1:Page}() {
+  return <div></div>;
+}
+
+export default $1;
+  

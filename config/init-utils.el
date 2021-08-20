@@ -377,6 +377,32 @@
   (kill-new  default-directory)
   (message (concat "(copied) " default-directory)))
 
+;;----------------------------------------------------------------------------
+;; Node insert import
+;;----------------------------------------------------------------------------
+(defun node-insert-import-if-not-found (symbol package-name)
+  "Add import statement at the top of the js/ts buffer, if given symbol not exists"
+  (if (save-excursion
+        (save-match-data
+          (goto-char (point-min))
+          (re-search-forward
+            (format "import {[\na-zA-Z0-9,[:space:]]+%s[\na-zA-Z0-9,[:space:]]+} from '%s'" symbol package-name)
+            nil
+            t)))
+    (message "skip import")
+    (save-excursion
+      (goto-char 0)
+      (insert (concat "import { " symbol " } from '" package-name "';\n")))))
+
+;;----------------------------------------------------------------------------
+;; Node insert import
+;;----------------------------------------------------------------------------
+(defun node-insert-import (symbol package-name)
+  "Add import statement at the top of the js/ts buffer"
+  (save-excursion
+    (goto-char 0)
+    (insert (concat "import { " symbol " } from '" package-name "';\n"))))
+
 (provide 'init-utils)
 ;;; init-utils.el ends here
 

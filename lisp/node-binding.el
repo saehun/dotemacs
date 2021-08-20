@@ -137,7 +137,7 @@ to choose a directory starting with `directory-to-start-in'"
   (progn
     (evil-set-jump)
     (goto-char 0)
-    (insert (concat "import {  } from '" path "'\n"))
+    (insert (concat "import {  } from '" path "';\n"))
     (goto-char 10)
     (evil-insert-state)
     (company-complete)))

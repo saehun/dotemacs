@@ -57,6 +57,7 @@
 (global-set-key (kbd "C-c s") 'xref-pop-marker-stack)
 (global-set-key (kbd "C-c C-p") 'counsel-open-project)
 
+;; overrides
 (require 'json-mode)
 (define-key json-mode-map (kbd "C-c C-p") 'counsel-open-project)
 
@@ -149,6 +150,7 @@
 (define-key tide-mode-map (kbd "C-c C-e") 'tide-project-errors)
 (define-key tide-mode-map (kbd "C-c h") 'tide-documentation-at-point)
 (define-key tide-mode-map (kbd "s-s") 'safe-invoke-prettier)
+(define-key tide-mode-map (kbd "s-i") 'node/import)
 (define-key tide-references-mode-map (kbd "<return>") 'tide-goto-reference)
 
 ;;----------------------------------------------------------------------------
@@ -205,7 +207,14 @@
 ;; node-bindings
 ;;----------------------------------------------------------------------------
 (global-set-key (kbd "C-c C-o") 'node/counsel-open)
-(define-key evil-normal-state-map (kbd "s-i") 'node/import)
-(define-key evil-insert-state-map (kbd "s-i") 'node/import)
+
+
+;;----------------------------------------------------------------------------
+;; markdown-bindings
+;;----------------------------------------------------------------------------
+(require 'markdown-mode)
+(define-key markdown-mode-map (kbd "C-c C-p") 'counsel-open-project)
+(define-key markdown-mode-map (kbd "C-c d") 'markdown-jump)
+(define-key markdown-mode-map (kbd "s-i") 'ffip-find-relative-path)
 
 (provide 'init-bindings)
