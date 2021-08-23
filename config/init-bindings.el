@@ -41,6 +41,7 @@
 (global-set-key (kbd "<C-S-tab>") 'switch-to-last-buffer)
 (global-set-key (kbd "<C-tab>") 'quit-window)
 (global-set-key (kbd "M-s-n") 'delete-frame)
+(global-set-key (kbd "M-z") 'writeroom-mode)
 
 ;;(global-set-key (kbd "s-{") 'awesome-tab-backward-tab)
 ;;(global-set-key (kbd "s-}") 'awesome-tab-forward-tab)

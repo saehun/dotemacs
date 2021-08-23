@@ -1,0 +1,21 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: Markdown frontmatter for blog
+# --
+---
+title:  추상화된 에디터
+date: 2021-02-03T00:00:00+09:00
+category: article
+tags: ["emacs","essay"]
+stage: published
+description: 에디터란 무엇인가
+---
+
+\`\`\`toc
+# This code block gets replaced with the TOC
+exclude: Table of Contents
+tight: false,
+from-heading: 2
+to-heading: 6
+\`\`\`
+
+$0

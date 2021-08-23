@@ -403,6 +403,16 @@
     (goto-char 0)
     (insert (concat "import { " symbol " } from '" package-name "';\n"))))
 
+;;----------------------------------------------------------------------------
+;; Show memory usage
+;;----------------------------------------------------------------------------
+(defun memory-usage ()
+  "Show memory usage."
+  (interactive)
+  (message "%s" (shell-command-to-string (concat "ps -p " (format "%s" (emacs-pid)) " -xm -o %mem,rss,comm"))))
+
 (provide 'init-utils)
+
 ;;; init-utils.el ends here
+
 

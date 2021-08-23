@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: Tag Comment
+# key: <t
+# --
+<!-- tags: $0 -->

@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: Answer
+# key: A
+# --
+_Answer._ $0

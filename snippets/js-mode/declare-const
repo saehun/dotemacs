@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: declare const
+# key: dc
+# group: es6
+# --
+declare const $0
