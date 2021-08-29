@@ -132,7 +132,7 @@ to choose a directory starting with `directory-to-start-in'"
     (format "%s" (ffip-project-search "" nil))))
 
 (require 'evil)
-(defun node-insert-import (path)
+(defun node-insert-import-and-complete (path)
   "Insert import statement."
   (progn
     (evil-set-jump)

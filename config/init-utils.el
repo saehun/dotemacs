@@ -411,6 +411,37 @@
   (interactive)
   (message "%s" (shell-command-to-string (concat "ps -p " (format "%s" (emacs-pid)) " -xm -o %mem,rss,comm"))))
 
+
+(defun airpod ()
+  "Display airpod status."
+  (interactive)
+  (let ((script
+          "#!/bin/bash
+# AirPods Battery CLI, Version 2.3
+# Contributors: duk242, ankushg, spetykowski, danozdotnet
+# Released under the MIT License.
+
+OUTPUT='🎧';
+BLUETOOTH_DEFAULTS=$(defaults read /Library/Preferences/com.apple.Bluetooth); SYSTEM_PROFILER=$(system_profiler SPBluetoothDataType 2>/dev/null)
+MAC_ADDR=$(grep -b2 \"Minor Type: Headphones\"<<<\"${SYSTEM_PROFILER}\"|awk '/Address/{print $3}')
+# echo $MAC_ADDR 04-FE-A1-4A-59-77
+# MAC_ADDR=\"b8-5d-0a-56-97-c4\"
+CONNECTED=$(grep -ia6 \"${MAC_ADDR}\"<<<\"${SYSTEM_PROFILER}\"|awk '/Connected: Yes/{print 1}')
+BLUETOOTH_DATA=$(grep -ia6 '\"'\"${MAC_ADDR}\"'\"'<<<\"${BLUETOOTH_DEFAULTS}\")
+BATTERY_LEVELS=(\"BatteryPercentCombined\" \"HeadsetBattery\" \"BatteryPercentSingle\" \"BatteryPercentCase\" \"BatteryPercentLeft\" \"BatteryPercentRight\")
+
+if [[ \"${CONNECTED}\" ]]; then
+  for I in \"${BATTERY_LEVELS[@]}\"; do
+    declare -x \"${I}\"=\"$(awk -v pat=\"${I}\" '$0~pat{gsub (\";\",\"\"); print $3 }'<<<\"${BLUETOOTH_DATA}\")\"
+    [[ ! -z \"${!I}\" ]] && OUTPUT=\"${OUTPUT} $(awk '/BatteryPercent/{print substr($0,15,1)\": \"}'<<<\"${I}\")${!I}%\"
+  done
+  printf \"%s\\n\" \"${OUTPUT}\"
+else
+  printf \"%s Not Connected\\n\" \"${OUTPUT}\"
+fi
+"))
+    (shell-command (format "bash -c %s" (shell-quote-argument script)))))
+
 (provide 'init-utils)
 
 ;;; init-utils.el ends here
