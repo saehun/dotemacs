@@ -26,6 +26,10 @@
   (interactive)
   (find-file (f-join "~" "null" "todo.md")))
 
+(defun open-til ()
+  "Open til repository."
+  (interactive)
+  (find-file (f-join "~" "wd" "github.com" "minidonut" "TIL" "Docs")))
 
 (defun jest/copy-command-for-current-file ()
   "Copy jest command for currnet file."

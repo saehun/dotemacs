@@ -128,7 +128,8 @@
 (global-set-key (kbd "s-r") 'shell-command)          ;; run command
 (global-set-key (kbd "C-SPC") 'company-complete)
 (global-set-key (kbd "C-x C-e") 'counsel-shell-command)
-(global-set-key (kbd "s-1") 'open-todo)
+(global-set-key (kbd "s-1") 'open-til)
+(global-set-key (kbd "C-s-1") 'open-todo)
 
 
 ;;----------------------------------------------------------------------------
