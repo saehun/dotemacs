@@ -1,6 +1,7 @@
 # -*- mode: snippet -*-
 # name : useMemo
 # key: urm
+# expand-env: ((yas-after-exit-snippet-hook (lambda () (node-insert-import-if-not-found "useMemo" "react"))))
 # --
 const $0 = useMemo(() => {
   

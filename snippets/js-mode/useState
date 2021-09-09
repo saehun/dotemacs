@@ -1,5 +1,6 @@
 # -*- mode: snippet -*-
 # name : useState
 # key: urs
+# expand-env: ((yas-after-exit-snippet-hook (lambda () (node-insert-import-if-not-found "useState" "react"))))
 # --
 const [$1, set${1:$(capitalize yas-text)}] = useState($0);

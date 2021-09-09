@@ -1,6 +1,7 @@
 # -*- mode: snippet -*-
 # name : useCallback
 # key: urc
+# expand-env: ((yas-after-exit-snippet-hook (lambda () (node-insert-import-if-not-found "useCallback" "react"))))
 # --
 const $0 = useCallback(() => {
 }, []);
