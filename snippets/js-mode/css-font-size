@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name : css-font-size
-# key: fs
-# --
-fontSize="${1:}px"$0

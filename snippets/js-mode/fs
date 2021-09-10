@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name : fs
+# group : node
+# expand-env: ((yas-after-exit-snippet-hook (lambda () (progn (node-insert-import-all-if-not-found "fs" "fs") (company-complete)))))
+# key: fs
+# --
+fs.

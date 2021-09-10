@@ -394,6 +394,41 @@
       (goto-char 0)
       (insert (concat "import { " symbol " } from '" package-name "';\n")))))
 
+
+;;----------------------------------------------------------------------------
+;; Node insert import default
+;;----------------------------------------------------------------------------
+(defun node-insert-import-default-if-not-found (symbol package-name)
+  "Add import statement at the top of the js/ts buffer, if given symbol not exists"
+  (if (save-excursion
+        (save-match-data
+          (goto-char (point-min))
+          (re-search-forward
+            (format "import %s from '%s'" symbol package-name)
+            nil
+            t)))
+    (message "skip import")
+    (save-excursion
+      (goto-char 0)
+      (insert (concat "import " symbol " from '" package-name "';\n")))))
+
+;;----------------------------------------------------------------------------
+;; Node insert import all as
+;;----------------------------------------------------------------------------
+(defun node-insert-import-all-if-not-found (symbol package-name)
+  "Add import statement at the top of the js/ts buffer, if given symbol not exists"
+  (if (save-excursion
+        (save-match-data
+          (goto-char (point-min))
+          (re-search-forward
+            (format "import * as %s from '%s'" symbol package-name)
+            nil
+            t)))
+    (message "skip import")
+    (save-excursion
+      (goto-char 0)
+      (insert (concat "import * as " symbol " from '" package-name "';\n")))))
+
 ;;----------------------------------------------------------------------------
 ;; Node insert import
 ;;----------------------------------------------------------------------------

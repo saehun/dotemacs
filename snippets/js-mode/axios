@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name : axios
+# group : axios
+# expand-env: ((yas-after-exit-snippet-hook (lambda () (progn (node-insert-import-default-if-not-found "axios" "axios") (company-complete)))))
+# key: axios
+# --
+axios.
