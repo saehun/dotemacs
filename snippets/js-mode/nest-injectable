@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name : nest injectable
+# group : tds-web
+# expand-env: ((yas-after-exit-snippet-hook (lambda () (node-insert-import-if-not-found "Injectable" "@nestjs/common"))))
+# key: @I
+# --
+@Injectable()
