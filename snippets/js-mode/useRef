@@ -1,5 +1,6 @@
 # -*- mode: snippet -*-
 # name : useRef
 # key: urf
+# expand-env: ((yas-after-exit-snippet-hook (lambda () (node-insert-import-if-not-found "useRef" "react"))))
 # --
 const $0 = useRef<HTMLInputElement>(null);

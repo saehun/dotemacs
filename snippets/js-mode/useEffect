@@ -1,6 +1,7 @@
 # -*- mode: snippet -*-
 # name : useEffect
 # key: ure
+# expand-env: ((yas-after-exit-snippet-hook (lambda () (node-insert-import-if-not-found "useEffect" "react"))))
 # --
 useEffect(() => {
   $0

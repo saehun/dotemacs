@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name : useRouter
+# key: urr
+# expand-env: ((yas-after-exit-snippet-hook (lambda () (node-insert-import-if-not-found "useRouter" "next/router"))))
+# --
+const router = useRouter();
