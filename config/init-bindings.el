@@ -42,6 +42,8 @@
 (global-set-key (kbd "<C-tab>") 'quit-window)
 (global-set-key (kbd "M-s-n") 'delete-frame)
 (global-set-key (kbd "M-z") 'writeroom-mode)
+(global-set-key (kbd "s-g") 'counsel-imenu)
+(global-set-key (kbd "C-s-g") 'ivy-imenu-anywhere)
 
 ;;(global-set-key (kbd "s-{") 'awesome-tab-backward-tab)
 ;;(global-set-key (kbd "s-}") 'awesome-tab-forward-tab)
@@ -69,7 +71,8 @@
 
 (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
 (define-key evil-motion-state-map (kbd "C-u") 'evil-scroll-up)
-(define-key evil-normal-state-map (kbd "SPC") 'ace-jump-word-mode)
+(define-key evil-normal-state-map (kbd "SPC") 'avy-goto-word-1)
+(define-key evil-normal-state-map (kbd "C-SPC") 'avy-goto-word-1)
 (define-key evil-normal-state-map (kbd "TAB") 'evil-jump-backward)
 (define-key evil-normal-state-map (kbd "g s") 'magit-status)
 (define-key evil-normal-state-map (kbd "g a") 'magit-stage-file)

@@ -8,9 +8,6 @@
     (add-hook 'rjsx-mode-hook (lambda ()
                                 (push '(?L . ("console.log(" . ")")) evil-surround-pairs-alist))))
 
-  (when (maybe-require-package 'ace-jump-mode)
-    '(ace-jump-mode-enable-mark-sync))
-
   (when (maybe-require-package 'evil-textobj-anyblock))
 
   (evil-define-operator wrap-with-parens (beg end)

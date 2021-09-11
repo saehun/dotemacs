@@ -12,6 +12,11 @@
 
   (maybe-require-package 'smex)
 
+  ;; live preview for imenu
+  ;; https://github.com/abo-abo/swiper/issues/2188
+  (ivy-configure 'counsel-imenu
+    :update-fn 'auto)
+
   (after-load 'ivy
     (defun bjm/ivy-yank-whole-word ()
     "Pull next word from buffer into search string."
