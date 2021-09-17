@@ -386,7 +386,7 @@
         (save-match-data
           (goto-char (point-min))
           (re-search-forward
-            (format "import {[\na-zA-Z0-9,[:space:]]+%s[\na-zA-Z0-9,[:space:]]+} from '%s'" symbol package-name)
+            (format "{[\na-zA-Z0-9,[:space:]]+%s[\na-zA-Z0-9,[:space:]]+} from '%s'" symbol package-name)
             nil
             t)))
     (message "skip import")
