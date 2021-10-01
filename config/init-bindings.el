@@ -40,10 +40,11 @@
 (global-set-key (kbd "C-c \`")  'window-swap-states)
 (global-set-key (kbd "<C-S-tab>") 'switch-to-last-buffer)
 (global-set-key (kbd "<C-tab>") 'quit-window)
-(global-set-key (kbd "M-s-n") 'delete-frame)
 (global-set-key (kbd "M-z") 'writeroom-mode)
 (global-set-key (kbd "s-g") 'counsel-imenu)
 (global-set-key (kbd "C-s-g") 'ivy-imenu-anywhere)
+(global-set-key (kbd "M-s-w") 'delete-frame)
+(global-set-key (kbd "s-n") 'new-frame-and-maximize)
 
 ;;(global-set-key (kbd "s-{") 'awesome-tab-backward-tab)
 ;;(global-set-key (kbd "s-}") 'awesome-tab-forward-tab)
@@ -55,7 +56,6 @@
 (global-set-key (kbd "C-s-{") 'tabbar-backward-group)
 (global-set-key (kbd "C-s-}") 'tabbar-forward-group)
 
-(global-set-key (kbd "C-s-n") 'eyebrowse-switch-to-window-config)
 (global-set-key (kbd "C-c d") 'xref-find-definitions)
 (global-set-key (kbd "C-c s") 'xref-pop-marker-stack)
 (global-set-key (kbd "C-c C-p") 'counsel-open-project)

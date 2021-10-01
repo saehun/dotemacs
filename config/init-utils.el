@@ -477,6 +477,21 @@ fi
 "))
     (shell-command (format "bash -c %s" (shell-quote-argument script)))))
 
+(defun set-frame-size-maximize-mac ()
+  "Set frame size to fit default mac resolution."
+  (interactive)
+  (progn
+    (set-frame-width (selected-frame) 253)
+    (set-frame-height (selected-frame) 59)))
+
+(defun new-frame-and-maximize ()
+  "Create new frame and maximize it."
+  (interactive)
+  (progn
+    (make-frame)
+    (set-frame-width (selected-frame) 253)
+    (set-frame-height (selected-frame) 59)))
+
 (provide 'init-utils)
 
 ;;; init-utils.el ends here
