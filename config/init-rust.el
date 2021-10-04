@@ -27,7 +27,7 @@
 
   ;; comment to disable rustfmt on save
   (setq rustic-format-on-save t)
-  (setq lsp-ui-doc-mode nil)
+  (setq lsp-ui-doc-enable nil)
   (add-hook 'rustic-mode-hook 'rk/rustic-mode-hook)
 
   (setq lsp-rust-analyzer-server-command '("~/.cargo/bin/rust-analyzer"))

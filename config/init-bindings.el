@@ -199,7 +199,7 @@
 (define-key rustic-mode-map (kbd "C-c r") 'lsp-find-references)
 (define-key rustic-mode-map (kbd "C-c h") 'lsp-describe-thing-at-point)
 (define-key rustic-mode-map (kbd "C-c C-f") 'lsp-execute-code-action)
-
+(define-key rustic-mode-map (kbd "C-c C-p") 'counsel-open-project)
 
 ;;----------------------------------------------------------------------------
 ;; slime
