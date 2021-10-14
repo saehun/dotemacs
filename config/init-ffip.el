@@ -17,6 +17,35 @@
       (--map
         (concat "*/" it)
         '("coverage" "build" ".next" "elpa*" "auto-save-list" "emacs-backup" "dist" ".terraform"))
-      (add-to-list 'ffip-prune-patterns it))))
+      (add-to-list 'ffip-prune-patterns it)))
+
+
+  (defun ffip-insert-relative-path ()
+    "Find file/directory and copy its relative path into `kill-ring'.
+  If FIND-DIRECTORY-P is t, copy the directory path.
+
+  Set `ffip-find-relative-path-callback' to format the result,
+    (setq ffip-find-relative-path-callback 'ffip-copy-reactjs-import)
+    (setq ffip-find-relative-path-callback 'ffip-copy-org-file-link)"
+    (interactive)
+    (let* ((cands (ffip-project-search "" nil)))
+      (cond
+      ((> (length cands) 0)
+        (ffip-completing-read
+        (ffip-hint)
+        cands
+        `(lambda (file)
+            ;; only one item in project files
+           (setq
+             file
+             (file-relative-name
+               file
+               (if buffer-file-name
+                 (file-name-directory buffer-file-name)
+                 (expand-file-name default-directory))))
+           (save-excursion
+             (forward-char 1)
+             (insert file)))))
+      (t (message "Nothing found!"))))))
 
 (provide 'init-ffip)

@@ -46,6 +46,9 @@
 (global-set-key (kbd "M-s-w") 'delete-frame)
 (global-set-key (kbd "s-n") 'new-frame-and-maximize)
 
+(require 'treemacs)
+(define-key treemacs-mode-map (kbd "s-w") 'treemacs-remove-project-from-workspace)
+
 ;;(global-set-key (kbd "s-{") 'awesome-tab-backward-tab)
 ;;(global-set-key (kbd "s-}") 'awesome-tab-forward-tab)
 ;;(global-set-key (kbd "C-s-{") 'awesome-tab-backward-group)
@@ -220,6 +223,6 @@
 (require 'markdown-mode)
 (define-key markdown-mode-map (kbd "C-c C-p") 'counsel-open-project)
 (define-key markdown-mode-map (kbd "C-c d") 'markdown-jump)
-(define-key markdown-mode-map (kbd "s-i") 'ffip-find-relative-path)
+(define-key markdown-mode-map (kbd "s-i") 'ffip-insert-relative-path)
 
 (provide 'init-bindings)

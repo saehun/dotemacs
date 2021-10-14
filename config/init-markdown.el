@@ -70,5 +70,6 @@
   (xref--push-markers)
   (markdown-follow-link-at-point))
 
+
 (provide 'init-markdown)
 ;;; init-markdown.el ends here
