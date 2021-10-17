@@ -15,6 +15,7 @@
     (setq company-idle-delay 0)
     (setq company-minimum-prefix-length 1)
     (setq company-selection-wrap-around t)
+    (setq company-dabbrev-downcase nil)
     ; Use tab key to cycle through suggestions.
     ; ('tng' means 'tab and go')
     ;; (company-tng-configure-default)
