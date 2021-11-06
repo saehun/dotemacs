@@ -32,6 +32,10 @@
 (setenv "PATH" (concat (getenv "PATH") ":" (expand-file-name "~/.cabal/bin")))
 (setq exec-path (append exec-path (list (expand-file-name "~/.cabal/bin"))))
 
+;; CMake
+(setenv "PATH" (concat (getenv "PATH") ":" (expand-file-name "/Applications/CMake.app/Contents/bin")))
+(setq exec-path (append exec-path (list (expand-file-name "/Applications/CMake.app/Contents/bin"))))
+
 (setenv "PROXY_REPO" (substitute-in-file-name "$HOME/null/.proxy-repo"))
 
 
