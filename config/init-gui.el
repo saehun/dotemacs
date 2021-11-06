@@ -209,9 +209,9 @@
     ))
 
 
-(when (maybe-require-package 'dimmer)
-  (dimmer-mode t)
-  (set-variable 'dimmer-fraction 0.3))
+;;(when (maybe-require-package 'dimmer)
+;;  (dimmer-mode t)
+;;  (set-variable 'dimmer-fraction 0.3))
 
 ;;----------------------------------------------------------------------------
 ;; Awesome-tab
