@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: extends
+# key: ex
+# group: es6
+# --
+extends
