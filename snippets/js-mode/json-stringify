@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: Stringify json
+# key: JSON
+# group: es6
+# --
+JSON.stringify($0, null, 2)
