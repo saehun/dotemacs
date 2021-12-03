@@ -30,9 +30,9 @@
 ;;(global-set-key (kbd "C-s") 'save-buffer)            ;; save
 (global-set-key (kbd "s-w") 'kill-this-buffer)       ;; close의 의미
 (global-set-key (kbd "C-`") 'other-window-treemacs)       ;; Switch window
-(global-set-key (kbd "C-s-`") 'prev-window)       ;; Switch window
+(global-set-key (kbd "C-M-`") 'prev-window)       ;; Switch window
 (global-set-key (kbd "C-~") 'copy-buffers-in-windows) ;; copy-buffers-in-windows
-(global-set-key (kbd "C-s-~") 'copy-buffers-in-prev-windows) ;; copy-buffers-in-prev-windows
+(global-set-key (kbd "C-M-~") 'copy-buffers-in-prev-windows) ;; copy-buffers-in-prev-windows
 (global-set-key (kbd "s-b") 'ibuffer)            ;; list buffer
 (global-set-key (kbd "s-t")  'new-empty-buffer)
 (global-set-key (kbd "M-t")  'treemacs)
@@ -44,7 +44,7 @@
 (global-set-key (kbd "s-g") 'counsel-imenu)
 (global-set-key (kbd "C-s-g") 'ivy-imenu-anywhere)
 (global-set-key (kbd "M-s-w") 'delete-frame)
-(global-set-key (kbd "s-n") 'new-frame-and-maximize)
+(global-set-key (kbd "M-s-n") 'new-frame-and-maximize)
 
 (require 'treemacs)
 (define-key treemacs-mode-map (kbd "s-w") 'treemacs-remove-project-from-workspace)
