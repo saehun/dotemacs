@@ -57,7 +57,7 @@
 (require 'init-misc)
 (require 'init-custom-fns)
 (require 'init-bindings)
-(require 'init-wakatime)
+;; (require 'init-wakatime)
 
 
 (require 'node-string)
