@@ -35,7 +35,7 @@
 (global-set-key (kbd "C-M-~") 'copy-buffers-in-prev-windows) ;; copy-buffers-in-prev-windows
 (global-set-key (kbd "s-b") 'ibuffer)            ;; list buffer
 (global-set-key (kbd "s-t")  'new-empty-buffer)
-(global-set-key (kbd "M-t")  'treemacs)
+(global-set-key (kbd "M-t")  'treemacs-smart)
 (global-set-key (kbd "M-s-t")  'treemacs-add-project)
 (global-set-key (kbd "C-c \`")  'window-swap-states)
 (global-set-key (kbd "<C-S-tab>") 'switch-to-last-buffer)
