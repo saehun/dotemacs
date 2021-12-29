@@ -142,6 +142,11 @@ to choose a directory starting with `directory-to-start-in'"
     (evil-insert-state)
     (company-complete)))
 
+(defun typescript-playground ()
+  "Open typescript playground with given region."
+  (interactive)
+  (post-message-node-with-env "typescript-playground"))
+
 
 (provide 'node-binding)
 ;;; node-binding.el ends here
