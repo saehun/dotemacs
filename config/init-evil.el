@@ -128,6 +128,7 @@
 ;; disable evil mouse motion for performance issue
 ;; https://stackoverflow.com/questions/46513910/emacs-evil-mode-binding-mouse-event
 (with-eval-after-load 'evil-maps (define-key evil-motion-state-map [down-mouse-1] nil))
+(with-eval-after-load 'evil-maps (define-key evil-motion-state-map (kbd "RET") nil))
 
 
 ;; Enable C-r to redo
