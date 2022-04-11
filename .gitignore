@@ -37,3 +37,4 @@ rust-playground
 .rust-auto-use-cache
 snippets/js-mode/tds-web/*
 .credentials
+.dap-breakpoints
