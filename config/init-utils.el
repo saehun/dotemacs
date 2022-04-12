@@ -204,8 +204,8 @@
   "Open and select project in cousel buffer."
   (interactive)
   (ivy-read "Repository: "
-    (split-string (with-output-to-string (call-process "~/bin/ghq-list-append" nil standard-output nil)) "\n" t)
-    :action (lambda (x) (dired (concat "~/wd/" x)))))
+    (split-string (with-output-to-string (call-process "ghq-list-append" nil standard-output nil)) "\n" t)
+    :action (lambda (x) (dired (concat "~/repo/" x)))))
 
 ;;----------------------------------------------------------------------------
 ;; Open current codebase in VSCode
@@ -238,67 +238,77 @@
     (counsel-rg nil (projectile-root-bottom-up default-directory '("package.json"))))
 
 
+(defun ghq-parse ()
+  (let*
+    ((ghq-root (expand-file-name "~/repo"))
+      (is-inside-ghq (s-prefix? ghq-root (expand-file-name default-directory)))
+      (is-directory (not (buffer-file-name))))
+    (if (not is-inside-ghq)
+      (error "You are not inside ghq-tree")
+      (let*
+        ((full-path (expand-file-name (if is-directory default-directory (buffer-file-name))))
+          (seq-path (nthcdr 3 (seq-filter (lambda (x) (not (seq-empty-p x))) (split-string full-path "/"))))
+          (git-url (string-join (seq-take seq-path 3) "/")))
+        (list full-path seq-path git-url is-directory)))))
+
+(defun pr ()
+  "Open pull request page for given repository."
+  (interactive)
+  (cl-destructuring-bind
+    (_ _ git-url _)
+    (ghq-parse)
+    (browse-url (concat "https://" git-url "/pulls"))))
+
+
+
 ;;----------------------------------------------------------------------------
 ;; ghq-util
 ;;----------------------------------------------------------------------------
 (defun ghq-util (action revision)
-  (let*
-    ((ghq-root (concat (expand-file-name "~") "/wd"))
-      (is-inside-ghq (s-prefix? ghq-root (expand-file-name default-directory)))
-      (is-directory (not (buffer-file-name))))
-    (if (not is-inside-ghq)
-      (message "You are not inside ghq-tree")
-      (let*
-        ((full-path
-           (expand-file-name
-             (if is-directory default-directory (buffer-file-name))))
-          (seq-path
-            (nthcdr 3
-              (seq-filter
-                (lambda (x) (not (seq-empty-p x)))
-                (split-string full-path "/"))))
-          (git-url (string-join (seq-take seq-path 3) "/"))
-          (git-file-path (string-join (nthcdr 3 seq-path) "/"))
-          (line-number
-            (if is-directory
-              ""
-              (if (region-active-p)
-                (format "#L%dL%d"
-                  (save-excursion
-                    (goto-char (region-beginning))
-                    (line-number-at-pos))
-                  (save-excursion
-                    (goto-char (region-end))
-                    (- (line-number-at-pos) 1)))
-                (format "#L%d" (line-number-at-pos)))))
-          (url (concat "https://" git-url "/tree/" revision "/" git-file-path line-number)))
-        (funcall action url)
-        (message url)))))
+  (cl-destructuring-bind
+    (_ seq-path git-url is-directory)
+    (ghq-parse)
+    (let* ((git-file-path (string-join (nthcdr 3 seq-path) "/"))
+            (line-number
+              (if is-directory
+                ""
+                (if (region-active-p)
+                  (format "#L%dL%d"
+                    (save-excursion
+                      (goto-char (region-beginning))
+                      (line-number-at-pos))
+                    (save-excursion
+                      (goto-char (region-end))
+                      (- (line-number-at-pos) 1)))
+                  (format "#L%d" (line-number-at-pos)))))
+            (url (concat "https://" git-url "/tree/" revision "/" git-file-path line-number)))
+      (funcall action url)
+      (message url))))
 
 (defun ghq-open ()
+  "Open current line in browser."
   (interactive)
-  "Open current line in browser"
   (ghq-util
     'browse-url
     (string-trim (shell-command-to-string "git rev-parse HEAD"))))
 
 (defun ghq-copy ()
+  "Copy git url of current line."
   (interactive)
-  "Copy git url of current line"
   (ghq-util
     'kill-new
     (string-trim (shell-command-to-string "git rev-parse HEAD"))))
 
 (defun ghq-open-master ()
+  "Open current line in browser."
   (interactive)
-  "Open current line in browser"
   (ghq-util
     'browse-url
     "master"))
 
 (defun ghq-copy-master ()
+  "Copy git url of current line."
   (interactive)
-  "Copy git url of current line"
   (ghq-util
     'kill-new
     "master"))
@@ -315,6 +325,7 @@
 ;; Kill all buffers
 ;;----------------------------------------------------------------------------
 (defun kill-all-buffers ()
+  "Kill all buffers."
   (interactive)
   (mapc 'kill-buffer (buffer-list)))
 
@@ -322,6 +333,7 @@
 ;; Manually call GC
 ;;----------------------------------------------------------------------------
 (defun call-gc ()
+  "Manually call gc."
   (interactive)
   (garbage-collect))
 
@@ -329,13 +341,15 @@
 ;; Git open
 ;;----------------------------------------------------------------------------
 (defun git-open ()
+  "Open github."
   (interactive)
-  (call-process (substitute-in-file-name "$HOME/.oh-my-zsh/custom/plugins/git-open/git-open") nil standard-output nil))
+  (call-process "git-open" nil standard-output nil))
 
 ;;----------------------------------------------------------------------------
 ;; Other window trreemacs 
 ;;----------------------------------------------------------------------------
 (defun other-window-treemacs ()
+  "Goto other window and open treemacs."
   (interactive)
   (progn
     (other-window 1)
@@ -373,7 +387,7 @@
 ;; copy the current path
 ;;----------------------------------------------------------------------------
 (defun path-copy ()
-  "Copy the current directory path"
+  "Copy the current directory path."
   (interactive)
   (kill-new  default-directory)
   (message (concat "(copied) " default-directory)))
@@ -382,7 +396,7 @@
 ;; Node insert import
 ;;----------------------------------------------------------------------------
 (defun node-insert-import-if-not-found (symbol package-name)
-  "Add import statement at the top of the js/ts buffer, if given symbol not exists"
+  "Add import statement at the top of the js/ts buffer, if given symbol not exists."
   (if (save-excursion
         (save-match-data
           (goto-char (point-min))
