@@ -12,7 +12,7 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (setq backup-directory-alist '(("" . "~/.emacs.d/emacs-backup")))
 (setq temporary-file-directory "~/.emacs.d/tmp")
-(setq default-directory "~/wd/")
+(setq default-directory "~/repo/")
 
 ;;----------------------------------------------------------------------------
 ;; Auto save and revert behaviors
