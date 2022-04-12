@@ -13,10 +13,10 @@
 (when (maybe-require-package 'go-mode)
   
   ;; setup gopath
-  (push "/Users/root1/go/bin" exec-path)
-  (setq exec-path (append exec-path '("/usr/local/go/bin")))
-  (setenv "PATH" (concat "/usr/local/go/bin" ":" (getenv "PATH")))
-  (setenv "PATH" (concat "/Users/root1/go/bin" ":" (getenv "PATH")))
+  ;;(push "/Users/root1/go/bin" exec-path)
+  ;;(setq exec-path (append exec-path '("/usr/local/go/bin")))
+  ;;(setenv "PATH" (concat "/usr/local/go/bin" ":" (getenv "PATH")))
+  ;;(setenv "PATH" (concat "/Users/root1/go/bin" ":" (getenv "PATH")))
 
   (add-hook 'go-mode-hook
     (lambda ()

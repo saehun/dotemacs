@@ -50,7 +50,6 @@
   (evil-define-key 'visual global-map (kbd "]") 'wrap-with-bracket)
   (evil-define-key 'visual global-map (kbd "`") 'wrap-with-backtick)
 
-
   )
 
 ;; http://blog.binchen.org/posts/enhance-emacs-evil-global-markers.html
