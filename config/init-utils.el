@@ -507,6 +507,21 @@ fi
     (set-frame-width (selected-frame) 253)
     (set-frame-height (selected-frame) 59)))
 
+(defun til-commit ()
+  "Auto commit TIL."
+  (interactive)
+  (message (shell-command-to-string "til index && til commit")))
+
+(defun til-pull ()
+  "Update TIL."
+  (interactive)
+  (message (shell-command-to-string "til pull")))
+
+(defun til-open ()
+  "Open TIL github."
+  (interactive)
+  (message (shell-command-to-string "til open")))
+
 (provide 'init-utils)
 
 ;;; init-utils.el ends here
