@@ -31,7 +31,7 @@
       (let* ((project-root (projectile-project-root)))
         (if
           (or
-            (cl-search "toss/toss-frontend-libraries" project-root)
+            (cl-search "toss/frontend-libraries" project-root)
             (cl-search "toss/frontend-devops" project-root)
             (cl-search "toss/toss-frontend" project-root))
           (progn
@@ -67,16 +67,19 @@
         (kill-this-buffer)
         (tide-jump-back)))
 
-   (require 'tide)
-   (flycheck-add-mode 'typescript-tide 'web-mode)
-   (flycheck-add-mode 'javascript-tide 'web-mode)
+    (require 'tide)
+    (flycheck-add-mode 'typescript-tide 'web-mode)
+    (flycheck-add-mode 'javascript-tide 'web-mode)
 
-   (flycheck-add-mode 'javascript-eslint 'web-mode)
-   (flycheck-add-next-checker 'tsx-tide '(warning . javascript-eslint) 'append)
-   (flycheck-add-next-checker 'typescript-tide '(warning . javascript-eslint) 'append)
-   )
+    (flycheck-add-mode 'javascript-eslint 'web-mode)
+    (flycheck-add-next-checker 'tsx-tide '(warning . javascript-eslint) 'append)
+    (flycheck-add-next-checker 'typescript-tide '(warning . javascript-eslint) 'append)
+
+    (use-package jest-test-mode
+      :ensure t
+      :commands jest-test-mode
+      :hook (web-mode js2-mode)))
 )
 
 (provide 'init-typescript)
-
-
+;;; init-typescript.el ends here

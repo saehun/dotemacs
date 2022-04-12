@@ -17,9 +17,9 @@
 
 (defun revert-buffer-no-confirm ()
   "Revert buffer without confirmation."
-  (interactive) (revert-buffer t t))
-(global-set-key (kbd "C-s-r")  'revert-buffer-no-confirm)
-
+  (interactive)
+  (revert-buffer t t)
+  (message "Buffer reverted ✨"))
 
 (defun open-todo ()
   "Open todo markdown file."
@@ -29,7 +29,7 @@
 (defun open-til ()
   "Open til repository."
   (interactive)
-  (find-file (f-join "~" "wd" "github.com" "minidonut" "TIL" "Docs")))
+  (find-file (f-join "~" "repo" "github.com" "minidonut" "TIL" "Docs")))
 
 (defun jest/copy-command-for-current-file ()
   "Copy jest command for currnet file."

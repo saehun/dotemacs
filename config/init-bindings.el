@@ -2,6 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
+
 (defun with-safe (command)
   "Check whether minibuffer opened, running COMMAND, close seamlessly."
   `(lambda (&rest args)
@@ -10,6 +11,18 @@
        (minibuffer-keyboard-quit)
        (apply #',command args))))
 
+
+;;----------------------------------------------------------------------------
+;; Unset
+;;----------------------------------------------------------------------------
+(global-unset-key "\C-z")
+(global-unset-key "\C-t")
+(global-unset-key (kbd "s-r"))
+(global-set-key (kbd "s-r") nil)
+
+;;----------------------------------------------------------------------------
+;; Basic
+;;----------------------------------------------------------------------------
 (global-set-key (kbd "C-e") (with-safe 'counsel-M-x))
 (global-set-key (kbd "s-f") 'swiper)
 (global-set-key (kbd "s-F") (with-safe 'counsel-rg))
@@ -21,7 +34,7 @@
 (global-set-key (kbd "s-p") (with-safe 'find-file-in-project))
 (global-set-key (kbd "M-s-p") (with-safe 'find-file-in-current-directory))
 (global-set-key (kbd "C-s-m") 'counsel-evil-goto-global-marker)
-
+(global-set-key (kbd "C-s-r") 'shell-command)
 
 
 ;;----------------------------------------------------------------------------
@@ -48,6 +61,7 @@
 
 (require 'treemacs)
 (define-key treemacs-mode-map (kbd "s-w") 'treemacs-remove-project-from-workspace)
+(define-key treemacs-mode-map (kbd "s-r") 'treemacs-refresh)
 
 ;;(global-set-key (kbd "s-{") 'awesome-tab-backward-tab)
 ;;(global-set-key (kbd "s-}") 'awesome-tab-forward-tab)
@@ -75,7 +89,6 @@
 (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
 (define-key evil-motion-state-map (kbd "C-u") 'evil-scroll-up)
 (define-key evil-normal-state-map (kbd "SPC") 'avy-goto-word-1)
-(define-key evil-normal-state-map (kbd "C-SPC") 'avy-goto-word-1)
 (define-key evil-normal-state-map (kbd "TAB") 'evil-jump-backward)
 (define-key evil-normal-state-map (kbd "g s") 'magit-status)
 (define-key evil-normal-state-map (kbd "g a") 'magit-stage-file)
@@ -106,7 +119,7 @@
 (define-key evil-normal-state-map "\C-p" 'ivy-yasnippet)
 (define-key evil-insert-state-map "\C-p" 'ivy-yasnippet)
 (define-key evil-insert-state-map "\C-p" 'ivy-yasnippet)
-(define-key ivy-occur-mode-map (kbd "<return>") 'ivy-occur-press)
+(define-key ivy-occur-mode-map (kbd "9") 'ivy-occur-press)
 
 
 ;;----------------------------------------------------------------------------
@@ -136,13 +149,6 @@
 (global-set-key (kbd "C-x C-e") 'counsel-shell-command)
 (global-set-key (kbd "s-1") 'open-til)
 (global-set-key (kbd "C-s-1") 'open-todo)
-
-
-;;----------------------------------------------------------------------------
-;; Unset
-;;----------------------------------------------------------------------------
-(global-unset-key "\C-z")
-(global-unset-key "\C-t")
 
 ;;----------------------------------------------------------------------------
 ;; Typescript
@@ -224,5 +230,11 @@
 (define-key markdown-mode-map (kbd "C-c C-p") 'counsel-open-project)
 (define-key markdown-mode-map (kbd "C-c d") 'markdown-jump)
 (define-key markdown-mode-map (kbd "s-i") 'ffip-insert-relative-path)
+
+
+;;----------------------------------------------------------------------------
+;; I don't have a clue why binding doen't work at the top of the code.
+;;----------------------------------------------------------------------------
+(global-set-key (kbd "s-r")  'revert-buffer-no-confirm)
 
 (provide 'init-bindings)

@@ -1,6 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: try...catch statement
-# key: tc
+# key: try
 # --
 try {
   $1

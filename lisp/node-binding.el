@@ -147,6 +147,11 @@ to choose a directory starting with `directory-to-start-in'"
   (interactive)
   (post-message-node-with-env "typescript-playground"))
 
+(defun tmp-call ()
+  "Hmm."
+  (interactive)
+  (message (with-output-to-string (call-process "env" nil standard-output))))
+
 
 (provide 'node-binding)
 ;;; node-binding.el ends here
