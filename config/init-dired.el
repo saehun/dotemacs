@@ -10,6 +10,7 @@
               ("Y" . dired-ranger-paste)))
 
 (setq dired-dwim-target t)
+(setq dired-listing-switches "-alog")
 
 (provide 'init-dired)
 ;;; init-dired.el ends here
