@@ -522,6 +522,13 @@ fi
   (interactive)
   (message (shell-command-to-string "til open")))
 
+(defun keyboard-layout-to-us ()
+  "Create new frame and maximize it.
+https://github.com/myshov/xkbswitch-macosx"
+  (interactive)
+  (shell-command "$HOME/repo/github.com/myshov/xkbswitch-macosx/bin/xkbswitch -s 0")
+  (message "Set input source US"))
+
 (provide 'init-utils)
 
 ;;; init-utils.el ends here

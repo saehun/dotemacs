@@ -68,7 +68,7 @@ to choose a directory starting with `directory-to-start-in'"
   (interactive)
   (post-message-node "open-url"))
 
-(defun node/ts-unit-test ()
+(defun node/new-test ()
   "Create and open test file."
   (interactive)
   (post-message-node-with-env "ts-unit-test"))

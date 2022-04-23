@@ -26,6 +26,7 @@
 (global-set-key (kbd "C-e") (with-safe 'counsel-M-x))
 (global-set-key (kbd "s-f") 'swiper)
 (global-set-key (kbd "s-F") (with-safe 'counsel-rg))
+(global-set-key (kbd "C-f") (with-safe 'counsel-rg-package))
 (global-set-key (kbd "M-s-f") (with-safe 'counsel-rg-package))
 (global-set-key (kbd "M-s-F") (with-safe 'counsel-rg-here))
 (global-set-key (kbd "s-G") (with-safe 'counsel-google))
@@ -231,6 +232,17 @@
 (define-key markdown-mode-map (kbd "C-c d") 'markdown-jump)
 (define-key markdown-mode-map (kbd "s-i") 'ffip-insert-relative-path)
 
+;;----------------------------------------------------------------------------
+;; Set keyboard input source to english
+;;----------------------------------------------------------------------------
+(global-set-key (kbd "C-ㅜ")  'keyboard-layout-to-us)
+(global-set-key (kbd "C-ㅊ")  'keyboard-layout-to-us)
+(global-set-key (kbd "C-ㅎ")  'keyboard-layout-to-us)
+(global-set-key (kbd "C-ㅌ")  'keyboard-layout-to-us)
+(global-set-key (kbd "C-ㄷ")  'keyboard-layout-to-us)
+(global-set-key (kbd "C-ㄹ")  'keyboard-layout-to-us)
+(global-set-key (kbd "s-ㄹ")  'keyboard-layout-to-us)
+(global-set-key (kbd "s-ㅔ")  'keyboard-layout-to-us)
 
 ;;----------------------------------------------------------------------------
 ;; I don't have a clue why binding doen't work at the top of the code.
