@@ -507,6 +507,13 @@ fi
     (set-frame-width (selected-frame) 253)
     (set-frame-height (selected-frame) 59)))
 
+(defun keyboard-layout-to-us ()
+  "Create new frame and maximize it.
+https://github.com/myshov/xkbswitch-macosx"
+  (interactive)
+  (shell-command "$HOME/repo/github.com/myshov/xkbswitch-macosx/bin/xkbswitch -s 0")
+  (message "Set input source US"))
+
 (provide 'init-utils)
 
 ;;; init-utils.el ends here
