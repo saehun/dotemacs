@@ -38,3 +38,5 @@ rust-playground
 snippets/js-mode/tds-web/*
 .credentials
 .dap-breakpoints
+
+projects
