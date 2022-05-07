@@ -41,7 +41,6 @@
 ;;----------------------------------------------------------------------------
 ;; Buffer and windows
 ;;----------------------------------------------------------------------------
-;;(global-set-key (kbd "C-s") 'save-buffer)            ;; save
 (global-set-key (kbd "s-w") 'kill-this-buffer)       ;; close의 의미
 (global-set-key (kbd "C-`") 'other-window-treemacs)       ;; Switch window
 (global-set-key (kbd "C-M-`") 'prev-window)       ;; Switch window
@@ -87,7 +86,7 @@
 ;;----------------------------------------------------------------------------
 (require 'evil)
 
-(define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
+;; (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
 (define-key evil-motion-state-map (kbd "C-u") 'evil-scroll-up)
 (define-key evil-normal-state-map (kbd "SPC") 'avy-goto-word-1)
 (define-key evil-normal-state-map (kbd "TAB") 'evil-jump-backward)
