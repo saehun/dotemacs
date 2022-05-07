@@ -529,6 +529,23 @@ https://github.com/myshov/xkbswitch-macosx"
   (shell-command "$HOME/repo/github.com/myshov/xkbswitch-macosx/bin/xkbswitch -s 0")
   (message "Set input source US"))
 
+(defun copy-current-path ()
+  "Copy current path to clipboard."
+  (interactive)
+  (let* ((path (if (buffer-file-name) (buffer-file-name) (expand-file-name default-directory))))
+    (kill-new path)
+    (message "Copied %s" path)))
+
+(defun open-clipboard-path ()
+  "Open path from clipboard."
+  (interactive)
+  (let* ((path (current-kill 0)))
+    (cond
+      ((file-directory-p path) (find-file path))
+      ((file-exists-p path) (find-file path))
+      (t (message "Clipboard data is not a valid path: %s" (substring path 0 (min 100 (length path)))))
+    )))
+
 (provide 'init-utils)
 
 ;;; init-utils.el ends here
