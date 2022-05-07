@@ -123,6 +123,11 @@ to choose a directory starting with `directory-to-start-in'"
   (interactive)
   (post-message-node-with-env "git-open-node-modules"))
 
+(defun node/http-to-httpTemplate ()
+  "Open git page with given package name around the cursor."
+  (interactive)
+  (post-message-node-with-env "transform-request" "http-template-requester"))
+
 (require 'find-file-in-project)
 (defun node/import ()
   "Import for javascript project."
