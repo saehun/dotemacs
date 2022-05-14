@@ -40,3 +40,4 @@ snippets/js-mode/tds-web/*
 .dap-breakpoints
 
 projects
+.DS_Store

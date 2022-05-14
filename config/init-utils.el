@@ -546,6 +546,11 @@ https://github.com/myshov/xkbswitch-macosx"
       (t (message "Clipboard data is not a valid path: %s" (substring path 0 (min 100 (length path)))))
     )))
 
+(defun finder ()
+  "Open finder in current position"
+  (interactive)
+  (call-process-shell-command "open" nil nil nil (expand-file-name default-directory)))
+
 (provide 'init-utils)
 
 ;;; init-utils.el ends here
