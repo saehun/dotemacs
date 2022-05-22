@@ -152,6 +152,11 @@ to choose a directory starting with `directory-to-start-in'"
   (interactive)
   (post-message-node-with-env "typescript-playground"))
 
+(defun jwt-decode ()
+  "Decode and replace jwt string in the region."
+  (interactive)
+  (post-message-node-with-env "jwt-decode"))
+
 (defun tmp-call ()
   "Hmm."
   (interactive)

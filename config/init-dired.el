@@ -12,5 +12,8 @@
 (setq dired-dwim-target t)
 (setq dired-listing-switches "-alog")
 
+(use-package zoxide
+  :ensure t)
+
 (provide 'init-dired)
 ;;; init-dired.el ends here
