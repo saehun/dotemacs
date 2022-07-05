@@ -36,8 +36,11 @@ projectile-bookmarks.eld
 rust-playground
 .rust-auto-use-cache
 snippets/js-mode/tds-web/*
+snippets/js-mode/wad/*
 .credentials
 .dap-breakpoints
 
 projects
 .DS_Store
+
+.yas-compiled-snippets.el
