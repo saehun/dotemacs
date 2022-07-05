@@ -10,6 +10,7 @@
 
   (setq treemacs-width 65)
   (setq treemacs--width-is-locked nil)
+  (setq treemacs-hide-gitignored-files-mode t)
 
 
   (defun treemacs-open-project-automatically ()

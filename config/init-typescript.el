@@ -33,7 +33,8 @@
           (or
             (cl-search "toss/frontend-libraries" project-root)
             (cl-search "toss/frontend-devops" project-root)
-            (cl-search "toss/toss-frontend" project-root))
+            (cl-search "toss/toss-frontend" project-root)
+            (cl-search "toss/ca-bridge" project-root))
           (progn
             (setq-local tide-tsserver-executable
               (concat project-root ".yarn/sdks/typescript/bin/tsserver"))

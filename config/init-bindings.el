@@ -95,7 +95,7 @@
 (define-key evil-normal-state-map (kbd "g c") 'magit-commit-current-file)
 (define-key evil-normal-state-map (kbd "g b") 'magit-blame-echo)
 (define-key evil-normal-state-map (kbd "s-2") 'flycheck-next-error)
-(define-key evil-normal-state-map (kbd "s-@") 'flycheck-previous-error)
+(define-key evil-normal-state-map (kbd "M-s-2") 'flycheck-previous-error)
 (define-key evil-normal-state-map (kbd "C-!") 'counsel-flycheck)
 (define-key evil-normal-state-map (kbd "?") 'tide-hl-identifier) ;; create custom function later
 (define-key evil-inner-text-objects-map "b" 'evil-textobj-anyblock-inner-block)
@@ -158,12 +158,13 @@
 (define-key tide-mode-map (kbd "M-s-r") 'tide-restart-server)
 (define-key tide-mode-map (kbd "C-c f") 'tide-refactor)
 (define-key tide-mode-map (kbd "C-c d") 'tide-jump-to-definition)
+(define-key tide-mode-map (kbd "C-c i") 'tide-jump-to-implementation)
 (define-key tide-mode-map (kbd "C-c s") 'xref-pop-marker-stack)
 (define-key tide-mode-map (kbd "C-c C-r") 'tide-rename-symbol)
 (define-key tide-mode-map (kbd "C-c C-f") 'tide-fix)
 (define-key tide-mode-map (kbd "C-c C-e") 'tide-project-errors)
 (define-key tide-mode-map (kbd "C-c h") 'tide-documentation-at-point)
-(define-key tide-mode-map (kbd "s-s") 'safe-invoke-prettier)
+(define-key tide-mode-map (kbd "s-s") 'save-and-invoke-prettier)
 (define-key tide-mode-map (kbd "s-i") 'node/import)
 (define-key tide-references-mode-map (kbd "<return>") 'tide-goto-reference)
 

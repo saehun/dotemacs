@@ -370,6 +370,15 @@
     (progn (prettier-js) (save-buffer))
     (save-buffer)))
 
+;;----------------------------------------------------------------------------
+;; Save-And-invoke-prettier
+;;----------------------------------------------------------------------------
+(defun save-and-invoke-prettier ()
+  "Enable prettier-js-mode if an rc file is located."
+  (interactive)
+  (require 'prettier-js)
+  (progn (prettier-js) (save-buffer)))
+
 
 ;;----------------------------------------------------------------------------
 ;; tide-hl-identifier-and-eldoc
