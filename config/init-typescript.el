@@ -11,6 +11,7 @@
       (setq flycheck-check-syntax-automatically '(save mode-enabled))
       (setq tide-completion-show-source t)
       (setq tide-completion-ignore-case nil)
+      (setq tide-server-max-response-length 1024000)
       (setq tide-node-flags '("--max-old-space-size=8192"))
 
       ;; (eldoc-mode +1)
@@ -33,6 +34,8 @@
           (or
             (cl-search "toss/frontend-libraries" project-root)
             (cl-search "toss/frontend-devops" project-root)
+            (cl-search "toss/tuba-ui" project-root)
+            (cl-search "toss/toss-frontend-tuba" project-root)
             (cl-search "toss/toss-frontend" project-root)
             (cl-search "toss/ca-bridge" project-root))
           (progn
