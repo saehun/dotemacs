@@ -108,7 +108,7 @@
 
 
 (defun swap-buffers-in-windows ()
-  "Put the buffer from the selected window in next window, and vice versa"
+  "Put the buffer from the selected window in next window, and vice versa."
   (interactive)
   (let* ((this (selected-window))
      (other (next-window))
@@ -120,7 +120,7 @@
 
 
 (defun copy-buffers-in-windows ()
-  "Put the buffer from the selected window in next window, and vice versa"
+  "Put the buffer from the selected window in next window, and vice versa."
   (interactive)
   (let* ((this (selected-window))
      (other (next-window))
@@ -129,7 +129,7 @@
     ))
 
 (defun copy-buffers-in-prev-windows ()
-  "Put the buffer from the selected window in next window, and vice versa"
+  "Put the buffer from the selected window in next window, and vice versa."
   (interactive)
   (let* ((this (selected-window))
      (other (prev-window))
@@ -141,7 +141,7 @@
 ;; Close buffer
 ;;----------------------------------------------------------------------------
 (defun kill-buffer-and-return-previous ()
-  "Kill buffer and return previous buffer"
+  "Kill buffer and return previous buffer."
   (interactive)
   (require 'dash)
   (let (prev) (-copy (previous-buffer))
@@ -153,8 +153,8 @@
 ;;----------------------------------------------------------------------------
 (defun new-empty-buffer ()
   "Open a new empty buffer.
-   URL `http://xahlee.info/emacs/emacs/emacs_new_empty_buffer.html'
-   Version 2016-08-11"
+URL `http://xahlee.info/emacs/emacs/emacs_new_empty_buffer.html'
+Version 2016-08-11"
   (interactive)
   (let (($buf (generate-new-buffer "untitled")))
     (switch-to-buffer $buf)
@@ -226,6 +226,17 @@
   (interactive)
   ((lambda (dir) (call-process-shell-command "webstorm" nil nil nil dir))
   (or (projectile-locate-dominating-file default-directory "package.json")
+    (or (projectile-root-bottom-up default-directory)
+      default-directory))))
+
+;;----------------------------------------------------------------------------
+;; Open current codebase in fork(git gui)
+;;----------------------------------------------------------------------------
+(defun fork ()
+  "Open and select project in cousel buffer."
+  (interactive)
+  ((lambda (dir) (call-process-shell-command "fork" nil nil nil dir))
+  (or (projectile-locate-dominating-file default-directory ".git")
     (or (projectile-root-bottom-up default-directory)
       default-directory))))
 
