@@ -75,6 +75,7 @@
 
 (global-set-key (kbd "C-c d") 'xref-find-definitions)
 (global-set-key (kbd "C-c s") 'xref-pop-marker-stack)
+(global-set-key (kbd "s-[") 'pop-global-mark)
 (global-set-key (kbd "C-c C-p") 'counsel-open-project)
 
 ;; overrides
@@ -164,7 +165,7 @@
 (define-key tide-mode-map (kbd "C-c C-f") 'tide-fix)
 (define-key tide-mode-map (kbd "C-c C-e") 'tide-project-errors)
 (define-key tide-mode-map (kbd "C-c h") 'tide-documentation-at-point)
-(define-key tide-mode-map (kbd "s-s") 'save-and-invoke-prettier)
+(define-key tide-mode-map (kbd "s-s") 'safe-invoke-prettier)
 (define-key tide-mode-map (kbd "s-i") 'node/import)
 (define-key tide-references-mode-map (kbd "<return>") 'tide-goto-reference)
 
