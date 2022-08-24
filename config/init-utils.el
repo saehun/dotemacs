@@ -167,6 +167,7 @@ Version 2016-08-11"
 ;; Transparency
 ;;----------------------------------------------------------------------------
 (defun toggle-transparency ()
+  "Toggle transparency."
   (interactive)
   (let ((alpha (frame-parameter nil 'alpha)))
     (set-frame-parameter
