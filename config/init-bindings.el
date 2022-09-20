@@ -75,7 +75,6 @@
 
 (global-set-key (kbd "C-c d") 'xref-find-definitions)
 (global-set-key (kbd "C-c s") 'xref-pop-marker-stack)
-(global-set-key (kbd "s-[") 'pop-global-mark)
 (global-set-key (kbd "C-c C-p") 'counsel-open-project)
 
 ;; overrides
@@ -249,5 +248,15 @@
 ;; I don't have a clue why binding doen't work at the top of the code.
 ;;----------------------------------------------------------------------------
 (global-set-key (kbd "s-r")  'revert-buffer-no-confirm)
+
+;;----------------------------------------------------------------------------
+;; copilot bindings
+;;----------------------------------------------------------------------------
+(require 'copilot)
+(define-key evil-insert-state-map (kbd "<s-return>") 'copilot-complete)
+(define-key copilot-completion-map (kbd "s-]") 'copilot-next-completion)
+(define-key copilot-completion-map (kbd "s-[") 'copilot-previous-completion)
+(define-key copilot-completion-map (kbd "<return>") 'copilot-accept-completion)
+(define-key copilot-completion-map (kbd "<escape>") 'copilot-clear-overlay)
 
 (provide 'init-bindings)
