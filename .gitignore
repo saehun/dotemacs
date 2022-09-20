@@ -22,6 +22,7 @@ site-lisp/package/
 /var
 /emacs-backup
 /smex-items
+/straight
 recentf
 tmp
 transient
