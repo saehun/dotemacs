@@ -162,6 +162,15 @@ to choose a directory starting with `directory-to-start-in'"
   (interactive)
   (message (with-output-to-string (call-process "env" nil standard-output))))
 
+(defun blame ()
+  "Blame line with git and open corresponed PR or commit on github."
+  (interactive)
+  (post-message-node-with-env "blame" (format "%s" (nth 2 (ghq-parse)))))
+
+(defun blame-commit ()
+  "Blame line with git and open corresponed PR or commit on github."
+  (interactive)
+  (post-message-node-with-env "blame-commit" (format "%s" (nth 2 (ghq-parse)))))
 
 (provide 'node-binding)
 ;;; node-binding.el ends here
