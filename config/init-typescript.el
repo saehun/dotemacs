@@ -13,6 +13,16 @@
       (setq tide-completion-ignore-case nil)
       (setq tide-server-max-response-length 1024000)
       (setq tide-node-flags '("--max-old-space-size=8192"))
+      (setq tide-user-preferences
+        '(
+           :includeCompletionsForModuleExports t
+           :includeCompletionsWithInsertText t
+           :allowTextChangesInNewFiles t
+           :generateReturnInDocTemplate t
+           :quotePreference "single"
+           :importModuleSpecifierPreference "relative"
+           :autoImportFileExcludePatterns ["**/node_modules/date-fns"]
+         ))
 
       ;; (eldoc-mode +1)
       (setq comment-start       "/*"
@@ -87,3 +97,4 @@
 
 (provide 'init-typescript)
 ;;; init-typescript.el ends here
+
