@@ -63,7 +63,6 @@
 (require 'init-haskell)
 (require 'init-restclient)
 (require 'init-rust)
-;; (require 'init-cl)
 (require 'init-clojure)
 
 
@@ -78,4 +77,8 @@
 
 (require 'node-string)
 (require 'node-binding)
+
+(require 'init-general-command)
+
+;;; init.el ends here
 

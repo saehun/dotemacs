@@ -159,6 +159,7 @@
 (define-key tide-mode-map (kbd "C-c f") 'tide-refactor)
 (define-key tide-mode-map (kbd "C-c d") 'tide-jump-to-definition)
 (define-key tide-mode-map (kbd "C-c i") 'tide-jump-to-implementation)
+(define-key tide-mode-map (kbd "C-c t") 'node/new-test)
 (define-key tide-mode-map (kbd "C-c s") 'xref-pop-marker-stack)
 (define-key tide-mode-map (kbd "C-c C-r") 'tide-rename-symbol)
 (define-key tide-mode-map (kbd "C-c C-f") 'tide-fix)

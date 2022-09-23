@@ -10,7 +10,6 @@
     `(eval-after-load ,feature
        '(progn ,@body))))
 
-
 ;;----------------------------------------------------------------------------
 ;; Handier way to add modes to auto-mode-alist
 ;;----------------------------------------------------------------------------
@@ -531,12 +530,14 @@ fi
 (defun til-commit ()
   "Auto commit TIL."
   (interactive)
-  (message (shell-command-to-string "til index && til commit")))
+  (message "til index && til commit: 🔥")
+  (async-shell-command "til index && til commit"))
 
 (defun til-pull ()
   "Update TIL."
   (interactive)
-  (message (shell-command-to-string "til pull")))
+  (message "til pull: 🔥")
+  (async-shell-command "til pull"))
 
 (defun til-open ()
   "Open TIL github."
@@ -575,3 +576,6 @@ https://github.com/myshov/xkbswitch-macosx"
 (provide 'init-utils)
 
 ;;; init-utils.el ends here
+
+
+
