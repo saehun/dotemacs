@@ -20,6 +20,7 @@
 ;; (set-frame-font "")
 (add-to-list 'default-frame-alist
              '(font . "Iosevka Term:pixelsize=14:weight=normal:slant=normal:width=normal:spacing=100:scalable=true"))
+(add-to-list 'custom-theme-load-path "~/repo/github.com/minidonut/dotemacs/themes")
 
 
     ;; -*--light-normal-normal-*-*-*-*-*-m-0-iso10646-1
@@ -43,7 +44,10 @@
 ;;----------------------------------------------------------------------------
 ;; title bar
 ;;----------------------------------------------------------------------------
-(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+(require 'projectile)
+(setq frame-title-format '((:eval (projectile-project-name)) ": %b"))
+(set-frame-parameter nil 'ns-appearance 'dark)
+(set-frame-parameter nil 'ns-transparent-titlebar (string= (invocation-name) "emacs"))
 
 ;;----------------------------------------------------------------------------
 ;; No popup frame @ivanmalison.github.io
@@ -87,17 +91,17 @@
   (doom-themes-org-config)
   (setq doom-themes-enable-bold t
     doom-themes-enable-italic t)
-  ;; (require 'doom-subliminal)
-  ;; (load-theme 'doom-subliminal t))
   
-    (load-theme
-      (if (string= (invocation-name) "emacs")
-        'doom-oceanic-next
-        'doom-dark+)
-      t))
+  (load-theme
+    (if (string= (invocation-name) "emacs")
+      'doom-dark+
+      ;;'doom-subliminal)
+      'doom-dark+)
+    t))
 ;; (maybe-require-package 'gruber-darker-theme)
 
 (if (string= (invocation-name) "emacs") (server-start))
+
 
 
 ;;----------------------------------------------------------------------------
@@ -222,3 +226,4 @@
 ;;  (awesome-tab-mode t))
 
 (provide 'init-gui)
+
