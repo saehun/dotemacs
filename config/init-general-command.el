@@ -99,6 +99,18 @@
     (if (cl-member mode (active-minor-mode-list)) t
       nil)))
 
+
+(defun find-executable-in-node_modules-monorepo (executable)
+  "Find EXECUTABLE in node_modules when project is monorepo."
+  (let* ((project-root (projectile-project-root))
+          (package-root (locate-dominating-file (or (buffer-file-name) default-directory) "node_modules"))
+          (eslint-in-package (and package-root (expand-file-name (concat "node_modules/.bin/" executable) package-root)))
+          (eslint-in-project (and project-root (expand-file-name (concat "node_modules/.bin/" executable) project-root))))
+    (cond
+      ((and eslint-in-package (file-executable-p eslint-in-package)) eslint-in-package)
+      ((and eslint-in-project (file-executable-p eslint-in-project)) eslint-in-project)
+      (t nil))))
+
 (provide 'init-general-command)
 
 ;; (defmacro iterate-alist (alist)
