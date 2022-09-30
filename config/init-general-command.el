@@ -65,6 +65,34 @@
       (t (message "Missing lockfile.")))))
 
 ;;----------------------------------------------------------------------------
+;; Run
+;;----------------------------------------------------------------------------
+(defun run-this-file ()
+  "Univerally run any project."
+  (interactive)
+  (let* ((project-root (projectile-project-root)))
+    (cond
+      ((active-mode-p 'tide-mode)
+        (let ((package-root-dir (find-directory-has-file-until-reach project-root "package.json")))
+          (run-node package-root-dir)))
+      (t (message "Universal run is not supported for current buffer. 🥺")))))
+
+(defun run-node (package-root-dir)
+  "PACKAGE-ROOT-DIR."
+  (let ((relative-filepath
+          (file-relative-name (buffer-file-name) package-root-dir)))
+    (message "%s -- %s" (buffer-file-name) package-root-dir)
+    (message "%s" (file-relative-name (buffer-file-name) package-root-dir))
+    (cond
+      ((or (string-suffix-p ".ts" relative-filepath) (string-suffix-p ".tsx" relative-filepath))
+        (message "npx ts-node %s: 🔥" relative-filepath)
+        (async-shell-command (format "cd %s && npx ts-node %s" package-root-dir relative-filepath)))
+      ((or (string-suffix-p ".js" relative-filepath) (string-suffix-p ".jsx" relative-filepath))
+        (message "node %s: 🔥" relative-filepath)
+        (async-shell-command (format "cd %s && node %s" package-root-dir relative-filepath)))
+      (t (message "Unknown file extension: %s" relative-filepath)))))
+
+;;----------------------------------------------------------------------------
 ;; Utils
 ;;----------------------------------------------------------------------------
 (defun find-directory-has-file-until-reach (dir filename)
@@ -137,3 +165,5 @@
 
 
 ;;; init-general-command.el ends here
+
+
