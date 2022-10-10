@@ -573,6 +573,18 @@ https://github.com/myshov/xkbswitch-macosx"
   (interactive)
   (call-process-shell-command "open" nil nil nil (expand-file-name default-directory)))
 
+(defun eslint-fix-file ()
+  "Fix file with eslint."
+  (interactive)
+  (message "pnpm eslint --fix %s" (buffer-file-name))
+  (shell-command (concat "pnpm eslint --fix " (buffer-file-name))))
+
+(defun eslint-fix-file-and-revert ()
+  "Fix file with eslint and revert."
+  (interactive)
+  (eslint-fix-file)
+  (revert-buffer t t))
+
 (provide 'init-utils)
 
 ;;; init-utils.el ends here
