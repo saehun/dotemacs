@@ -4,6 +4,32 @@
 
 (require 'cl-lib)
 
+(defun eval-string (string)
+  "Evaluate elisp code stored in a string."
+  (eval (car (read-from-string string))))
+
+(defun node-service-env ()
+  "Execute `emacs-node' nodejs command and evaluate it's standard output."
+  (let ((directory default-directory)
+         (filename (if (buffer-file-name)
+                     (file-name-nondirectory (buffer-file-name))
+                     ""))
+         (buffer (buffer-string))
+         (region (if (region-active-p) ;; region
+                    (filter-buffer-substring (region-beginning) (region-end))
+                    "")))
+    (json-encode
+      (list
+        (cons "mode" (format "%s" major-mode))
+        (cons "directory" directory)
+        (cons "cursor" (list
+          (cons "pos" (point))
+          (cons "col" (current-column))
+          (cons "row" (line-number-at-pos))))
+        (cons "filename" filename)
+        (cons "buffer" buffer)
+        (cons "region" region)))))
+
 (defun choose-directory (directory-to-start-in)
   "Return a directory chosen by the user.  The user will be prompted
 to choose a directory starting with `directory-to-start-in'"
@@ -30,32 +56,22 @@ to choose a directory starting with `directory-to-start-in'"
     (with-output-to-string
       (call-process "emacs-node" nil standard-output nil command data (node-service-env))))))
 
-(defun eval-string (string)
-  "Evaluate elisp code stored in a string."
-  (eval (car (read-from-string string))))
+(cl-defmacro post-message-node-thunk (command &optional (data ""))
+  (let ((service-env (node-service-env)))
+    `(lambda ()
+       (with-output-to-string
+       (call-process "emacs-node" nil standard-output nil ,command ,data ,service-env)))))
 
-
-(defun node-service-env ()
-  "Execute `emacs-node' nodejs command and evaluate it's standard output."
-  (let ((directory default-directory)
-         (filename (if (buffer-file-name)
-                     (file-name-nondirectory (buffer-file-name))
-                     ""))
-         (buffer (buffer-string))
-         (region (if (region-active-p) ;; region
-                    (filter-buffer-substring (region-beginning) (region-end))
-                    "")))
-    (json-encode
-      (list
-        (cons "mode" (format "%s" major-mode))
-        (cons "directory" directory)
-        (cons "cursor" (list
-          (cons "pos" (point))
-          (cons "col" (current-column))
-          (cons "row" (line-number-at-pos))))
-        (cons "filename" filename)
-        (cons "buffer" buffer)
-        (cons "region" region)))))
+(cl-defun post-message-node-with-env-async (command &optional (data ""))
+  "(Async) Send message with env."
+  (if (> (buffer-size) 100000) (message "Buffer is to large: %d charaters" (buffer-size))
+    (let ((service-env (node-service-env)))
+      (async-start
+        `(lambda ()
+           (with-output-to-string
+             (call-process "emacs-node" nil standard-output nil ,command ,data ,service-env)))
+        (lambda (response)
+          (eval-string response))))))
 
 ;; Command
 (defun node/counsel-command ()
@@ -81,22 +97,22 @@ to choose a directory starting with `directory-to-start-in'"
 (defun node/run-current-file ()
   "Run current typescript file with ts-node."
   (interactive)
-  (post-message-node-with-env "run-current-file"))
+  (post-message-node-with-env-async "run-current-file"))
 
 (defun node/debug-current-file ()
   "Debug current typescript file with ts-node."
   (interactive)
-  (post-message-node-with-env "debug-current-file"))
+  (post-message-node-with-env-async "debug-current-file"))
 
 (defun node/test-current-file ()
   "Test current typescript file with jest."
   (interactive)
-  (post-message-node-with-env "test-current-file"))
+  (post-message-node-with-env-async "test-current-file"))
 
 (defun node/debug-test-current-file ()
   "Test and Debug current typescript file with jest inspect-brk."
   (interactive)
-  (post-message-node-with-env "debug-test-current-file"))
+  (post-message-node-with-env-async "debug-test-current-file"))
 
 (defun node/object-to-type ()
   "Convert js object to type literal."
@@ -138,7 +154,7 @@ to choose a directory starting with `directory-to-start-in'"
 
 (require 'evil)
 (defun node-insert-import-and-complete (path)
-  "Insert import statement."
+  "Insert import statement from PATH."
   (progn
     (evil-set-jump)
     (goto-char 0)
@@ -172,5 +188,28 @@ to choose a directory starting with `directory-to-start-in'"
   (interactive)
   (post-message-node-with-env "blame-commit" (format "%s" (nth 2 (ghq-parse)))))
 
+(defun ts-syntax-kind ()
+  "Print ts-syntax-kind on current cursor."
+  (interactive)
+  (post-message-node-with-env "ts-syntax-kind"))
+
+(defun ts-ast-tree ()
+  "Print ts ast tree on current cursor."
+  (interactive)
+  (post-message-node-with-env-async "ts-ast-tree"))
+
+(defun ts-factory-code-gen ()
+  "Create factory code."
+  (interactive)
+  (post-message-node-with-env-async "ts-factory-code-gen" "buffer"))
+
+(defun ts-factory-code-gen-region ()
+  "Create factory code."
+  (interactive)
+  (post-message-node-with-env-async "ts-factory-code-gen" "region"))
+
 (provide 'node-binding)
 ;;; node-binding.el ends here
+
+
+
