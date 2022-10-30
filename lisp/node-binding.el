@@ -208,6 +208,11 @@ to choose a directory starting with `directory-to-start-in'"
   (interactive)
   (post-message-node-with-env-async "ts-factory-code-gen" "region"))
 
+(defun ts-transpile-region-and-copy ()
+  "Transpile typescript code in region and copy the result."
+  (interactive)
+  (post-message-node-with-env-async "ts-transpile-region-and-copy"))
+
 (provide 'node-binding)
 ;;; node-binding.el ends here
 
