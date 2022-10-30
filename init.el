@@ -57,6 +57,7 @@
 ;;----------------------------------------------------------------------------
 (require 'init-terraform)
 (require 'init-typescript)
+(require 'init-typescript-extended)
 (require 'init-tide-yarn2)
 (require 'init-javascript)
 (require 'init-markdown)
