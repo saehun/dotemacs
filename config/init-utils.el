@@ -585,6 +585,17 @@ https://github.com/myshov/xkbswitch-macosx"
   (eslint-fix-file)
   (revert-buffer t t))
 
+(defun wrap-region-parenthesis-to-function ()
+  "Wrap region and move cursor to front and be input mode."
+  (interactive)
+  (save-excursion
+    (goto-char (region-end))
+    (insert ")"))
+  (goto-char (region-beginning))
+  (insert "(")
+  (backward-char 1)
+  (evil-insert-state 1))
+
 (provide 'init-utils)
 
 ;;; init-utils.el ends here
