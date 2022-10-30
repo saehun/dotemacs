@@ -156,7 +156,7 @@
 (require 'tide)
 (define-key tide-mode-map (kbd "C-c r") 'tide-references)
 (define-key tide-mode-map (kbd "M-s-r") 'tide-restart-server)
-(define-key tide-mode-map (kbd "C-c f") 'tide-refactor)
+(define-key tide-mode-map (kbd "C-c f") 'my-tide-refactor)
 (define-key tide-mode-map (kbd "C-c d") 'tide-jump-to-definition)
 (define-key tide-mode-map (kbd "C-c i") 'tide-jump-to-implementation)
 (define-key tide-mode-map (kbd "C-c t") 'node/new-test)
@@ -183,6 +183,7 @@
 ;; (define-key web-mode-map (kbd "C-c f") 'fold-active-region)
 
 (define-key evil-visual-state-map (kbd "v") 'er/expand-region)        ;; expand region plugin
+(define-key evil-visual-state-map (kbd "(") 'wrap-region-parenthesis-to-function)
 ;;(global-set-key (kbd "s-]") 'er/expand-region)        ;; expand region plugin
 
 ;; (global-set-key (kbd "s-[") 'tabbar-move-current-tab-one-place-left)
@@ -249,6 +250,14 @@
 ;; I don't have a clue why binding doen't work at the top of the code.
 ;;----------------------------------------------------------------------------
 (global-set-key (kbd "s-r")  'revert-buffer-no-confirm)
+
+;;----------------------------------------------------------------------------
+;; Wdired
+;;----------------------------------------------------------------------------
+(require 'wdired)
+(define-key dired-mode-map (kbd "C-c C-c") 'wdired-change-to-wdired-mode)
+(define-key wdired-mode-map (kbd "C-c C-c") 'wdired-finish-edit)
+(define-key wdired-mode-map (kbd "C-c C-q") 'wdired-abort-changes)
 
 ;;----------------------------------------------------------------------------
 ;; copilot bindings
