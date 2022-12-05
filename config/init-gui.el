@@ -35,9 +35,9 @@
 (add-to-list 'default-frame-alist '(fullscreen . fullheight))
 
 ;;----------------------------------------------------------------------------
-;; linum  disable --- for performance issue
+;; linum  
 ;;----------------------------------------------------------------------------
-;; (global-linum-mode 1)
+(global-display-line-numbers-mode)
 ;; (global-hl-line-mode 1)
 ;; (setq linum-format "%d ")
 
