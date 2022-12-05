@@ -17,6 +17,7 @@
 ;;----------------------------------------------------------------------------
 (global-unset-key "\C-z")
 (global-unset-key "\C-t")
+(global-unset-key "\C-r")
 (global-unset-key (kbd "s-r"))
 (global-set-key (kbd "s-r") nil)
 
@@ -100,6 +101,8 @@
 (define-key evil-normal-state-map (kbd "?") 'tide-hl-identifier) ;; create custom function later
 (define-key evil-inner-text-objects-map "b" 'evil-textobj-anyblock-inner-block)
 (define-key evil-outer-text-objects-map "b" 'evil-textobj-anyblock-a-block)
+(define-key evil-visual-state-map "\C-r" nil)
+(define-key evil-normal-state-map "\C-r" nil)
 (define-key evil-normal-state-map "\C-n" nil)
 (define-key evil-normal-state-map "\C-t" nil)
 (define-key evil-normal-state-map "\C-e" nil)
@@ -157,12 +160,13 @@
 (define-key tide-mode-map (kbd "C-c r") 'tide-references)
 (define-key tide-mode-map (kbd "M-s-r") 'tide-restart-server)
 (define-key tide-mode-map (kbd "C-c f") 'my-tide-refactor)
+(define-key tide-mode-map (kbd "C-r") 'my-tide-refactor)
 (define-key tide-mode-map (kbd "C-c d") 'tide-jump-to-definition)
 (define-key tide-mode-map (kbd "C-c i") 'tide-jump-to-implementation)
 (define-key tide-mode-map (kbd "C-c t") 'node/new-test)
 (define-key tide-mode-map (kbd "C-c s") 'xref-pop-marker-stack)
 (define-key tide-mode-map (kbd "C-c C-r") 'tide-rename-symbol)
-(define-key tide-mode-map (kbd "C-c C-f") 'tide-fix)
+(define-key tide-mode-map (kbd "C-c C-f") 'my-tide-fix)
 (define-key tide-mode-map (kbd "C-c C-e") 'tide-project-errors)
 (define-key tide-mode-map (kbd "C-c h") 'tide-documentation-at-point)
 (define-key tide-mode-map (kbd "s-s") 'safe-invoke-prettier)
@@ -238,6 +242,7 @@
 ;; Set keyboard input source to english
 ;;----------------------------------------------------------------------------
 (global-set-key (kbd "C-ㅜ")  'keyboard-layout-to-us)
+(global-set-key (kbd "s-ㄴ")  'keyboard-layout-to-us)
 (global-set-key (kbd "C-ㅊ")  'keyboard-layout-to-us)
 (global-set-key (kbd "C-ㅎ")  'keyboard-layout-to-us)
 (global-set-key (kbd "C-ㅌ")  'keyboard-layout-to-us)
