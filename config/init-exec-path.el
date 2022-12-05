@@ -39,8 +39,8 @@
 
 
 ;; haskell 
-;;(setenv "PATH" (concat (getenv "PATH") ":" (expand-file-name "~/.ghcup/bin")))
-;;(setq exec-path (append exec-path (list (expand-file-name "~/.ghcup/bin"))))
+(setenv "PATH" (concat (getenv "PATH") ":" (expand-file-name "~/.ghcup/bin")))
+(setq exec-path (append exec-path (list (expand-file-name "~/.ghcup/bin"))))
 
 ;; haskell
 ;;(setenv "PATH" (concat (getenv "PATH") ":" (expand-file-name "~/.cabal/bin")))
