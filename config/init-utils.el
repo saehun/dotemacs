@@ -85,9 +85,10 @@
   (interactive)
   (let*
     ((location
-       (or (projectile-locate-dominating-file default-directory "package.json")
-         (or (projectile-locate-dominating-file default-directory ".git") default-directory)))
-      (target-shell-command (format "open -a iTerm %s" location)))
+       (replace-regexp-in-string "/$" ""
+         (or (projectile-locate-dominating-file default-directory "package.json")
+         (or (projectile-locate-dominating-file default-directory ".git") default-directory))))
+      (target-shell-command (format "find-session %s" location)))
   (progn
     (message target-shell-command)
     (call-process-shell-command target-shell-command nil nil nil))))
@@ -99,8 +100,9 @@
   "Open the current directory in iterm with new tab."
   (interactive)
   (let*
-    ((location default-directory)
-      (target-shell-command (format "open -a iTerm %s" location)))
+    ((location
+       (replace-regexp-in-string "/$" "" default-directory))
+      (target-shell-command (format "find-session %s" location)))
   (progn
     (message target-shell-command)
     (call-process-shell-command target-shell-command nil nil nil))))
@@ -373,7 +375,6 @@ Version 2016-08-11"
 (defun safe-invoke-prettier ()
   "Enable prettier-js-mode if an rc file is located."
   (interactive)
-  (require 'prettier-js)
   (if (or
         (locate-dominating-file default-directory ".prettierrc.json")
         (locate-dominating-file default-directory ".prettierrc.js")
@@ -596,7 +597,76 @@ https://github.com/myshov/xkbswitch-macosx"
   (backward-char 1)
   (evil-insert-state 1))
 
+(defun sort-package-json ()
+  "Sort Package.json.
+require `pnpm -g install sort-package-json`"
+  (interactive)
+  (async-shell-command "sort-package-json"))
+
+(defun insert-log-with-kill-ring-or-region ()
+  "Insert log statement with current kill ring."
+  (interactive)
+  (let ((target
+          (progn
+            (if (evil-visual-state-p) (copy-region-as-kill (region-beginning) (region-end)))
+            (substring-no-properties (car kill-ring)))))
+    (goto-char (line-end-position))
+    (newline-and-indent)
+    (insert (format "console.debug(`%s:`, %s)" target target))))
+
+(defun codegen-project ()
+  "Invoke codegen script for whole project."
+  (interactive)
+  (async-shell-command "pnpm codegen zod"))
+
+(defun ensure-editorconfig ()
+  "Add .editorconfig to project root if not exist."
+  (interactive)
+  (let* ((project-root (projectile-project-root))
+          (editorconfig-path (concat project-root ".editorconfig")))
+    (f-write-text "root = true
+
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+" 'utf-8 editorconfig-path)
+    (message "👍 Generated: %s" editorconfig-path)))
+
+(defun ensure-prettierrc ()
+  "Add .prettierrc.js to project root if not exist."
+  (interactive)
+  (let* ((project-root (projectile-project-root))
+          (prettierrc-path (concat project-root ".prettierrc.js")))
+    (f-write-text "module.exports = {
+  bracketSpacing: true,
+  singleQuote: true,
+  trailingComma: 'all',
+  arrowParens: 'always',
+  printWidth: 100,
+  useTabs: false,
+  tabWidth: 2,
+};
+" 'utf-8 prettierrc-path)
+    (message "👍 Generated: %s" prettierrc-path)))
+
+(defun coge-encrypt ()
+  "Invoke coge encrypt."
+  (interactive)
+  (message "coge encrypt 🔥")
+  (async-shell-command "coge encrypt"))
+
+(defun coge-decrypt ()
+  "Invoke coge decrypt."
+  (interactive)
+  (message "coge decrypt 🔥")
+  (async-shell-command "coge decrypt"))
+
 (provide 'init-utils)
+
 
 ;;; init-utils.el ends here
 
