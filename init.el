@@ -47,7 +47,7 @@
 (require 'init-flycheck)
 (require 'init-treemacs)
 (require 'init-ffip)
-;; (require 'init-hydra)
+(require 'init-hydra)
 (require 'init-copilot)
 (require 'init-magit)
 
@@ -67,7 +67,6 @@
 (require 'init-rust)
 (require 'init-clojure)
 
-
 ;;----------------------------------------------------------------------------
 ;; Keyboard binding
 ;;----------------------------------------------------------------------------
@@ -75,12 +74,16 @@
 (require 'init-misc)
 (require 'init-custom-fns)
 (require 'init-bindings)
-
-
 (require 'node-string)
 (require 'node-binding)
 
+;;----------------------------------------------------------------------------
+;; hydra
+;;----------------------------------------------------------------------------
+(require 'init-hydra)
+
 (require 'init-general-command)
+(require 'init-machine)
 
 ;;; init.el ends here
 
