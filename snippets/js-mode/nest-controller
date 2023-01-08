@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name : nest controller
+# group : @nestjs/common
+# expand-env: ((yas-after-exit-snippet-hook (lambda () (node-insert-import-if-not-found "Controller" "@nestjs/common"))))
+# key: @Co
+# --
+@Controller($0)
