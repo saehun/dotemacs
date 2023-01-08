@@ -3,6 +3,22 @@
 ;;; Code:
 
 (require 'cl-lib)
+(require 'dash)
+
+(defun node-ensure-in-typesciprt-sourcefile ()
+  "Ensure current path is under typescript project and is in sourcefile."
+  (if (or (not (buffer-file-name)) (not (eq major-mode 'web-mode)))
+    (error "Not in typescript source file")))
+
+(defun node-get-paths ()
+  "Get node paths."
+  (let*
+    ((filename (file-name-nondirectory (buffer-file-name)))
+      (file-directory default-directory)
+      (project-directory (projectile-locate-dominating-file default-directory "package.json"))
+      (relative-filepath (f-relative (concat file-directory filename) project-directory)))
+    (mapcar (lambda (path) (replace-regexp-in-string "/$" "" path))
+      (list filename file-directory project-directory relative-filepath))))
 
 (defun eval-string (string)
   "Evaluate elisp code stored in a string."
@@ -83,11 +99,6 @@ to choose a directory starting with `directory-to-start-in'"
   "List open."
   (interactive)
   (post-message-node "open-url"))
-
-(defun node/new-test ()
-  "Create and open test file."
-  (interactive)
-  (post-message-node-with-env "ts-unit-test"))
 
 (defun node/wrap-try-catch ()
   "Wrap region with try catch block."
@@ -210,17 +221,12 @@ to choose a directory starting with `directory-to-start-in'"
 
 (defun execute-node-command (command)
   "Execute COMMAND such as run, test, debug."
-  (if (or (not (buffer-file-name))
-        (not (eq major-mode 'web-mode)))
-    (message "Not in typescript source file.")
-    (let* ((directory default-directory)
-            (filename (file-name-nondirectory (buffer-file-name)))
-            (packagejson-root (projectile-locate-dominating-file default-directory "package.json"))
-            (relative-source-path (f-relative (concat directory filename) packagejson-root)))
-      (call-process-shell-command
-        (format "find-session %s %s"
-          (replace-regexp-in-string "/$" "" packagejson-root)
-          (format "\"%s %s\"" command relative-source-path)) nil nil nil))))
+  (node-ensure-in-typesciprt-sourcefile)
+  (-let (((_ __ project-directory relative-filepath) (node-get-paths)))
+    (call-process-shell-command
+      (format "find-session %s %s"
+        (replace-regexp-in-string "/$" "" project-directory)
+        (format "\"%s %s\"" command relative-filepath)) nil nil nil)))
 
 (defun node/run-current-file ()
   "Run current typescript file with ts-node."
@@ -251,6 +257,39 @@ to choose a directory starting with `directory-to-start-in'"
   "Test current typescript file with jest."
   (interactive)
   (execute-node-command "npx jest --watch"))
+
+(defun node/new-test ()
+  "Create and open test file."
+  (interactive)
+  (node-ensure-in-typesciprt-sourcefile)
+  (-let (((filename file-directory project-directory relative-filepath) (node-get-paths)))
+    (if (cl-search "test.ts" filename)
+      (find-file
+        (expand-file-name
+          (replace-regexp-in-string "test.ts$" "ts" filename)
+          (expand-file-name ".." file-directory)))
+      (let ((buffer (find-file
+                      (expand-file-name
+                        (replace-regexp-in-string "ts$" "test.ts" filename)
+                        (expand-file-name "__test__" file-directory)))))
+        (with-current-buffer
+          buffer
+          (if (= (buffer-size buffer) 0)
+            (progn
+              (insert
+                (format "import {  } from '../%s';
+
+describe('%s', () => {
+  it('works', async () => {
+  });
+});
+"
+                  (replace-regexp-in-string ".ts$" "" filename)
+                  (replace-regexp-in-string ".ts$" "" filename)))
+              (goto-char 10)
+              (evil-insert-state)
+              (company-complete))))))))
+
 
 (provide 'node-binding)
 ;;; node-binding.el ends here
