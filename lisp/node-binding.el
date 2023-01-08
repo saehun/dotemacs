@@ -94,26 +94,6 @@ to choose a directory starting with `directory-to-start-in'"
   (interactive)
   (post-message-node-with-env "wrap-try-catch"))
 
-(defun node/run-current-file ()
-  "Run current typescript file with ts-node."
-  (interactive)
-  (post-message-node-with-env-async "run-current-file"))
-
-(defun node/debug-current-file ()
-  "Debug current typescript file with ts-node."
-  (interactive)
-  (post-message-node-with-env-async "debug-current-file"))
-
-(defun node/test-current-file ()
-  "Test current typescript file with jest."
-  (interactive)
-  (post-message-node-with-env-async "test-current-file"))
-
-(defun node/debug-test-current-file ()
-  "Test and Debug current typescript file with jest inspect-brk."
-  (interactive)
-  (post-message-node-with-env-async "debug-test-current-file"))
-
 (defun node/object-to-type ()
   "Convert js object to type literal."
   (interactive)
@@ -212,6 +192,65 @@ to choose a directory starting with `directory-to-start-in'"
   "Transpile typescript code in region and copy the result."
   (interactive)
   (post-message-node-with-env-async "ts-transpile-region-and-copy"))
+
+(defun pnpm-install ()
+  "Pnpm install packages."
+  (interactive)
+  (post-message-node-with-env "package-install" "pnpm"))
+
+(defun pnpm-add ()
+  "Pnpm add packages."
+  (interactive)
+  (post-message-node-with-env "package-add" "pnpm"))
+
+(defun pnpm-add-dev ()
+  "Pnpm add devDependency packages."
+  (interactive)
+  (post-message-node-with-env "package-add-dev" "pnpm"))
+
+(defun execute-node-command (command)
+  "Execute COMMAND such as run, test, debug."
+  (if (or (not (buffer-file-name))
+        (not (eq major-mode 'web-mode)))
+    (message "Not in typescript source file.")
+    (let* ((directory default-directory)
+            (filename (file-name-nondirectory (buffer-file-name)))
+            (packagejson-root (projectile-locate-dominating-file default-directory "package.json"))
+            (relative-source-path (f-relative (concat directory filename) packagejson-root)))
+      (call-process-shell-command
+        (format "find-session %s %s"
+          (replace-regexp-in-string "/$" "" packagejson-root)
+          (format "\"%s %s\"" command relative-source-path)) nil nil nil))))
+
+(defun node/run-current-file ()
+  "Run current typescript file with ts-node."
+  (interactive)
+  (execute-node-command "npx ts-node"))
+
+(defun node/test-current-file ()
+  "Test current typescript file with jest."
+  (interactive)
+  (execute-node-command "npx jest"))
+
+(defun node/debug-current-file ()
+  "Debug current typescript file with ts-node."
+  (interactive)
+  (execute-node-command "node --require ts-node/register --inspect-brk"))
+
+(defun node/debug-test-current-file ()
+  "Test and Debug current typescript file with jest inspect-brk."
+  (interactive)
+  (execute-node-command "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand"))
+
+(defun node/watch-run-current-file ()
+  "Run current typescript file with ts-node."
+  (interactive)
+  (execute-node-command "npx ts-node-dev --respawn --clear"))
+
+(defun node/watch-test-current-file ()
+  "Test current typescript file with jest."
+  (interactive)
+  (execute-node-command "npx jest --watch"))
 
 (provide 'node-binding)
 ;;; node-binding.el ends here
