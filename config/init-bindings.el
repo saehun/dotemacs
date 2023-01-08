@@ -103,6 +103,8 @@
 (define-key evil-outer-text-objects-map "b" 'evil-textobj-anyblock-a-block)
 (define-key evil-visual-state-map "\C-r" nil)
 (define-key evil-normal-state-map "\C-r" nil)
+(define-key evil-visual-state-map "L" 'insert-log-with-kill-ring-or-region)
+(define-key evil-normal-state-map "L" 'insert-log-with-kill-ring-or-region)
 (define-key evil-normal-state-map "\C-n" nil)
 (define-key evil-normal-state-map "\C-t" nil)
 (define-key evil-normal-state-map "\C-e" nil)
@@ -169,7 +171,7 @@
 (define-key tide-mode-map (kbd "C-c C-f") 'my-tide-fix)
 (define-key tide-mode-map (kbd "C-c C-e") 'tide-project-errors)
 (define-key tide-mode-map (kbd "C-c h") 'tide-documentation-at-point)
-(define-key tide-mode-map (kbd "s-s") 'safe-invoke-prettier)
+;; (define-key tide-mode-map (kbd "s-s") 'safe-invoke-prettier)
 (define-key tide-mode-map (kbd "s-i") 'node/import)
 (define-key tide-references-mode-map (kbd "<return>") 'tide-goto-reference)
 
@@ -213,8 +215,8 @@
 (require 'rustic)
 (define-key rustic-mode-map (kbd "C-c d") 'lsp-find-definition)
 (define-key rustic-mode-map (kbd "C-c r") 'lsp-find-references)
+(define-key rustic-mode-map (kbd "C-r") 'lsp-execute-code-action)
 (define-key rustic-mode-map (kbd "C-c h") 'lsp-describe-thing-at-point)
-(define-key rustic-mode-map (kbd "C-c C-f") 'lsp-execute-code-action)
 (define-key rustic-mode-map (kbd "C-c C-p") 'counsel-open-project)
 
 ;;----------------------------------------------------------------------------
@@ -254,7 +256,9 @@
 ;;----------------------------------------------------------------------------
 ;; I don't have a clue why binding doen't work at the top of the code.
 ;;----------------------------------------------------------------------------
-(global-set-key (kbd "s-r")  'revert-buffer-no-confirm)
+(global-set-key (kbd "s-r") 'revert-buffer-no-confirm)
+(global-set-key (kbd "C-/") 'iterm)
+(global-set-key (kbd "C-s-/") 'iterm-here)
 
 ;;----------------------------------------------------------------------------
 ;; Wdired
