@@ -1,4 +1,4 @@
-;;; package --- init-typescript-hydra
+;;; package --- init-hydra-typescript
 ;;; Commentary:
 ;;; Code:
 
@@ -30,8 +30,8 @@
   ("o" Buffer-menu-other-window "other-window" :color blue)
   ("q" quit-window "quit" :color blue))
 
-(global-unset-key (kbd "s-e"))
-(global-set-key (kbd "s-e") nil)
 (define-key web-mode-map (kbd "s-e") 'hydra-typescript/body)
 
-;;; init-typescript-hydra.el ends here
+(provide 'init-hydra-typescript)
+
+;;; init-hydra-typescript.el ends here

@@ -81,6 +81,7 @@
 ;; hydra
 ;;----------------------------------------------------------------------------
 (require 'init-hydra)
+(require 'init-hydra-typescript)
 
 (require 'init-general-command)
 (require 'init-machine)

@@ -20,6 +20,8 @@
 (global-unset-key "\C-r")
 (global-unset-key (kbd "s-r"))
 (global-set-key (kbd "s-r") nil)
+(global-unset-key (kbd "s-e"))
+(global-set-key (kbd "s-e") nil)
 
 ;;----------------------------------------------------------------------------
 ;; Basic
