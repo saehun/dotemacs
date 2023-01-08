@@ -7,30 +7,57 @@
 (require 'web-mode)
 
 (defhydra hydra-typescript (:color pink
-                             :hint nil)
+                             :hint nil
+                             :exit t)
   "
 
-  ^Command^         ^Watch^
+  ^Command^         ^Test^
   ^^^^^^^^--------------------------
-  _r_: run          _w_: watch
-  _R_: debug run    _W_: watch test
-  _t_: test
-  _T_: debug test
+  _r_: run        _t_: create or goto test.ts
+  _d_: debug
+  _w_: watch
 
 "
   ("r" node/run-current-file)
-  ("R" node/debug-current-file)
-  ("t" node/test-current-file)
-  ("T" node/debug-test-current-file)
+  ("d" node/debug-current-file)
   ("w" node/watch-run-current-file)
-  ("W" node/watch-test-current-file)
+  ("t" node/new-test)
 
-  ("c" nil "cancel")
-  ("v" Buffer-menu-select "select" :color blue)
-  ("o" Buffer-menu-other-window "other-window" :color blue)
+  ("s-e" nil "quit")
+  ("e" flycheck-list-errors "list errors" :color blue)
   ("q" quit-window "quit" :color blue))
 
-(define-key web-mode-map (kbd "s-e") 'hydra-typescript/body)
+(defhydra hydra-typescript-test (:color pink
+                             :hint nil
+                             :exit t)
+  "
+
+  ^Command^         ^Move^
+  ^^^^^^^^--------------------------
+  _t_: test       _s_: goto back to source
+  _d_: debug
+  _w_: watch
+
+"
+  ("t" node/test-current-file)
+  ("d" node/debug-test-current-file)
+  ("w" node/watch-test-current-file)
+  ("s" node/new-test)
+
+  ("s-e" nil "quit")
+  ("e" flycheck-list-errors "list errors" :color blue)
+  ("q" quit-window "quit" :color blue))
+
+(defun typescript-in-testfile-p ()
+  "Tell whether current buffer is testfile or not."
+  (cl-search "test.ts" (file-name-nondirectory (buffer-file-name))))
+
+(define-key web-mode-map (kbd "s-e")
+  (lambda ()
+    (interactive)
+    (if (typescript-in-testfile-p)
+      (hydra-typescript-test/body)
+      (hydra-typescript/body))))
 
 (provide 'init-hydra-typescript)
 
