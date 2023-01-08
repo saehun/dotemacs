@@ -15,6 +15,7 @@
 ;; Path variable
 ;; 3rd party binary
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+
 (setq exec-path (append exec-path '("/usr/local/bin")))
 
 ;; homebrew
@@ -28,6 +29,10 @@
 ;; yarn binary
 (setenv "PATH" (concat (getenv "PATH") (substitute-in-file-name ":$HOME/.yarn/bin")))
 (setq exec-path (append exec-path (list (substitute-in-file-name "$HOME/.yarn/bin"))))
+
+;; pnpm7 binary
+(setenv "PATH" (concat (getenv "PATH") (substitute-in-file-name ":$HOME/Library/pnpm")))
+(setq exec-path (append exec-path (list (substitute-in-file-name "$HOME/Library/pnpm"))))
 
 ;; my-custom binary
 (setenv "PATH" (concat (getenv "PATH") (substitute-in-file-name ":$HOME/bin")))
