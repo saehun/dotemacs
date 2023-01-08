@@ -614,11 +614,6 @@ require `pnpm -g install sort-package-json`"
     (newline-and-indent)
     (insert (format "console.debug(`%s:`, %s)" target target))))
 
-(defun codegen-project ()
-  "Invoke codegen script for whole project."
-  (interactive)
-  (async-shell-command "pnpm codegen zod"))
-
 (defun ensure-editorconfig ()
   "Add .editorconfig to project root if not exist."
   (interactive)

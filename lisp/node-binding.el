@@ -10,6 +10,10 @@
   (if (or (not (buffer-file-name)) (not (eq major-mode 'web-mode)))
     (error "Not in typescript source file")))
 
+(defun node-open-debugger ()
+  "Open devtool debugger."
+  (call-process-shell-command "node-devtools" nil nil nil))
+
 (defun node-get-paths ()
   "Get node paths."
   (let*
@@ -241,12 +245,14 @@ to choose a directory starting with `directory-to-start-in'"
 (defun node/debug-current-file ()
   "Debug current typescript file with ts-node."
   (interactive)
-  (execute-node-command "node --require ts-node/register --inspect-brk"))
+  (execute-node-command "node --require ts-node/register --inspect-brk")
+  (node-open-debugger))
 
 (defun node/debug-test-current-file ()
   "Test and Debug current typescript file with jest inspect-brk."
   (interactive)
-  (execute-node-command "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand"))
+  (execute-node-command "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand")
+  (node-open-debugger))
 
 (defun node/watch-run-current-file ()
   "Run current typescript file with ts-node."
@@ -289,6 +295,18 @@ describe('%s', () => {
               (goto-char 10)
               (evil-insert-state)
               (company-complete))))))))
+
+(defun codegen-project ()
+  "Invoke codegen script for whole project."
+  (interactive)
+  (async-shell-command "pnpm codegen zod"))
+
+(defun codegen-file ()
+  "Invoke codegen script for a file."
+  (interactive)
+  (node-ensure-in-typesciprt-sourcefile)
+  (-let (((_ __ ___ relative-filepath) (node-get-paths)))
+    (async-shell-command (concat "pnpm codegen zod " relative-filepath))))
 
 
 (provide 'node-binding)
