@@ -56,6 +56,7 @@
 (require 'evil)
 (defvar evil-global-markers-history nil)
 (setq evil-kill-on-visual-paste nil)
+(setq evil-shift-width 2)
 (defun my-forward-line (lnum)
   "Forward LNUM lines."
   (setq lnum (string-to-number lnum))
