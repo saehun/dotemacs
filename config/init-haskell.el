@@ -12,9 +12,9 @@
   :after (lsp-haskell)
   :init
   (setq
-   haskell-process-load-or-reload-prompt t
-   haskell-process-show-debug-tips nil
-   haskell-process-type 'cabal-new-repl)
+    haskell-process-load-or-reload-prompt t
+    haskell-process-show-debug-tips nil
+    haskell-process-type 'cabal-new-repl)
   :preface
   (defun mk-haskell-insert-symbol ()
     "Insert one of the Haskell symbols that are difficult to type."
