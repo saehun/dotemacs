@@ -1,4 +1,22 @@
-;; typescript init
+;;; package --- init-typescript
+;;; Commentary:
+;;; Code:
+
+(defun rome ()
+  "Apply rome formatter."
+  (let ((current (point)))
+    (call-process-region
+      (point-min) (point-max) "rome" t t nil
+      "format"
+      "--stdin-file-path"
+      "--line-width"
+      "100"
+      "--quote-style"
+      "single"
+      "--trailing-comma"
+      "all"
+      "index.ts")
+     (goto-char current)))
 
 (when (maybe-require-package 'web-mode)
   (setq web-mode-enable-auto-quoting nil)
@@ -8,6 +26,7 @@
       (tide-setup)
       (tide-setup-yarn2)
       (flycheck-mode +1)
+
       (setq flycheck-check-syntax-automatically '(save mode-enabled))
       (setq tide-completion-show-source t)
       (setq tide-completion-ignore-case nil)
@@ -72,8 +91,14 @@
                 (when (string-equal "ts" (file-name-extension buffer-file-name))
                   (setup-tide-mode))))
 
+    (add-hook 'after-init-hook #'global-prettier-mode)
     (add-hook 'js2-mode-hook #'setup-tide-mode)
+    ;;(add-hook 'js2-mode-hook 'prettier-js-mode)
+    ;;(add-hook 'web-mode-hook 'prettier-js-mode)
 
+
+    ;;(add-hook 'web-mode-hook
+      ;;(lambda () (add-hook 'before-save-hook 'rome nil t)))
 
     (defun tide-jump-back-and-kill ()
       (interactive)
