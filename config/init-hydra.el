@@ -1,16 +1,10 @@
-;;; init-terraform.el --- Work with Terraform configurations -*- lexical-binding: t -*-
+;;; init-hydra.el --- Work with Hydra configurations -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
 ;;; Hydra
 
-(when (maybe-require-package 'hydra)
-  (bind-key
-    "C-x g" 
-    (defhydra hydra-zoom (:hint nil) 
-      "zoom"
-        ("g" text-scale-increase "in")
-        ("l" text-scale-decrease "out"))))
+(when (maybe-require-package 'hydra))
 
 (provide 'init-hydra)
-;;; init-terraform.el ends here
+;;; init-hydra.el ends here
