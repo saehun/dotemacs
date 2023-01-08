@@ -40,6 +40,7 @@ snippets/js-mode/tds-web/*
 snippets/js-mode/wad/*
 .credentials
 .dap-breakpoints
+init-machine.el
 
 projects
 .DS_Store
