@@ -54,6 +54,11 @@
 
       (company-mode +1))
 
+    (defun tide-fix-all ()
+      "Apply code fix for all."
+      (interactive)
+      (tide-code-fix #'tide-apply-codefix-for-all-in-file))
+
 
     (require' projectile)
     (defun tide-setup-yarn2 ()
@@ -80,6 +85,7 @@
     (require 'flycheck)
     (add-hook 'typescript-mode-hook #'setup-tide-mode)
     
+    (add-to-list 'auto-mode-alist '("\\.mjs\\'" . js2-mode))
     (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
     (add-to-list 'auto-mode-alist '("\\.ts\\'" . web-mode))
     (add-hook 'web-mode-hook
