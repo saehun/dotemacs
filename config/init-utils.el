@@ -87,7 +87,8 @@
     ((location
        (replace-regexp-in-string "/$" ""
          (or (projectile-locate-dominating-file default-directory "package.json")
-         (or (projectile-locate-dominating-file default-directory ".git") default-directory))))
+         (or (projectile-locate-dominating-file default-directory "Cargo.toml")
+         (or (projectile-locate-dominating-file default-directory ".git") default-directory)))))
       (target-shell-command (format "find-session %s" location)))
   (progn
     (message target-shell-command)
@@ -570,7 +571,7 @@ https://github.com/myshov/xkbswitch-macosx"
     )))
 
 (defun finder ()
-  "Open finder in current position"
+  "Open finder in current position."
   (interactive)
   (call-process-shell-command "open" nil nil nil (expand-file-name default-directory)))
 
@@ -660,8 +661,17 @@ insert_final_newline = true
   (message "coge decrypt 🔥")
   (async-shell-command "coge decrypt"))
 
-(provide 'init-utils)
+(defun print-and-execute (command)
+  "Print to minibuffer and execute shell COMMAND."
+  (message command)
+  (shell-command command))
 
+(defun chmod-x ()
+  "Run chmod +x <current-file>."
+  (interactive)
+  (print-and-execute (format "chmod +x %s" (buffer-file-name))))
+
+(provide 'init-utils)
 
 ;;; init-utils.el ends here
 
