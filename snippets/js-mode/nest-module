@@ -2,6 +2,6 @@
 # name : nest module
 # group : @nestjs/common
 # expand-env: ((yas-after-exit-snippet-hook (lambda () (node-insert-import-if-not-found "Module" "@nestjs/common"))))
-# key: @Mo
+# key: @M
 # --
 @Module({})
