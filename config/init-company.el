@@ -7,25 +7,26 @@
 
 ;; (add-to-list 'completion-styles 'initials t)
 
-(when (maybe-require-package 'company)
+(use-package company
+  :ensure t
+  :init
   (add-hook 'after-init-hook 'global-company-mode)
-  (after-load 'company
-    ;; (dolist (backend '(company-eclim company-semantic))
-      ;; (delq backend company-backends))
-    (setq company-idle-delay 0)
-    (setq company-minimum-prefix-length 1)
-    (setq company-selection-wrap-around t)
-    (setq company-dabbrev-downcase nil)
-    ; Use tab key to cycle through suggestions.
-    ; ('tng' means 'tab and go')
-    ;; (company-tng-configure-default)
-    ;; disable inline previews
-    ;;(delq 'company-preview-if-just-one-frontend company-frontends)
+  :defines company-dabbrev-downcase
+  :config
+  (setq company-idle-delay 0)
+  (setq company-minimum-prefix-length 1)
+  (setq company-selection-wrap-around t)
+  (setq company-dabbrev-downcase nil)
+  (setq-default company-dabbrev-other-buffers 'all company-tooltip-align-annotations t))
 
-    (setq-default company-dabbrev-other-buffers 'all company-tooltip-align-annotations t))
-  (when (maybe-require-package 'company-quickhelp)
-    (add-hook 'after-init-hook 'company-quickhelp-mode)
-    (setq company-quickhelp-delay nil)))
+(use-package company-quickhelp
+  :ensure t
+  :after company
+  :init
+  (add-hook 'after-init-hook 'global-company-mode)
+  (add-hook 'after-init-hook 'company-quickhelp-mode)
+  :config
+  (setq company-quickhelp-delay nil))
 
 (provide 'init-company)
 ;;; init-company.el ends here
