@@ -25,7 +25,7 @@
       (list filename file-directory project-directory relative-filepath))))
 
 (defun eval-string (string)
-  "Evaluate elisp code stored in a string."
+  "Evaluate elisp code stored in a STRING."
   (eval (car (read-from-string string))))
 
 (defun node-service-env ()
@@ -208,6 +208,11 @@ to choose a directory starting with `directory-to-start-in'"
   (interactive)
   (post-message-node-with-env-async "ts-transpile-region-and-copy"))
 
+(defun ts-copy-type ()
+  "Copy type of current cursor position."
+  (interactive)
+  (post-message-node-with-env-async "ts-copy-type"))
+
 (defun pnpm-install ()
   "Pnpm install packages."
   (interactive)
@@ -235,7 +240,7 @@ to choose a directory starting with `directory-to-start-in'"
 (defun node/run-current-file ()
   "Run current typescript file with ts-node."
   (interactive)
-  (execute-node-command "npx ts-node"))
+  (execute-node-command "npx ts-node -T"))
 
 (defun node/test-current-file ()
   "Test current typescript file with jest."
@@ -273,17 +278,17 @@ to choose a directory starting with `directory-to-start-in'"
       (find-file
         (expand-file-name
           (replace-regexp-in-string "test.ts$" "ts" filename)
-          (expand-file-name ".." file-directory)))
+          file-directory))
       (let ((buffer (find-file
                       (expand-file-name
                         (replace-regexp-in-string "ts$" "test.ts" filename)
-                        (expand-file-name "__test__" file-directory)))))
+                         file-directory))))
         (with-current-buffer
           buffer
           (if (= (buffer-size buffer) 0)
             (progn
               (insert
-                (format "import {  } from '../%s';
+                (format "import {  } from './%s';
 
 describe('%s', () => {
   it('works', async () => {
@@ -307,7 +312,6 @@ describe('%s', () => {
   (node-ensure-in-typesciprt-sourcefile)
   (-let (((_ __ ___ relative-filepath) (node-get-paths)))
     (async-shell-command (concat "pnpm codegen zod " relative-filepath))))
-
 
 (provide 'node-binding)
 ;;; node-binding.el ends here
