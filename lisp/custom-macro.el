@@ -31,6 +31,12 @@
   (interactive)
   (find-file (f-join "~" "repo" "github.com" "minidonut" "TIL" "Docs")))
 
+(defun open-daily ()
+  "Open daily markdown document."
+  (interactive)
+  (let ((filename (concat (format-time-string "%Y-%m-%d") ".md")))
+  (find-file (f-join "~" "repo" "github.com" "minidonut" "Daily" "Docs" filename))))
+
 (defun jest/copy-command-for-current-file ()
   "Copy jest command for currnet file."
   (interactive)
