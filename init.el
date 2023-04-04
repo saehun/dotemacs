@@ -1,8 +1,8 @@
 ;;; init.el --- Load the full configuration -*- lexical-binding: t -*-
+;;; Code:
 
-(add-to-list 'load-path (expand-file-name "config" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "prisma" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(dolist (dir '("config" "prisma" "lisp"))
+  (add-to-list 'load-path (expand-file-name dir user-emacs-directory)))
 
 ;;----------------------------------------------------------------------------
 ;; Bootstrap package manager 'straight.el'
@@ -66,6 +66,11 @@
 (require 'init-restclient)
 (require 'init-rust)
 (require 'init-clojure)
+
+;;----------------------------------------------------------------------------
+;; Minor mode
+;;----------------------------------------------------------------------------
+(require 'markdown-daily-mode)
 
 ;;----------------------------------------------------------------------------
 ;; Keyboard binding
