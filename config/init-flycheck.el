@@ -16,6 +16,11 @@
   (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
 
   (setq flycheck-display-errors-function #'flycheck-display-error-messages-unless-error-list)
+  (setq flycheck-emacs-lisp-load-path
+    (list
+      (expand-file-name "config" user-emacs-directory)
+      (expand-file-name "prisma" user-emacs-directory)
+      (expand-file-name "lisp" user-emacs-directory)))
 
   (when (maybe-require-package 'flycheck-color-mode-line)
     (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))

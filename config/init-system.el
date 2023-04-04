@@ -38,6 +38,18 @@
 (setq default-input-method "korean-hangul")
 
 ;;----------------------------------------------------------------------------
+;; Setup coding system
+;;----------------------------------------------------------------------------
+;; Use UTF-8 for all character encoding.
+;; (set-language-environment 'utf-8)
+;; (set-default-coding-systems 'utf-8)
+;; (set-selection-coding-system 'utf-8)
+;; (set-locale-environment "en.UTF-8")
+;; (prefer-coding-system 'utf-8)
+;; (setq utf-translate-cjk-mode nil) ; disable CJK coding/encoding
+;; (add-to-list 'file-coding-system-alist '("\\.tsx" . utf-8-unix) )
+
+;;----------------------------------------------------------------------------
 ;; Improve long-line performance
 ;;----------------------------------------------------------------------------
 (setq bidi-inhibit-bpa t)

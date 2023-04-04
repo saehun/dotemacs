@@ -5,6 +5,7 @@
 (require 'hydra)
 (require 'init-utils)
 (require 'web-mode)
+(require 'node-binding)
 
 (defhydra hydra-typescript (:color pink
                              :hint nil
@@ -14,7 +15,7 @@
   ^Command^         ^Test^
   ^^^^^^^^--------------------------
   _r_: run        _t_: create or goto test.ts
-  _d_: debug
+  _d_: debug      _f_: apply all code fix
   _w_: watch
 
 "
@@ -22,6 +23,7 @@
   ("d" node/debug-current-file)
   ("w" node/watch-run-current-file)
   ("t" node/new-test)
+  ("f" tide-fix-all)
 
   ("s-e" nil "quit")
   ("e" flycheck-list-errors "list errors" :color blue)

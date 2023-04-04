@@ -6,12 +6,17 @@
 
 (when (maybe-require-package 'treemacs)
   (require 'projectile)
+  (require 'treemacs)
+  (require 'treemacs-async)
   (maybe-require-package 'treemacs-projectile)
 
   (setq treemacs-width 65)
   (setq treemacs--width-is-locked nil)
-  (setq treemacs-hide-gitignored-files-mode t)
 
+  ;;(add-hook treemacs-mode-hook 'treemacs-hide-gitignored-files-mode)
+
+  (treemacs-git-mode 'extended)
+  (treemacs-hide-gitignored-files-mode t)
 
   (defun treemacs-open-project-automatically ()
     "Open treemacs project automatically."
@@ -27,9 +32,9 @@
     "Open and close treemacs and automatically add project."
     (interactive)
       (pcase (treemacs-current-visibility)
-      ('visible (delete-window (treemacs-get-local-window)))
-      ('exists (progn (treemacs-open-project-automatically) (treemacs-select-window)))
-      ('none   (progn (treemacs-open-project-automatically) (treemacs--init)))))
+        ('visible (delete-window (treemacs-get-local-window)))
+        ('exists  (treemacs-add-and-display-current-project-exclusively))
+        ('none    (treemacs-add-and-display-current-project-exclusively))))
 
   (treemacs-resize-icons 18))
   
