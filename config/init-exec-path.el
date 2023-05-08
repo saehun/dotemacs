@@ -11,6 +11,10 @@
 (setenv "GHQ_ROOT"   (substitute-in-file-name "$HOME/repo"))
 ;; proxy-repo
 (setenv "PROXY_REPO" (substitute-in-file-name "$HOME/null/.proxy-repo"))
+;; default profile
+(setenv "PROFILE" "local")
+;; default NODE_ENV
+(setenv "NODE_ENV" "development")
 
 ;; Path variable
 ;; 3rd party binary

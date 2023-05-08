@@ -116,7 +116,9 @@
     (flycheck-add-mode 'typescript-tide 'web-mode)
     (flycheck-add-mode 'javascript-tide 'web-mode)
 
-    (flycheck-add-mode 'javascript-eslint 'web-mode)
+    ;; eslint가 느려지는 원인인가?
+    ;; https://github.com/flycheck/flycheck/issues/1129
+    ;;(flycheck-add-mode 'javascript-eslint 'web-mode)
     (flycheck-add-next-checker 'tsx-tide '(warning . javascript-eslint) 'append)
     (flycheck-add-next-checker 'typescript-tide '(warning . javascript-eslint) 'append)
 
