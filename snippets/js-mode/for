@@ -1,6 +1,7 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: for
+# key: for
 # --
-for (const $1 of $2) {
-  $0
+for (const ${$1} of $1s) {
+
 }
