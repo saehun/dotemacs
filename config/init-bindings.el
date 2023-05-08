@@ -176,6 +176,7 @@
 (define-key tide-mode-map (kbd "C-c h") 'tide-documentation-at-point)
 ;; (define-key tide-mode-map (kbd "s-s") 'safe-invoke-prettier)
 (define-key tide-mode-map (kbd "s-i") 'node/import)
+(define-key tide-mode-map (kbd "C-t") 'node/run-test)
 (define-key tide-references-mode-map (kbd "<return>") 'tide-goto-reference)
 
 ;;----------------------------------------------------------------------------
