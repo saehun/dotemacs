@@ -279,7 +279,7 @@
 (define-key evil-insert-state-map (kbd "<s-return>") 'copilot-complete)
 (define-key copilot-completion-map (kbd "s-]") 'copilot-next-completion)
 (define-key copilot-completion-map (kbd "s-[") 'copilot-previous-completion)
-(define-key copilot-completion-map (kbd "<return>") 'copilot-accept-completion)
+(define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
 (define-key copilot-completion-map (kbd "<escape>") 'copilot-clear-overlay)
 
 (provide 'init-bindings)

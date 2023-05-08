@@ -1,3 +1,8 @@
+
+
+(use-package wgrep
+  :ensure t)
+
 (when (maybe-require-package 'ivy)
   (add-hook 'after-init-hook 'ivy-mode)
   (setq ivy-height 20)
