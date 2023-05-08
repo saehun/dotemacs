@@ -269,6 +269,29 @@ to choose a directory starting with `directory-to-start-in'"
   (interactive)
   (execute-node-command "npx jest --watch"))
 
+(defun node/create-test-file (filename)
+  (let ((buffer (find-file
+                  (expand-file-name
+                    (replace-regexp-in-string "ts$" "test.ts" filename)
+                    file-directory))))
+    (with-current-buffer
+      buffer
+      (if (= (buffer-size buffer) 0)
+        (progn
+          (insert
+            (format "import {  } from './%s';
+
+describe('%s', () => {
+  it('works', async () => {
+  });
+});
+"
+              (replace-regexp-in-string ".ts$" "" filename)
+              (replace-regexp-in-string ".ts$" "" filename)))
+          (goto-char 10)
+          (evil-insert-state)
+          (company-complete))))))
+
 (defun node/new-test ()
   "Create and open test file."
   (interactive)
@@ -279,27 +302,21 @@ to choose a directory starting with `directory-to-start-in'"
         (expand-file-name
           (replace-regexp-in-string "test.ts$" "ts" filename)
           file-directory))
-      (let ((buffer (find-file
-                      (expand-file-name
-                        (replace-regexp-in-string "ts$" "test.ts" filename)
-                         file-directory))))
-        (with-current-buffer
-          buffer
-          (if (= (buffer-size buffer) 0)
-            (progn
-              (insert
-                (format "import {  } from './%s';
+      (node/create-test-file filename))))
 
-describe('%s', () => {
-  it('works', async () => {
-  });
-});
-"
-                  (replace-regexp-in-string ".ts$" "" filename)
-                  (replace-regexp-in-string ".ts$" "" filename)))
-              (goto-char 10)
-              (evil-insert-state)
-              (company-complete))))))))
+(defun node/run-test ()
+  "Run and open test file."
+  (interactive)
+  (node-ensure-in-typesciprt-sourcefile)
+  (-let
+    (((filename file-directory project-directory relative-filepath) (node-get-paths)))
+    (cond
+      ((cl-search "test.ts" filename)
+        (jest-test-run-at-point))
+      ((file-exists-p (expand-file-name (replace-regexp-in-string "ts$" "test.ts" filename) file-directory))
+        (jest-test-rerun-test))
+      (t (node/create-test-file filename)))))
+
 
 (defun codegen-project ()
   "Invoke codegen script for whole project."
