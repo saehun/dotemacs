@@ -1,0 +1,29 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: wrapper function universal
+# group: es6
+# --
+type Wrapper = {
+  <A extends any[], R>(fn: (...args: A) => R): (...args: A) => R;
+  <A extends any[], R>(fn: (...args: A) => Promise<R>): (...args: A) => Promise<R>;
+};
+
+type GenericFunction<A extends any[], R> = ((...args: A) => R) | ((...args: A) => Promise<R>);
+
+const isAsync = <A extends any[], R>(fn: GenericFunction<A, R>): fn is (...args: A) => Promise<R> => {
+  return fn.constructor.name === \'AsyncFunction\' || Object.prototype.toString.call(fn).slice(8, -1) === \'AsyncFunction\';
+};
+
+const wrap: Wrapper = <A extends any[], R>(fn: GenericFunction<A, R>) => {
+  if (isAsync(fn)) {
+    return async function (...args: A): Promise<R> {
+      // Add your business logic here
+      $0
+      return await fn(...args);
+    };
+  } else {
+    return function (...args: A): R {
+      // Add your business logic here
+      return fn(...args);
+    };
+  }
+};

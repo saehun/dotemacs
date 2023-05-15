@@ -10,9 +10,9 @@
 ;;    (add-hook 'after-init-hook 'beacon-mode))
 
 (setq-default cursor-type 'bar)
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(scroll-bar-mode -1) 
+;; (tool-bar-mode -1)
+;; (menu-bar-mode -1)
+;; (scroll-bar-mode -1) 
 
 ;; font
 ;; (set-frame-font "Iosevka Term:pixelsize=13:weight=light:slant=normal:width=normal:spacing=100:scalable=true")
@@ -46,8 +46,8 @@
 ;;----------------------------------------------------------------------------
 (require 'projectile)
 (setq frame-title-format '((:eval (projectile-project-name)) ": %b"))
-(set-frame-parameter nil 'ns-appearance 'dark)
-(set-frame-parameter nil 'ns-transparent-titlebar (string= (invocation-name) "emacs"))
+(set-frame-parameter nil 'ns-appearance (if (string= (invocation-name) "emacs") 'dark 'light))
+;; (set-frame-parameter nil 'ns-transparent-titlebar (string= (invocation-name) "emacs"))
 
 ;;----------------------------------------------------------------------------
 ;; No popup frame @ivanmalison.github.io
@@ -94,11 +94,14 @@
     doom-themes-enable-italic t)
   
   (load-theme
-    (if (string= (invocation-name) "emacs")
-      'doom-dark+
+    ;; (if (string= (invocation-name) "emacs")
+      ;; 'doom-dark+
       ;;'doom-subliminal)
-      'doom-dark+)
-    t))
+      'doom-dark+ t))
+      ;; 'tsdh-light))
+      ;; 'doom-one-light))
+
+    ;; t))
 ;; (maybe-require-package 'gruber-darker-theme)
 
 (if (string= (invocation-name) "emacs") (server-start))
