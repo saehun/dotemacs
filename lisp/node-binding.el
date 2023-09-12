@@ -317,6 +317,19 @@ describe('%s', () => {
         (jest-test-rerun-test))
       (t (node/create-test-file filename)))))
 
+(defun node/run-test-debug ()
+  "Run and open test file."
+  (interactive)
+  (node-ensure-in-typesciprt-sourcefile)
+  (-let
+    (((filename file-directory project-directory relative-filepath) (node-get-paths)))
+    (cond
+      ((cl-search "test.ts" filename)
+        (jest-test-debug-run-at-point))
+      ((file-exists-p (expand-file-name (replace-regexp-in-string "ts$" "test.ts" filename) file-directory))
+        (jest-test-debug-rerun-test))
+      (t (node/create-test-file filename)))))
+
 
 (defun codegen-project ()
   "Invoke codegen script for whole project."

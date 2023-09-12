@@ -36,6 +36,7 @@
 (global-set-key (kbd "C-b") (with-safe 'counsel-switch-buffer))
 (global-set-key (kbd "C-n") (with-safe 'counsel-find-file))
 (global-set-key (kbd "s-p") (with-safe 'find-file-in-project))
+(global-set-key (kbd "M-p") (with-safe 'projectile-find-file))
 (global-set-key (kbd "M-s-p") (with-safe 'find-file-in-current-directory))
 (global-set-key (kbd "C-s-m") 'counsel-evil-goto-global-marker)
 (global-set-key (kbd "C-s-r") 'shell-command)
@@ -177,6 +178,7 @@
 ;; (define-key tide-mode-map (kbd "s-s") 'safe-invoke-prettier)
 (define-key tide-mode-map (kbd "s-i") 'node/import)
 (define-key tide-mode-map (kbd "C-t") 'node/run-test)
+(define-key tide-mode-map (kbd "C-M-t") 'node/run-test-debug)
 (define-key tide-references-mode-map (kbd "<return>") 'tide-goto-reference)
 
 ;;----------------------------------------------------------------------------

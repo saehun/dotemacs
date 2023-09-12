@@ -15,6 +15,12 @@
 (setenv "PROFILE" "local")
 ;; default NODE_ENV
 (setenv "NODE_ENV" "development")
+;; company zscalar setup
+(if (string-equal user-login-name "saehun") (setenv "NODE_EXTRA_CA_CERTS" "/Users/Shared/zscaler.pem"))
+
+;; default SERVICE_SECRET for some usage
+;; you can delete anytime
+(setenv "SERVICE_SECRET" "7oNck46AUmtd6AEV")
 
 ;; Path variable
 ;; 3rd party binary
