@@ -106,6 +106,7 @@
 (define-key evil-outer-text-objects-map "b" 'evil-textobj-anyblock-a-block)
 (define-key evil-visual-state-map "\C-r" nil)
 (define-key evil-normal-state-map "\C-r" nil)
+(define-key evil-normal-state-map "\C-i" nil)
 (define-key evil-visual-state-map "L" 'insert-log-with-kill-ring-or-region)
 (define-key evil-normal-state-map "L" 'insert-log-with-kill-ring-or-region)
 (define-key evil-normal-state-map "\C-n" nil)

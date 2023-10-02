@@ -76,6 +76,13 @@ to choose a directory starting with `directory-to-start-in'"
     (with-output-to-string
       (call-process "emacs-node" nil standard-output nil command data (node-service-env))))))
 
+(cl-defun post-message-custom-binary-with-env (bin command &optional (data ""))
+  "Send message with env."
+  (if (> (buffer-size) 100000) (message "Buffer is to large: %d charaters" (buffer-size))
+  (eval-string
+    (with-output-to-string
+      (call-process bin nil standard-output nil command data (node-service-env))))))
+
 (cl-defmacro post-message-node-thunk (command &optional (data ""))
   (let ((service-env (node-service-env)))
     `(lambda ()
@@ -139,13 +146,10 @@ to choose a directory starting with `directory-to-start-in'"
   (interactive)
   (post-message-node-with-env "transform-request" "http-template-requester"))
 
-(require 'find-file-in-project)
 (defun node/import ()
   "Import for javascript project."
   (interactive)
-  (post-message-node-with-env
-    "import-from-project"
-    (format "%s" (ffip-project-search "" nil))))
+  (node-insert-import-and-complete (post-message-custom-binary-with-env "emacs-command-import-typescript" "")))
 
 (require 'evil)
 (defun node-insert-import-and-complete (path)
@@ -157,6 +161,20 @@ to choose a directory starting with `directory-to-start-in'"
     (goto-char 10)
     (evil-insert-state)
     (company-complete)))
+
+(defun sanitize-import-specifier (import-specifier current-directory package-root-directory)
+  "If given IMPORT-SPECIFIER is filepath.
+return relative path using CURRENT-DIRECTORY and PACKAGE-ROOT-DIRECTORY.
+Otherwise return as it is."
+  (if (string-match-p "\\.[tj]sx?$" import-specifier)
+      (let* ((absolute-path (expand-file-name import-specifier package-root-directory))
+             (relative-path (file-relative-name absolute-path current-directory))
+             (sanitized-path (replace-regexp-in-string "/index\\.[tj]sx?$" "" relative-path))
+             (final-path (replace-regexp-in-string "\\.[tj]sx?$" "" sanitized-path)))
+        (if (string-prefix-p "." final-path)
+            final-path
+          (concat "./" final-path)))
+    import-specifier))
 
 (defun typescript-playground ()
   "Open typescript playground with given region."
@@ -345,6 +363,5 @@ describe('%s', () => {
 
 (provide 'node-binding)
 ;;; node-binding.el ends here
-
 
 
