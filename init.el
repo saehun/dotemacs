@@ -32,11 +32,14 @@
   editorconfig
   eldoc-box           ; childframe doc for eglot and anything that uses eldoc
   evil                ; The extensible vi layer for Emacs.
+  evil-surround
+  evil-textobj-anyblock
   exec-path-from-shell; Get environment variables such as $PATH from the shell
   expand-region
   f                   ; Modern API for working with files and directories
   find-file-in-project
   flycheck
+  flycheck-color-mode-line
   flycheck-yamllint
   flyspell-correct-popup ; Correcting words with flyspell via popup interface
   flyspell-popup      ; Correcting words with Flyspell in popup menus
@@ -44,6 +47,7 @@
   guess-language      ; Robust automatic language detection
   helpful             ; A better help buffer
   htmlize             ; Convert buffer text and decorations to HTML
+  hydra
   ibuffer-projectile
   imenu-list          ; Show imenu entries in a separate buffer
   json-mode           ; Major mode for Json
@@ -54,16 +58,22 @@
   mini-frame          ; Show minibuffer in child frame on read-from-minibuffer
   orderless           ; Completion style for matching regexps in any order
   projectile          ; Projectile
+  request
+  restclient
   savehist            ; Persist history over Emacs restarts.
+  smex
+  string-inflection   ; underscore -> UPCASE -> CamelCase conversion of names
   tide
+  treemacs
+  treemacs-projectile
   treesit-auto        ; Automatic installation, usage, and fallback for tree-sitter
   use-package         ; A configuration macro for simplifying your .emacs
   vertico             ; VERTical Interactive COmpletion
   wgrep
   which-key           ; Display available keybindings in popup
-  string-inflection   ; underscore -> UPCASE -> CamelCase conversion of names
   yaml-mode           ; YAML mode
   yasnippet
+  zoxide
      ))
 
 ;; Install packages that are not yet installed
@@ -97,14 +107,12 @@
 (require 'init-treemacs)
 (require 'init-ffip)
 (require 'init-hydra)
-(require 'init-copilot)
 (require 'init-magit)
 
 
 ;;----------------------------------------------------------------------------
 ;; Programming
 ;;----------------------------------------------------------------------------
-(require 'init-terraform)
 (require 'init-typescript)
 (require 'init-typescript-extended)
 (require 'init-tide-yarn2)
@@ -114,7 +122,6 @@
 (require 'init-haskell)
 (require 'init-restclient)
 (require 'init-rust)
-(require 'init-clojure)
 
 ;;----------------------------------------------------------------------------
 ;; Minor mode

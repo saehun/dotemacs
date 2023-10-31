@@ -106,7 +106,6 @@
       ;; 'doom-one-light))
 
     ;; t))
-;; (maybe-require-package 'gruber-darker-theme)
 
 (if (string= (invocation-name) "emacs") (server-start))
 
@@ -219,11 +218,6 @@
 
 ;; (setq tabbar-separator (quote (0.5)))
     ))
-
-
-;;(when (maybe-require-package 'dimmer)
-;;  (dimmer-mode t)
-;;  (set-variable 'dimmer-fraction 0.3))
 
 ;;----------------------------------------------------------------------------
 ;; Awesome-tab
