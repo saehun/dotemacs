@@ -19,7 +19,7 @@
   (defun markdown-jump ()
     "Push xref marks and jump to link."
     (interactive)
-    (xref--push-markers)
+    (xref--push-markers (current-buffer) (point))
     (markdown-follow-link-at-point))
 
 
@@ -56,21 +56,9 @@
     (set-face-font 'markdown-code-face "-*-Monaco-normal-normal-normal-*-*-*-*-*-m-0-iso10646-1")
     (buffer-face-mode)))
 
-(use-package mermaid-mode :ensure)
-
-
 ;;----------------------------------------------------------------------------
 ;; Main configuration
 ;;----------------------------------------------------------------------------
-
-;; writeroom config
-(when (maybe-require-package 'writeroom-mode)
-  (require 'writeroom-mode)
-  (setq writeroom-width 100))
-
-;; writeroom config
-(when (maybe-require-package 'markdown-toc))
-
 
 
 

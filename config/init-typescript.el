@@ -99,6 +99,7 @@
 
     (add-hook 'after-init-hook #'global-prettier-mode)
     (add-hook 'js2-mode-hook #'setup-tide-mode)
+    (add-hook 'yaml-mode-hook (lambda () (prettier-mode -1)))
     ;;(add-hook 'js2-mode-hook 'prettier-js-mode)
     ;;(add-hook 'web-mode-hook 'prettier-js-mode)
 

@@ -671,6 +671,18 @@ insert_final_newline = true
   (interactive)
   (print-and-execute (format "chmod +x %s" (buffer-file-name))))
 
+(defun hangul-cancel ()
+  "Handle unexpected hangul cancel typing."
+  (interactive)
+  (keyboard-layout-to-us)
+  (keyboard-escape-quit))
+
+(defun tab-bar-select-first ()
+  "Select first tab."
+  (interactive)
+  (tab-bar-select-tab 1))
+
+
 (provide 'init-utils)
 
 ;;; init-utils.el ends here

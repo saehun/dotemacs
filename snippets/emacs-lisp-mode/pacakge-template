@@ -1,0 +1,15 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name : template
+# --
+;;; ${1:`(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`}.el --- -*- lexical-binding: t; -*-
+;;; Commentary:
+;;; 
+;;;; Requirements:
+(require 'package)
+
+;;; Code:
+$0
+  
+(message "$1.el")
+(provide '$1)
+;;; $1.el ends here

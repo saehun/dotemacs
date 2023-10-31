@@ -1,3 +1,11 @@
+;;; init-system.el --- -*- lexical-binding: t; -*-
+;;; Commentary:
+;;; 
+;;;; Requirements:
+(require 'package)
+(require 'autorevert)
+
+;;; Code:
 (defconst *spell-check-support-enabled* nil) ;; Enable with t if you prefer
 
 ;;----------------------------------------------------------------------------
@@ -26,6 +34,8 @@
 ;; turn on lexical binding
 (setq lexical-binding t)
 
+(customize-set-variable 'large-file-warning-threshold 100000000) ;; change to ~100 MB
+
 ;;----------------------------------------------------------------------------
 ;; Auto refresh dired, but be quiet about it
 ;;----------------------------------------------------------------------------
@@ -41,13 +51,21 @@
 ;; Setup coding system
 ;;----------------------------------------------------------------------------
 ;; Use UTF-8 for all character encoding.
-;; (set-language-environment 'utf-8)
-;; (set-default-coding-systems 'utf-8)
-;; (set-selection-coding-system 'utf-8)
-;; (set-locale-environment "en.UTF-8")
-;; (prefer-coding-system 'utf-8)
-;; (setq utf-translate-cjk-mode nil) ; disable CJK coding/encoding
-;; (add-to-list 'file-coding-system-alist '("\\.tsx" . utf-8-unix) )
+(set-default-coding-systems 'utf-8)     ; Default to utf-8 encoding
+(prefer-coding-system       'utf-8)     ; Add utf-8 at the front for automatic detection.
+(set-terminal-coding-system 'utf-8)     ; Set coding system of terminal output
+(set-keyboard-coding-system 'utf-8)     ; Set coding system for keyboard input on TERMINAL
+(set-language-environment "English")    ; Set up multilingual environment
+
+;; ESC cancels all
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+;; Bind restart emacs
+(global-set-key (kbd "s-<f5>") 'restart-emacs)
+;; Rebind C-u
+(global-set-key (kbd "C-M-u") 'universal-argument)
+;; C-h to F1
+(setq help-char (string-to-char "<f1>"))
+
 
 ;;----------------------------------------------------------------------------
 ;; Improve long-line performance
@@ -55,4 +73,6 @@
 (setq bidi-inhibit-bpa t)
 ;; (global-so-long-mode 1)
 
+(message "init-system.el")
 (provide 'init-system)
+;;; init-system.el ends here

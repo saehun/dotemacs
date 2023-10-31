@@ -1,9 +1,29 @@
+;;; init-misc.el --- -*- lexical-binding: t; -*-
+;;; Commentary:
+;;; 
+;;;; Requirements:
+(require 'dired-ranger)
+(require 'drag-stuff)
+(require 'editorconfig)
+(require 'ibuffer-projectile)
+(require 'package)
+(require 'recentf)
+(require 'yaml-mode)
+
+;;; Code:
+
 ;;----------------------------------------------------------------------------
 ;; recent file mode
 ;;----------------------------------------------------------------------------
 (recentf-mode 1)
-(setq recentf-max-menu-items 200)
-(setq recentf-max-saved-items 200)
+(setq recentf-max-menu-items 25
+  recentf-max-saved-items 200
+  recentf-exclude '("/Users/saehun/Documents/Mail.+"
+                     "/Users/saehun/Documents/Notes.+"
+                     "/opt/homebrew/.+"
+                     ))
+(let (message-log-max)
+  (recentf-mode 1))
 (global-set-key "\C-x\ \C-r" 'counsel-recentf)
 
 ;;----------------------------------------------------------------------------
@@ -12,9 +32,9 @@
 (electric-pair-mode 1)
 (defmacro custom/add-mode-pairs (hook pairs)
   `(add-hook ,hook
-             (lambda ()
-               (setq-local electric-pair-pairs (append electric-pair-pairs ,pairs))
-               (setq-local electric-pair-text-pairs electric-pair-pairs))))
+     (lambda ()
+       (setq-local electric-pair-pairs (append electric-pair-pairs ,pairs))
+       (setq-local electric-pair-text-pairs electric-pair-pairs))))
 
 (custom/add-mode-pairs 'web-mode-hook '((?` . ?`)))
 (custom/add-mode-pairs 'web-mode-hook '((?' . ?')))
@@ -35,38 +55,29 @@
 ;;----------------------------------------------------------------------------
 ;; editorconfig
 ;;----------------------------------------------------------------------------
-(when (maybe-require-package 'editorconfig)
-  (add-hook 'prog-mode-hook 'editorconfig-mode))
+(add-hook 'prog-mode-hook 'editorconfig-mode)
 
-(when (maybe-require-package 'ibuffer-projectile)
-  (add-hook 'ibuffer-hook
-      (lambda ()
-        (ibuffer-projectile-set-filter-groups)
-        (unless (eq ibuffer-sorting-mode 'alphabetic)
-          (ibuffer-do-sort-by-alphabetic)))))
+(add-hook 'ibuffer-hook
+  (lambda ()
+    (ibuffer-projectile-set-filter-groups)
+    (unless (eq ibuffer-sorting-mode 'alphabetic)
+      (ibuffer-do-sort-by-alphabetic))))
 
-(maybe-require-package 'yaml-mode)
 
-(when (maybe-require-package 'drag-stuff)
-  (drag-stuff-global-mode 1)
-  (drag-stuff-define-keys))
+(drag-stuff-global-mode 1)
+(drag-stuff-define-keys)
 
-(when (maybe-require-package 'dired-ranger)
-  (define-key dired-mode-map (kbd "y") 'dired-ranger-copy)
-  (define-key dired-mode-map (kbd "p") 'dired-ranger-paste))
+(define-key dired-mode-map (kbd "y") 'dired-ranger-copy)
+(define-key dired-mode-map (kbd "p") 'dired-ranger-paste)
 
 
 ;; (when (maybe-require-package 'golden-ratio)
-  ;; (golden-ratio-mode 1))
+;; (golden-ratio-mode 1))
 
 ;;----------------------------------------------------------------------------
 ;; yaml lint
 ;;----------------------------------------------------------------------------
-(when (maybe-require-package 'flycheck-yamllint)
-  (add-hook 'flycheck-mode-hook 'flycheck-yamllint-setup))
-
-(when (maybe-require-package 'eyebrowse)
-  (add-hook 'after-init-hook 'eyebrowse-mode))
+(add-hook 'flycheck-mode-hook 'flycheck-yamllint-setup)
 
 ;; enable color emoji
 (set-fontset-font t 'symbol "Apple Color Emoji")
@@ -74,4 +85,7 @@
 (set-fontset-font t 'symbol "Segoe UI Emoji" nil 'append)
 (set-fontset-font t 'symbol "Symbola" nil 'append)
 
+
+(message "init-misc.el")
 (provide 'init-misc)
+;;; init-misc.el ends here

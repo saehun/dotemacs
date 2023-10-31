@@ -2,17 +2,21 @@
 ;;; Commentary:
 ;;; Code:
 
-
-;;----------------------------------------------------------------------------
-;; Beacon - disabled - performance issue
-;;----------------------------------------------------------------------------
-;;  (when (maybe-require-package 'beacon)
-;;    (add-hook 'after-init-hook 'beacon-mode))
-
 (setq-default cursor-type 'bar)
-;; (tool-bar-mode -1)
-;; (menu-bar-mode -1)
-;; (scroll-bar-mode -1) 
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(global-hl-line-mode 1)
+
+
+(require 'tab-bar)
+(tab-bar-mode 1)
+(custom-set-faces
+  '(tab-bar-tab
+     ((t
+        (:background "#1e1e1e"
+          :foreground "goldenrod2"
+          :box nil)))))
 
 ;; font
 ;; (set-frame-font "Iosevka Term:pixelsize=13:weight=light:slant=normal:width=normal:spacing=100:scalable=true")

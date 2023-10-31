@@ -4,6 +4,7 @@
 /custom.el
 *.elc
 /url/cache
+/history
 /.emacs.desktop
 /auto-save-list
 /network-security.data

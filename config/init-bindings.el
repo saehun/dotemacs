@@ -28,10 +28,9 @@
 ;;----------------------------------------------------------------------------
 (global-set-key (kbd "C-e") (with-safe 'counsel-M-x))
 (global-set-key (kbd "s-f") 'swiper)
-(global-set-key (kbd "s-F") (with-safe 'counsel-rg))
-(global-set-key (kbd "C-f") (with-safe 'counsel-rg-package))
-(global-set-key (kbd "M-s-f") (with-safe 'counsel-rg-package))
-(global-set-key (kbd "M-s-F") (with-safe 'counsel-rg-here))
+(global-set-key (kbd "s-F") (with-safe 'counsel-rg))         ;; grep from git root
+(global-set-key (kbd "C-f") (with-safe 'counsel-rg-package)) ;; grep from package.json root
+(global-set-key (kbd "M-s-F") (with-safe 'counsel-rg-here))  ;; grep from here
 (global-set-key (kbd "s-G") (with-safe 'counsel-google))
 (global-set-key (kbd "C-b") (with-safe 'counsel-switch-buffer))
 (global-set-key (kbd "C-n") (with-safe 'counsel-find-file))
@@ -72,10 +71,14 @@
 ;;(global-set-key (kbd "C-s-{") 'awesome-tab-backward-group)
 ;;(global-set-key (kbd "C-s-}") 'awesome-tab-forward-group)
 
-(global-set-key (kbd "s-{") 'tabbar-backward-tab)
-(global-set-key (kbd "s-}") 'tabbar-forward-tab)
-(global-set-key (kbd "C-s-{") 'tabbar-backward-group)
-(global-set-key (kbd "C-s-}") 'tabbar-forward-group)
+(global-set-key (kbd "C-s-{") 'tabbar-backward-tab)
+(global-set-key (kbd "C-s-}") 'tabbar-forward-tab)
+(global-set-key (kbd "s-{") 'tab-bar-switch-to-prev-tab)
+(global-set-key (kbd "s-}") 'tab-bar-switch-to-next-tab)
+(global-set-key (kbd "s-0") 'tab-bar-select-first)
+;;(global-set-key (kbd "C-s-w") 'tab-bar-close-tab)
+;;(global-set-key (kbd "C-s-n") 'tab-bar-new-tab)
+;;(global-set-key (kbd "C-s-r") 'tab-bar-rename-tab)
 
 (global-set-key (kbd "C-c d") 'xref-find-definitions)
 (global-set-key (kbd "C-c s") 'xref-pop-marker-stack)
@@ -180,7 +183,7 @@
 (define-key tide-mode-map (kbd "s-i") 'node/import)
 (define-key tide-mode-map (kbd "C-t") 'node/run-test)
 (define-key tide-mode-map (kbd "C-M-t") 'node/run-test-debug)
-(define-key tide-references-mode-map (kbd "<return>") 'tide-goto-reference)
+(define-key tide-references-mode-map (kbd "<return>") 'tide-goto-line-reference)
 
 ;;----------------------------------------------------------------------------
 ;; Web-mode
@@ -253,12 +256,13 @@
 (global-set-key (kbd "C-ㅜ")  'keyboard-layout-to-us)
 (global-set-key (kbd "s-ㄴ")  'keyboard-layout-to-us)
 (global-set-key (kbd "C-ㅊ")  'keyboard-layout-to-us)
-(global-set-key (kbd "C-ㅎ")  'keyboard-layout-to-us)
 (global-set-key (kbd "C-ㅌ")  'keyboard-layout-to-us)
 (global-set-key (kbd "C-ㄷ")  'keyboard-layout-to-us)
 (global-set-key (kbd "C-ㄹ")  'keyboard-layout-to-us)
 (global-set-key (kbd "s-ㄹ")  'keyboard-layout-to-us)
 (global-set-key (kbd "s-ㅔ")  'keyboard-layout-to-us)
+;; Unexpected hangul command typing
+(global-set-key (kbd "C-ㅎ")  'hangul-cancel)
 
 ;;----------------------------------------------------------------------------
 ;; I don't have a clue why binding doen't work at the top of the code.
@@ -278,11 +282,11 @@
 ;;----------------------------------------------------------------------------
 ;; copilot bindings
 ;;----------------------------------------------------------------------------
-(require 'copilot)
-(define-key evil-insert-state-map (kbd "<s-return>") 'copilot-complete)
-(define-key copilot-completion-map (kbd "s-]") 'copilot-next-completion)
-(define-key copilot-completion-map (kbd "s-[") 'copilot-previous-completion)
-(define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
-(define-key copilot-completion-map (kbd "<escape>") 'copilot-clear-overlay)
+;; (require 'copilot)
+;; (define-key evil-insert-state-map (kbd "<s-return>") 'copilot-complete)
+;; (define-key copilot-completion-map (kbd "s-]") 'copilot-next-completion)
+;; (define-key copilot-completion-map (kbd "s-[") 'copilot-previous-completion)
+;; (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
+;; (define-key copilot-completion-map (kbd "<escape>") 'copilot-clear-overlay)
 
 (provide 'init-bindings)

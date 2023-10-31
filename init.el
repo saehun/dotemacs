@@ -9,21 +9,70 @@
 ;;----------------------------------------------------------------------------
 (defvar bootstrap-version)
 (let ((bootstrap-file
-       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-      (bootstrap-version 6))
-  (unless (file-exists-p bootstrap-file)
-    (with-current-buffer
-        (url-retrieve-synchronously
-         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
-         'silent 'inhibit-cookies)
-      (goto-char (point-max))
-      (eval-print-last-sexp)))
-  (load bootstrap-file nil 'nomessage))
+      (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+     (bootstrap-version 6))
+ (unless (file-exists-p bootstrap-file)
+   (with-current-buffer
+       (url-retrieve-synchronously
+        "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+        'silent 'inhibit-cookies)
+     (goto-char (point-max))
+     (eval-print-last-sexp)))
+ (load bootstrap-file nil 'nomessage))
+
+
+(defvar package-list '(
+  company
+  consult             ; Consulting completing-read
+  corfu               ; Completion Overlay Region FUnction
+  dired-ranger
+  doom-modeline
+  doom-themes
+  drag-stuff
+  editorconfig
+  eldoc-box           ; childframe doc for eglot and anything that uses eldoc
+  evil                ; The extensible vi layer for Emacs.
+  exec-path-from-shell; Get environment variables such as $PATH from the shell
+  expand-region
+  f                   ; Modern API for working with files and directories
+  find-file-in-project
+  flycheck
+  flycheck-yamllint
+  flyspell-correct-popup ; Correcting words with flyspell via popup interface
+  flyspell-popup      ; Correcting words with Flyspell in popup menus
+  general             ; More convenient key definitions in emacs
+  guess-language      ; Robust automatic language detection
+  helpful             ; A better help buffer
+  htmlize             ; Convert buffer text and decorations to HTML
+  ibuffer-projectile
+  imenu-list          ; Show imenu entries in a separate buffer
+  json-mode           ; Major mode for Json
+  magit               ; A Git porcelain inside Emacs.
+  marginalia          ; Enrich existing commands with completion annotations
+  markdown-mode       ; Major mode for Markdown-formatted text
+  markdown-toc
+  mini-frame          ; Show minibuffer in child frame on read-from-minibuffer
+  orderless           ; Completion style for matching regexps in any order
+  projectile          ; Projectile
+  savehist            ; Persist history over Emacs restarts.
+  tide
+  treesit-auto        ; Automatic installation, usage, and fallback for tree-sitter
+  use-package         ; A configuration macro for simplifying your .emacs
+  vertico             ; VERTical Interactive COmpletion
+  wgrep
+  which-key           ; Display available keybindings in popup
+  string-inflection   ; underscore -> UPCASE -> CamelCase conversion of names
+  yaml-mode           ; YAML mode
+  yasnippet
+     ))
+
+;; Install packages that are not yet installed
+(dolist (package package-list)
+  (straight-use-package package))
 
 ;;----------------------------------------------------------------------------
 ;; Bootstrap config
 ;;----------------------------------------------------------------------------
-(require 'cl)
 (require 'init-system)
 (require 'init-utils)
 (require 'init-site-lisp)

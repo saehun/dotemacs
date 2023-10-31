@@ -1,15 +1,18 @@
-;;; init-yasnippet.el --- Elisp helper functions and commands -*- lexical-binding: t -*-
+;;; init-yasnippet.el --- -*- lexical-binding: t; -*-
 ;;; Commentary:
+;;; 
+;;;; Requirements:
+(require 'yasnippet)
+(require 'ivy-yasnippet)
+(require 'string-inflection)
+
 ;;; Code:
+(yas-global-mode 1)
+(setq yas-snippet-dirs '("~/.emacs.d/snippets"))
 
-(when (maybe-require-package 'yasnippet)
-  (yas-global-mode 1)
-  (setq yas-snippet-dirs
-    '("~/.emacs.d/snippets"))
+(string-inflection-all-cycle)
 
-  (when (maybe-require-package 'ivy-yasnippet))
-  (when (maybe-require-package 'string-inflection)
-    (string-inflection-all-cycle)))
-
+(message "init-yasnippet.el")
 (provide 'init-yasnippet)
 ;;; init-yasnippet.el ends here
+

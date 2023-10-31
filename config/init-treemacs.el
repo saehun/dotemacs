@@ -36,7 +36,14 @@
         ('exists  (treemacs-add-and-display-current-project-exclusively))
         ('none    (treemacs-add-and-display-current-project-exclusively))))
 
-  (treemacs-resize-icons 18))
+  (treemacs-resize-icons 18)
+
+  (use-package treemacs-tab-bar ;;treemacs-tab-bar if you use tab-bar-mode
+    :after (treemacs)
+    :ensure t
+    :config (treemacs-set-scope-type 'Tabs)))
+
+
   
   
 

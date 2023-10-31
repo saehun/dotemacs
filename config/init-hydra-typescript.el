@@ -6,6 +6,7 @@
 (require 'init-utils)
 (require 'web-mode)
 (require 'node-binding)
+(require 'tide)
 
 (defhydra hydra-typescript (:color pink
                              :hint nil
@@ -26,7 +27,7 @@
   ("f" tide-fix-all)
 
   ("s-e" nil "quit")
-  ("e" flycheck-list-errors "list errors" :color blue)
+  ("e" tide-project-errors "list errors" :color blue)
   ("q" quit-window "quit" :color blue))
 
 (defhydra hydra-typescript-test (:color pink
@@ -47,7 +48,7 @@
   ("s" node/new-test)
 
   ("s-e" nil "quit")
-  ("e" flycheck-list-errors "list errors" :color blue)
+  ("e" tide-project-errors "list errors" :color blue)
   ("q" quit-window "quit" :color blue))
 
 (defun typescript-in-testfile-p ()
