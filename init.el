@@ -23,6 +23,7 @@
 
 (defvar package-list '(
   company
+  company-quickhelp
   consult             ; Consulting completing-read
   corfu               ; Completion Overlay Region FUnction
   dired-ranger
@@ -50,7 +51,9 @@
   hydra
   ibuffer-projectile
   imenu-list          ; Show imenu entries in a separate buffer
+  jest-test-mode
   json-mode           ; Major mode for Json
+  js2-mode
   magit               ; A Git porcelain inside Emacs.
   marginalia          ; Enrich existing commands with completion annotations
   markdown-mode       ; Major mode for Markdown-formatted text
@@ -63,12 +66,14 @@
   savehist            ; Persist history over Emacs restarts.
   smex
   string-inflection   ; underscore -> UPCASE -> CamelCase conversion of names
+  tabbar
   tide
   treemacs
   treemacs-projectile
   treesit-auto        ; Automatic installation, usage, and fallback for tree-sitter
   use-package         ; A configuration macro for simplifying your .emacs
   vertico             ; VERTical Interactive COmpletion
+  web-mode
   wgrep
   which-key           ; Display available keybindings in popup
   yaml-mode           ; YAML mode
@@ -85,7 +90,6 @@
 ;;----------------------------------------------------------------------------
 (require 'init-system)
 (require 'init-utils)
-(require 'init-site-lisp)
 (require 'init-elpa)
 (require 'init-dired)
 (require 'init-exec-path)
@@ -118,10 +122,7 @@
 (require 'init-tide-yarn2)
 (require 'init-javascript)
 (require 'init-markdown)
-(require 'init-go)
-(require 'init-haskell)
 (require 'init-restclient)
-(require 'init-rust)
 
 ;;----------------------------------------------------------------------------
 ;; Minor mode

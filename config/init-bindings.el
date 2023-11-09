@@ -66,19 +66,11 @@
 (define-key treemacs-mode-map (kbd "s-w") 'treemacs-remove-project-from-workspace)
 (define-key treemacs-mode-map (kbd "s-r") 'treemacs-refresh)
 
-;;(global-set-key (kbd "s-{") 'awesome-tab-backward-tab)
-;;(global-set-key (kbd "s-}") 'awesome-tab-forward-tab)
-;;(global-set-key (kbd "C-s-{") 'awesome-tab-backward-group)
-;;(global-set-key (kbd "C-s-}") 'awesome-tab-forward-group)
-
 (global-set-key (kbd "C-s-{") 'tabbar-backward-tab)
 (global-set-key (kbd "C-s-}") 'tabbar-forward-tab)
 (global-set-key (kbd "s-{") 'tab-bar-switch-to-prev-tab)
 (global-set-key (kbd "s-}") 'tab-bar-switch-to-next-tab)
 (global-set-key (kbd "s-0") 'tab-bar-select-first)
-;;(global-set-key (kbd "C-s-w") 'tab-bar-close-tab)
-;;(global-set-key (kbd "C-s-n") 'tab-bar-new-tab)
-;;(global-set-key (kbd "C-s-r") 'tab-bar-rename-tab)
 
 (global-set-key (kbd "C-c d") 'xref-find-definitions)
 (global-set-key (kbd "C-c s") 'xref-pop-marker-stack)
@@ -93,8 +85,6 @@
 ;;----------------------------------------------------------------------------
 (require 'evil)
 
-;; (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
-(define-key evil-motion-state-map (kbd "C-u") 'evil-scroll-up)
 (define-key evil-normal-state-map (kbd "SPC") 'avy-goto-word-1)
 (define-key evil-normal-state-map (kbd "TAB") 'evil-jump-backward)
 (define-key evil-normal-state-map (kbd "g s") 'magit-status)
@@ -194,40 +184,16 @@
 (define-key web-mode-map (kbd "C-c C-t") 'web-mode-tag-select)
 (define-key web-mode-map (kbd "C-c C-e") 'web-mode-element-select)
 (define-key web-mode-map (kbd "C-c C-w") 'web-mode-tag-end)
-;; (define-key web-mode-map (kbd "C-c C-r") 'web-mode-element-rename)
-;; (define-key web-mode-map (kbd "C-c C-d") 'web-mode-attribute-kill)
-;; (define-key web-mode-map (kbd "C-c f") 'fold-active-region)
 
 (define-key evil-visual-state-map (kbd "v") 'er/expand-region)        ;; expand region plugin
 (define-key evil-visual-state-map (kbd "(") 'wrap-region-parenthesis-to-function)
-;;(global-set-key (kbd "s-]") 'er/expand-region)        ;; expand region plugin
 
-;; (global-set-key (kbd "s-[") 'tabbar-move-current-tab-one-place-left)
-;; (global-set-key (kbd "s-]") 'tabbar-move-current-tab-one-place-right)
 
 (require 'magit)
-(define-key magit-mode-map (kbd "C-d") 'evil-scroll-down)
-(define-key magit-mode-map (kbd "C-u") 'evil-scroll-up)
 (define-key magit-mode-map (kbd "<down>") 'magit-section-forward)
 (define-key magit-mode-map (kbd "<up>") 'magit-section-backward)
 (define-key magit-mode-map (kbd "<C-tab>") 'quit-window)
-
-;; (global-set-key (kbd "M-r") 'query-replace)          ;; replace
-;; (global-set-key (kbd "C-x o") 'open-file-at-cursor)        ;; open file under the cursor
-;; (global-set-key (kbd "C-c l") 'goto-last-change)
-;; (global-set-key (kbd "C-c p") 'yas/expand)
-;; (global-set-key (kbd "s-2") 'jump-to-cursor)
 (global-set-key (kbd "<s-backspace>") 'go-up-general)
-
-;;----------------------------------------------------------------------------
-;; rust
-;;----------------------------------------------------------------------------
-(require 'rustic)
-(define-key rustic-mode-map (kbd "C-c d") 'lsp-find-definition)
-(define-key rustic-mode-map (kbd "C-c r") 'lsp-find-references)
-(define-key rustic-mode-map (kbd "C-r") 'lsp-execute-code-action)
-(define-key rustic-mode-map (kbd "C-c h") 'lsp-describe-thing-at-point)
-(define-key rustic-mode-map (kbd "C-c C-p") 'counsel-open-project)
 
 ;;----------------------------------------------------------------------------
 ;; slime
@@ -278,15 +244,5 @@
 (define-key dired-mode-map (kbd "C-c C-c") 'wdired-change-to-wdired-mode)
 (define-key wdired-mode-map (kbd "C-c C-c") 'wdired-finish-edit)
 (define-key wdired-mode-map (kbd "C-c C-q") 'wdired-abort-changes)
-
-;;----------------------------------------------------------------------------
-;; copilot bindings
-;;----------------------------------------------------------------------------
-;; (require 'copilot)
-;; (define-key evil-insert-state-map (kbd "<s-return>") 'copilot-complete)
-;; (define-key copilot-completion-map (kbd "s-]") 'copilot-next-completion)
-;; (define-key copilot-completion-map (kbd "s-[") 'copilot-previous-completion)
-;; (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
-;; (define-key copilot-completion-map (kbd "<escape>") 'copilot-clear-overlay)
 
 (provide 'init-bindings)

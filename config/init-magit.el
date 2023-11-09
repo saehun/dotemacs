@@ -4,19 +4,19 @@
 
 ;;; Magit
 
-(when (maybe-require-package 'magit)
-  (setq magit-display-buffer-function
-    (lambda (buffer)
-      (display-buffer buffer '(display-buffer-same-window))))
+(require 'magit)
+(setq magit-display-buffer-function
+  (lambda (buffer)
+    (display-buffer buffer '(display-buffer-same-window))))
 
-  (defun magit-commit-current-file ()
-    (interactive)
-    (progn
-      (magit-stage-file (buffer-file-name))
-      (magit-commit-create)))
+(defun magit-commit-current-file ()
+  (interactive)
+  (progn
+    (magit-stage-file (buffer-file-name))
+    (magit-commit-create)))
 
-  (setq magit-blame-echo-style "lines")
-  (setq magit-git-global-arguments '("--no-pager" "-c" "core.preloadindex=true" "-c" "log.showSignature=false" "-c" "color.ui=false" "-c" "color.diff=false")))
+(setq magit-blame-echo-style "lines")
+(setq magit-git-global-arguments '("--no-pager" "-c" "core.preloadindex=true" "-c" "log.showSignature=false" "-c" "color.ui=false" "-c" "color.diff=false"))
 
 
 (provide 'init-magit)

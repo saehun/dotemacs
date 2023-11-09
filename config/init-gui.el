@@ -9,7 +9,11 @@
 (global-hl-line-mode 1)
 
 
+(require 'tabbar)
 (require 'tab-bar)
+(require 'doom-modeline)
+(require 'doom-themes)
+
 (tab-bar-mode 1)
 (custom-set-faces
   '(tab-bar-tab
@@ -22,8 +26,8 @@
 ;; (set-frame-font "Iosevka Term:pixelsize=13:weight=light:slant=normal:width=normal:spacing=100:scalable=true")
 ;; (set-frame-font "SF Mono:pixelsize=14:weight=light:slant=normal:width=normal:spacing=100:scalable=true")
 ;; (set-frame-font "")
-(add-to-list 'default-frame-alist
-             '(font . "Iosevka Term:pixelsize=14:weight=normal:slant=normal:width=normal:spacing=100:scalable=true"))
+;;(add-to-list 'default-frame-alist '(font . "Iosevka Term:pixelsize=14:weight=normal:slant=normal:width=normal:spacing=100:scalable=true"))
+(set-frame-font "Iosevka Term 14" nil t)
 (add-to-list 'custom-theme-load-path "~/repo/github.com/minidonut/dotemacs/themes")
 
 
@@ -75,7 +79,6 @@
 ;;----------------------------------------------------------------------------
 ;; Modeline
 ;;----------------------------------------------------------------------------
-(when (maybe-require-package 'doom-modeline)
  (doom-modeline-mode 1)
 
   ;; https://github.com/seagle0128/doom-modeline/issues/164
@@ -85,13 +88,12 @@
   (setq doom-modeline-buffer-file-name-style 'relative-from-project)
   (setq inhibit-compacting-font-caches t)
   (setq doom-modeline-buffer-encoding nil)
-  (setq doom-modeline-height 20))
+  (setq doom-modeline-height 20)
 
 
 ;;----------------------------------------------------------------------------
 ;; Theme
 ;;----------------------------------------------------------------------------
-(when (maybe-require-package 'doom-themes)
   ;; (doom-themes-visual-bell-config) Disable visual bell
   (doom-themes-org-config)
   (setq doom-themes-enable-bold t
@@ -101,7 +103,7 @@
     ;; (if (string= (invocation-name) "emacs")
       ;; 'doom-dark+
       ;;'doom-subliminal)
-      'doom-dark+ t))
+      'doom-dark+ t)
       ;; 'tsdh-light))
       ;; 'doom-one-light))
 
@@ -114,7 +116,6 @@
 ;;----------------------------------------------------------------------------
 ;; Tabbar  
 ;;----------------------------------------------------------------------------
-(when (maybe-require-package 'tabbar)
 
   (tabbar-mode 1)
   (let ((custom-tabbar-bg (face-attribute 'default :background)))
@@ -214,18 +215,9 @@
         (setq new-bufs (append new-bufs (cdr old-bufs)))
         (set bufset new-bufs)
         (tabbar-set-template bufset nil)
-        (tabbar-display-update)))
+        (tabbar-display-update))))
 
-;; (setq tabbar-separator (quote (0.5)))
-    ))
 
-;;----------------------------------------------------------------------------
-;; Awesome-tab
-;;----------------------------------------------------------------------------
-;;(use-package awesome-tab
-;;  :load-path "../lisp/awesome-tab.el"
-;;  :config
-;;  (awesome-tab-mode t))
 
 (provide 'init-gui)
 

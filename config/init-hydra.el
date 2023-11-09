@@ -4,7 +4,7 @@
 
 ;;; Hydra
 
-(when (maybe-require-package 'hydra))
+(require 'hydra)
 
 (provide 'init-hydra)
 ;;; init-hydra.el ends here

@@ -106,7 +106,6 @@ locate PACKAGE."
       (sanityinc/set-tabulated-list-column-width "Archive" longest-archive-name))))
 
 (add-hook 'package-menu-mode-hook 'sanityinc/maybe-widen-package-menu-columns)
-(maybe-require-package 'use-package)
 
 
 (provide 'init-elpa)

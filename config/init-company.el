@@ -8,7 +8,6 @@
 ;; (add-to-list 'completion-styles 'initials t)
 
 (use-package company
-  :ensure t
   :init
   (add-hook 'after-init-hook 'global-company-mode)
   :defines company-dabbrev-downcase
@@ -20,7 +19,6 @@
   (setq-default company-dabbrev-other-buffers 'all company-tooltip-align-annotations t))
 
 (use-package company-quickhelp
-  :ensure t
   :after company
   :init
   (add-hook 'after-init-hook 'global-company-mode)
