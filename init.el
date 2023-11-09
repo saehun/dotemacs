@@ -20,7 +20,6 @@
      (eval-print-last-sexp)))
  (load bootstrap-file nil 'nomessage))
 
-
 (defvar package-list '(
   company
   company-quickhelp
@@ -65,6 +64,7 @@
   mini-frame          ; Show minibuffer in child frame on read-from-minibuffer
   orderless           ; Completion style for matching regexps in any order
   projectile          ; Projectile
+  prettier
   request
   restclient
   savehist            ; Persist history over Emacs restarts.
