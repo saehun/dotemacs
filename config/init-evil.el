@@ -4,8 +4,7 @@
 (require 'evil-surround)
 (require 'evil-textobj-anyblock)
 
-(add-hook 'after-init-hook 'evil-mode)
-
+(evil-mode 1)
 (global-evil-surround-mode 1)
 (add-hook 'tide-mode-hook (lambda ()
                             (push '(?L . ("console.log(" . ")")) evil-surround-pairs-alist)))

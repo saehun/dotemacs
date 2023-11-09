@@ -196,13 +196,6 @@
 (global-set-key (kbd "<s-backspace>") 'go-up-general)
 
 ;;----------------------------------------------------------------------------
-;; slime
-;;----------------------------------------------------------------------------
-(require 'slime)
-(define-key lisp-mode-map (kbd "C-c d") 'slime-edit-definition)
-(define-key lisp-mode-map (kbd "C-c r") 'slime-who-calls)
-
-;;----------------------------------------------------------------------------
 ;; node-bindings
 ;;----------------------------------------------------------------------------
 (global-set-key (kbd "C-c C-o") 'node/counsel-open)

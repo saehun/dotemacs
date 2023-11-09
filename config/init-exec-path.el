@@ -2,7 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
-(require-package 'exec-path-from-shell)
+(require 'exec-path-from-shell)
 
 ;; Environment variable
 ;; golang

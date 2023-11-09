@@ -26,10 +26,12 @@
   company-quickhelp
   consult             ; Consulting completing-read
   corfu               ; Completion Overlay Region FUnction
+  counsel
   dired-ranger
   doom-modeline
   doom-themes
   drag-stuff
+  exec-path-from-shell
   editorconfig
   eldoc-box           ; childframe doc for eglot and anything that uses eldoc
   evil                ; The extensible vi layer for Emacs.
@@ -49,6 +51,8 @@
   helpful             ; A better help buffer
   htmlize             ; Convert buffer text and decorations to HTML
   hydra
+  ivy
+  ivy-yasnippet
   ibuffer-projectile
   imenu-list          ; Show imenu entries in a separate buffer
   jest-test-mode
@@ -90,7 +94,6 @@
 ;;----------------------------------------------------------------------------
 (require 'init-system)
 (require 'init-utils)
-(require 'init-elpa)
 (require 'init-dired)
 (require 'init-exec-path)
 
@@ -144,9 +147,7 @@
 ;;----------------------------------------------------------------------------
 (require 'init-hydra)
 (require 'init-hydra-typescript)
-
 (require 'init-general-command)
-(require 'init-machine)
 
 ;;; init.el ends here
 

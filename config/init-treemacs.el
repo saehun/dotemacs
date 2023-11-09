@@ -4,7 +4,6 @@
 
 ;;; Treemacs
 (require 'treemacs)
-
 (require 'projectile)
 (require 'treemacs)
 (require 'treemacs-async)
