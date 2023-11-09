@@ -1,7 +1,7 @@
 ;;; init.el --- Load the full configuration -*- lexical-binding: t -*-
 ;;; Code:
 
-(dolist (dir '("config" "prisma" "lisp"))
+(dolist (dir '("config-common" "config-language" "config-custom" "lisp"))
   (add-to-list 'load-path (expand-file-name dir user-emacs-directory)))
 
 ;;----------------------------------------------------------------------------
