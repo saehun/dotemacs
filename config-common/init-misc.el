@@ -17,14 +17,13 @@
 ;;----------------------------------------------------------------------------
 (recentf-mode 1)
 (setq recentf-max-menu-items 25
-  recentf-max-saved-items 200
-  recentf-exclude '("/Users/saehun/Documents/Mail.+"
-                     "/Users/saehun/Documents/Notes.+"
-                     "/opt/homebrew/.+"
-                     ))
+      recentf-max-saved-items 200
+      recentf-exclude '("/Users/saehun/Documents/Mail.+"
+                        "/Users/saehun/Documents/Notes.+"
+                        "/opt/homebrew/.+"
+                        ))
 (let (message-log-max)
   (recentf-mode 1))
-(global-set-key "\C-x\ \C-r" 'counsel-recentf)
 
 ;;----------------------------------------------------------------------------
 ;; Miscellaneous
@@ -32,9 +31,9 @@
 (electric-pair-mode 1)
 (defmacro custom/add-mode-pairs (hook pairs)
   `(add-hook ,hook
-     (lambda ()
-       (setq-local electric-pair-pairs (append electric-pair-pairs ,pairs))
-       (setq-local electric-pair-text-pairs electric-pair-pairs))))
+             (lambda ()
+               (setq-local electric-pair-pairs (append electric-pair-pairs ,pairs))
+               (setq-local electric-pair-text-pairs electric-pair-pairs))))
 
 (custom/add-mode-pairs 'web-mode-hook '((?` . ?`)))
 (custom/add-mode-pairs 'web-mode-hook '((?' . ?')))
@@ -58,10 +57,10 @@
 (add-hook 'prog-mode-hook 'editorconfig-mode)
 
 (add-hook 'ibuffer-hook
-  (lambda ()
-    (ibuffer-projectile-set-filter-groups)
-    (unless (eq ibuffer-sorting-mode 'alphabetic)
-      (ibuffer-do-sort-by-alphabetic))))
+          (lambda ()
+            (ibuffer-projectile-set-filter-groups)
+            (unless (eq ibuffer-sorting-mode 'alphabetic)
+              (ibuffer-do-sort-by-alphabetic))))
 
 
 (drag-stuff-global-mode 1)

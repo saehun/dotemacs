@@ -4,6 +4,8 @@
 ;;;; Requirements:
 (require 'package)
 (require 'autorevert)
+(require 'treesit-auto)
+(require 'apheleia)
 
 ;;; Code:
 (defconst *spell-check-support-enabled* nil) ;; Enable with t if you prefer
@@ -29,11 +31,11 @@
 (setq backup-inhibited t)
 (setq make-backup-files nil)
 (setq ring-bell-function 'ignore)
-(global-auto-revert-mode t)
+(global-auto-revert-mode  1)
+(global-treesit-auto-mode 1)
+(apheleia-global-mode +1)
 
-;; turn on lexical binding
-(setq lexical-binding t)
-
+(customize-set-variable 'treesit-font-lock-level 4)  ; Better syntax highlighting
 (customize-set-variable 'large-file-warning-threshold 100000000) ;; change to ~100 MB
 
 ;;----------------------------------------------------------------------------

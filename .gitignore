@@ -45,5 +45,6 @@ init-machine.el
 
 projects
 .DS_Store
-
+tree-sitter
+  
 .yas-compiled-snippets.el
