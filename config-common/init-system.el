@@ -6,6 +6,7 @@
 (require 'autorevert)
 (require 'treesit-auto)
 (require 'apheleia)
+(require 'marginalia)
 
 ;;; Code:
 (defconst *spell-check-support-enabled* nil) ;; Enable with t if you prefer
@@ -34,6 +35,7 @@
 (global-auto-revert-mode  1)
 (global-treesit-auto-mode 1)
 (apheleia-global-mode +1)
+(marginalia-mode 1)
 
 (customize-set-variable 'treesit-font-lock-level 4)  ; Better syntax highlighting
 (customize-set-variable 'large-file-warning-threshold 100000000) ;; change to ~100 MB

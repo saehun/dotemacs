@@ -38,6 +38,7 @@
                        evil                ; The extensible vi layer for Emacs.
                        evil-surround
                        evil-textobj-anyblock
+                       evil-textobj-tree-sitter
                        exec-path-from-shell
                        exec-path-from-shell; Get environment variables such as $PATH from the shell
                        expand-region
@@ -114,6 +115,7 @@
 ;;----------------------------------------------------------------------------
 (require 'init-ivy)
 (require 'init-evil)
+(require 'evil-textobj-line)
 (require 'custom-macro)
 (require 'init-company)
 (require 'init-flycheck)

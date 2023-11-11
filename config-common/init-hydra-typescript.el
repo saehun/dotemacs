@@ -9,15 +9,16 @@
 (require 'tide)
 
 (defhydra hydra-typescript (:color pink
-                             :hint nil
-                             :exit t)
+                                   :hint nil
+                                   :exit t)
   "
 
-  ^Command^         ^Test^
-  ^^^^^^^^--------------------------
-  _r_: run        _t_: create or goto test.ts
-  _d_: debug      _f_: apply all code fix
+  ^Command^                   ^Test^
+  ^^^^^^^^---------------------------------------
+  _r_: run               _t_: create or goto test.ts
+  _d_: debug             _f_: apply all code fix
   _w_: watch
+  _o_: organize-import
 
 "
   ("r" node/run-current-file)
@@ -25,14 +26,15 @@
   ("w" node/watch-run-current-file)
   ("t" node/new-test)
   ("f" tide-fix-all)
+  ("o" tide-organize-import)
 
   ("s-e" nil "quit")
   ("e" tide-project-errors "list errors" :color blue)
   ("q" quit-window "quit" :color blue))
 
 (defhydra hydra-typescript-test (:color pink
-                             :hint nil
-                             :exit t)
+                                        :hint nil
+                                        :exit t)
   "
 
   ^Command^         ^Move^
@@ -56,11 +58,11 @@
   (cl-search "test.ts" (file-name-nondirectory (buffer-file-name))))
 
 (define-key web-mode-map (kbd "s-e")
-  (lambda ()
-    (interactive)
-    (if (typescript-in-testfile-p)
-      (hydra-typescript-test/body)
-      (hydra-typescript/body))))
+            (lambda ()
+              (interactive)
+              (if (typescript-in-testfile-p)
+                  (hydra-typescript-test/body)
+                (hydra-typescript/body))))
 
 (provide 'init-hydra-typescript)
 

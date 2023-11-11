@@ -1,6 +1,8 @@
 ;;; package --- custom-macro
 ;;; Commentary:
 ;;; Code:
+(require 'projectile)
+
 (defun semicolon-macro ()
   "Put semicolon at the end of the line."
   (interactive)
@@ -35,25 +37,31 @@
   "Open daily markdown document."
   (interactive)
   (let ((filename (concat (format-time-string "%Y-%m-%d") ".md")))
-  (find-file (f-join "~" "repo" "github.com" "minidonut" "Daily" "Docs" filename))))
+    (find-file (f-join "~" "repo" "github.com" "minidonut" "Daily" "Docs" filename))))
 
 (defun jest/copy-command-for-current-file ()
   "Copy jest command for currnet file."
   (interactive)
   (kill-new
-    (string-join
-      (list
-        "npx"
-        "jest"
-        (file-relative-name
-          (f-no-ext (buffer-file-name))
-          (projectile-project-root)))
-      " ")))
+   (string-join
+    (list
+     "npx"
+     "jest"
+     (file-relative-name
+      (f-no-ext (buffer-file-name))
+      (projectile-project-root)))
+    " ")))
 
 (defun prev-window ()
   "Go to previous window."
   (interactive)
   (other-window -1))
+
+(defun dired-git-root ()
+  "Open git root directory"
+  (interactive)
+  (dired (projectile-locate-dominating-file default-directory ".git")))
+
 
 (provide 'custom-macro)
 ;;; custom-macro ends here

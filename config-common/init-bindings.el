@@ -8,25 +8,28 @@
   `(lambda (&rest args)
      (interactive)
      (if (minibuffer-window-active-p (active-minibuffer-window))
-       (minibuffer-keyboard-quit)
+         (minibuffer-keyboard-quit)
        (apply #',command args))))
-
 
 ;;----------------------------------------------------------------------------
 ;; Unset
 ;;----------------------------------------------------------------------------
 (global-unset-key "\C-z")
 (global-unset-key "\C-t")
+(global-unset-key "\C-i")
 (global-unset-key "\C-r")
-(global-unset-key (kbd "s-r"))
+(global-unset-key "\C-o")
 (global-set-key (kbd "s-r") nil)
+(global-unset-key (kbd "s-r"))
 (global-unset-key (kbd "s-e"))
 (global-set-key (kbd "s-e") nil)
 
 ;;----------------------------------------------------------------------------
 ;; Basic
 ;;----------------------------------------------------------------------------
-(global-set-key (kbd "C-e") (with-safe 'counsel-M-x))
+;;(define-key function-key-map [tab] ["TAB"])
+
+(global-set-key (kbd "s-e") (with-safe 'counsel-M-x))
 (global-set-key (kbd "s-f") 'swiper)
 (global-set-key (kbd "s-F") (with-safe 'counsel-rg))         ;; grep from git root
 (global-set-key (kbd "C-f") (with-safe 'counsel-rg-package)) ;; grep from package.json root
@@ -66,19 +69,19 @@
 (define-key treemacs-mode-map (kbd "s-w") 'treemacs-remove-project-from-workspace)
 (define-key treemacs-mode-map (kbd "s-r") 'treemacs-refresh)
 
-(global-set-key (kbd "C-s-{") 'tabbar-backward-tab)
-(global-set-key (kbd "C-s-}") 'tabbar-forward-tab)
-(global-set-key (kbd "s-{") 'tab-bar-switch-to-prev-tab)
-(global-set-key (kbd "s-}") 'tab-bar-switch-to-next-tab)
+(global-set-key (kbd "s-{") 'tabbar-backward-tab)
+(global-set-key (kbd "s-}") 'tabbar-forward-tab)
+(global-set-key (kbd "C-s-{") 'tab-bar-switch-to-prev-tab)
+(global-set-key (kbd "C-s-}") 'tab-bar-switch-to-next-tab)
 (global-set-key (kbd "s-0") 'tab-bar-select-first)
 
 (global-set-key (kbd "C-c d") 'xref-find-definitions)
 (global-set-key (kbd "C-c s") 'xref-pop-marker-stack)
-(global-set-key (kbd "C-c C-p") 'counsel-open-project)
+(global-set-key (kbd "C-o C-p") 'counsel-open-project)
 
 ;; overrides
 (require 'json-mode)
-(define-key json-mode-map (kbd "C-c C-p") 'counsel-open-project)
+(define-key json-mode-map (kbd "C-o C-p") 'counsel-open-project)
 
 ;;----------------------------------------------------------------------------
 ;; Evil
@@ -99,7 +102,6 @@
 (define-key evil-outer-text-objects-map "b" 'evil-textobj-anyblock-a-block)
 (define-key evil-visual-state-map "\C-r" nil)
 (define-key evil-normal-state-map "\C-r" nil)
-(define-key evil-normal-state-map "\C-i" nil)
 (define-key evil-visual-state-map "L" 'insert-log-with-kill-ring-or-region)
 (define-key evil-normal-state-map "L" 'insert-log-with-kill-ring-or-region)
 (define-key evil-normal-state-map "\C-n" nil)
@@ -112,6 +114,11 @@
 (define-key evil-motion-state-map "\C-f" nil)
 (define-key evil-motion-state-map "\C-o" nil)
 (define-key evil-motion-state-map "\C-z" nil)
+
+(define-key evil-normal-state-map "\C-i" nil)
+(define-key evil-visual-state-map "\C-i" nil)
+(define-key evil-insert-state-map "\C-i" nil)
+(define-key evil-motion-state-map "\C-i" nil)
 
 
 ;;----------------------------------------------------------------------------
@@ -128,9 +135,9 @@
 ;; Company
 ;;----------------------------------------------------------------------------
 (require 'company)
-(define-key company-active-map (kbd "<tab>") 'yas/expand)
+(define-key company-active-map (kbd "<tab>") 'yas-expand)
 (define-key company-active-map (kbd "?") #'company-quickhelp-manual-begin)
-(define-key company-search-map (kbd "<tab>") 'yas/expand)
+(define-key company-search-map (kbd "<tab>") 'yas-expand)
 (define-key company-active-map (kbd "<escape>") 'company-abort)
 (define-key company-active-map (kbd "C-o") 'counsel-company)
 
@@ -141,9 +148,12 @@
 ;; Edit
 ;;----------------------------------------------------------------------------
 (global-set-key (kbd "<f17>") 'toggle-input-method)
-(global-set-key (kbd "s-/") 'comment-line)
+(define-key yas-minor-mode-map (kbd "<tab>") 'yas-expand)
+(define-key evil-normal-state-map (kbd "s-/") 'comment-line)
+(define-key evil-insert-state-map (kbd "s-/") 'comment-line)
+(define-key evil-visual-state-map (kbd "s-/") 'comment-or-uncomment-region)
 
-;;----------------------------------------------------------------------------
+;; ----------------------------------------------------------------------------
 ;; Misc
 ;;----------------------------------------------------------------------------
 (global-set-key (kbd "s-r") 'shell-command)          ;; run command
@@ -152,6 +162,7 @@
 (global-set-key (kbd "s-1") 'open-til)
 (global-set-key (kbd "s-<f1>") 'open-daily)
 (global-set-key (kbd "C-s-1") 'open-todo)
+(global-set-key (kbd "C-o C-g") 'dired-git-root)
 
 ;;----------------------------------------------------------------------------
 ;; Typescript
@@ -205,7 +216,7 @@
 ;; markdown-bindings
 ;;----------------------------------------------------------------------------
 (require 'markdown-mode)
-(define-key markdown-mode-map (kbd "C-c C-p") 'counsel-open-project)
+(define-key markdown-mode-map (kbd "C-o C-p") 'counsel-open-project)
 (define-key markdown-mode-map (kbd "C-c d") 'markdown-jump)
 (define-key markdown-mode-map (kbd "s-i") 'ffip-insert-relative-path)
 
@@ -237,5 +248,12 @@
 (define-key dired-mode-map (kbd "C-c C-c") 'wdired-change-to-wdired-mode)
 (define-key wdired-mode-map (kbd "C-c C-c") 'wdired-finish-edit)
 (define-key wdired-mode-map (kbd "C-c C-q") 'wdired-abort-changes)
+
+(define-key dired-mode-map (kbd "C-o") nil)
+(define-key dired-mode-map (kbd "C-o C-p") 'counsel-open-project)
+
+(global-set-key (kbd "C-o C-r") 'consult-recent-file)
+(global-set-key (kbd "C-o r") 'projectile-recentf)
+
 
 (provide 'init-bindings)

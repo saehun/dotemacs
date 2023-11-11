@@ -16,8 +16,8 @@
 ;; recent file mode
 ;;----------------------------------------------------------------------------
 (recentf-mode 1)
-(setq recentf-max-menu-items 25
-      recentf-max-saved-items 200
+(setq recentf-max-menu-items 50
+      recentf-max-saved-items 2000
       recentf-exclude '("/Users/saehun/Documents/Mail.+"
                         "/Users/saehun/Documents/Notes.+"
                         "/opt/homebrew/.+"
