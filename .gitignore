@@ -46,5 +46,7 @@ init-machine.el
 projects
 .DS_Store
 tree-sitter
+
+/eln-cache
   
 .yas-compiled-snippets.el

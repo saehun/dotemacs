@@ -1,7 +1,9 @@
 ;;; init.el --- Load the full configuration -*- lexical-binding: t -*-
 ;;; Code:
 
-(dolist (dir '("config-common" "config-language" "config-custom" "lisp"))
+(defvar lisp-directories '("config-common" "config-language" "config-custom"))
+
+(dolist (dir lisp-directories)
   (add-to-list 'load-path (expand-file-name dir user-emacs-directory)))
 
 ;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -26,10 +28,13 @@
                        apheleia
                        company
                        company-quickhelp
+                       company-restclient
+                       comment-dwim-2
                        consult             ; Consulting completing-read
                        corfu               ; Completion Overlay Region FUnction
                        counsel
                        dired-ranger
+                       direnv
                        doom-modeline
                        doom-themes
                        drag-stuff
@@ -136,6 +141,7 @@
 (require 'init-markdown)
 (require 'init-restclient)
 (require 'init-rust)
+(require 'init-language-etc)
 
 ;;----------------------------------------------------------------------------
 ;; Minor mode

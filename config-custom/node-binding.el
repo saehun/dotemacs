@@ -7,8 +7,8 @@
 
 (defun node-ensure-in-typesciprt-sourcefile ()
   "Ensure current path is under typescript project and is in sourcefile."
-  (if (or (not (buffer-file-name)) (not (eq major-mode 'web-mode)))
-    (error "Not in typescript source file")))
+  (if (and (not (eq major-mode 'typescript-ts-mode)) (not (eq major-mode 'tsx-ts-mode)))
+      (error "Not in typescript source file")))
 
 (defun node-open-debugger ()
   "Open devtool debugger."
@@ -17,12 +17,12 @@
 (defun node-get-paths ()
   "Get node paths."
   (let*
-    ((filename (file-name-nondirectory (buffer-file-name)))
-      (file-directory default-directory)
-      (project-directory (projectile-locate-dominating-file default-directory "package.json"))
-      (relative-filepath (f-relative (concat file-directory filename) project-directory)))
+      ((filename (file-name-nondirectory (buffer-file-name)))
+       (file-directory default-directory)
+       (project-directory (projectile-locate-dominating-file default-directory "package.json"))
+       (relative-filepath (f-relative (concat file-directory filename) project-directory)))
     (mapcar (lambda (path) (replace-regexp-in-string "/$" "" path))
-      (list filename file-directory project-directory relative-filepath))))
+            (list filename file-directory project-directory relative-filepath))))
 
 (defun eval-string (string)
   "Evaluate elisp code stored in a STRING."
@@ -31,24 +31,24 @@
 (defun node-service-env ()
   "Execute `emacs-node' nodejs command and evaluate it's standard output."
   (let ((directory default-directory)
-         (filename (if (buffer-file-name)
-                     (file-name-nondirectory (buffer-file-name))
-                     ""))
-         (buffer (buffer-string))
-         (region (if (region-active-p) ;; region
+        (filename (if (buffer-file-name)
+                      (file-name-nondirectory (buffer-file-name))
+                    ""))
+        (buffer (buffer-string))
+        (region (if (region-active-p) ;; region
                     (filter-buffer-substring (region-beginning) (region-end))
-                    "")))
+                  "")))
     (json-encode
-      (list
-        (cons "mode" (format "%s" major-mode))
-        (cons "directory" directory)
-        (cons "cursor" (list
-          (cons "pos" (point))
-          (cons "col" (current-column))
-          (cons "row" (line-number-at-pos))))
-        (cons "filename" filename)
-        (cons "buffer" buffer)
-        (cons "region" region)))))
+     (list
+      (cons "mode" (format "%s" major-mode))
+      (cons "directory" directory)
+      (cons "cursor" (list
+                      (cons "pos" (point))
+                      (cons "col" (current-column))
+                      (cons "row" (line-number-at-pos))))
+      (cons "filename" filename)
+      (cons "buffer" buffer)
+      (cons "region" region)))))
 
 (defun choose-directory (directory-to-start-in)
   "Return a directory chosen by the user.  The user will be prompted
@@ -66,39 +66,39 @@ to choose a directory starting with `directory-to-start-in'"
 (cl-defun post-message-node (command &optional (data ""))
   "Send message."
   (eval-string
-    (with-output-to-string
-      (call-process "emacs-node" nil standard-output nil command data))))
+   (with-output-to-string
+     (call-process "emacs-node" nil standard-output nil command data))))
 
 (cl-defun post-message-node-with-env (command &optional (data ""))
   "Send message with env."
   (if (> (buffer-size) 100000) (message "Buffer is to large: %d charaters" (buffer-size))
-  (eval-string
-    (with-output-to-string
-      (call-process "emacs-node" nil standard-output nil command data (node-service-env))))))
+    (eval-string
+     (with-output-to-string
+       (call-process "emacs-node" nil standard-output nil command data (node-service-env))))))
 
 (cl-defun post-message-custom-binary-with-env (bin command &optional (data ""))
   "Send message with env."
   (if (> (buffer-size) 100000) (message "Buffer is to large: %d charaters" (buffer-size))
-  (eval-string
-    (with-output-to-string
-      (call-process bin nil standard-output nil command data (node-service-env))))))
+    (eval-string
+     (with-output-to-string
+       (call-process bin nil standard-output nil command data (node-service-env))))))
 
 (cl-defmacro post-message-node-thunk (command &optional (data ""))
   (let ((service-env (node-service-env)))
     `(lambda ()
        (with-output-to-string
-       (call-process "emacs-node" nil standard-output nil ,command ,data ,service-env)))))
+         (call-process "emacs-node" nil standard-output nil ,command ,data ,service-env)))))
 
 (cl-defun post-message-node-with-env-async (command &optional (data ""))
   "(Async) Send message with env."
   (if (> (buffer-size) 100000) (message "Buffer is to large: %d charaters" (buffer-size))
     (let ((service-env (node-service-env)))
       (async-start
-        `(lambda ()
-           (with-output-to-string
-             (call-process "emacs-node" nil standard-output nil ,command ,data ,service-env)))
-        (lambda (response)
-          (eval-string response))))))
+       `(lambda ()
+          (with-output-to-string
+            (call-process "emacs-node" nil standard-output nil ,command ,data ,service-env)))
+       (lambda (response)
+         (eval-string response))))))
 
 ;; Command
 (defun node/counsel-command ()
@@ -251,9 +251,9 @@ Otherwise return as it is."
   (node-ensure-in-typesciprt-sourcefile)
   (-let (((_ __ project-directory relative-filepath) (node-get-paths)))
     (call-process-shell-command
-      (format "find-session %s %s"
-        (replace-regexp-in-string "/$" "" project-directory)
-        (format "\"%s %s\"" command relative-filepath)) nil nil nil)))
+     (format "find-session %s %s"
+             (replace-regexp-in-string "/$" "" project-directory)
+             (format "\"%s %s\"" command relative-filepath)) nil nil nil)))
 
 (defun node/run-current-file ()
   "Run current typescript file with ts-node."
@@ -289,26 +289,26 @@ Otherwise return as it is."
 
 (defun node/create-test-file (filename)
   (let ((buffer (find-file
-                  (expand-file-name
-                    (replace-regexp-in-string "ts$" "test.ts" filename)
-                    file-directory))))
+                 (expand-file-name
+                  (replace-regexp-in-string "ts$" "test.ts" filename)
+                  file-directory))))
     (with-current-buffer
-      buffer
+        buffer
       (if (= (buffer-size buffer) 0)
-        (progn
-          (insert
-            (format "import {  } from './%s';
+          (progn
+            (insert
+             (format "import {  } from './%s';
 
 describe('%s', () => {
   it('works', async () => {
   });
 });
 "
-              (replace-regexp-in-string ".ts$" "" filename)
-              (replace-regexp-in-string ".ts$" "" filename)))
-          (goto-char 10)
-          (evil-insert-state)
-          (company-complete))))))
+                     (replace-regexp-in-string ".ts$" "" filename)
+                     (replace-regexp-in-string ".ts$" "" filename)))
+            (goto-char 10)
+            (evil-insert-state)
+            (company-complete))))))
 
 (defun node/new-test ()
   "Create and open test file."
@@ -316,8 +316,8 @@ describe('%s', () => {
   (node-ensure-in-typesciprt-sourcefile)
   (-let (((filename file-directory project-directory relative-filepath) (node-get-paths)))
     (if (cl-search "test.ts" filename)
-      (find-file
-        (expand-file-name
+        (find-file
+         (expand-file-name
           (replace-regexp-in-string "test.ts$" "ts" filename)
           file-directory))
       (node/create-test-file filename))))
@@ -327,26 +327,26 @@ describe('%s', () => {
   (interactive)
   (node-ensure-in-typesciprt-sourcefile)
   (-let
-    (((filename file-directory project-directory relative-filepath) (node-get-paths)))
+      (((filename file-directory project-directory relative-filepath) (node-get-paths)))
     (cond
-      ((cl-search "test.ts" filename)
-        (jest-test-run-at-point))
-      ((file-exists-p (expand-file-name (replace-regexp-in-string "ts$" "test.ts" filename) file-directory))
-        (jest-test-rerun-test))
-      (t (node/create-test-file filename)))))
+     ((cl-search "test.ts" filename)
+      (jest-test-run-at-point))
+     ((file-exists-p (expand-file-name (replace-regexp-in-string "ts$" "test.ts" filename) file-directory))
+      (jest-test-rerun-test))
+     (t (node/create-test-file filename)))))
 
 (defun node/run-test-debug ()
   "Run and open test file."
   (interactive)
   (node-ensure-in-typesciprt-sourcefile)
   (-let
-    (((filename file-directory project-directory relative-filepath) (node-get-paths)))
+      (((filename file-directory project-directory relative-filepath) (node-get-paths)))
     (cond
-      ((cl-search "test.ts" filename)
-        (jest-test-debug-run-at-point))
-      ((file-exists-p (expand-file-name (replace-regexp-in-string "ts$" "test.ts" filename) file-directory))
-        (jest-test-debug-rerun-test))
-      (t (node/create-test-file filename)))))
+     ((cl-search "test.ts" filename)
+      (jest-test-debug-run-at-point))
+     ((file-exists-p (expand-file-name (replace-regexp-in-string "ts$" "test.ts" filename) file-directory))
+      (jest-test-debug-rerun-test))
+     (t (node/create-test-file filename)))))
 
 
 (defun codegen-project ()

@@ -129,8 +129,37 @@
 
 ;; bind `function.outer`(entire function block) to `f` for use in things like `vaf`, `yaf`
 (define-key evil-outer-text-objects-map "f" (evil-textobj-tree-sitter-get-textobj "function.outer"))
-
 ;; bind `function.inner`(function block without name and args) to `f` for use in things like `vif`, `yif`
 (define-key evil-inner-text-objects-map "f" (evil-textobj-tree-sitter-get-textobj "function.inner"))
+;; You can also bind multiple items and we will match the first one we can find
+(define-key evil-outer-text-objects-map "a" (evil-textobj-tree-sitter-get-textobj ("conditional.outer" "loop.outer")))
+
+;; Goto start of next function
+(define-key evil-normal-state-map
+            (kbd "]f")
+            (lambda ()
+              (interactive)
+              (evil-textobj-tree-sitter-goto-textobj "function.outer")))
+
+;; Goto start of previous function
+(define-key evil-normal-state-map
+            (kbd "[f")
+            (lambda ()
+              (interactive)
+              (evil-textobj-tree-sitter-goto-textobj "function.outer" t)))
+
+;; Goto end of next function
+(define-key evil-normal-state-map
+            (kbd "]F")
+            (lambda ()
+              (interactive)
+              (evil-textobj-tree-sitter-goto-textobj "function.outer" nil t)))
+
+;; Goto end of previous function
+(define-key evil-normal-state-map
+            (kbd "[F")
+            (lambda ()
+              (interactive)
+              (evil-textobj-tree-sitter-goto-textobj "function.outer" t t)))
 
 (provide 'init-evil)

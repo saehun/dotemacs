@@ -76,7 +76,7 @@
 (global-set-key (kbd "s-0") 'tab-bar-select-first)
 
 (global-set-key (kbd "C-c d") 'xref-find-definitions)
-(global-set-key (kbd "C-c s") 'xref-pop-marker-stack)
+(global-set-key (kbd "C-c s") 'xref-go-back)
 (global-set-key (kbd "C-o C-p") 'counsel-open-project)
 
 ;; overrides
@@ -88,8 +88,8 @@
 ;;----------------------------------------------------------------------------
 (require 'evil)
 
-(define-key evil-normal-state-map (kbd "SPC") 'avy-goto-word-1)
-(define-key evil-normal-state-map (kbd "TAB") 'evil-jump-backward)
+(define-key evil-normal-state-map (kbd "SPC") 'avy-goto-char-timer)
+;;(define-key evil-normal-state-map (kbd "TAB") 'evil-jump-backward)
 (define-key evil-normal-state-map (kbd "g s") 'magit-status)
 (define-key evil-normal-state-map (kbd "g a") 'magit-stage-file)
 (define-key evil-normal-state-map (kbd "g c") 'magit-commit-current-file)
@@ -175,7 +175,7 @@
 (define-key tide-mode-map (kbd "C-c d") 'tide-jump-to-definition)
 (define-key tide-mode-map (kbd "C-c i") 'tide-jump-to-implementation)
 (define-key tide-mode-map (kbd "C-c t") 'node/new-test)
-(define-key tide-mode-map (kbd "C-c s") 'xref-pop-marker-stack)
+(define-key tide-mode-map (kbd "C-c s") 'xref-go-back)
 (define-key tide-mode-map (kbd "C-c C-r") 'tide-rename-symbol)
 (define-key tide-mode-map (kbd "C-c C-f") 'my-tide-fix)
 (define-key tide-mode-map (kbd "C-c C-e") 'tide-project-errors)

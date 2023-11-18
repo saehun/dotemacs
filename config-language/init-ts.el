@@ -5,9 +5,14 @@
 (require 'tide)
 (require 'web-mode)
 (require 'flycheck)
+(require 'c-ts-mode)
+(require 'company)
 (require 'jest-test-mode)
+
+;;;; Requirements Local:
 (require 'init-ts-command)
 (require 'init-ts-hydra)
+
 
 ;;; Code:
 (add-to-list 'auto-mode-alist '("\\.js$"  . js-ts-mode))
@@ -24,10 +29,10 @@
 (custom-set-variables '(js-indent-level 2))
 
 
-;; ;;; Web mode:
+;;; Web mode:
 (setq web-mode-enable-auto-quoting nil)
 
-;; ;;; Tide:
+;;; Tide:
 (defun setup-tide-mode ()
   "Setup tide mode."
   (interactive)
@@ -41,22 +46,23 @@
   (setq tide-server-max-response-length 1024000)
   (setq tide-node-flags '("--max-old-space-size=8192"))
   (setq tide-user-preferences
-    '(
-       :includeCompletionsForModuleExports t
-       :includeCompletionsWithInsertText t
-       :allowTextChangesInNewFiles t
-       :generateReturnInDocTemplate t
-       :quotePreference "single"
-       :importModuleSpecifierPreference "relative"
-       :autoImportFileExcludePatterns ["**/node_modules/date-fns"]
-       ))
-  (setq comment-start       "/*"
-    comment-end         "*/"
-    comment-multi-line  t
-    comment-padding     nil
-    comment-style       'extra-line
-    comment-continue    " * "
-    comment-empty-lines t)
+        '(
+          :includeCompletionsForModuleExports t
+          :includeCompletionsWithInsertText t
+          :allowTextChangesInNewFiles t
+          :generateReturnInDocTemplate t
+          :quotePreference "single"
+          :importModuleSpecifierPreference "relative"
+          :autoImportFileExcludePatterns ["**/node_modules/date-fns"]
+          ))
+  ;; (setq comment-start       "/*"
+  ;;       comment-end         "*/"
+  ;;       comment-multi-line  t
+  ;;       comment-padding     nil
+  ;;       comment-style       'extra-line
+  ;;       comment-continue    " * "
+  ;;       comment-empty-lines t)
+  ;; (c-ts-mode-toggle-comment-style)
   (company-mode +1))
 
 (defun tide-fix-all ()
@@ -65,7 +71,9 @@
   (tide-code-fix #'tide-apply-codefix-for-all-in-file))
 
 (add-hook 'typescript-ts-mode-hook #'setup-tide-mode)
+(add-hook 'tsx-ts-mode-hook        #'setup-tide-mode)
 (add-hook 'js-ts-mode-hook         #'setup-tide-mode)
+(add-hook 'web-mode-hook           #'setup-tide-mode)
 
 ;;; Flycheck:
 (flycheck-add-mode 'typescript-tide 'web-mode)
@@ -76,8 +84,9 @@
 
 ;;; Jest:
 (add-hook 'typescript-ts-mode-hook 'jest-test-mode)
-(add-hook 'js-ts-mode-hook 'jest-test-mode)
-(add-hook 'web-mode-hook 'jest-test-mode)
+(add-hook 'tsx-ts-mode-hook        'jest-test-mode)
+(add-hook 'js-ts-mode-hook         'jest-test-mode)
+(add-hook 'web-mode-hook           'jest-test-mode)
 
 (message "init-ts.el")
 (provide 'init-ts)

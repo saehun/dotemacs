@@ -18,11 +18,13 @@
 (advice-add 'flycheck-eslint-config-exists-p :override (lambda() t))
 
 (setq flycheck-display-errors-function #'flycheck-display-error-messages-unless-error-list)
-(setq flycheck-emacs-lisp-load-path
-  (list
-    (expand-file-name "config" user-emacs-directory)
-    (expand-file-name "prisma" user-emacs-directory)
-    (expand-file-name "lisp" user-emacs-directory)))
+(setq flycheck-emacs-lisp-load-path 'inherit)
+
+;; (setq flycheck-emacs-lisp-load-path
+;;       (list
+;;        (expand-file-name "config-custom" user-emacs-directory)
+;;        (expand-file-name "config-common" user-emacs-directory)
+;; (expand-file-name "config-language" user-emacs-directory)))
 
 (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
 
@@ -35,19 +37,19 @@
 ;; advising the latter is enough.
 (defun flycheck-next-error-loop-advice (orig-fun &optional n reset)
   (condition-case err
-    (apply orig-fun (list n reset))
+      (apply orig-fun (list n reset))
     ((user-error)
-      (let ((error-count (length flycheck-current-errors)))
-        (if (and
-              (> error-count 0)                   ; There are errors so we can cycle.
-              (equal (error-message-string err) "No more Flycheck errors"))
-          ;; We need to cycle.
-          (let* ((req-n (if (numberp n) n 1)) ; Requested displacement.
+     (let ((error-count (length flycheck-current-errors)))
+       (if (and
+            (> error-count 0)                   ; There are errors so we can cycle.
+            (equal (error-message-string err) "No more Flycheck errors"))
+           ;; We need to cycle.
+           (let* ((req-n (if (numberp n) n 1)) ; Requested displacement.
                                         ; An universal argument is taken as reset, so shouldn't fail.
                   (curr-pos (if (> req-n 0) (- error-count 1) 0)) ; 0-indexed.
                   (next-pos (mod (+ curr-pos req-n) error-count))) ; next-pos must be 1-indexed
-            (apply orig-fun (list (+ 1 next-pos) 'reset)))
-          (signal (car err) (cdr err)))))))
+             (apply orig-fun (list (+ 1 next-pos) 'reset)))
+         (signal (car err) (cdr err)))))))
 
 (advice-add 'flycheck-next-error :around #'flycheck-next-error-loop-advice)
 

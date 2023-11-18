@@ -68,6 +68,7 @@
 
 (define-key dired-mode-map (kbd "y") 'dired-ranger-copy)
 (define-key dired-mode-map (kbd "p") 'dired-ranger-paste)
+(define-key dired-mode-map (kbd "X") 'dired-ranger-move)
 
 
 

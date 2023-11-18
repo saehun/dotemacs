@@ -19,24 +19,24 @@
   (setq tide-server-max-response-length 1024000)
   (setq tide-node-flags '("--max-old-space-size=8192"))
   (setq tide-user-preferences
-    '(
-       :includeCompletionsForModuleExports t
-       :includeCompletionsWithInsertText t
-       :allowTextChangesInNewFiles t
-       :generateReturnInDocTemplate t
-       :quotePreference "single"
-       :importModuleSpecifierPreference "relative"
-       :autoImportFileExcludePatterns ["**/node_modules/date-fns"]
-       ))
+        '(
+          :includeCompletionsForModuleExports t
+          :includeCompletionsWithInsertText t
+          :allowTextChangesInNewFiles t
+          :generateReturnInDocTemplate t
+          :quotePreference "single"
+          :importModuleSpecifierPreference "relative"
+          :autoImportFileExcludePatterns ["**/node_modules/date-fns"]
+          ))
 
   ;; (eldoc-mode +1)
   (setq comment-start       "/*"
-    comment-end         "*/"
-    comment-multi-line  t
-    comment-padding     nil
-    comment-style       'extra-line
-    comment-continue    " * "
-    comment-empty-lines t)
+        comment-end         "*/"
+        comment-multi-line  t
+        comment-padding     nil
+        comment-style       'extra-line
+        comment-continue    " * "
+        comment-empty-lines t)
 
   (company-mode +1))
 
@@ -51,18 +51,18 @@
   "Yarn2."
   (let* ((project-root (projectile-project-root)))
     (if
-      (or
-        (cl-search "toss/frontend-libraries" project-root)
-        (cl-search "toss/frontend-devops" project-root)
-        (cl-search "toss/tuba-ui" project-root)
-        (cl-search "toss/toss-frontend-tuba" project-root)
-        (cl-search "toss/toss-frontend" project-root)
-        (cl-search "toss/ca-bridge" project-root))
-      (progn
-        (setq-local tide-tsserver-executable
-          (concat project-root ".yarn/sdks/typescript/bin/tsserver"))
-        (setq-local flycheck-javascript-eslint-executable
-          (concat project-root ".yarn/sdks/eslint/bin/eslint.js")))
+        (or
+         (cl-search "toss/frontend-libraries" project-root)
+         (cl-search "toss/frontend-devops" project-root)
+         (cl-search "toss/tuba-ui" project-root)
+         (cl-search "toss/toss-frontend-tuba" project-root)
+         (cl-search "toss/toss-frontend" project-root)
+         (cl-search "toss/ca-bridge" project-root))
+        (progn
+          (setq-local tide-tsserver-executable
+                      (concat project-root ".yarn/sdks/typescript/bin/tsserver"))
+          (setq-local flycheck-javascript-eslint-executable
+                      (concat project-root ".yarn/sdks/eslint/bin/eslint.js")))
       )))
 
 
@@ -75,17 +75,13 @@
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.ts\\'" . web-mode))
 (add-hook 'web-mode-hook
-  (lambda ()
-    (when (string-equal "tsx" (file-name-extension buffer-file-name))
-      (setup-tide-mode))))
+          (lambda ()
+            (when (string-equal "tsx" (file-name-extension buffer-file-name))
+              (setup-tide-mode))))
 (add-hook 'web-mode-hook
-  (lambda ()
-    (when (string-equal "ts" (file-name-extension buffer-file-name))
-      (setup-tide-mode))))
-
-(add-hook 'after-init-hook #'global-prettier-mode)
-(add-hook 'js2-mode-hook #'setup-tide-mode)
-(add-hook 'yaml-mode-hook (lambda () (prettier-mode -1)))
+          (lambda ()
+            (when (string-equal "ts" (file-name-extension buffer-file-name))
+              (setup-tide-mode))))
 
 (defun tide-jump-back-and-kill ()
   "Time jump back and kill."

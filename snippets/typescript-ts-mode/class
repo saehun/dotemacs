@@ -3,7 +3,7 @@
 # key: cl
 # group: es6
 # --
-class ${1:`(string-inflection-pascal-case-function
+class ${1:`(replace-regexp-in-string "\\." "" (string-inflection-pascal-case-function
   (file-name-nondirectory (file-name-sans-extension (buffer-file-name)))
-  )`} {
+  ))`} {
 }

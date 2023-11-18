@@ -15,6 +15,8 @@
 ;; Adjust garbage collection thresholds during startup, and thereafter // 8GB
 ;;----------------------------------------------------------------------------
 (setq gc-cons-threshold (* 128 1024 1024))
+(setq native-comp-async-report-warnings-errors 'silent)
+
 ;;(setq gc-cons-threshold (* 8 1024 1024 1024))
 
 ;;----------------------------------------------------------------------------

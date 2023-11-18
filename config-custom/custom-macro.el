@@ -62,6 +62,14 @@
   (interactive)
   (dired (projectile-locate-dominating-file default-directory ".git")))
 
+(defun kill-buffers-of-deleted-files ()
+  "Kill all buffers associated with files that have been deleted."
+  (interactive)
+  (dolist (buffer (buffer-list))
+    (when (and (buffer-file-name buffer)      ; Check if buffer is associated with a file
+               (not (file-exists-p (buffer-file-name buffer)))) ; Check if the file exists
+      (kill-buffer buffer)                     ; Kill the buffer if file doesn't exist
+      (message "Killed buffer: %s" (buffer-name buffer)))))
 
 (provide 'custom-macro)
 ;;; custom-macro ends here
