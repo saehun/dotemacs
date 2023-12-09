@@ -27,6 +27,7 @@
 (defvar package-list '(
                        apheleia
                        company
+                       company-box
                        company-quickhelp
                        company-restclient
                        comment-dwim-2
@@ -97,6 +98,11 @@
                        zoxide
                        ))
 
+;; copilot is compiled from source
+(use-package copilot
+  :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
+  :ensure t)
+
 ;; Install packages that are not yet installed
 (dolist (package package-list)
   (straight-use-package package))
@@ -147,6 +153,7 @@
 ;; Minor mode
 ;;----------------------------------------------------------------------------
 (require 'markdown-daily-mode)
+(require 'init-copilot)
 
 ;;----------------------------------------------------------------------------
 ;; Keyboard binding

@@ -7,9 +7,12 @@
 
 ;; (add-to-list 'completion-styles 'initials t)
 
+(require 'company-box)
+
 (use-package company
   :init
   (add-hook 'after-init-hook 'global-company-mode)
+  :hook (company-mode . company-box-mode)
   :defines company-dabbrev-downcase
   :config
   (setq company-idle-delay 0)
@@ -17,6 +20,9 @@
   (setq company-selection-wrap-around t)
   (setq company-dabbrev-downcase nil)
   (setq-default company-dabbrev-other-buffers 'all company-tooltip-align-annotations t))
+
+(custom-set-variables
+ '(company-box-doc-delay 0.1))
 
 (use-package company-quickhelp
   :after company

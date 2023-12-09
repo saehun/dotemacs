@@ -71,5 +71,10 @@
       (kill-buffer buffer)                     ; Kill the buffer if file doesn't exist
       (message "Killed buffer: %s" (buffer-name buffer)))))
 
+(defun load-this-file ()
+  "Load this file."
+  (interactive)
+  (load-file (buffer-file-name)))
+
 (provide 'custom-macro)
 ;;; custom-macro ends here

@@ -83,7 +83,6 @@
 (set-fontset-font t 'symbol "Segoe UI Emoji" nil 'append)
 (set-fontset-font t 'symbol "Symbola" nil 'append)
 
-
 (message "init-misc.el")
 (provide 'init-misc)
 ;;; init-misc.el ends here

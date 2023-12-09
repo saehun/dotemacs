@@ -102,7 +102,7 @@
 (load-theme
  ;; (if (string= (invocation-name) "emacs")
  ;; 'doom-dark+
- ;;'doom-subliminal)
+ ;; 'doom-subliminal)
  'doom-dark+ t)
 ;; 'tsdh-light))
 ;; 'doom-one-light))
