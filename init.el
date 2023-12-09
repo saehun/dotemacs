@@ -25,6 +25,7 @@
   (load bootstrap-file nil 'nomessage))
 
 (defvar package-list '(
+                       all-the-icons
                        apheleia
                        company
                        company-box
