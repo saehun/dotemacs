@@ -104,6 +104,18 @@
   :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
   :ensure t)
 
+(use-package openai
+  :straight (:host github :repo "emacs-openai/openai")
+  :ensure t)
+
+(use-package codegpt
+  :straight (:host github :repo "emacs-openai/codegpt")
+  :ensure t)
+
+(use-package mind-wave
+  :straight (:host github :repo "manateelazycat/mind-wave" :files ("*.el" "*.py"))
+  :ensure t)
+
 ;; Install packages that are not yet installed
 (dolist (package package-list)
   (straight-use-package package))
@@ -172,6 +184,8 @@
 (require 'init-hydra)
 (require 'init-general-command)
 (require 'semgrep)
+
+(require 'init-machine)
 
 ;;; init.el ends here
 

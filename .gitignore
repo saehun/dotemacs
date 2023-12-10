@@ -48,5 +48,8 @@ projects
 tree-sitter
 
 /eln-cache
+
+/mind-wave/chatgpt_api_key.txt
+/request
   
 .yas-compiled-snippets.el
