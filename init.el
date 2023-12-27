@@ -75,6 +75,7 @@
                        markdown-mode       ; Major mode for Markdown-formatted text
                        markdown-toc
                        mini-frame          ; Show minibuffer in child frame on read-from-minibuffer
+                       ;; ob-typescript       ; Emacs org-mode babel support for typescript
                        orderless           ; Completion style for matching regexps in any order
                        prettier
                        projectile          ; Projectile
@@ -160,6 +161,7 @@
 (require 'init-markdown)
 (require 'init-restclient)
 (require 'init-rust)
+(require 'init-org)
 (require 'init-language-etc)
 
 ;;----------------------------------------------------------------------------

@@ -1,6 +1,7 @@
 ;;; package --- init-bindings
 ;;; Commentary:
 ;;; Code:
+(require 'yasnippet)
 
 
 (defun with-safe (command)
@@ -135,9 +136,9 @@
 ;; Company
 ;;----------------------------------------------------------------------------
 (require 'company)
-(define-key company-active-map (kbd "<tab>") 'yas-expand)
+(define-key company-active-map (kbd "<tab>") yas-maybe-expand)
 (define-key company-active-map (kbd "?") #'company-quickhelp-manual-begin)
-(define-key company-search-map (kbd "<tab>") 'yas-expand)
+(define-key company-search-map (kbd "<tab>") yas-maybe-expand)
 (define-key company-active-map (kbd "<escape>") 'company-abort)
 (define-key company-active-map (kbd "C-o") 'counsel-company)
 
@@ -148,7 +149,7 @@
 ;; Edit
 ;;----------------------------------------------------------------------------
 (global-set-key (kbd "<f17>") 'toggle-input-method)
-(define-key yas-minor-mode-map (kbd "<tab>") 'yas-expand)
+(define-key yas-minor-mode-map (kbd "<tab>") yas-maybe-expand)
 (define-key evil-normal-state-map (kbd "s-/") 'comment-line)
 (define-key evil-insert-state-map (kbd "s-/") 'comment-line)
 (define-key evil-visual-state-map (kbd "s-/") 'comment-or-uncomment-region)

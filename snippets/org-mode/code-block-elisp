@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: elisp source block with value scalar in header required to get ouput results block
+# key: el
+# group: codeBlocks
+# --
+#+begin_src emacs-lisp :results value scalar$0
+#+end_src
