@@ -52,6 +52,9 @@
 (setenv "PATH" (concat (getenv "PATH") (substitute-in-file-name ":$HOME/.cargo/bin")))
 (setq exec-path (append exec-path (list (substitute-in-file-name "$HOME/.cargo/bin"))))
 
+;; Latex, see https://www.fromkk.com/posts/preview-latex-in-org-mode-with-emacs-in-macos/
+(setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin"))
+(setq exec-path (append exec-path (list "/Library/TeX/texbin")))
 
 ;; haskell 
 (setenv "PATH" (concat (getenv "PATH") ":" (expand-file-name "~/.ghcup/bin")))

@@ -2,6 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 (require 'yasnippet)
+(require 'org)
 
 
 (defun with-safe (command)
@@ -98,7 +99,6 @@
 (define-key evil-normal-state-map (kbd "s-2") 'flycheck-next-error)
 (define-key evil-normal-state-map (kbd "M-s-2") 'flycheck-previous-error)
 (define-key evil-normal-state-map (kbd "C-!") 'counsel-flycheck)
-(define-key evil-normal-state-map (kbd "?") 'tide-hl-identifier) ;; create custom function later
 (define-key evil-inner-text-objects-map "b" 'evil-textobj-anyblock-inner-block)
 (define-key evil-outer-text-objects-map "b" 'evil-textobj-anyblock-a-block)
 (define-key evil-visual-state-map "\C-r" nil)
@@ -121,6 +121,17 @@
 (define-key evil-insert-state-map "\C-i" nil)
 (define-key evil-motion-state-map "\C-i" nil)
 
+;; custom function bound to normal-state "?"
+(defun evil-normal-state-question-mark ()
+  "Execute some functionality with evil normal state question mark."
+  (interactive)
+  (cond
+   ((eq major-mode 'org-mode)
+    (progn (org-toggle-link-display) (org-toggle-inline-images)))
+   ((bound-and-true-p tide-mode) (tide-hl-identifier))
+   (t (message "Not supported ?"))))
+
+(define-key evil-normal-state-map (kbd "?") 'evil-normal-state-question-mark)
 
 ;;----------------------------------------------------------------------------
 ;; Ivy

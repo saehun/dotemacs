@@ -75,7 +75,6 @@
                        markdown-mode       ; Major mode for Markdown-formatted text
                        markdown-toc
                        mini-frame          ; Show minibuffer in child frame on read-from-minibuffer
-                       ;; ob-typescript       ; Emacs org-mode babel support for typescript
                        orderless           ; Completion style for matching regexps in any order
                        prettier
                        projectile          ; Projectile
@@ -85,6 +84,10 @@
                        savehist            ; Persist history over Emacs restarts.
                        smex
                        string-inflection   ; underscore -> UPCASE -> CamelCase conversion of names
+                       org-appear
+                       org-download
+                       org-roam
+                       org-web-tools
                        tabbar
                        tide
                        treemacs
@@ -115,6 +118,10 @@
 
 (use-package mind-wave
   :straight (:host github :repo "manateelazycat/mind-wave" :files ("*.el" "*.py"))
+  :ensure t)
+
+(use-package org-footnote-assistant
+  :straight (:host github :repo "lazzalazza/org-footnote-assistant")
   :ensure t)
 
 ;; Install packages that are not yet installed
@@ -162,6 +169,8 @@
 (require 'init-restclient)
 (require 'init-rust)
 (require 'init-org)
+(require 'init-org-roam)
+(require 'init-org-hydra)
 (require 'init-language-etc)
 
 ;;----------------------------------------------------------------------------

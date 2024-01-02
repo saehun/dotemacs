@@ -1,14 +1,8 @@
-;;; init-gui.el --- Elisp helper functions and commands -*- lexical-binding: t -*-
+;;; init-gui.el --- -*- lexical-binding: t; -*-
 ;;; Commentary:
-;;; Code:
-
-(setq-default cursor-type 'bar)
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
-(global-hl-line-mode 1)
-
-
+;;; 
+;;;; Requirements:
+(require 'package)
 (require 'tabbar)
 (require 'tab-bar)
 (require 'doom-modeline)
@@ -16,7 +10,12 @@
 (when (display-graphic-p)
   (require 'all-the-icons))
 
-
+;;; Code:
+(setq-default cursor-type 'bar)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(global-hl-line-mode 1)
 (tab-bar-mode 1)
 (custom-set-faces
  '(tab-bar-tab
@@ -60,6 +59,13 @@
 (setq frame-title-format '((:eval (projectile-project-name)) ": %b"))
 (set-frame-parameter nil 'ns-appearance (if (string= invocation-name "emacs") 'dark 'light))
 ;; (set-frame-parameter nil 'ns-transparent-titlebar (string= (invocation-name) "emacs"))
+
+
+;;----------------------------------------------------------------------------
+;; fill-column mode
+;;----------------------------------------------------------------------------
+(custom-set-variables '(display-fill-column-indicator-column 90))
+(set-face-attribute 'fill-column-indicator nil :foreground "grey20")
 
 ;;----------------------------------------------------------------------------
 ;; No popup frame @ivanmalison.github.io
@@ -219,6 +225,6 @@
       (tabbar-display-update))))
 
 
-
+(message "init-gui.el")
 (provide 'init-gui)
-
+;;; init-gui.el ends here

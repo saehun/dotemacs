@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: quote code block
+# key: #q
+# group: codeBlocks
+# --
+#+begin_quote
+#+end_quote

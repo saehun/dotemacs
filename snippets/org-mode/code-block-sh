@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
-# name: elisp source block with value scalar in header required to get ouput results block
-# key: sh
+# name: shell code block
+# key: #sh
 # group: codeBlocks
 # --
 #+begin_src shell$0
