@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: gpt3 code block
+# key: #gpt3
+# group: codeBlocks
+# --
+#+begin_src chatgpt-shell :version "gpt-3.5-turbo"
+#+end_src

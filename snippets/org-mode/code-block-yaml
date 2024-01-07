@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: yaml code block
+# key: #yaml
+# group: codeBlocks
+# --
+#+begin_src yaml
+#+end_src

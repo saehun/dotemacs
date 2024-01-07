@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: javascript code block
+# key: #js
+# group: codeBlocks
+# --
+#+begin_src js
+#+end_src

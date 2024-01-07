@@ -3,6 +3,7 @@
 ;;; Code:
 (require 'yasnippet)
 (require 'org)
+(require 'org-roam)
 
 
 (defun with-safe (command)
@@ -175,6 +176,11 @@
 (global-set-key (kbd "s-<f1>") 'open-daily)
 (global-set-key (kbd "C-s-1") 'open-todo)
 (global-set-key (kbd "C-o C-g") 'dired-git-root)
+(global-set-key (kbd "C-o C-d") 'org-roam-dailies-goto-today)
+(global-set-key (kbd "C-ㅐ C-ㅇ") 'org-roam-dailies-goto-today)
+(global-set-key (kbd "C-o C-o") 'org-roam-node-find)
+(global-set-key (kbd "C-ㅐ C-ㅐ") 'org-roam-node-find)
+
 
 ;;----------------------------------------------------------------------------
 ;; Typescript
@@ -233,20 +239,6 @@
 (define-key markdown-mode-map (kbd "s-i") 'ffip-insert-relative-path)
 
 ;;----------------------------------------------------------------------------
-;; Set keyboard input source to english
-;;----------------------------------------------------------------------------
-(global-set-key (kbd "C-ㅜ")  'keyboard-layout-to-us)
-(global-set-key (kbd "s-ㄴ")  'keyboard-layout-to-us)
-(global-set-key (kbd "C-ㅊ")  'keyboard-layout-to-us)
-(global-set-key (kbd "C-ㅌ")  'keyboard-layout-to-us)
-(global-set-key (kbd "C-ㄷ")  'keyboard-layout-to-us)
-(global-set-key (kbd "C-ㄹ")  'keyboard-layout-to-us)
-(global-set-key (kbd "s-ㄹ")  'keyboard-layout-to-us)
-(global-set-key (kbd "s-ㅔ")  'keyboard-layout-to-us)
-;; Unexpected hangul command typing
-(global-set-key (kbd "C-ㅎ")  'hangul-cancel)
-
-;;----------------------------------------------------------------------------
 ;; I don't have a clue why binding doen't work at the top of the code.
 ;;----------------------------------------------------------------------------
 (global-set-key (kbd "s-r") 'revert-buffer-no-confirm)
@@ -262,10 +254,35 @@
 (define-key wdired-mode-map (kbd "C-c C-q") 'wdired-abort-changes)
 
 (define-key dired-mode-map (kbd "C-o") nil)
+(define-key dired-mode-map (kbd "o") nil)
+(define-key dired-mode-map (kbd "C-<return>") 'dired-find-file-other-window)
 (define-key dired-mode-map (kbd "C-o C-p") 'counsel-open-project)
 
 (global-set-key (kbd "C-o C-r") 'consult-recent-file)
 (global-set-key (kbd "C-o r") 'projectile-recentf)
 
+;;----------------------------------------------------------------------------
+;; Korean binding
+;;----------------------------------------------------------------------------
+;; 한글 자모와 대응하는 영어 코드 배열 정의
+(let ((hangul-to-english
+       '(("ㄱ" . "r") ("ㄴ" . "s") ("ㄷ" . "e") ("ㄹ" . "f")
+         ("ㅁ" . "a") ("ㅂ" . "q") ("ㅅ" . "t") ("ㅇ" . "d")
+         ("ㅈ" . "w") ("ㅊ" . "c") ("ㅋ" . "z") ("ㅌ" . "x")
+         ("ㅍ" . "v") ("ㅎ" . "g") ("ㅏ" . "k") ("ㅐ" . "o")
+         ("ㅑ" . "i") ("ㅓ" . "j") ("ㅔ" . "p") ("ㅕ" . "u")
+         ("ㅗ" . "h") ("ㅛ" . "y") ("ㅜ" . "n") ("ㅠ" . "b")
+         ("ㅡ" . "m") ("ㅣ" . "l")
+         ;; 추가적인 기본 모음과 자음을 여기에 넣을 수 있습니다
+         )))
+  (dolist (pair hangul-to-english)
+    (let ((hangul (car pair))
+          (english (cdr pair)))
+      ;; Control과 Shift 조합에 대한 키맵 정의
+      (define-key key-translation-map (kbd (concat "C-" hangul)) (kbd (concat "C-" english)))
+      (define-key key-translation-map (kbd (concat "s-" hangul)) (kbd (concat "s-" english)))
+      (define-key key-translation-map (kbd (concat "M-" hangul)) (kbd (concat "M-" english)))
+      ;; 여기에 추가적인 키 조합을 넣을 수 있습니다
+      )))
 
 (provide 'init-bindings)

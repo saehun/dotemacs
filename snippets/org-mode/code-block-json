@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: json code block
+# key: #json
+# group: codeBlocks
+# --
+#+begin_src json
+#+end_src

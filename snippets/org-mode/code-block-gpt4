@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: gpt4 code block
+# key: #gpt4
+# group: codeBlocks
+# --
+#+begin_src chatgpt-shell :version "gpt-4"
+#+end_src

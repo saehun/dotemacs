@@ -84,15 +84,15 @@
   "Open the current directory in iterm with new tab."
   (interactive)
   (let*
-    ((location
-       (replace-regexp-in-string "/$" ""
-         (or (projectile-locate-dominating-file default-directory "package.json")
-         (or (projectile-locate-dominating-file default-directory "Cargo.toml")
-         (or (projectile-locate-dominating-file default-directory ".git") default-directory)))))
-      (target-shell-command (format "find-session %s" location)))
-  (progn
-    (message target-shell-command)
-    (call-process-shell-command target-shell-command nil nil nil))))
+      ((location
+        (replace-regexp-in-string "/$" ""
+                                  (or (projectile-locate-dominating-file default-directory "package.json")
+                                      (or (projectile-locate-dominating-file default-directory "Cargo.toml")
+                                          (or (projectile-locate-dominating-file default-directory ".git") default-directory)))))
+       (target-shell-command (format "find-session %s" location)))
+    (progn
+      (message target-shell-command)
+      (call-process-shell-command target-shell-command nil nil nil))))
 
 ;;----------------------------------------------------------------------------
 ;; open iterm tab with current location
@@ -101,21 +101,21 @@
   "Open the current directory in iterm with new tab."
   (interactive)
   (let*
-    ((location
-       (replace-regexp-in-string "/$" "" default-directory))
-      (target-shell-command (format "find-session %s" location)))
-  (progn
-    (message target-shell-command)
-    (call-process-shell-command target-shell-command nil nil nil))))
+      ((location
+        (replace-regexp-in-string "/$" "" default-directory))
+       (target-shell-command (format "find-session %s" location)))
+    (progn
+      (message target-shell-command)
+      (call-process-shell-command target-shell-command nil nil nil))))
 
 
 (defun swap-buffers-in-windows ()
   "Put the buffer from the selected window in next window, and vice versa."
   (interactive)
   (let* ((this (selected-window))
-     (other (next-window))
-     (this-buffer (window-buffer this))
-     (other-buffer (window-buffer other)))
+         (other (next-window))
+         (this-buffer (window-buffer this))
+         (other-buffer (window-buffer other)))
     (set-window-buffer other this-buffer)
     (set-window-buffer this other-buffer)
     ))
@@ -125,8 +125,8 @@
   "Put the buffer from the selected window in next window, and vice versa."
   (interactive)
   (let* ((this (selected-window))
-     (other (next-window))
-     (this-buffer (window-buffer this)))
+         (other (next-window))
+         (this-buffer (window-buffer this)))
     (set-window-buffer other this-buffer)
     ))
 
@@ -134,8 +134,8 @@
   "Put the buffer from the selected window in next window, and vice versa."
   (interactive)
   (let* ((this (selected-window))
-     (other (prev-window))
-     (this-buffer (window-buffer this)))
+         (other (prev-window))
+         (this-buffer (window-buffer this)))
     (set-window-buffer other this-buffer)
     ))
 
@@ -147,8 +147,8 @@
   (interactive)
   (require 'dash)
   (let (prev) (-copy (previous-buffer))
-    (kill-buffer)
-    (set-window-buffer prev)))
+       (kill-buffer)
+       (set-window-buffer prev)))
 
 ;;----------------------------------------------------------------------------
 ;; open iterm tab with current location
@@ -182,9 +182,9 @@ Version 2016-08-11"
          '(85 . 50) '(100 . 100)))))
 
 (defun transparency (value)
-   "Set the transparency of the frame window.  0=transparent/100=opaque."
-   (interactive "nTransparency Value 0 - 100 opaque:")
-   (set-frame-parameter (selected-frame) 'alpha value))
+  "Set the transparency of the frame window.  0=transparent/100=opaque."
+  (interactive "nTransparency Value 0 - 100 opaque:")
+  (set-frame-parameter (selected-frame) 'alpha value))
 
 
 ;;----------------------------------------------------------------------------
@@ -194,7 +194,7 @@ Version 2016-08-11"
   "Forward to `shell-command'."
   (interactive)
   (ivy-read "Shell Command: "
-                        shell-command-history
+            shell-command-history
             :action (lambda (x)
                       (shell-command x))
             :caller 'counsel-shell-command))
@@ -207,8 +207,8 @@ Version 2016-08-11"
   "Open and select project in cousel buffer."
   (interactive)
   (ivy-read "Repository: "
-    (split-string (with-output-to-string (call-process "ghq-list-append" nil standard-output nil)) "\n" t)
-    :action (lambda (x) (dired (concat "~/repo/" x)))))
+            (split-string (with-output-to-string (call-process "ghq-list-append" nil standard-output nil)) "\n" t)
+            :action (lambda (x) (dired (concat "~/repo/" x)))))
 
 ;;----------------------------------------------------------------------------
 ;; Open current codebase in VSCode
@@ -217,9 +217,9 @@ Version 2016-08-11"
   "Open and select project in cousel buffer."
   (interactive)
   ((lambda (dir) (call-process-shell-command "code" nil nil nil dir))
-  (or (projectile-locate-dominating-file default-directory "package.json")
-    (or (projectile-root-bottom-up default-directory)
-      default-directory))))
+   (or (projectile-locate-dominating-file default-directory "package.json")
+       (or (projectile-root-bottom-up default-directory)
+           default-directory))))
 
 ;;----------------------------------------------------------------------------
 ;; Open current codebase in Webstorm
@@ -228,9 +228,9 @@ Version 2016-08-11"
   "Open and select project in cousel buffer."
   (interactive)
   ((lambda (dir) (call-process-shell-command "webstorm" nil nil nil dir))
-  (or (projectile-locate-dominating-file default-directory "package.json")
-    (or (projectile-root-bottom-up default-directory)
-      default-directory))))
+   (or (projectile-locate-dominating-file default-directory "package.json")
+       (or (projectile-root-bottom-up default-directory)
+           default-directory))))
 
 ;;----------------------------------------------------------------------------
 ;; Open current codebase in fork(git gui)
@@ -239,38 +239,38 @@ Version 2016-08-11"
   "Open and select project in cousel buffer."
   (interactive)
   ((lambda (dir) (call-process-shell-command "fork" nil nil nil dir))
-  (or (projectile-locate-dominating-file default-directory ".git")
-    (or (projectile-root-bottom-up default-directory)
-      default-directory))))
+   (or (projectile-locate-dominating-file default-directory ".git")
+       (or (projectile-root-bottom-up default-directory)
+           default-directory))))
 
 ;;----------------------------------------------------------------------------
 ;; Grep from package root (not a git root)
 ;;----------------------------------------------------------------------------
 (defun counsel-rg-package ()
-    "Like `counsel-rg' but always search from the package root, not git root."
-    (interactive)
-    (counsel-rg nil (projectile-root-bottom-up default-directory '("package.json"))))
+  "Like `counsel-rg' but always search from the package root, not git root."
+  (interactive)
+  (counsel-rg nil (projectile-root-bottom-up default-directory '("package.json"))))
 
 
 (defun ghq-parse ()
   (let*
-    ((ghq-root (expand-file-name "~/repo"))
-      (is-inside-ghq (s-prefix? ghq-root (expand-file-name default-directory)))
-      (is-directory (not (buffer-file-name))))
+      ((ghq-root (expand-file-name "~/repo"))
+       (is-inside-ghq (s-prefix? ghq-root (expand-file-name default-directory)))
+       (is-directory (not (buffer-file-name))))
     (if (not is-inside-ghq)
-      (error "You are not inside ghq-tree")
+        (error "You are not inside ghq-tree")
       (let*
-        ((full-path (expand-file-name (if is-directory default-directory (buffer-file-name))))
-          (seq-path (nthcdr 3 (seq-filter (lambda (x) (not (seq-empty-p x))) (split-string full-path "/"))))
-          (git-url (string-join (seq-take seq-path 3) "/")))
+          ((full-path (expand-file-name (if is-directory default-directory (buffer-file-name))))
+           (seq-path (nthcdr 3 (seq-filter (lambda (x) (not (seq-empty-p x))) (split-string full-path "/"))))
+           (git-url (string-join (seq-take seq-path 3) "/")))
         (list full-path seq-path git-url is-directory)))))
 
 (defun pr ()
   "Open pull request page for given repository."
   (interactive)
   (cl-destructuring-bind
-    (_ _ git-url _)
-    (ghq-parse)
+      (_ _ git-url _)
+      (ghq-parse)
     (browse-url (concat "https://" git-url "/pulls"))))
 
 
@@ -280,22 +280,22 @@ Version 2016-08-11"
 ;;----------------------------------------------------------------------------
 (defun ghq-util (action revision)
   (cl-destructuring-bind
-    (_ seq-path git-url is-directory)
-    (ghq-parse)
+      (_ seq-path git-url is-directory)
+      (ghq-parse)
     (let* ((git-file-path (string-join (nthcdr 3 seq-path) "/"))
-            (line-number
-              (if is-directory
+           (line-number
+            (if is-directory
                 ""
-                (if (region-active-p)
+              (if (region-active-p)
                   (format "#L%dL%d"
-                    (save-excursion
-                      (goto-char (region-beginning))
-                      (line-number-at-pos))
-                    (save-excursion
-                      (goto-char (region-end))
-                      (- (line-number-at-pos) 1)))
-                  (format "#L%d" (line-number-at-pos)))))
-            (url (concat "https://" git-url "/tree/" revision "/" git-file-path line-number)))
+                          (save-excursion
+                            (goto-char (region-beginning))
+                            (line-number-at-pos))
+                          (save-excursion
+                            (goto-char (region-end))
+                            (- (line-number-at-pos) 1)))
+                (format "#L%d" (line-number-at-pos)))))
+           (url (concat "https://" git-url "/tree/" revision "/" git-file-path line-number)))
       (funcall action url)
       (message url))))
 
@@ -303,29 +303,29 @@ Version 2016-08-11"
   "Open current line in browser."
   (interactive)
   (ghq-util
-    'browse-url
-    (string-trim (shell-command-to-string "git rev-parse HEAD"))))
+   'browse-url
+   (string-trim (shell-command-to-string "git rev-parse HEAD"))))
 
 (defun ghq-copy ()
   "Copy git url of current line."
   (interactive)
   (ghq-util
-    'kill-new
-    (string-trim (shell-command-to-string "git rev-parse HEAD"))))
+   'kill-new
+   (string-trim (shell-command-to-string "git rev-parse HEAD"))))
 
 (defun ghq-open-master ()
   "Open current line in browser."
   (interactive)
   (ghq-util
-    'browse-url
-    "master"))
+   'browse-url
+   "master"))
 
 (defun ghq-copy-master ()
   "Copy git url of current line."
   (interactive)
   (ghq-util
-    'kill-new
-    "master"))
+   'kill-new
+   "master"))
 
 ;;----------------------------------------------------------------------------
 ;; Switch to Last Buffer
@@ -377,10 +377,10 @@ Version 2016-08-11"
   "Enable prettier-js-mode if an rc file is located."
   (interactive)
   (if (or
-        (locate-dominating-file default-directory ".prettierrc.json")
-        (locate-dominating-file default-directory ".prettierrc.js")
-        (locate-dominating-file default-directory ".prettierrc"))
-    (progn (prettier-js) (save-buffer))
+       (locate-dominating-file default-directory ".prettierrc.json")
+       (locate-dominating-file default-directory ".prettierrc.js")
+       (locate-dominating-file default-directory ".prettierrc"))
+      (progn (prettier-js) (save-buffer))
     (save-buffer)))
 
 ;;----------------------------------------------------------------------------
@@ -423,10 +423,10 @@ Version 2016-08-11"
         (save-match-data
           (goto-char (point-min))
           (re-search-forward
-            (format "{[\na-zA-Z0-9,[:space:]]+%s[\na-zA-Z0-9,[:space:]]+} from '%s'" symbol package-name)
-            nil
-            t)))
-    (message "skip import")
+           (format "{[\na-zA-Z0-9,[:space:]]+%s[\na-zA-Z0-9,[:space:]]+} from '%s'" symbol package-name)
+           nil
+           t)))
+      (message "skip import")
     (save-excursion
       (goto-char 0)
       (insert (concat "import { " symbol " } from '" package-name "';\n")))))
@@ -441,10 +441,10 @@ Version 2016-08-11"
         (save-match-data
           (goto-char (point-min))
           (re-search-forward
-            (format "import %s from '%s'" symbol package-name)
-            nil
-            t)))
-    (message "skip import")
+           (format "import %s from '%s'" symbol package-name)
+           nil
+           t)))
+      (message "skip import")
     (save-excursion
       (goto-char 0)
       (insert (concat "import " symbol " from '" package-name "';\n")))))
@@ -458,10 +458,10 @@ Version 2016-08-11"
         (save-match-data
           (goto-char (point-min))
           (re-search-forward
-            (format "import * as %s from '%s'" symbol package-name)
-            nil
-            t)))
-    (message "skip import")
+           (format "import * as %s from '%s'" symbol package-name)
+           nil
+           t)))
+      (message "skip import")
     (save-excursion
       (goto-char 0)
       (insert (concat "import * as " symbol " from '" package-name "';\n")))))
@@ -488,7 +488,7 @@ Version 2016-08-11"
   "Display airpod status."
   (interactive)
   (let ((script
-          "#!/bin/bash
+         "#!/bin/bash
 # AirPods Battery CLI, Version 2.3
 # Contributors: duk242, ankushg, spetykowski, danozdotnet
 # Released under the MIT License.
@@ -535,6 +535,12 @@ fi
   (message "til index && til commit: 🔥")
   (async-shell-command "til index && til commit"))
 
+(defun my/org-commit ()
+  "Auto commit TIL."
+  (interactive)
+  (message "auto commit ~/org")
+  (async-shell-command "cd ~/org && git add . && git commit -m \"autosave\" && git push origin master"))
+
 (defun til-pull ()
   "Update TIL."
   (interactive)
@@ -565,10 +571,10 @@ https://github.com/myshov/xkbswitch-macosx"
   (interactive)
   (let* ((path (current-kill 0)))
     (cond
-      ((file-directory-p path) (find-file path))
-      ((file-exists-p path) (find-file path))
-      (t (message "Clipboard data is not a valid path: %s" (substring path 0 (min 100 (length path)))))
-    )))
+     ((file-directory-p path) (find-file path))
+     ((file-exists-p path) (find-file path))
+     (t (message "Clipboard data is not a valid path: %s" (substring path 0 (min 100 (length path)))))
+     )))
 
 (defun finder ()
   "Open finder in current position."
@@ -608,9 +614,9 @@ require `pnpm -g install sort-package-json`"
   "Insert log statement with current kill ring."
   (interactive)
   (let ((target
-          (progn
-            (if (evil-visual-state-p) (copy-region-as-kill (region-beginning) (region-end)))
-            (substring-no-properties (car kill-ring)))))
+         (progn
+           (if (evil-visual-state-p) (copy-region-as-kill (region-beginning) (region-end)))
+           (substring-no-properties (car kill-ring)))))
     (goto-char (line-end-position))
     (newline-and-indent)
     (insert (format "console.debug(`%s:`, %s)" target target))))
@@ -619,7 +625,7 @@ require `pnpm -g install sort-package-json`"
   "Add .editorconfig to project root if not exist."
   (interactive)
   (let* ((project-root (projectile-project-root))
-          (editorconfig-path (concat project-root ".editorconfig")))
+         (editorconfig-path (concat project-root ".editorconfig")))
     (f-write-text "root = true
 
 [*]
@@ -636,7 +642,7 @@ insert_final_newline = true
   "Add .prettierrc.js to project root if not exist."
   (interactive)
   (let* ((project-root (projectile-project-root))
-          (prettierrc-path (concat project-root ".prettierrc.js")))
+         (prettierrc-path (concat project-root ".prettierrc.js")))
     (f-write-text "module.exports = {
   bracketSpacing: true,
   singleQuote: true,

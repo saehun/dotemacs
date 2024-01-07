@@ -15,6 +15,8 @@
 (counsel-mode t)
 
 
+(define-key ivy-minibuffer-map (kbd "s-M-j") 'ivy-immediate-done)
+
 ;; live preview for imenu
 ;; https://github.com/abo-abo/swiper/issues/2188
 (ivy-configure 'counsel-imenu
@@ -29,10 +31,10 @@
         ;;move to last word boundary
         (re-search-backward "\\b")
         (let ((pt (point))
-               (le (line-end-position)))
+              (le (line-end-position)))
           (forward-word 1)
           (if (> (point) le)
-            (goto-char pt)
+              (goto-char pt)
             (setq amend (buffer-substring-no-properties pt (point))))))
       (when amend
         (insert (replace-regexp-in-string "  +" " " amend)))))

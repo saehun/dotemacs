@@ -27,12 +27,14 @@
 (defvar package-list '(
                        all-the-icons
                        apheleia
+                       chatgpt-shell
                        company
                        company-box
                        company-quickhelp
                        company-restclient
                        comment-dwim-2
                        consult             ; Consulting completing-read
+                       consult-org-roam
                        corfu               ; Completion Overlay Region FUnction
                        counsel
                        dired-ranger
@@ -76,6 +78,7 @@
                        markdown-toc
                        mini-frame          ; Show minibuffer in child frame on read-from-minibuffer
                        orderless           ; Completion style for matching regexps in any order
+                       ob-restclient
                        prettier
                        projectile          ; Projectile
                        request
@@ -112,16 +115,12 @@
   :straight (:host github :repo "emacs-openai/openai")
   :ensure t)
 
-(use-package codegpt
-  :straight (:host github :repo "emacs-openai/codegpt")
-  :ensure t)
-
-(use-package mind-wave
-  :straight (:host github :repo "manateelazycat/mind-wave" :files ("*.el" "*.py"))
-  :ensure t)
-
 (use-package org-footnote-assistant
   :straight (:host github :repo "lazzalazza/org-footnote-assistant")
+  :ensure t)
+
+(use-package delve
+  :straight (:host github :repo "publicimageltd/delve")
   :ensure t)
 
 ;; Install packages that are not yet installed
@@ -172,6 +171,7 @@
 (require 'init-org-roam)
 (require 'init-org-hydra)
 (require 'init-language-etc)
+(require 'init-chatgpt-shell)
 
 ;;----------------------------------------------------------------------------
 ;; Minor mode
