@@ -10,7 +10,7 @@
 ;;; Code:
 (add-to-list 'auto-mode-alist '("\\.http$" . restclient-mode))
 (add-to-list 'company-backends 'company-restclient)
-(add-to-list 'restclient-mode-hook (lambda () (electric-indent-mode -1)))
+;; (add-to-list 'restclient-mode-hook (lambda () (electric-indent-mode -1)))
 
 
 (message "init-restclient.el")

@@ -539,6 +539,12 @@ fi
   "Auto commit TIL."
   (interactive)
   (message "auto commit ~/org")
+  (async-shell-command "cd ~/org && git add . && git commit -m \"autosave\""))
+
+(defun my/org-commit-and-push ()
+  "Auto commit and push TIL."
+  (interactive)
+  (message "auto commit ~/org")
   (async-shell-command "cd ~/org && git add . && git commit -m \"autosave\" && git push origin master"))
 
 (defun til-pull ()
@@ -687,6 +693,15 @@ insert_final_newline = true
   "Select first tab."
   (interactive)
   (tab-bar-select-tab 1))
+
+(defun convert-md-to-org-link (start end)
+  "With selected region from START between END.
+Convert Markdown links to Org-mode links in the ."
+  (interactive "r")  ; 'r' means the function uses the region as arguments
+  (save-excursion
+    (goto-char start)
+    (while (re-search-forward "\\[\\(.*?\\)\\](\\(.*?\\))" end t)
+      (replace-match "[[\\2][\\1]]"))))
 
 
 (provide 'init-utils)

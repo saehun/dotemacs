@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: not implemented
+# key: ni
+# group: es6
+# --
+throw new Error('Not implemented');

@@ -30,11 +30,13 @@
 
 ;; C-c C-c without yes
 (setq org-startup-indented t)
+(setq org-hide-drawer-startup t)
 (setq org-confirm-babel-evaluate nil)
 (setq org-download-image-org-width 500)
 (setq org-startup-with-inline-images t)
 (setq org-hide-emphasis-markers t)
 (setq org-preview-latex-default-process 'dvisvgm)
+(setq org-id-link-to-org-use-id 'use-existing)
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
 
 (org-footnote-assistant-mode 1)
@@ -93,8 +95,10 @@
 (define-key org-mode-map (kbd "C-c t") 'org-insert-now-timestamp)
 (define-key org-mode-map (kbd "C-c C-n") 'org-roam-node-insert-immediate)
 (define-key org-mode-map (kbd "C-c C-p") 'org-web-tools-insert-link-for-url)
+(define-key org-mode-map (kbd "C-o C-t") 'org-roam-tag-add)
+(define-key org-mode-map (kbd "C-f") 'consult-org-heading)
 
-;; format
+;; Apperances
 (defface org-link-http
   '((t :foreground "#33a14f"
        :weight bold
@@ -113,6 +117,9 @@
 (org-link-set-parameters
  "https"
  :face 'org-link-https)
+(custom-set-faces
+ '(org-document-title ((t (:foreground "gray90" :weight bold :height 1.2))))
+ '(org-drawer ((t (:foreground "gray40")))))
 
 ;; (general-define-key
 ;;  :states 'normal

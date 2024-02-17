@@ -15,14 +15,15 @@
 
   Org default hydra
   
-  _C-t_ insert timestamp                _C-f_ forward links   _n_ new node at point
-  _b_   make indirect buffer from tree  _C-b_ backward links  _g_ save to github
-  _q_ quit
+  _C-t_ insert timestamp                _C-f_ forward links        _n_ new node at point
+  _b_   make indirect buffer from tree  _C-b_ backward links       _g_ save to github
+  _q_ quit                              _y_ set id and store link
 "
   ("b" org-tree-to-indirect-buffer)
   ("C-t" org-insert-now-timestamp)
   ("C-f" consult-org-roam-forward-links)
   ("C-b" consult-org-roam-backlinks)
+  ("y" org-id-store-link)
   ("n" org-roam-node-insert-immediate)
   ("g" my/org-commit)
   ("q" nil :color blue))

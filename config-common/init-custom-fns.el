@@ -9,13 +9,22 @@
   (message (vc-root-dir)))
 
 
+(defun previous-3-line ()
+  (interactive)
+  (previous-line 3))
+
+(defun next-3-line ()
+  (interactive)
+  (next-line 3))
+
+
 (defun go-up-general ()
   "Goto upper level. go to dired buffer when buffer is file"
   (interactive)
   (let ((initial (current-buffer)))
     (progn
       (if (eq major-mode 'dired-mode)
-        (dired-up-directory)
+          (dired-up-directory)
         (dired (file-name-directory buffer-file-name)))
       (kill-buffer initial))))
 
@@ -30,9 +39,9 @@
       (message "Copied buffer file name '%s' to the clipboard." filename))))
 
 (defun counsel-rg-here ()
-    "Like `counsel-rg' but always searches from the cwd, not project root."
-    (interactive)
-    (counsel-rg nil default-directory))
+  "Like `counsel-rg' but always searches from the cwd, not project root."
+  (interactive)
+  (counsel-rg nil default-directory))
 
 ;; font sizes
 (global-set-key (kbd "s-=")
