@@ -164,6 +164,7 @@
 ;; (require 'init-typescript-extended)
 ;; (require 'init-tide-yarn2)
 ;; (require 'init-javascript)
+(require 'init-go)
 (require 'init-markdown)
 (require 'init-restclient)
 (require 'init-rust)

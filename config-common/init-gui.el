@@ -31,7 +31,7 @@
 ;; (set-frame-font "")
 ;;(add-to-list 'default-frame-alist '(font . "Iosevka Term:pixelsize=14:weight=normal:slant=normal:width=normal:spacing=100:scalable=true"))
 (set-frame-font "Iosevka Term 14" nil t)
-(add-to-list 'custom-theme-load-path "~/repo/github.com/minidonut/dotemacs/themes")
+(add-to-list 'custom-theme-load-path "~/repo/github.com/saehun/dotemacs/themes")
 
 
 ;; -*--light-normal-normal-*-*-*-*-*-m-0-iso10646-1
