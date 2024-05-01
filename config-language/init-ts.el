@@ -88,6 +88,29 @@
 (add-hook 'js-ts-mode-hook         'jest-test-mode)
 (add-hook 'web-mode-hook           'jest-test-mode)
 
+
+
+(defvar font-lock-throw-return-face
+  'font-lock-throw-return-face
+  "Face name to use for format specifiers.")
+
+(defface font-lock-throw-return-face
+  '((t (:foreground "#7F7F7F" :background "#0F0F0F")))
+  "Font Lock mode face used to highlight format specifiers."
+  :group 'font-lock-faces)
+
+(defun apply-throw-return-font-lock ()
+  "Apply font lock."
+  (font-lock-add-keywords
+   nil
+   '(("\s\\(return\\)[\s;]" 1 font-lock-throw-return-face t)
+     ("\s\\(throw\\)\s" 1 font-lock-throw-return-face t))))
+
+(add-hook 'typescript-ts-mode-hook #'apply-throw-return-font-lock)
+
+
+
+
 (message "init-ts.el")
 (provide 'init-ts)
 ;;; init-ts.el ends here

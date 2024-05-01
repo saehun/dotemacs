@@ -86,6 +86,7 @@
                        rustic
                        savehist            ; Persist history over Emacs restarts.
                        smex
+                       smartparens
                        string-inflection   ; underscore -> UPCASE -> CamelCase conversion of names
                        org-appear
                        org-download
@@ -104,6 +105,8 @@
                        yaml-mode           ; YAML mode
                        yasnippet
                        zoxide
+
+
                        ))
 
 ;; copilot is compiled from source
@@ -122,6 +125,11 @@
 (use-package delve
   :straight (:host github :repo "publicimageltd/delve")
   :ensure t)
+
+(use-package kotlin-ts-mode
+  :straight (:host gitlab :repo "bricka/emacs-kotlin-ts-mode")
+  :mode "\\.kt\\'" ; if you want this mode to be auto-enabled
+  )
 
 ;; Install packages that are not yet installed
 (dolist (package package-list)

@@ -57,8 +57,10 @@
 ;;----------------------------------------------------------------------------
 (require 'projectile)
 (setq frame-title-format '((:eval (projectile-project-name)) ": %b"))
-(set-frame-parameter nil 'ns-appearance (if (string= invocation-name "emacs") 'dark 'light))
+;; (set-frame-parameter nil 'ns-appearance (if (string= invocation-name "emacs") 'dark 'light))
+(set-frame-parameter nil 'ns-appearance 'dark)
 ;; (set-frame-parameter nil 'ns-transparent-titlebar (string= (invocation-name) "emacs"))
+(set-frame-parameter nil 'ns-transparent-titlebar t)
 
 
 ;;----------------------------------------------------------------------------
@@ -109,11 +111,12 @@
 (setq doom-themes-enable-bold t
       doom-themes-enable-italic t)
 
+(setq custom-safe-themes t)
 (load-theme
  ;; (if (string= (invocation-name) "emacs")
  ;; 'doom-dark+
- ;; 'doom-subliminal)
- 'doom-dark+ t)
+ 'doom-subliminal)
+;; 'doom-dark+ t)
 ;; 'tsdh-light))
 ;; 'doom-one-light))
 
