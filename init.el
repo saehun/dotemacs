@@ -203,7 +203,7 @@
 ;;----------------------------------------------------------------------------
 (require 'init-hydra)
 (require 'init-general-command)
-(require 'semgrep)
+;; (require 'semgrep)
 
 (require 'init-machine)
 

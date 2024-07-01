@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
 # name : private readonly
-# key: pr
+# key: prr
 # --
 private readonly $0
