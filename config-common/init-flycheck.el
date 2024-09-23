@@ -15,9 +15,9 @@
       (setq-local flycheck-javascript-eslint-executable eslint))))
 
 (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
-(advice-add 'flycheck-eslint-config-exists-p :override (lambda() t))
+;; (advice-add 'flycheck-eslint-config-exists-p :override (lambda() t))
 
-(setq flycheck-display-errors-function #'flycheck-display-error-messages-unless-error-list)
+;; (setq flycheck-display-errors-function #'flycheck-display-error-messages-unless-error-list)
 (setq flycheck-emacs-lisp-load-path 'inherit)
 
 ;; (setq flycheck-emacs-lisp-load-path

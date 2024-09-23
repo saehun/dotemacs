@@ -27,6 +27,7 @@
 (defvar package-list '(
                        all-the-icons
                        apheleia
+                       autothemer
                        chatgpt-shell
                        company
                        company-box

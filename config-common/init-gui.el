@@ -16,7 +16,7 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (global-hl-line-mode 1)
-(tab-bar-mode 1)
+;; (tab-bar-mode 1)
 (custom-set-faces
  '(tab-bar-tab
    ((t
@@ -31,6 +31,12 @@
 ;; (set-frame-font "")
 ;;(add-to-list 'default-frame-alist '(font . "Iosevka Term:pixelsize=14:weight=normal:slant=normal:width=normal:spacing=100:scalable=true"))
 (set-frame-font "Iosevka Term 14" nil t)
+;; (set-frame-font "Fira Code" nil t)
+;; (set-frame-font "Geist Mono:pixelsize=14:weight=thin:slant=normal:width=normal:spacing=0:scalable=true" nil t)
+;; (set-frame-font "Iosevka Term:pixelsize=14:weight=light:slant=normal:width=normal:spacing=100:scalable=true" nil t)
+;; (set-frame-font "JetBrains Mono NL:pixelsize=14:weight=thin:slant=normal:width=normal:spacing=100:scalable=true" nil t)
+
+
 (add-to-list 'custom-theme-load-path "~/repo/github.com/saehun/dotemacs/themes")
 
 
@@ -48,7 +54,8 @@
 ;;----------------------------------------------------------------------------
 ;; linum  
 ;;----------------------------------------------------------------------------
-(global-display-line-numbers-mode)
+;; (pixel-scroll-precision-mode 1)
+;; (global-display-line-numbers-mode)
 ;; (global-hl-line-mode 1)
 ;; (setq linum-format "%d ")
 
