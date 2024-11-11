@@ -265,6 +265,11 @@ Otherwise return as it is."
   (interactive)
   (execute-node-command "npx jest"))
 
+(defun node/vitest-current-file ()
+  "Test current typescript file with jest."
+  (interactive)
+  (execute-node-command "npx vitest --run"))
+
 (defun node/debug-current-file ()
   "Debug current typescript file with ts-node."
   (interactive)

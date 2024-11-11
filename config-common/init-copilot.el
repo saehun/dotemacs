@@ -19,6 +19,8 @@
 (add-to-list 'copilot-major-mode-alist '("typescript-ts" . "typescript"))
 (add-to-list 'copilot-major-mode-alist '("tsx-ts" . "typescriptreact"))
 (add-to-list 'copilot-major-mode-alist '("rustic" . "rust"))
+(add-to-list 'copilot-major-mode-alist '("org" . "plaintext"))
+
 
 (define-key copilot-mode-map (kbd "<C-up>") #'copilot-next-completion)
 (define-key copilot-mode-map (kbd "<C-down>") #'copilot-previous-completion)
@@ -29,6 +31,7 @@
 (add-hook 'tsx-ts-mode-hook        #'setup-copilot-mode)
 (add-hook 'typescript-ts-mode-hook #'setup-copilot-mode)
 (add-hook 'rustic-mode-hook        #'setup-copilot-mode)
+(add-hook 'bash-ts-mode            #'setup-copilot-mode)
 ;; (add-hook 'emacs-lisp-mode-hook    #'setup-copilot-mode)
 
 (message "init-copilot.el")

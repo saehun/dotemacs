@@ -40,11 +40,13 @@
   ^Command^         ^Move^
   ^^^^^^^^--------------------------
   _t_: test       _s_: goto back to source
+  _v_: vitest
   _d_: debug
   _w_: watch
 
 "
   ("t" node/test-current-file)
+  ("v" node/vitest-current-file)
   ("d" node/debug-test-current-file)
   ("w" node/watch-test-current-file)
   ("s" node/new-test)
@@ -55,7 +57,8 @@
 
 (defun typescript-in-testfile-p ()
   "Tell whether current buffer is testfile or not."
-  (cl-search "test.ts" (file-name-nondirectory (buffer-file-name))))
+  (or (cl-search "test.ts" (file-name-nondirectory (buffer-file-name)))
+      (cl-search "spec.ts" (file-name-nondirectory (buffer-file-name)))))
 
 (define-key web-mode-map (kbd "s-e")
             (lambda ()
