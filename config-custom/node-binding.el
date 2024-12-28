@@ -260,6 +260,11 @@ Otherwise return as it is."
   (interactive)
   (execute-node-command "npx ts-node -T"))
 
+(defun node/run-current-file/vite-node ()
+  "Run current typescript file with vite-node."
+  (interactive)
+  (execute-node-command "npx vite-node"))
+
 (defun node/test-current-file ()
   "Test current typescript file with jest."
   (interactive)

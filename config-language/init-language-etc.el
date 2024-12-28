@@ -10,6 +10,7 @@
 (add-to-list 'auto-mode-alist '("Dockerfile"  . dockerfile-ts-mode))
 (add-hook 'yaml-ts-mode-hook (lambda () (apheleia-mode -1)))
 (add-hook 'json-mode-hook    (lambda () (apheleia-mode -1)))
+(add-hook 'json-ts-mode-hook (lambda () (apheleia-mode -1)))
 
 (message "init-language-etc.el")
 (provide 'init-language-etc)

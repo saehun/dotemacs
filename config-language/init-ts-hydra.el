@@ -7,10 +7,11 @@
 (require 'node-binding)
 (require 'tide)
 
-;;; Utils:
+;;; Code:
 (defun typescript-in-testfile-p ()
   "Tell whether current buffer is testfile or not."
-  (cl-search "test.ts" (file-name-nondirectory (buffer-file-name))))
+  (or (cl-search "test.ts" (file-name-nondirectory (buffer-file-name)))
+      (cl-search "spec.ts" (file-name-nondirectory (buffer-file-name)))))
 
 (defun node/open-nearest-pakcage-json ()
   "Open nearest package.json."
@@ -27,14 +28,16 @@
   ^Command^                   ^Test^                       ^Goto^
   ^^^^^^^^----------------------------------------------------------------------------
   _r_: run                  _t_: create or goto test.ts    _p_: nearest package.json
-  _d_: debug                _f_: apply all code fix        
-  _w_: watch           
+  _v_: run (vite)           _f_: apply all code fix
+  _d_: debug
+  _w_: watch
   _o_: organize import
   _e_: list buffer errors
   _E_: list project errors
 
 "
   ("r" node/run-current-file)
+  ("v" node/run-current-file/vite-node)
   ("d" node/debug-current-file)
   ("w" node/watch-run-current-file)
   ("t" node/new-test)
@@ -55,11 +58,13 @@
   ^Command^         ^Move^
   ^^^^^^^^---------------------------------
   _t_: test       _s_: goto back to source
+  _v_: vitest
   _d_: debug
   _w_: watch
 
 "
   ("t" node/test-current-file)
+  ("v" node/vitest-current-file)
   ("d" node/debug-test-current-file)
   ("w" node/watch-test-current-file)
   ("s" node/new-test)
