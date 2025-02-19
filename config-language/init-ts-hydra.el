@@ -28,8 +28,8 @@
   ^Command^                   ^Test^                       ^Goto^
   ^^^^^^^^----------------------------------------------------------------------------
   _r_: run                  _t_: create or goto test.ts    _p_: nearest package.json
-  _v_: run (vite)           _f_: apply all code fix
-  _d_: debug
+  _v_: run (vite)           _f_: apply all code fix       
+  _d_: debug                                             
   _w_: watch
   _o_: organize import
   _e_: list buffer errors

@@ -703,6 +703,20 @@ Convert Markdown links to Org-mode links in the ."
     (while (re-search-forward "\\[\\(.*?\\)\\](\\(.*?\\))" end t)
       (replace-match "[[\\2][\\1]]"))))
 
+(defun open-cursor-editor ()
+  "Open and select project in cousel buffer."
+  (interactive)
+  (let* ((project-root (or (projectile-locate-dominating-file default-directory ".git")
+                           (or (projectile-root-bottom-up default-directory)
+                               default-directory)))
+         (filepath (if (buffer-file-name) (buffer-file-name) default-directory))
+         (filepath-with-cursor (format "%s:%d" filepath (line-number-at-pos)))
+         (cursor-argument
+          (if (eq major-mode 'dired-mode) (format "%s" project-root)
+            (format "%s --goto %s" project-root filepath-with-cursor))))
+    ;; (message "cursor %s" cursor-argument)
+    (call-process-shell-command "cursor" nil nil nil
+                                cursor-argument)))
 
 (provide 'init-utils)
 

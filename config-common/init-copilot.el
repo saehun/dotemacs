@@ -24,7 +24,7 @@
 
 (define-key copilot-mode-map (kbd "<C-up>") #'copilot-next-completion)
 (define-key copilot-mode-map (kbd "<C-down>") #'copilot-previous-completion)
-(define-key copilot-mode-map (kbd "<C-return>") #'copilot-complete-or-accept)
+(define-key copilot-mode-map (kbd "<tab>") #'copilot-complete-or-accept)
 (define-key copilot-mode-map (kbd "<C-s-right>") #'copilot-accept-completion-by-word)
 
 ;;; Enable copilot:

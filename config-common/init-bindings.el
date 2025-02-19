@@ -45,6 +45,7 @@
 (global-set-key (kbd "M-s-p") (with-safe 'find-file-in-current-directory))
 (global-set-key (kbd "C-s-m") 'counsel-evil-goto-global-marker)
 (global-set-key (kbd "C-s-r") 'shell-command)
+(global-set-key (kbd "C-c C-c") 'open-cursor-editor)
 
 
 ;;----------------------------------------------------------------------------
