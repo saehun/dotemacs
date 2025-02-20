@@ -51,7 +51,7 @@
 ;;----------------------------------------------------------------------------
 ;; Buffer and windows
 ;;----------------------------------------------------------------------------
-(global-set-key (kbd "s-w") 'kill-this-buffer)       ;; close의 의미
+(global-set-key (kbd "s-w") 'kill-current-buffer)       ;; close의 의미
 (global-set-key (kbd "C-`") 'other-window-treemacs)       ;; Switch window
 (global-set-key (kbd "C-M-`") 'prev-window)       ;; Switch window
 (global-set-key (kbd "C-~") 'copy-buffers-in-windows) ;; copy-buffers-in-windows

@@ -10,7 +10,7 @@
 (yas-global-mode 1)
 (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
 
-(string-inflection-all-cycle)
+;; (string-inflection-all-cycle)
 
 (message "init-yasnippet.el")
 (provide 'init-yasnippet)

@@ -54,6 +54,7 @@
                        expand-region
                        f                   ; Modern API for working with files and directories
                        find-file-in-project
+                       fish-mode
                        flycheck
                        flycheck-color-mode-line
                        flycheck-yamllint
@@ -192,7 +193,6 @@
 ;;----------------------------------------------------------------------------
 ;; Keyboard binding
 ;;----------------------------------------------------------------------------
-(require 'init-yasnippet)
 (require 'init-misc)
 (require 'init-custom-fns)
 (require 'init-bindings)
@@ -207,6 +207,7 @@
 ;; (require 'semgrep)
 
 (require 'init-machine)
+(require 'init-yasnippet)
 
 ;;; init.el ends here
 

@@ -87,7 +87,7 @@
   "Time jump back and kill."
   (interactive)
   (progn
-    (kill-this-buffer)
+    (kill-current-buffer)
     (tide-jump-back)))
 
 (require 'tide)
