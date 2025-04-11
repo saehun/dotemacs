@@ -61,6 +61,7 @@
                        flyspell-correct-popup ; Correcting words with flyspell via popup interface
                        flyspell-popup      ; Correcting words with Flyspell in popup menus
                        general             ; More convenient key definitions in emacs
+                       gptel
                        guess-language      ; Robust automatic language detection
                        helpful             ; A better help buffer
                        htmlize             ; Convert buffer text and decorations to HTML

@@ -179,8 +179,8 @@
 (global-set-key (kbd "s-<f1>") 'open-daily)
 (global-set-key (kbd "C-s-1") 'open-todo)
 (global-set-key (kbd "C-o C-g") 'dired-git-root)
-(global-set-key (kbd "C-o C-d") 'org-roam-dailies-goto-today)
-(global-set-key (kbd "C-ㅐ C-ㅇ") 'org-roam-dailies-goto-today)
+;; (global-set-key (kbd "C-o C-d") 'org-roam-dailies-goto-today)
+;; (global-set-key (kbd "C-ㅐ C-ㅇ") 'org-roam-dailies-goto-today)
 (global-set-key (kbd "C-o C-o") 'org-roam-node-find)
 (global-set-key (kbd "C-ㅐ C-ㅐ") 'org-roam-node-find)
 

@@ -713,10 +713,33 @@ Convert Markdown links to Org-mode links in the ."
          (filepath-with-cursor (format "%s:%d" filepath (line-number-at-pos)))
          (cursor-argument
           (if (eq major-mode 'dired-mode) (format "%s" project-root)
-            (format "%s --goto %s" project-root filepath-with-cursor))))
-    ;; (message "cursor %s" cursor-argument)
-    (call-process-shell-command "cursor" nil nil nil
-                                cursor-argument)))
+            (format "%s --goto %s" project-root filepath-with-cursor)))
+         (command (format "cursor %s" cursor-argument)))
+    (message "%s" command)
+    (call-process-shell-command command nil nil nil)))
+
+(defun copy-current-path-and-lines ()
+  "Copy current path and lines."
+  (interactive)
+  (cl-destructuring-bind
+      (_ seq-path _ is-directory)
+      (ghq-parse)
+    (let* ((git-file-path (string-join (nthcdr 3 seq-path) "/"))
+           (line-number
+            (if is-directory
+                ""
+              (if (region-active-p)
+                  (format ":%d:%d"
+                          (save-excursion
+                            (goto-char (region-beginning))
+                            (line-number-at-pos))
+                          (save-excursion
+                            (goto-char (region-end))
+                            (- (line-number-at-pos) 1)))
+                (format ":%d" (line-number-at-pos)))))
+           (url (concat "./" git-file-path line-number)))
+      (kill-new url)
+      (message url))))
 
 (provide 'init-utils)
 
