@@ -125,10 +125,6 @@
   :straight (:host github :repo "lazzalazza/org-footnote-assistant")
   :ensure t)
 
-(use-package delve
-  :straight (:host github :repo "publicimageltd/delve")
-  :ensure t)
-
 (use-package kotlin-ts-mode
   :straight (:host gitlab :repo "bricka/emacs-kotlin-ts-mode")
   :mode "\\.kt\\'" ; if you want this mode to be auto-enabled
