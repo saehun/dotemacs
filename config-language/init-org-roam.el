@@ -4,7 +4,6 @@
 ;;;; Requirements:
 (require 'org-roam)
 (require 'consult-org-roam)
-(require 'delve)
 
 ;;; Code:
 (setq org-roam-directory (file-truename "~/org"))
@@ -12,10 +11,6 @@
       (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
 
 (setq find-file-visit-truename t)
-
-;; Delve
-;; https://github.com/publicimageltd/delve
-(setq delve-storage-paths "~/org")
 
 ;; Consult-org-roam
 ;; https://github.com/jgru/consult-org-roam

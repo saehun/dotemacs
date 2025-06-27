@@ -1,0 +1,734 @@
+{
+  "arrow-bracket": {
+    "body": [
+      "<$0>"
+    ],
+    "description": "arrow-bracket",
+    "prefix": "<"
+  },
+  "arrow-function": {
+    "body": [
+      "($0) => {",
+      "}"
+    ],
+    "description": "synchronous arrow function",
+    "prefix": ">"
+  },
+  "arrow-function-async": {
+    "body": [
+      "async ($0) => {",
+      "}"
+    ],
+    "description": "asynchronous arrow function",
+    "prefix": "a>"
+  },
+  "async-method": {
+    "body": [
+      "async $0() {",
+      "}"
+    ],
+    "description": "async method",
+    "prefix": "am"
+  },
+  "class": {
+    "body": [
+      "class ${1:ClassName} {",
+      "}"
+    ],
+    "description": "class",
+    "prefix": "cl"
+  },
+  "command_async": {
+    "body": [
+      "async $0"
+    ],
+    "description": "async",
+    "prefix": "as"
+  },
+  "command_await": {
+    "body": [
+      "await $0"
+    ],
+    "description": "await",
+    "prefix": "aw"
+  },
+  "comment": {
+    "body": [
+      "/** $0 */"
+    ],
+    "description": "comment",
+    "prefix": "**"
+  },
+  "comment-review": {
+    "body": [
+      "// REVIEW: $0"
+    ],
+    "description": "comment-review",
+    "prefix": "/r"
+  },
+  "comment-space": {
+    "body": [
+      "* $0"
+    ],
+    "description": "comment",
+    "prefix": "*"
+  },
+  "console-error": {
+    "body": [
+      "console.error($0)"
+    ],
+    "description": "console.error",
+    "prefix": "le"
+  },
+  "const": {
+    "body": [
+      "const $0"
+    ],
+    "description": "const declaration",
+    "prefix": "c"
+  },
+  "constructor": {
+    "body": [
+      "constructor($0) {}"
+    ],
+    "description": "constructor",
+    "prefix": "co"
+  },
+  "css-align-items": {
+    "body": [
+      "alignItems=\"${1:center}\"$0"
+    ],
+    "description": "align-items",
+    "prefix": "ai"
+  },
+  "css-height": {
+    "body": [
+      "height=\"${1:}px\"$0"
+    ],
+    "description": "css-height",
+    "prefix": "ch"
+  },
+  "css-justify-content": {
+    "body": [
+      "justifyContent=\"${1:center}\"$0"
+    ],
+    "description": "justify-content",
+    "prefix": "jc"
+  },
+  "css-width": {
+    "body": [
+      "width=\"${1:}px\"$0"
+    ],
+    "description": "css-width",
+    "prefix": "cw"
+  },
+  "declare": {
+    "body": [
+      "declare $0"
+    ],
+    "description": "declare",
+    "prefix": "d"
+  },
+  "declare-const": {
+    "body": [
+      "declare const $0"
+    ],
+    "description": "declare const",
+    "prefix": "dc"
+  },
+  "declare-function": {
+    "body": [
+      "declare function $1($0):"
+    ],
+    "description": "declare function",
+    "prefix": "df"
+  },
+  "div": {
+    "body": [
+      "<${1:div}>$0</$1>"
+    ],
+    "description": "div",
+    "prefix": "<d"
+  },
+  "eslint-disable-next-line": {
+    "body": [
+      "// eslint-disable-next-line"
+    ],
+    "description": "eslint-disable-next-line",
+    "prefix": "eldn"
+  },
+  "export": {
+    "body": [
+      "export $0"
+    ],
+    "description": "export",
+    "prefix": "e"
+  },
+  "export-default": {
+    "body": [
+      "export default $0"
+    ],
+    "description": "export-default",
+    "prefix": "ed"
+  },
+  "extends": {
+    "body": [
+      "extends"
+    ],
+    "description": "extends",
+    "prefix": "ex"
+  },
+  "flex": {
+    "body": [
+      "<Flex>$0</Flex>"
+    ],
+    "description": "Flex",
+    "prefix": "<f"
+  },
+  "flex-direction": {
+    "body": [
+      "flexDirection=\"column\"$0"
+    ],
+    "description": "flex-direction",
+    "prefix": "fd"
+  },
+  "for": {
+    "body": [
+      "for (const ${$1} of $1s) {",
+      "",
+      "}"
+    ],
+    "description": "for",
+    "prefix": "for"
+  },
+  "from": {
+    "body": [
+      "from '$0';"
+    ],
+    "description": "rom",
+    "prefix": "fr"
+  },
+  "fs": {
+    "body": [
+      "fs."
+    ],
+    "description": "fs",
+    "prefix": "fs"
+  },
+  "function": {
+    "body": [
+      "function $1($0) {",
+      "}"
+    ],
+    "description": "synchronous function",
+    "prefix": "f"
+  },
+  "function-async": {
+    "body": [
+      "async function $1($0) {",
+      "}"
+    ],
+    "description": "asynchronous function",
+    "prefix": "af"
+  },
+  "functional-components": {
+    "body": [
+      "const FunctionalComponent$0 = (props: any) => {",
+      "  return (",
+      "  );",
+      "}"
+    ],
+    "description": "styled-components",
+    "prefix": "rf"
+  },
+  "generator": {
+    "body": [
+      "function* $0(): IterableIterator<any> {}"
+    ],
+    "description": "synchronous generator",
+    "prefix": "f*"
+  },
+  "generator-async": {
+    "body": [
+      "async function* $0(): AsyncIterableIterator<any> {}"
+    ],
+    "description": "asynchronous generator",
+    "prefix": "af*"
+  },
+  "if": {
+    "body": [
+      "if (${1:condition}) {",
+      "  $0",
+      "}"
+    ],
+    "description": "if",
+    "prefix": "if"
+  },
+  "image": {
+    "body": [
+      "<Image src=\"$0\" />"
+    ],
+    "description": "Image",
+    "prefix": "<i"
+  },
+  "import": {
+    "body": [
+      "import {} from '$0';"
+    ],
+    "description": "import",
+    "prefix": "i"
+  },
+  "import-member": {
+    "body": [
+      "import * as ${$1} from \"$1\";"
+    ],
+    "description": "import all",
+    "prefix": "i*"
+  },
+  "interface": {
+    "body": [
+      "interface $0 {",
+      "}"
+    ],
+    "description": "interface",
+    "prefix": "it"
+  },
+  "is-null": {
+    "body": [
+      "== null"
+    ],
+    "description": "is-null",
+    "prefix": "=="
+  },
+  "jest-describe": {
+    "body": [
+      "describe('$1', () => {",
+      "  $0",
+      "})"
+    ],
+    "description": "jest describe",
+    "prefix": "jd"
+  },
+  "jest-expect": {
+    "body": [
+      "expect($0)"
+    ],
+    "description": "jest expect",
+    "prefix": "je"
+  },
+  "jest-it": {
+    "body": [
+      "it('$1', () => {",
+      "  $0",
+      "})"
+    ],
+    "description": "jest it",
+    "prefix": "ji"
+  },
+  "jest-it-async": {
+    "body": [
+      "it('$1', async () => {",
+      "  $0",
+      "})"
+    ],
+    "description": "jest it async",
+    "prefix": "jia"
+  },
+  "jsdoc": {
+    "body": [
+      "/**",
+      " * $0",
+      " */"
+    ],
+    "description": "jsdoc",
+    "prefix": "*0"
+  },
+  "json-stringify": {
+    "body": [
+      "JSON.stringify($0, null, 2)"
+    ],
+    "description": "Stringify json",
+    "prefix": "JSON"
+  },
+  "let": {
+    "body": [
+      "let ${1:name} = ${2:initial};"
+    ],
+    "description": "let declaration",
+    "prefix": "let"
+  },
+  "line-height": {
+    "body": [
+      "lineHeight=\"$1px\"$0"
+    ],
+    "description": "lineHeight",
+    "prefix": "lh"
+  },
+  "log": {
+    "body": [
+      "console.log($0)"
+    ],
+    "description": "console.log",
+    "prefix": "lg"
+  },
+  "log2": {
+    "body": [
+      "console.log(\"[$1]\", ${1:});"
+    ],
+    "description": "log",
+    "prefix": "lg2"
+  },
+  "method": {
+    "body": [
+      "${1:name}(${2:arg}) {",
+      "  $0",
+      "}"
+    ],
+    "description": "method",
+    "prefix": "met"
+  },
+  "nest-controller": {
+    "body": [
+      "@Controller($0)"
+    ],
+    "description": "nest controller",
+    "prefix": "@C"
+  },
+  "nest-injectable": {
+    "body": [
+      "@Injectable()"
+    ],
+    "description": "nest injectable",
+    "prefix": "@I"
+  },
+  "nest-module": {
+    "body": [
+      "@Module({})"
+    ],
+    "description": "nest module",
+    "prefix": "@M"
+  },
+  "new-promise": {
+    "body": [
+      "Promise((resolve, reject) => {",
+      "  $0",
+      "});"
+    ],
+    "description": "new promise",
+    "prefix": "Promise"
+  },
+  "not-implemented": {
+    "body": [
+      "throw new Error('Not implemented');"
+    ],
+    "description": "not implemented",
+    "prefix": "ni"
+  },
+  "null": {
+    "body": [
+      "null"
+    ],
+    "description": "null",
+    "prefix": "nu"
+  },
+  "prettier-ignore": {
+    "body": [
+      "// prettier-ignore"
+    ],
+    "description": "prettier-ignore",
+    "prefix": "pre"
+  },
+  "private": {
+    "body": [
+      "private $0"
+    ],
+    "description": "private keyword",
+    "prefix": "pr"
+  },
+  "private-async": {
+    "body": [
+      "private async $0() {}"
+    ],
+    "description": "private async method",
+    "prefix": "pra"
+  },
+  "private-readonly": {
+    "body": [
+      "private readonly $0"
+    ],
+    "description": "private readonly",
+    "prefix": "prr"
+  },
+  "react-class": {
+    "body": [
+      "class ${1:Class} extends React.Component {",
+      "",
+      "  render(){",
+      "    return (",
+      "      <div>$0</div>",
+      "    );",
+      "  }",
+      "}"
+    ],
+    "description": "react class",
+    "prefix": "rc"
+  },
+  "react-styled-component": {
+    "body": [
+      "import * as React from 'react';",
+      "import styled from '@emotion/styled';",
+      "",
+      "const Styled$1 = styled.div\\`\\`;",
+      "  ",
+      "interface $1Props {",
+      "}",
+      "",
+      "export const ${1:Comp} = (props: $1Props) => {",
+      "",
+      "  return <Styled$1></Styled$1>;",
+      "};"
+    ],
+    "description": "React functional component",
+    "prefix": "rsc"
+  },
+  "readonly": {
+    "body": [
+      "readonly $0"
+    ],
+    "description": "readonly keyword",
+    "prefix": "re"
+  },
+  "return": {
+    "body": [
+      "return $0"
+    ],
+    "description": "return",
+    "prefix": "r"
+  },
+  "rgba": {
+    "body": [
+      "rgba(${1:27}, ${2:28}, ${3:37}, ${4:0.9})$0"
+    ],
+    "description": "color",
+    "prefix": "rg"
+  },
+  "setState": {
+    "body": [
+      "this.setState({${1:key} : ${2:value}});"
+    ],
+    "description": "setState",
+    "prefix": "ss"
+  },
+  "setStatePrev": {
+    "body": [
+      "this.setState(prev => ({${1:key} : prev.${2:value}}));"
+    ],
+    "description": "setStatePrev",
+    "prefix": "sss"
+  },
+  "sfc": {
+    "body": [
+      "const ${1:} = (props) => {",
+      "  return (",
+      "    <${2:}>$0</$2>",
+      "  );",
+      "};"
+    ],
+    "description": "sfc",
+    "prefix": "sfc"
+  },
+  "style": {
+    "body": [
+      "style={{${1:key}: \"${2:value}\"}}$0"
+    ],
+    "description": "style",
+    "prefix": "style"
+  },
+  "styled-components": {
+    "body": [
+      "const StyledComponent$0 = styled.div<any>\\`",
+      "\\`;"
+    ],
+    "description": "styled-components",
+    "prefix": "rs"
+  },
+  "switch": {
+    "body": [
+      "switch (${1:condition}) {",
+      "  case ${2:expression}:",
+      "    $0",
+      "    break;",
+      "  default:",
+      "}"
+    ],
+    "description": "switch",
+    "prefix": "sw"
+  },
+  "tag": {
+    "body": [
+      "<${1:}>$0</$1>"
+    ],
+    "description": "Tag",
+    "prefix": "<>"
+  },
+  "text": {
+    "body": [
+      "<Text>$0</Text>"
+    ],
+    "description": "Text",
+    "prefix": "<t"
+  },
+  "this-props": {
+    "body": [
+      "this.props.$0"
+    ],
+    "description": "this-props",
+    "prefix": "tp"
+  },
+  "try-catch": {
+    "body": [
+      "try {",
+      "  $1",
+      "} catch (e) {",
+      "  $2",
+      "}"
+    ],
+    "description": "try...catch statement",
+    "prefix": "try"
+  },
+  "tsdoc": {
+    "body": [
+      "/**",
+      " * Returns the average of two numbers.",
+      " *",
+      " * @remarks",
+      " * This method is part of the {@link core-library#Statistics | Statistics subsystem}.",
+      " *",
+      " * @param x - The first input number",
+      " * @param y - The second input number",
+      " * @returns The arithmetic mean of `x` and `y`",
+      " *",
+      " * @beta",
+      " */"
+    ],
+    "description": "tsdoc",
+    "prefix": "*1"
+  },
+  "type": {
+    "body": [
+      "type $1 = $0"
+    ],
+    "description": "type keyword",
+    "prefix": "t"
+  },
+  "type-boolean": {
+    "body": [
+      "boolean"
+    ],
+    "description": "type Boolean",
+    "prefix": "b"
+  },
+  "type-number": {
+    "body": [
+      "number"
+    ],
+    "description": "type-number",
+    "prefix": "n"
+  },
+  "type-promise": {
+    "body": [
+      "Promise<$0>"
+    ],
+    "description": "type promise",
+    "prefix": "P"
+  },
+  "type-record": {
+    "body": [
+      "Record<$0>"
+    ],
+    "description": "type Record",
+    "prefix": "R"
+  },
+  "type-string": {
+    "body": [
+      "string"
+    ],
+    "description": "type String",
+    "prefix": "s"
+  },
+  "type-void": {
+    "body": [
+      "void"
+    ],
+    "description": "type void",
+    "prefix": "v"
+  },
+  "undefined": {
+    "body": [
+      "undefined"
+    ],
+    "description": "undefiend",
+    "prefix": "u"
+  },
+  "useCallback": {
+    "body": [
+      "const $0 = useCallback(() => {",
+      "}, []);"
+    ],
+    "description": "useCallback",
+    "prefix": "urc"
+  },
+  "useDispatch": {
+    "body": [
+      "const dispatch = useDispatch();"
+    ],
+    "description": "useDispatch",
+    "prefix": "udp"
+  },
+  "useEffect": {
+    "body": [
+      "useEffect(() => {",
+      "  $0",
+      "}, []);"
+    ],
+    "description": "useEffect",
+    "prefix": "ure"
+  },
+  "useMemo": {
+    "body": [
+      "const $0 = useMemo(() => {",
+      "  ",
+      "}, []);"
+    ],
+    "description": "useMemo",
+    "prefix": "urm"
+  },
+  "useRef": {
+    "body": [
+      "const $0 = useRef<HTMLInputElement>(null);"
+    ],
+    "description": "useRef",
+    "prefix": "urf"
+  },
+  "useRouter": {
+    "body": [
+      "const router = useRouter();"
+    ],
+    "description": "useRouter",
+    "prefix": "urr"
+  },
+  "useSelector": {
+    "body": [
+      "const $0 = useSelector((state: ReduxState) => );"
+    ],
+    "description": "useSelector",
+    "prefix": "usl"
+  },
+  "useState": {
+    "body": [
+      "const [${1:value}, set${1/(.*)/${1:/capitalize}/}] = useState($0);"
+    ],
+    "description": "useState",
+    "prefix": "urs"
+  }
+}

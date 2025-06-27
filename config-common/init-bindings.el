@@ -122,6 +122,8 @@
 (define-key evil-visual-state-map "\C-i" nil)
 (define-key evil-insert-state-map "\C-i" nil)
 (define-key evil-motion-state-map "\C-i" nil)
+(define-key evil-normal-state-map "/" 'swiper)
+(define-key evil-visual-state-map "/" 'swiper-with-region)
 
 ;; custom function bound to normal-state "?"
 (defun evil-normal-state-question-mark ()

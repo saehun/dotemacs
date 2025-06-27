@@ -1,7 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: synchronous generator
-# key: g
+# key: f*
 # group: es6
 # --
-function* $1($0) {
-}
+function* $0(): IterableIterator<any> {}

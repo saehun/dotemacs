@@ -130,6 +130,15 @@
   :mode "\\.kt\\'" ; if you want this mode to be auto-enabled
   )
 
+(use-package claude-code
+  :straight (:host github :repo "stevemolitor/claude-code.el"
+                   :files ("*.el" (:exclude "demo.gif")))
+  :bind-keymap
+  ("C-c c" . claude-code-command-map)
+  :hook ((claude-code--start . sm-setup-claude-faces))
+  :config
+  (claude-code-mode))
+
 ;; Install packages that are not yet installed
 (dolist (package package-list)
   (straight-use-package package))

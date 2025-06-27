@@ -1,6 +1,7 @@
 ;;; init-utils.el --- Elisp helper functions and commands -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
+(require 'swiper)
 
 (if (fboundp 'with-eval-after-load)
     (defalias 'after-load 'with-eval-after-load)
@@ -572,6 +573,28 @@ https://github.com/myshov/xkbswitch-macosx"
     (kill-new path)
     (message "Copied %s" path)))
 
+(defun copy-current-path-package-json ()
+  "Copy current path relative to nearest package.json directory."
+  (interactive)
+  (let* ((current-path (if (buffer-file-name) (buffer-file-name) (expand-file-name default-directory)))
+         (package-root (locate-dominating-file current-path "package.json")))
+    (if package-root
+        (let ((relative-path (file-relative-name current-path package-root)))
+          (kill-new relative-path)
+          (message "Copied %s" relative-path))
+      (message "No package.json found in parent directories"))))
+
+(defun copy-current-path-git ()
+  "Copy current path relative to nearest .git repository."
+  (interactive)
+  (let* ((current-path (if (buffer-file-name) (buffer-file-name) (expand-file-name default-directory)))
+         (git-root (locate-dominating-file current-path ".git")))
+    (if git-root
+        (let ((relative-path (file-relative-name current-path git-root)))
+          (kill-new relative-path)
+          (message "Copied %s" relative-path))
+      (message "No .git repository found in parent directories"))))
+
 (defun open-clipboard-path ()
   "Open path from clipboard."
   (interactive)
@@ -740,6 +763,71 @@ Convert Markdown links to Org-mode links in the ."
            (url (concat "./" git-file-path line-number)))
       (kill-new url)
       (message url))))
+
+(defun copy-current-path-and-lines-package-json ()
+  "Copy current path and lines relative to nearest package.json directory."
+  (interactive)
+  (let* ((current-path (if (buffer-file-name) (buffer-file-name) (expand-file-name default-directory)))
+         (package-root (locate-dominating-file current-path "package.json"))
+         (is-directory (not (buffer-file-name))))
+    (if package-root
+        (let* ((relative-path (file-relative-name current-path package-root))
+               (line-number
+                (if is-directory
+                    ""
+                  (if (region-active-p)
+                      (format ":%d:%d"
+                              (save-excursion
+                                (goto-char (region-beginning))
+                                (line-number-at-pos))
+                              (save-excursion
+                                (goto-char (region-end))
+                                (line-number-at-pos)))
+                    (format ":%d" (line-number-at-pos)))))
+               (path-with-lines (concat relative-path line-number)))
+          (kill-new path-with-lines)
+          (message "Copied %s" path-with-lines))
+      (message "No package.json found in parent directories"))))
+
+(defun copy-current-path-and-lines-git ()
+  "Copy current path and lines relative to nearest .git repository."
+  (interactive)
+  (let* ((current-path (if (buffer-file-name) (buffer-file-name) (expand-file-name default-directory)))
+         (git-root (locate-dominating-file current-path ".git"))
+         (is-directory (not (buffer-file-name))))
+    (if git-root
+        (let* ((relative-path (file-relative-name current-path git-root))
+               (line-number
+                (if is-directory
+                    ""
+                  (if (region-active-p)
+                      (format ":%d:%d"
+                              (save-excursion
+                                (goto-char (region-beginning))
+                                (line-number-at-pos))
+                              (save-excursion
+                                (goto-char (region-end))
+                                (line-number-at-pos)))
+                    (format ":%d" (line-number-at-pos)))))
+               (path-with-lines (concat relative-path line-number)))
+          (kill-new path-with-lines)
+          (message "Copied %s" path-with-lines))
+      (message "No .git repository found in parent directories"))))
+
+
+(defun swiper-with-region ()
+  "Run swiper with region text as initial input if region is active.
+If no region is selected, behaves like normal swiper."
+  (interactive)
+  (if (use-region-p)
+      (let ((region-text (buffer-substring-no-properties 
+                          (region-beginning) (region-end))))
+        ;; Deactivate region before calling swiper
+        (deactivate-mark)
+        ;; Call swiper with region text as initial input
+        (swiper region-text))
+    ;; No region selected, call swiper normally
+    (swiper)))
 
 (provide 'init-utils)
 

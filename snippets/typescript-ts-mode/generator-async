@@ -1,7 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: asynchronous generator
-# key: ag
+# key: af*
 # group: es6
 # --
-async function* $1($0) {
-}
+async function* $0(): AsyncIterableIterator<any> {}
