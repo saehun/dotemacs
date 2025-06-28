@@ -12,6 +12,9 @@
 (add-hook 'json-mode-hook    (lambda () (apheleia-mode -1)))
 (add-hook 'json-ts-mode-hook (lambda () (apheleia-mode -1)))
 
+(add-to-list 'warning-suppress-log-types '(lsp-mode))
+(add-to-list 'warning-suppress-types '(lsp-mode))
+
 (message "init-language-etc.el")
 (provide 'init-language-etc)
 ;;; init-language-etc.el ends here
