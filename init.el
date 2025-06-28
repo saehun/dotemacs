@@ -58,9 +58,16 @@
                        flycheck
                        flycheck-color-mode-line
                        flycheck-yamllint
+                       flycheck-golangci-lint ; Enhanced Go linting with golangci-lint
                        flyspell-correct-popup ; Correcting words with flyspell via popup interface
                        flyspell-popup      ; Correcting words with Flyspell in popup menus
                        general             ; More convenient key definitions in emacs
+                       go-tag              ; Add/remove struct tags in Go
+                       go-gen-test         ; Generate Go test files
+                       go-impl             ; Generate method stubs for Go interfaces
+                       go-fill-struct      ; Fill Go struct literals
+                       godoctor            ; Go refactoring tool
+                       gotest              ; Enhanced Go testing commands
                        gptel
                        guess-language      ; Robust automatic language detection
                        helpful             ; A better help buffer
@@ -108,8 +115,6 @@
                        yaml-mode           ; YAML mode
                        yasnippet
                        zoxide
-
-
                        ))
 
 ;; copilot is compiled from source

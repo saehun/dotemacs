@@ -52,6 +52,14 @@
 (setenv "PATH" (concat (getenv "PATH") (substitute-in-file-name ":$HOME/.cargo/bin")))
 (setq exec-path (append exec-path (list (substitute-in-file-name "$HOME/.cargo/bin"))))
 
+;; golang binaries
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/go/bin"))
+(setq exec-path (append exec-path '("/usr/local/go/bin")))
+
+;; go workspace bin
+(setenv "PATH" (concat (getenv "PATH") (substitute-in-file-name ":$HOME/go/bin")))
+(setq exec-path (append exec-path (list (substitute-in-file-name "$HOME/go/bin"))))
+
 ;; volta
 (setenv "PATH" (concat (getenv "PATH") (substitute-in-file-name ":$HOME/.volta/bin")))
 (setq exec-path (append exec-path (list (substitute-in-file-name "$HOME/.volta/bin"))))
