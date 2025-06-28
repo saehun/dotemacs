@@ -106,6 +106,17 @@
   (add-to-list 'yas-snippet-dirs
                (expand-file-name "snippets/go-mode" user-emacs-directory) t))
 
+;; Basic key bindings for Go development (similar to tide)
+(with-eval-after-load 'go-ts-mode
+  (define-key go-ts-mode-map (kbd "C-c r") 'lsp-find-references)           ; tide-references
+  (define-key go-ts-mode-map (kbd "C-r") 'lsp-execute-code-action)         ; my-tide-refactor
+  (define-key go-ts-mode-map (kbd "C-c d") 'lsp-find-definition)          ; tide-jump-to-definition
+  (define-key go-ts-mode-map (kbd "C-c C-f") 'lsp-execute-code-action)    ; my-tide-fix
+  (define-key go-ts-mode-map (kbd "C-c C-r") 'lsp-rename)                 ; tide-rename-symbol
+  (define-key go-ts-mode-map (kbd "C-c i") 'lsp-find-implementation)      ; tide-jump-to-implementation
+  (define-key go-ts-mode-map (kbd "C-c s") 'xref-go-back)                 ; xref-go-back
+  (define-key go-ts-mode-map (kbd "C-c h") 'lsp-describe-thing-at-point)) ; documentation
+
 (message "init-go.el loaded")
 (provide 'init-go)
 ;;; init-go.el ends here

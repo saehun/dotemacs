@@ -6,6 +6,8 @@
 (require 'go-ts-mode)
 (require 'lsp-mode)
 (require 'projectile)
+(require 'go-gen-test)
+(require 'flycheck)
 
 ;;; Code:
 (defun execute-go-command-in-iterm (command &optional args)
@@ -13,8 +15,8 @@
   (let* ((project-root (or (projectile-project-root) default-directory))
          (cleaned-root (replace-regexp-in-string "/$" "" project-root))
          (full-command (if args
-                          (format "%s %s" command args)
-                        command)))
+                           (format "%s %s" command args)
+                         command)))
     (call-process-shell-command
      (format "find-session %s \"%s\"" cleaned-root full-command) nil nil nil)))
 (defun go-in-testfile-p ()
@@ -80,7 +82,7 @@
       (message "No go.mod file found"))))
 
 (defun go-run-tests-regexp-iterm (regexp)
-  "Run Go tests matching REGEXP in iTerm."
+  "Run Go test matching REGEXP in iTerm."
   (interactive "sTest regexp: ")
   (execute-go-command-in-iterm (format "go test -v -run %s" regexp)))
 
@@ -90,9 +92,8 @@
   (execute-go-command-in-iterm (format "go get %s" package)))
 
 ;;; Hydra for regular Go files:
-(defhydra hydra-go (:color pink
-                    :hint nil
-                    :exit t)
+(defhydra hydra-go
+  (:color pink :hint nil :exit t)
   "
   ^Build/Run^             ^Test^                    ^Code^                   ^Navigate^
   ^^^^^^^^-----------------------------------------------------------------------------------------
@@ -101,12 +102,12 @@
   _B_: benchmark        _p_: test package         _i_: impl interface      _d_: definition
   _R_: run regexp       _c_: coverage             _s_: fill struct         _D_: describe
   _e_: errors           _v_: verbose test         _g_: generate            _u_: references
-                                                _G_: go get              
+                                                  _G_: go get
   ^Module^              ^Refactor^                ^Tag^
   ^^^^^^^^-----------------------------------------------------------------------------------------
-  _mt_: mod tidy        _rr_: rename              _ta_: add tag
-  _md_: mod download    _re_: extract             _tr_: remove tag
-  _mi_: mod init        _rt_: toggle
+  _1_: mod tidy         _2_: rename               _3_: add tag
+  _4_: mod download     _5_: extract              _6_: remove tag
+  _7_: mod init         _8_: toggle
 "
   ;; Build/Run
   ("r" go-run-current-package)
@@ -138,42 +139,42 @@
   ("u" lsp-find-references)
   
   ;; Module
-  ("mt" (execute-go-command-in-iterm "go mod tidy"))
-  ("md" (execute-go-command-in-iterm "go mod download"))
-  ("mi" (execute-go-command-in-iterm "go mod init"))
+  ("1" (execute-go-command-in-iterm "go mod tidy"))
+  ("4" (execute-go-command-in-iterm "go mod download"))
+  ("7" (execute-go-command-in-iterm "go mod init"))
   
   ;; Refactor
-  ("rr" lsp-rename)
-  ("re" godoctor-extract)
-  ("rt" godoctor-toggle)
+  ("2" lsp-rename)
+  ("5" godoctor-extract)
+  ("8" godoctor-toggle)
   
   ;; Tag
-  ("ta" go-tag-add)
-  ("tr" go-tag-remove)
+  ("3" go-tag-add)
+  ("6" go-tag-remove)
   
   ("C-e" nil "quit")
   ("q" quit-window "quit" :color blue))
 
 ;;; Hydra for Go test files:
 (defhydra hydra-go-test (:color pink
-                         :hint nil
-                         :exit t)
+                                :hint nil
+                                :exit t)
   "
   ^Test Commands^         ^Navigate^               ^Benchmark^
   ^^^^^^^^---------------------------------------------------------------
   _t_: test function    _s_: goto source         _b_: bench function
   _f_: test file        _T_: toggle test         _B_: bench all
-  _p_: test package     _m_: go.mod              
-  _d_: debug test       
-  _c_: coverage         
-  _v_: verbose test     
-  _r_: run regexp       
+  _p_: test package     _m_: go.mod
+  _d_: debug test
+  _c_: coverage
+  _v_: verbose test
+  _r_: run regex
   
-  ^Code^                 
+  ^Code^
   ^^^^^^^^---------------------------------------------------------------
-  _o_: organize imports    
-  _a_: code action      
-  _g_: generate test    
+  _o_: organize imports
+  _a_: code action
+  _g_: generate test
 "
   ;; Test Commands
   ("t" go-test-current-function)
@@ -206,13 +207,12 @@
   ("q" quit-window "quit" :color blue))
 
 ;; Key binding
-(with-eval-after-load 'go-ts-mode
-  (define-key go-ts-mode-map (kbd "C-e")
-              (lambda ()
-                (interactive)
-                (if (go-in-testfile-p)
-                    (hydra-go-test/body)
-                  (hydra-go/body)))))
+(define-key go-ts-mode-map (kbd "C-e")
+            (lambda ()
+              (interactive)
+              (if (go-in-testfile-p)
+                  (hydra-go-test/body)
+                (hydra-go/body))))
 
 (message "init-go-hydra.el loaded")
 (provide 'init-go-hydra)
