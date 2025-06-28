@@ -193,7 +193,6 @@
 (require 'tide)
 (define-key tide-mode-map (kbd "C-c r") 'tide-references)
 (define-key tide-mode-map (kbd "M-s-r") 'tide-restart-server)
-(define-key tide-mode-map (kbd "C-c f") 'my-tide-refactor)
 (define-key tide-mode-map (kbd "C-r") 'my-tide-refactor)
 (define-key tide-mode-map (kbd "C-c d") 'tide-jump-to-definition)
 (define-key tide-mode-map (kbd "C-c i") 'tide-jump-to-implementation)
