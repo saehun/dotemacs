@@ -250,7 +250,7 @@ Version 2016-08-11"
 (defun counsel-rg-package ()
   "Like `counsel-rg' but always search from the package root, not git root."
   (interactive)
-  (counsel-rg nil (projectile-root-bottom-up default-directory '("package.json"))))
+  (counsel-rg nil (projectile-root-bottom-up default-directory '("package.json" "go.mod"))))
 
 
 (defun ghq-parse ()
