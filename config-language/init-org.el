@@ -70,6 +70,28 @@
   (interactive)
   (org-insert-time-stamp (current-time) t))
 
+(defun org-update-updated-at-property ()
+  "Update the UPDATED_AT property in the file-level PROPERTIES drawer."
+  (save-excursion
+    (goto-char (point-min))
+    ;; Check if there's a PROPERTIES drawer at the beginning
+    (when (looking-at-p "^:PROPERTIES:")
+      (let ((end (save-excursion
+                   (re-search-forward "^:END:" nil t))))
+        (when end
+          ;; Look for existing UPDATED_AT
+          (if (re-search-forward "^:UPDATED_AT:.*$" end t)
+              ;; Replace existing
+              (replace-match 
+               (format ":UPDATED_AT: [%s]" 
+                       (format-time-string "%Y-%m-%d %a %H:%M:%S"))
+               t t)
+            ;; Add new before :END:
+            (goto-char end)
+            (beginning-of-line)
+            (insert (format ":UPDATED_AT: [%s]\n" 
+                            (format-time-string "%Y-%m-%d %a %H:%M:%S")))))))))
+
 (defun org-roam-node-insert-immediate (arg &rest args)
   (interactive "P")
   (let ((args (cons arg args))
@@ -87,6 +109,9 @@
 (add-hook 'org-mode-hook 'display-fill-column-indicator-mode)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 (add-hook 'org-mode-hook (lambda () (setq-local fill-column 90)))
+(add-hook 'org-mode-hook 
+          (lambda ()
+            (add-hook 'before-save-hook 'org-update-updated-at-property nil t)))
 
 ;; key bindings
 (define-key org-mode-map (kbd "C-c <right>") 'org-insert-link)
