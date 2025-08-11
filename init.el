@@ -109,6 +109,7 @@
                        treesit-auto        ; Automatic installation, usage, and fallback for tree-sitter
                        use-package         ; A configuration macro for simplifying your .emacs
                        vertico             ; VERTical Interactive COmpletion
+                       vterm
                        web-mode
                        wgrep
                        which-key           ; Display available keybindings in popup
@@ -135,14 +136,20 @@
   :mode "\\.kt\\'" ; if you want this mode to be auto-enabled
   )
 
-(use-package claude-code
-  :straight (:host github :repo "stevemolitor/claude-code.el"
-                   :files ("*.el" (:exclude "demo.gif")))
-  :bind-keymap
-  ("C-c c" . claude-code-command-map)
-  :hook ((claude-code--start . sm-setup-claude-faces))
+;; (use-package claude-code
+;;   :straight (:host github :repo "stevemolitor/claude-code.el"
+;;                    :files ("*.el" (:exclude "demo.gif")))
+;;   :bind-keymap
+;;   ("C-c c" . claude-code-command-map)
+;;   :hook ((claude-code--start . sm-setup-claude-faces))
+;;   :config
+;;   (claude-code-mode))
+
+(use-package claude-code-ide
+  :straight (:type git :host github :repo "manzaltu/claude-code-ide.el")
+  :bind ("C-c C-'" . claude-code-ide-menu) ; Set your favorite keybinding
   :config
-  (claude-code-mode))
+  (claude-code-ide-emacs-tools-setup)) ; Optionally enable Emacs MCP tools
 
 ;; Install packages that are not yet installed
 (dolist (package package-list)

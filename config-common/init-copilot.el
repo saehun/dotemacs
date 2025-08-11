@@ -33,7 +33,7 @@
 (add-hook 'typescript-ts-mode-hook #'setup-copilot-mode)
 (add-hook 'rustic-mode-hook        #'setup-copilot-mode)
 (add-hook 'bash-ts-mode            #'setup-copilot-mode)
-(add-hook 'go-ts-mode-hook         #'setup-copilot-mode)
+;; (add-hook 'go-ts-mode-hook         #'setup-copilot-mode)
 ;; (add-hook 'emacs-lisp-mode-hook    #'setup-copilot-mode)
 
 (message "init-copilot.el")
