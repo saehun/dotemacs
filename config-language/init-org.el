@@ -92,6 +92,24 @@
             (insert (format ":UPDATED_AT: [%s]\n" 
                             (format-time-string "%Y-%m-%d %a %H:%M:%S")))))))))
 
+(defun org-add-created-at-property ()
+  "Add CREATED_AT property if it doesn't exist in the file-level PROPERTIES drawer."
+  (save-excursion
+    (goto-char (point-min))
+    ;; Check if there's a PROPERTIES drawer at the beginning
+    (when (looking-at-p "^:PROPERTIES:")
+      (let ((end (save-excursion
+                   (re-search-forward "^:END:" nil t))))
+        (when end
+          ;; Check if CREATED_AT already exists
+          (goto-char (point-min))
+          (unless (re-search-forward "^:CREATED_AT:.*$" end t)
+            ;; Add CREATED_AT before :END:
+            (goto-char end)
+            (beginning-of-line)
+            (insert (format ":CREATED_AT: [%s]\n" 
+                            (format-time-string "%Y-%m-%d %a %H:%M:%S")))))))))
+
 (defun org-roam-node-insert-immediate (arg &rest args)
   (interactive "P")
   (let ((args (cons arg args))
@@ -111,7 +129,11 @@
 (add-hook 'org-mode-hook (lambda () (setq-local fill-column 90)))
 (add-hook 'org-mode-hook 
           (lambda ()
-            (add-hook 'before-save-hook 'org-update-updated-at-property nil t)))
+            (add-hook 'before-save-hook 
+                      (lambda ()
+                        (org-add-created-at-property)
+                        (org-update-updated-at-property))
+                      nil t)))
 
 ;; key bindings
 (define-key org-mode-map (kbd "C-c <right>") 'org-insert-link)
